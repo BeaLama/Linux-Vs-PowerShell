@@ -980,12 +980,4 @@ Where-Object {$_.Status -eq "Running"}
 
 ---
 
-### Siguiente capítulo
-
-➡️ **07-Permisos.md**
-
-En el siguiente capítulo aprenderás a consultar, modificar y administrar los permisos sobre archivos y directorios en **Linux** y **PowerShell**, comprendiendo cómo controlar el acceso a los recursos del sistema.
-
----
-
 [⬆️ Volver al índice](#índice)

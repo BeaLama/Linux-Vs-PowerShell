@@ -1143,12 +1143,4 @@ Receive-Job
 
 ---
 
-### Siguiente capítulo
-
-➡️ **03-Servicios.md**
-
-En el siguiente capítulo aprenderás a administrar los servicios del sistema: iniciarlos, detenerlos, reiniciarlos, consultar su estado y configurar su inicio automático tanto en **Linux** como en **PowerShell**.
-
----
-
 [⬆️ Volver al índice](#índice)

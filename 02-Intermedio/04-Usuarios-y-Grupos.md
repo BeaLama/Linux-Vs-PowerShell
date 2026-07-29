@@ -8,8 +8,6 @@ Cada usuario dispone de una identidad propia, mientras que los grupos facilitan 
 
 Administrar correctamente usuarios y grupos es una tarea esencial para mantener la seguridad, el orden y el correcto funcionamiento de equipos y servidores.
 
-En este capítulo aprenderás a consultar, crear, modificar y eliminar usuarios y grupos tanto en Linux como en PowerShell.
-
 ---
 
 ## Índice
@@ -97,13 +95,13 @@ Get-LocalUser
 Linux
 
 ```bash
-cat /etc/passwd | grep beatriz
+cat /etc/passwd | grep usuario
 ```
 
 PowerShell
 
 ```powershell
-Get-LocalUser beatriz
+Get-LocalUser usuario
 ```
 
 ---
@@ -221,13 +219,13 @@ Permite consultar la información de un usuario local, incluyendo:
 Linux
 
 ```bash
-id beatriz
+id usuario
 ```
 
 PowerShell
 
 ```powershell
-Get-LocalUser beatriz
+Get-LocalUser usuario
 ```
 
 ---
@@ -253,7 +251,7 @@ Get-LocalUser $env:USERNAME
 Linux
 
 ```bash
-id beatriz
+id usuario
 ```
 
 PowerShell
@@ -262,7 +260,7 @@ PowerShell
 Get-LocalGroup |
 ForEach-Object {
     Get-LocalGroupMember $_.Name -ErrorAction SilentlyContinue |
-    Where-Object {$_.Name -like "*beatriz*"}
+    Where-Object {$_.Name -like "*usuario*"}
 }
 ```
 
@@ -349,13 +347,13 @@ Es posible especificar una contraseña, una descripción y otras propiedades dur
 Linux
 
 ```bash
-sudo adduser beatriz
+sudo adduser usuario
 ```
 
 PowerShell
 
 ```powershell
-New-LocalUser -Name "beatriz"
+New-LocalUser -Name "usuario"
 ```
 
 ---
@@ -365,13 +363,13 @@ New-LocalUser -Name "beatriz"
 Linux
 
 ```bash
-sudo useradd -m beatriz
+sudo useradd -m usuario
 ```
 
 PowerShell
 
 ```powershell
-New-LocalUser -Name "beatriz"
+New-LocalUser -Name "usuario"
 ```
 
 ---
@@ -381,14 +379,14 @@ New-LocalUser -Name "beatriz"
 Linux
 
 ```bash
-sudo useradd -m -c "Usuario de desarrollo" beatriz
+sudo useradd -m -c "Usuario de desarrollo" usuario
 ```
 
 PowerShell
 
 ```powershell
 New-LocalUser `
--Name "beatriz" `
+-Name "usuario" `
 -Description "Usuario de desarrollo"
 ```
 
@@ -475,13 +473,13 @@ La eliminación de la cuenta no elimina automáticamente su perfil de usuario ni
 Linux
 
 ```bash
-sudo userdel beatriz
+sudo userdel usuario
 ```
 
 PowerShell
 
 ```powershell
-Remove-LocalUser -Name "beatriz"
+Remove-LocalUser -Name "usuario"
 ```
 
 ---
@@ -491,13 +489,13 @@ Remove-LocalUser -Name "beatriz"
 Linux
 
 ```bash
-sudo userdel -r beatriz
+sudo userdel -r usuario
 ```
 
 PowerShell
 
 ```powershell
-Remove-LocalUser -Name "beatriz"
+Remove-LocalUser -Name "usuario"
 ```
 
 ---
@@ -507,13 +505,13 @@ Remove-LocalUser -Name "beatriz"
 Linux
 
 ```bash
-id beatriz
+id usuario
 ```
 
 PowerShell
 
 ```powershell
-Get-LocalUser beatriz
+Get-LocalUser usuario
 ```
 
 ---
@@ -845,12 +843,12 @@ Agrega un usuario a un grupo local del sistema.
 
 ### Ejemplos
 
-**Agregar el usuario `beatriz` al grupo `desarrolladores`**
+**Agregar el usuario `usuario` al grupo `desarrolladores`**
 
 Linux
 
 ```bash
-sudo usermod -aG desarrolladores beatriz
+sudo usermod -aG desarrolladores usuario
 ```
 
 PowerShell
@@ -858,7 +856,7 @@ PowerShell
 ```powershell
 Add-LocalGroupMember `
 -Group "desarrolladores" `
--Member "beatriz"
+-Member "usuario"
 ```
 
 ---
@@ -868,15 +866,15 @@ Add-LocalGroupMember `
 Linux
 
 ```bash
-sudo usermod -aG desarrolladores,docker beatriz
+sudo usermod -aG desarrolladores,docker usuario
 ```
 
 PowerShell
 
 ```powershell
-Add-LocalGroupMember -Group "desarrolladores" -Member "beatriz"
+Add-LocalGroupMember -Group "desarrolladores" -Member "usuario"
 
-Add-LocalGroupMember -Group "docker" -Member "beatriz"
+Add-LocalGroupMember -Group "docker" -Member "usuario"
 ```
 
 ---
@@ -886,7 +884,7 @@ Add-LocalGroupMember -Group "docker" -Member "beatriz"
 Linux
 
 ```bash
-id beatriz
+id usuario
 ```
 
 PowerShell
@@ -978,12 +976,12 @@ La cuenta del usuario no se elimina; únicamente deja de pertenecer al grupo esp
 
 ### Ejemplos
 
-**Eliminar el usuario `beatriz` del grupo `desarrolladores`**
+**Eliminar el usuario `usuario` del grupo `desarrolladores`**
 
 Linux
 
 ```bash
-sudo gpasswd -d beatriz desarrolladores
+sudo gpasswd -d usuario desarrolladores
 ```
 
 PowerShell
@@ -991,7 +989,7 @@ PowerShell
 ```powershell
 Remove-LocalGroupMember `
 -Group "desarrolladores" `
--Member "beatriz"
+-Member "usuario"
 ```
 
 ---
@@ -1001,17 +999,17 @@ Remove-LocalGroupMember `
 Linux
 
 ```bash
-sudo gpasswd -d beatriz desarrolladores
+sudo gpasswd -d usuario desarrolladores
 
-sudo gpasswd -d beatriz docker
+sudo gpasswd -d usuario docker
 ```
 
 PowerShell
 
 ```powershell
-Remove-LocalGroupMember -Group "desarrolladores" -Member "beatriz"
+Remove-LocalGroupMember -Group "desarrolladores" -Member "usuario"
 
-Remove-LocalGroupMember -Group "docker" -Member "beatriz"
+Remove-LocalGroupMember -Group "docker" -Member "usuario"
 ```
 
 ---
@@ -1021,7 +1019,7 @@ Remove-LocalGroupMember -Group "docker" -Member "beatriz"
 Linux
 
 ```bash
-id beatriz
+id usuario
 ```
 
 PowerShell
@@ -1097,20 +1095,12 @@ Get-LocalGroupMember desarrolladores
 |---------|--------|------------|
 | Ver usuarios | `getent passwd` | `Get-LocalUser` |
 | Ver grupos | `getent group` | `Get-LocalGroup` |
-| Consultar un usuario | `id beatriz` | `Get-LocalUser beatriz` |
-| Crear un usuario | `adduser beatriz` | `New-LocalUser -Name "beatriz"` |
-| Eliminar un usuario | `userdel beatriz` | `Remove-LocalUser -Name "beatriz"` |
+| Consultar un usuario | `id usuario` | `Get-LocalUser usuario` |
+| Crear un usuario | `adduser usuario` | `New-LocalUser -Name "usuario"` |
+| Eliminar un usuario | `userdel usuario` | `Remove-LocalUser -Name "usuario"` |
 | Crear un grupo | `groupadd desarrolladores` | `New-LocalGroup -Name "desarrolladores"` |
-| Agregar usuario a un grupo | `usermod -aG desarrolladores beatriz` | `Add-LocalGroupMember -Group "desarrolladores" -Member "beatriz"` |
-| Eliminar usuario de un grupo | `gpasswd -d beatriz desarrolladores` | `Remove-LocalGroupMember -Group "desarrolladores" -Member "beatriz"` |
-
----
-
-### Siguiente capítulo
-
-➡️ **05-Permisos-Avanzados.md**
-
-En el siguiente capítulo aprenderás a administrar permisos avanzados sobre archivos y directorios, modificar propietarios, gestionar ACL (Access Control Lists) y aplicar permisos de forma más precisa tanto en **Linux** como en **PowerShell**.
+| Agregar usuario a un grupo | `usermod -aG desarrolladores usuario` | `Add-LocalGroupMember -Group "desarrolladores" -Member "usuario"` |
+| Eliminar usuario de un grupo | `gpasswd -d usuario desarrolladores` | `Remove-LocalGroupMember -Group "desarrolladores" -Member "usuario"` |
 
 ---
 

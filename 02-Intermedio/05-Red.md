@@ -6,8 +6,6 @@ La administración de red permite conocer el estado de las interfaces de red, co
 
 Dominar estos comandos resulta fundamental para solucionar incidencias relacionadas con direcciones IP, DNS, puertas de enlace, rutas o conexiones entre equipos.
 
-En este capítulo aprenderás a consultar la configuración de red, comprobar la conectividad y obtener información sobre las conexiones activas tanto en Linux como en PowerShell.
-
 ---
 
 ## Índice
@@ -1209,14 +1207,6 @@ Get-NetNeighbor `
 | Ver rutas | `ip route` | `Get-NetRoute` |
 | Probar un puerto | `nc -zv servidor 443` | `Test-NetConnection servidor -Port 443` |
 | Ver caché ARP | `ip neigh` | `Get-NetNeighbor` |
-
----
-
-### Siguiente capítulo
-
-➡️ **06-Procesos-de-Red.md** *(o el nombre que hayas decidido para el siguiente tema)*
-
-En el siguiente capítulo aprenderás a capturar tráfico, analizar conexiones y utilizar herramientas de diagnóstico más avanzadas para investigar problemas de red y comunicaciones entre equipos.
 
 ---
 

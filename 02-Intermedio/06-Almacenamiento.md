@@ -4,8 +4,6 @@
 
 El almacenamiento es uno de los componentes fundamentales de cualquier sistema. Una correcta administración de discos, particiones y sistemas de archivos permite garantizar el rendimiento, la disponibilidad de los datos y el correcto funcionamiento del equipo.
 
-En este capítulo aprenderás a consultar la información de los discos, administrar particiones, montar sistemas de archivos, comprobar el espacio disponible y realizar tareas básicas de mantenimiento tanto en Linux como en PowerShell.
-
 ---
 
 ## Índice
@@ -1378,3 +1376,49 @@ Sort-Object TamañoGB -Descending
 
 [⬆️ Volver al índice](#índice)
 
+## Resumen de equivalencias
+
+| Acción | Linux | PowerShell |
+|--------|--------|------------|
+| Ver los discos del sistema | `lsblk` | `Get-Disk` |
+| Consultar el espacio disponible | `df -h` | `Get-Volume` |
+| Listar particiones | `fdisk -l` / `parted -l` | `Get-Partition` |
+| Consultar información de un volumen | `lsblk -f` / `blkid` | `Get-Volume` |
+| Montar un sistema de archivos | `mount` | `Mount-DiskImage` |
+| Desmontar un sistema de archivos | `umount` | `Dismount-DiskImage` |
+| Crear una partición | `fdisk` / `parted` | `New-Partition` |
+| Formatear una partición | `mkfs.ext4`, `mkfs.xfs`, `mkfs.ntfs` | `Format-Volume` |
+| Cambiar la etiqueta de un volumen | `e2label`, `xfs_admin`, `ntfslabel` | `Set-Volume` |
+| Consultar el uso del disco por directorios | `du -sh` | `Get-ChildItem` + `Measure-Object` |
+
+---
+
+### Buenas prácticas generales
+
+- Comprueba siempre el disco correcto antes de crear, eliminar o formatear particiones.
+- Mantén suficiente espacio libre en las unidades para evitar problemas de rendimiento.
+- Utiliza etiquetas descriptivas para identificar fácilmente los distintos volúmenes.
+- Realiza copias de seguridad antes de modificar particiones o sistemas de archivos.
+- Verifica el sistema de archivos utilizado antes de ejecutar tareas de mantenimiento.
+- Supervisa periódicamente el crecimiento del almacenamiento para detectar posibles problemas antes de que el disco se llene.
+
+---
+
+### Comandos más utilizados
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Ver discos | `lsblk` | `Get-Disk` |
+| Ver espacio libre | `df -h` | `Get-Volume` |
+| Ver particiones | `fdisk -l` | `Get-Partition` |
+| Ver información del volumen | `lsblk -f` | `Get-Volume` |
+| Montar una unidad | `mount` | `Mount-DiskImage` |
+| Desmontar una unidad | `umount` | `Dismount-DiskImage` |
+| Crear una partición | `fdisk` | `New-Partition` |
+| Formatear una partición | `mkfs.ext4` | `Format-Volume` |
+| Cambiar la etiqueta | `e2label` | `Set-Volume` |
+| Ver tamaño de directorios | `du -sh` | `Get-ChildItem` + `Measure-Object` |
+
+---
+
+[⬆️ Volver al índice](#índice)

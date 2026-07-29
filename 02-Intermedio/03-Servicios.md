@@ -8,8 +8,6 @@ A diferencia de los procesos interactivos, los servicios pueden iniciarse autom�
 
 La administración de servicios es una tarea fundamental para mantener la disponibilidad y el correcto funcionamiento de servidores y equipos.
 
-En este capítulo aprenderás a consultar, iniciar, detener, reiniciar y administrar servicios tanto en Linux como en PowerShell.
-
 ---
 
 ## Índice
@@ -974,14 +972,6 @@ Set-Service -Name sshd -StartupType Manual
 | Detener un servicio | `systemctl stop ssh` | `Stop-Service sshd` |
 | Reiniciar un servicio | `systemctl restart ssh` | `Restart-Service sshd` |
 | Habilitar inicio automático | `systemctl enable ssh` | `Set-Service -Name sshd -StartupType Automatic` |
-
----
-
-### Siguiente capítulo
-
-➡️ **04-Usuarios-y-Grupos.md**
-
-En el siguiente capítulo aprenderás a crear, modificar y administrar usuarios y grupos, asignar pertenencias y gestionar permisos básicos tanto en **Linux** como en **PowerShell**.
 
 ---
 

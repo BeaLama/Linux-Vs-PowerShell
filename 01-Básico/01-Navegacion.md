@@ -6,8 +6,6 @@ La navegación por el sistema de archivos es una de las tareas más habituales e
 
 Aunque Linux y PowerShell utilizan comandos diferentes, ambos permiten realizar prácticamente las mismas operaciones.
 
-En este capítulo aprenderás a desplazarte por el sistema de archivos, consultar tu ubicación, listar el contenido de directorios y gestionar carpetas desde la línea de comandos.
-
 ---
 
 ## Índice

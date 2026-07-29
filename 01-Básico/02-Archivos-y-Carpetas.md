@@ -2,7 +2,6 @@
 
 ## Índice
 
-## Índice
 
 - [Crear un archivo](#crear-un-archivo)
 - [Copiar archivos](#copiar-archivos)

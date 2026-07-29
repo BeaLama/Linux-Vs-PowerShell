@@ -8,8 +8,6 @@ Pueden contener texto, números, rutas, resultados de comandos e incluso objetos
 
 Aunque Linux y PowerShell utilizan una sintaxis diferente, ambos comparten el mismo objetivo: guardar información para facilitar la automatización y evitar repetir datos.
 
-En este capítulo aprenderás a crear, consultar y modificar variables, así como a utilizarlas en situaciones habituales de administración de sistemas.
-
 ---
 
 ## Índice
@@ -890,14 +888,6 @@ Remove-Item $archivo
 - Reutiliza variables para evitar repetir información y simplificar el código.
 - Utiliza variables de entorno cuando necesites acceder a información del sistema, como rutas o datos del usuario.
 - Mantén una nomenclatura consistente a lo largo de todo el script.
-
----
-
-### Siguiente capítulo
-
-➡️ **06-Pipes-y-Redirecciones.md**
-
-En el siguiente capítulo aprenderás a combinar comandos y cmdlets mediante tuberías, redirigir la salida a archivos y automatizar tareas utilizando el flujo de información tanto en **Linux** como en **PowerShell**.
 
 ---
 

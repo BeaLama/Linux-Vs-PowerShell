@@ -6,8 +6,6 @@ Localizar archivos, directorios o información específica es una de las tareas 
 
 Mientras que Linux utiliza principalmente herramientas como `find` y `grep`, PowerShell dispone de cmdlets como `Get-ChildItem` y `Select-String`, capaces de realizar búsquedas muy precisas gracias al uso de objetos.
 
-En este capítulo aprenderás a localizar archivos, carpetas y contenido utilizando los comandos más utilizados por administradores de sistemas.
-
 ---
 
 ## Índice

@@ -463,7 +463,7 @@ En Windows, el propietario de un archivo o directorio puede cambiarse utilizando
 Linux
 
 ```bash
-sudo chown beatriz informe.txt
+sudo chown usuario informe.txt
 ```
 
 PowerShell
@@ -479,7 +479,7 @@ takeown /F .\informe.txt
 Linux
 
 ```bash
-sudo chown beatriz Documentos
+sudo chown usuario Documentos
 ```
 
 PowerShell
@@ -495,7 +495,7 @@ takeown /F .\Documentos
 Linux
 
 ```bash
-sudo chown -R beatriz Proyecto
+sudo chown -R usuario Proyecto
 ```
 
 PowerShell
@@ -609,7 +609,7 @@ icacls .\Proyecto /grant Usuario:RX /T
 Linux
 
 ```bash
-sudo chown -R beatriz Proyecto
+sudo chown -R usuario Proyecto
 ```
 
 PowerShell

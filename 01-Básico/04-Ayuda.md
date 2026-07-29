@@ -6,8 +6,6 @@ Conocer un comando es importante, pero saber dónde consultar su documentación 
 
 Tanto Linux como PowerShell incorporan herramientas que permiten acceder a información detallada sobre comandos, parámetros, ejemplos y funcionamiento sin necesidad de utilizar un navegador web.
 
-En este capítulo aprenderás a consultar la ayuda integrada del sistema para comprender mejor cualquier comando o cmdlet.
-
 ---
 
 ## Índice
