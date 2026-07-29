@@ -6,8 +6,6 @@ Los gestores de paquetes permiten instalar, actualizar, eliminar y administrar e
 
 Cada distribución Linux utiliza su propio gestor de paquetes (APT, DNF, YUM, Pacman, Zypper, etc.), mientras que Windows dispone de herramientas como **Winget** y **PowerShell PackageManagement** para realizar tareas similares.
 
-En este capítulo aprenderás las operaciones más habituales relacionadas con la gestión de paquetes tanto en Linux como en PowerShell.
-
 ---
 
 ## Índice
@@ -430,16 +428,752 @@ winget upgrade
 ### Linux
 
 ```bash
-
+sudo apt install --only-upgrade <paquete>
 ```
 
 **Descripción**
+
+Permite actualizar únicamente un paquete concreto sin modificar el resto del software instalado.
+
+Si el paquete no está instalado, APT no realizará la actualización.
 
 ### Powershell
 
 ```powershell
+winget upgrade <paquete>
+```
 
+También puede utilizarse el identificador del paquete:
+
+```powershell
+winget upgrade --id <ID>
 ```
 
 **Descripción**
 
+Permite actualizar una única aplicación instalada a su versión más reciente.
+
+Es recomendable utilizar el identificador (`--id`) para evitar ambigüedades cuando existe varias aplicaciones con nombres similares.
+
+---
+
+### Equivalencia
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Actualizar un paquete concreto | `apt install --only-upgrade` | `winget upgrade` |
+
+---
+
+### Ejemplos
+
+**Actualizar Git**
+
+Linux
+
+```bash
+sudo apt install --only-upgrade git
+```
+
+PowerShell
+
+```powershell
+winget upgrade Git.Git
+```
+
+---
+
+**Actualizar Visual Studio Code**
+
+Linux
+
+```bash
+sudo apt install --only-upgrade code
+```
+
+PowerShell
+
+```powershell
+winget upgrade Microsoft.VisualStudioCode
+```
+
+---
+
+**Actualizar utilizando el ID del paquete**
+
+Linux
+
+```bash
+sudo apt install --only-upgrade git
+```
+
+PowerShell
+
+```powershell
+winget upgrade `
+--id Git.Git
+```
+
+---
+
+### Diferencias
+
+| Linux | PowerShell |
+|--------|------------|
+| Solo actualiza el paquete indicado si ya está instalado. | Actualiza únicamente la aplicación seleccionada. |
+| Utiliza el nombre del paquete presente en los repositorios APT. | Puede utilizarse el nombre o el identificador (`--id`). |
+| Requiere normalmente permisos de administrador (`sudo`). | Algunas aplicaciones requieren ejecutar PowerShell como administrador. |
+
+---
+
+### Buenas prácticas
+
+- Actualiza únicamente el paquete que necesites cuando no quieras modificar el resto del sistema.
+- Comprueba previamente si existe una versión más reciente disponible.
+- Utiliza el identificador (`--id`) en Winget para evitar instalar o actualizar una aplicación incorrecta.
+- Verifica el funcionamiento de la aplicación después de la actualización.
+
+---
+
+### Comandos relacionados
+
+- [Actualizar los paquetes](#actualizar-los-paquetes)
+- [Instalar un paquete](#instalar-un-paquete)
+- [Obtener información de un paquete](#obtener-información-de-un-paquete)
+
+---
+
+> **💡 Consejo:** Actualizar un único paquete es una buena opción cuando solo necesitas corregir un problema concreto o probar una nueva versión de una aplicación sin modificar el resto del sistema.
+
+---
+
+[⬆️ Volver al índice](#índice)
+
+## Eliminar un paquete
+
+### Linux
+
+```bash
+sudo apt remove <paquete>
+```
+
+También puede utilizarse:
+
+```bash
+sudo apt purge <paquete>
+```
+
+Para eliminar dependencias que ya no se utilizan:
+
+```bash
+sudo apt autoremove
+```
+
+**Descripción**
+
+Permite desinstalar paquetes del sistema.
+
+Existen distintas opciones según el nivel de limpieza deseado:
+
+- `apt-remove` -> Elimina el paquete, pero conserva los archivos de configuración.
+- `apt purge` -> Elimina el paquete y también sus archivos de configuración.
+- `apt autoremove` -> Elimina dependencias instaladas automáticamente que ya no son necesarias.
+
+---
+
+## PowerShell
+
+```powershell
+winget uninstall <paquete>
+```
+
+También puede utilizarse:
+
+```powershell
+winget uninstall --id <ID>
+```
+
+**Descripción**
+
+Permite desinstalar una aplicación instalada mediante Winget.
+
+Es recomendable utilizar el identificador (`--id`) cuando existan varias aplicaciones con nombres similares.
+
+---
+
+### Equivalencia
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Eliminar un paquete | `apt remove` | `winget uninstall` |
+| Eliminar paquete y configuración | `apt purge` | No existe un equivalente directo |
+| Eliminar dependencias innecesarias | `apt autoremove` | No existe un equivalente directo |
+
+---
+
+### Ejemplos
+
+**Eliminar Git**
+
+Linux
+
+```bash
+sudo apt remove git
+```
+
+PowerShell
+
+```powershell
+winget uninstall Git.Git
+```
+
+---
+
+**Eliminar Visual Studio Code**
+
+Linux
+
+```bash
+sudo apt purge code
+```
+
+PowerShell
+
+```powershell
+winget uninstall Microsoft.VisualStudioCode
+```
+
+---
+
+**Eliminar dependencias innecesarias**
+
+Linux
+
+```bash
+sudo apt autoremove
+```
+
+PowerShell
+
+```powershell
+# Winget no dispone de un comando equivalente.
+```
+
+---
+
+### Diferencias
+
+| Linux | PowerShell |
+|--------|------------|
+| `apt remove` conserva los archivos de configuración. | `winget uninstall` elimina la aplicación siguiendo el desinstalador del fabricante. |
+| `apt purge` elimina también la configuración del paquete. | No existe un cmdlet equivalente para eliminar automáticamente la configuración de todas las aplicaciones. |
+| `apt autoremove` elimina dependencias que ya no se utilizan. | Winget no gestiona dependencias de esta forma. |
+
+---
+
+### Buenas prácticas
+
+- Comprueba que el paquete no sea una dependencia crítica antes de eliminarlo.
+- Utiliza `apt purge` cuando quieras eliminar completamente un paquete y su configuración.
+- Ejecuta `apt autoremove` periódicamente para liberar espacio eliminando dependencias innecesarias.
+- Verifica que la aplicación se ha desinstalado correctamente antes de instalar una versión diferente.
+
+---
+
+### Comandos relacionados
+
+- [Instalar un paquete](#instalar-un-paquete)
+- [Actualizar los paquetes](#actualizar-los-paquetes)
+- [Mostrar los paquetes instalados](#mostrar-los-paquetes-instalados)
+
+---
+
+> **💡 Consejo:** Si tienes pensado reinstalar una aplicación más adelante, normalmente es suficiente con utilizar **`apt remove`**. Si deseas eliminar cualquier rastro de configuración y comenzar desde cero, utiliza **`apt purge`**.
+
+---
+
+[⬆️ Volver al índice](#índice)
+
+## Mostrar los paquetes instalados
+
+### Linux
+
+```bash
+apt list --installed
+```
+
+También puede utilizarse:
+
+```bash
+dpkg -l
+```
+
+**Descripción**
+
+Permite mostrar todos los papeles instalados en el sistema.
+
+La información puede incluir:
+
+- Nombre del paquete.
+- Versión instalada.
+- Arquitectura.
+- Estado del paquete.
+
+Mientas que `apt list --installed` ofrece una salida más sencilla, `dpkg -l` proporciona información más detallada sobre cada paquete.
+
+---
+
+### Powershell
+
+```powershell
+winget list
+```
+
+**Descipción**
+
+Permite mostrar todas las aplicaciones detectadas por Winget.
+
+La información puede incluir:
+
+- Nombre de la aplicación.
+- Identidicador (ID).
+- Versión instalada.
+- Origen del paquete.
+
+> **Importante:** `winget list` puede mostrar aplicaciones que no fueron instaladas mediante Winget, siempre que pueda detectarlas correctamente.
+
+---
+
+### Equivalencia
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Mostrar los paquetes instalados | `apt list --installed` | `winget list` |
+| Mostrar información detallada | `dpkg -l` | `winget list` |
+
+---
+
+### Ejemplos
+
+**Mostrar todos los paquetes instalados**
+
+Linux
+
+```bash
+apt list --installed
+```
+
+PowerShell
+
+```powershell
+winget list
+```
+
+---
+
+**Buscar un paquete instalado**
+
+Linux
+
+```bash
+apt list --installed | grep git
+```
+
+PowerShell
+
+```powershell
+winget list git
+```
+
+---
+
+**Mostrar información detallada de los paquetes**
+
+Linux
+
+```bash
+dpkg -l
+```
+
+PowerShell
+
+```powershell
+winget list
+```
+
+---
+
+### Diferencias
+
+| Linux | PowerShell |
+|--------|------------|
+| `apt list --installed` muestra únicamente los paquetes instalados mediante APT. | `winget list` muestra las aplicaciones detectadas por Winget. |
+| `dpkg -l` proporciona información más detallada sobre el estado de los paquetes. | La salida incluye nombre, versión, ID y origen de la aplicación. |
+| La salida es texto estructurado. | La salida es una tabla organizada. |
+
+---
+
+### Buenas prácticas
+
+- Revisa periódicamente el software instalado para detectar aplicaciones innecesarias.
+- Comprueba la versión instalada antes de actualizar o desinstalar un paquete.
+- Utiliza filtros o búsquedas cuando trabajes con sistemas que tengan un gran número de paquetes instalados.
+- Mantén únicamente el software necesario para reducir la superficie de ataque del sistema.
+
+---
+
+### Comandos relacionados
+
+- [Buscar un paquete](#buscar-un-paquete)
+- [Obtener información de un paquete](#obtener-información-de-un-paquete)
+- [Eliminar un paquete](#eliminar-un-paquete)
+
+---
+
+> **💡 Consejo:** En servidores Linux es habitual combinar `apt list --installed` o `dpkg -l` con herramientas como `grep` para localizar rápidamente un paquete concreto entre los cientos o miles que pueden estar instalados.
+
+---
+
+[⬆️ Volver al índice](#índice)
+
+## Obtener información de un paquete
+
+### Linux
+
+```bash
+apt show <paquete>
+```
+
+También puede utilizarse:
+
+```bash
+apt-cache show <paquete>
+```
+
+**Descripción**
+
+Permite consultar información detallada sobre un paquete disponible en los repositorios o ya instalado.
+
+La información puede incluir:
+
+- Nombre.
+- Versión.
+- Descripción.
+- Tamaño.
+- Mantenedor.
+- Dependencias.
+- Repositorio de origen.
+
+---
+
+### PowerShell
+
+```powershell
+winget show <paquete>
+```
+
+También puede utilizarse:
+
+```powershell
+winget show --id <ID>
+```
+
+**Descripción**
+
+Permite mostrar información detallada sobre una aplicación disponible en los orígenes configurados de Winget.
+
+La información puede incluir:
+
+- Nombre.
+- Identificador (ID).
+- Versión.
+- Autor o proveedor.
+- Descripción.
+- Página oficial.
+- Licencia.
+- Origen del paquete.
+
+---
+
+### Equivalencia
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Obtener información de un paquete | `apt show` | `winget show` |
+
+---
+
+### Ejemplos
+
+**Mostrar información de Git**
+
+Linux
+
+```bash
+apt show git
+```
+
+PowerShell
+
+```powershell
+winget show Git.Git
+```
+
+---
+
+**Mostrar información de Visual Studio Code**
+
+Linux
+
+```bash
+apt show code
+```
+
+PowerShell
+
+```powershell
+winget show Microsoft.VisualStudioCode
+```
+
+---
+
+**Mostrar información utilizando el ID**
+
+Linux
+
+```bash
+apt show git
+```
+
+PowerShell
+
+```powershell
+winget show `
+--id Git.Git
+```
+
+---
+
+### Diferencias
+
+| Linux | PowerShell |
+|--------|------------|
+| Muestra información procedente de los repositorios APT. | Muestra información del repositorio configurado en Winget. |
+| Incluye dependencias y datos técnicos del paquete. | Incluye información del desarrollador, licencia y página oficial. |
+| La salida es texto estructurado. | La salida también es texto estructurado, organizada por secciones. |
+
+---
+
+### Buenas prácticas
+
+- Consulta siempre la información del paquete antes de instalarlo.
+- Revisa las dependencias cuando el paquete vaya a instalarse en servidores o sistemas de producción.
+- Comprueba el origen del paquete para asegurarte de que procede de una fuente confiable.
+- Utiliza el identificador (`--id`) en Winget cuando existan varias aplicaciones con nombres similares.
+
+---
+
+### Comandos relacionados
+
+- [Buscar un paquete](#buscar-un-paquete)
+- [Instalar un paquete](#instalar-un-paquete)
+- [Mostrar los paquetes instalados](#mostrar-los-paquetes-instalados)
+
+---
+
+> **💡 Consejo:** Antes de instalar un programa que no conoces, consulta su información con `apt show` o `winget show`. Revisar la descripción, el proveedor y las dependencias puede ayudarte a confirmar que se trata del software correcto.
+
+---
+
+[⬆️ Volver al índice](#índice)
+
+## Limpiar la caché de paquetes
+
+### Linux
+
+```bash
+sudo apt clean
+```
+
+También puede utilizarse:
+
+```bash
+sudo apt autoclean
+```
+
+**Descripción**
+
+APT almacena en caché los paquetes descargados para evitar volver a descargarlos en futuras instalaciones o actualizaciones.
+
+Con el tiempo, esta caché puede ocupar una cantidad considerable de espacio en disco.
+
+Existen dos opciones principales:
+
+- `apt clean` → Elimina **toda** la caché de paquetes descargados.
+- `apt autoclean` → Elimina únicamente los paquetes descargados que ya no pueden obtenerse desde los repositorios.
+
+---
+
+### PowerShell
+
+```powershell
+winget source reset --force
+```
+
+También puede utilizarse:
+
+```powershell
+winget source update
+```
+
+**Descripción**
+
+Winget no dispone de un comando equivalente para limpiar una caché de paquetes como APT.
+
+Los comandos disponibles permiten restaurar o actualizar la información de los orígenes configurados, pero **no eliminan archivos descargados del mismo modo que `apt clean`**.
+
+---
+
+### Equivalencia
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Eliminar toda la caché | `apt clean` | No existe un equivalente directo |
+| Eliminar únicamente paquetes obsoletos | `apt autoclean` | No existe un equivalente directo |
+| Restablecer la información de los repositorios | — | `winget source reset --force` |
+
+---
+
+### Ejemplos
+
+**Eliminar toda la caché de APT**
+
+Linux
+
+```bash
+sudo apt clean
+```
+
+---
+
+**Eliminar únicamente paquetes obsoletos**
+
+Linux
+
+```bash
+sudo apt autoclean
+```
+
+---
+
+**Restablecer los orígenes de Winget**
+
+PowerShell
+
+```powershell
+winget source reset --force
+```
+
+---
+
+**Actualizar la información de los orígenes**
+
+PowerShell
+
+```powershell
+winget source update
+```
+
+---
+
+### Diferencias
+
+| Linux | PowerShell |
+|--------|------------|
+| APT almacena los paquetes descargados en una caché local. | Winget no utiliza una caché gestionable mediante un comando equivalente. |
+| `apt clean` puede liberar una cantidad importante de espacio en disco. | Los comandos de Winget únicamente administran los orígenes del repositorio. |
+| `apt autoclean` conserva los paquetes que todavía pueden reutilizarse. | No existe una funcionalidad equivalente. |
+
+---
+
+### Buenas prácticas
+
+- Ejecuta `apt clean` cuando necesites liberar espacio en disco.
+- Utiliza `apt autoclean` como opción habitual, ya que elimina únicamente los paquetes innecesarios.
+- No elimines la caché con frecuencia si realizas instalaciones repetidas, ya que APT tendrá que volver a descargar los paquetes.
+- Si Winget presenta problemas al buscar o instalar aplicaciones, prueba a restablecer sus orígenes mediante `winget source reset --force`.
+
+---
+
+### Comandos relacionados
+
+- [Actualizar los paquetes](#actualizar-los-paquetes)
+- [Buscar un paquete](#buscar-un-paquete)
+- [Mostrar los paquetes instalados](#mostrar-los-paquetes-instalados)
+
+---
+
+> **💡 Consejo:** A diferencia de APT, **Winget no mantiene una caché de paquetes descargados que pueda limpiarse mediante un comando**. Por ello, este apartado tiene equivalente en Linux, pero no existe una operación idéntica en PowerShell.
+
+---
+
+[⬆️ Volver al índice](#índice)
+
+## Resumen de equivalencias
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Buscar un paquete | `apt search` | `winget search` |
+| Instalar un paquete | `apt install` | `winget install` |
+| Actualizar los repositorios | `apt update` | `winget source update` |
+| Actualizar todos los paquetes | `apt upgrade` | `winget upgrade --all` |
+| Actualizar un paquete concreto | `apt install --only-upgrade` | `winget upgrade` |
+| Eliminar un paquete | `apt remove` | `winget uninstall` |
+| Eliminar paquete y configuración | `apt purge` | No existe un equivalente directo |
+| Eliminar dependencias innecesarias | `apt autoremove` | No existe un equivalente directo |
+| Mostrar paquetes instalados | `apt list --installed` | `winget list` |
+| Obtener información de un paquete | `apt show` | `winget show` |
+| Limpiar la caché de paquetes | `apt clean` | No existe un equivalente directo |
+
+---
+
+### Buenas prácticas generales
+
+- Mantén siempre actualizados los repositorios antes de instalar software nuevo.
+- Instala únicamente paquetes procedentes de repositorios o fuentes de confianza.
+- Revisa el nombre o identificador del paquete antes de instalarlo o actualizarlo.
+- Elimina aplicaciones que ya no utilices para reducir la superficie de ataque del sistema.
+- Mantén el sistema actualizado para corregir errores y vulnerabilidades de seguridad.
+- Ejecuta `apt autoremove` periódicamente para eliminar dependencias innecesarias.
+- Consulta la información del paquete antes de instalar software desconocido.
+
+---
+
+### Comandos más utilizados
+
+| Acción | Linux | PowerShell |
+|---------|--------|------------|
+| Buscar software | `apt search` | `winget search` |
+| Instalar software | `apt install` | `winget install` |
+| Actualizar repositorios | `apt update` | `winget source update` |
+| Actualizar software | `apt upgrade` | `winget upgrade --all` |
+| Desinstalar software | `apt remove` | `winget uninstall` |
+| Ver software instalado | `apt list --installed` | `winget list` |
+| Ver información de un paquete | `apt show` | `winget show` |
+
+---
+
+### Flujo de trabajo recomendado
+
+Cuando necesites instalar una aplicación nueva, el proceso habitual suele ser:
+
+1. Buscar el paquete disponible.
+2. Consultar su información.
+3. Instalarlo.
+4. Verificar que se ha instalado correctamente.
+5. Mantenerlo actualizado.
+6. Desinstalarlo cuando deje de ser necesario.
+
+---
+
+[⬆️ Volver al índice](#índice)
