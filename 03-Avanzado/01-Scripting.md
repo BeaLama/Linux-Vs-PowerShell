@@ -338,7 +338,7 @@ nombre_variable="valor"
 Ejemplo:
 
 ```bash
-nombre="Beatriz"
+nombre="usuario"
 ```
 
 Para consultar el contenido de una variable se utiliza:
@@ -350,7 +350,7 @@ echo $nombre
 Resultado:
 
 ```text
-Beatriz
+usuario
 ```
 
 ---
@@ -456,7 +456,7 @@ $variable = valor
 Ejemplo:
 
 ```powershell
-$nombre = "Beatriz"
+$nombre = "usuario"
 ```
 
 Mostrar el contenido:
@@ -468,7 +468,7 @@ Write-Host $nombre
 Resultado:
 
 ```text
-Beatriz
+usuario
 ```
 
 También puede utilizarse:
@@ -707,9 +707,9 @@ Ejecución:
 
 ```text
 Introduce tu nombre:
-Beatriz
+usuario
 
-Hola Beatriz
+Hola usuario
 ```
 
 ---
@@ -817,9 +817,9 @@ Write-Host "Hola $nombre"
 Salida:
 
 ```text
-Introduce tu nombre: Beatriz
+Introduce tu nombre: usuario
 
-Hola Beatriz
+Hola usuario
 ```
 
 ---
@@ -1842,13 +1842,13 @@ saludar()
     echo "Hola $1"
 }
 
-saludar Beatriz
+saludar usuario
 ```
 
 Salida:
 
 ```text
-Hola Beatriz
+Hola usuario
 ```
 
 Los parámetros funcionan igual que en un script:
@@ -1974,13 +1974,13 @@ function Saludar {
 
 }
 
-Saludar Beatriz
+Saludar usuario
 ```
 
 Salida:
 
 ```text
-Hola Beatriz
+Hola usuario
 ```
 
 ---
