@@ -1066,8 +1066,6 @@ En este caso, la CPU es el recurso que requiere atención, mientras que el resto
 
 ---
 
-# Resumen
-
 [⬆️ Volver al índice](#índice)
 
 ## Monitorización en Linux
