@@ -2,14 +2,14 @@
 
 ## Índice
 
-- [Usuarios y permisos](#01-Usuarios-y-Permisos.md)
-- [Gestión de procesos](#gestión-de-procesos)
-- [Gestión de servicios](#gestión-de-servicios)
-- [Planificación de tareas](#planificación-de-tareas)
-- [Gestión de logs](#gestión-de-logs)
-- [Administración remota](#administración-remota)
-- [Automatización](#automatización)
-- [Administración Linux](#administración-linux)
-- [Administración Windows](#administración-windows)
+- [Usuarios y permisos](01-Usuarios-y-Permisos.md)
+- [Gestión de procesos](02-Gestión-de-Procesos)
+- [Gestión de servicios](03-Gestión-de-Servicios)
+- [Planificación de tareas](04-Planificación-de-Tareas)
+- [Gestión de logs](05-Gestión-de-Logs)
+- [Administración remota](06-Administración-Remota)
+- [Automatización](07-Automatización)
+- [Administración Linux](08-Administración-Linux)
+- [Administración Windows](09-Administración-Windows)
 
 ---
