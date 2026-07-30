@@ -6336,13 +6336,523 @@ Gracias a esta configuración, aunque el servicio se vea comprometido, el atacan
 
 ---
 
+## Gestión del ciclo de vida de usuarios
+
+## Introducción
+
+La gestión del ciclo de vida de los usuarios consiste en administrar una cuenta desde su creación hasta su eliminación. Este proceso garantiza que cada usuario disponga únicamente de los accesos necesarios durante el tiempo que los requiera, reduciendo riesgos de seguridad y facilitando la administración del sistema.
+
+En entornos empresariales, una correcta gestión del ciclo de vida permite mantener actualizados los permisos, evitar cuentas obsoletas y asegurar el cumplimiento de las políticas de seguridad de la organización.
+
+---
+
+### ¿Qué es el ciclo de vida de un usuario?
+
+El ciclo de vida de un usuario comprende todas las fases por las que pasa una cuenta dentro de un sistema.
+
+Generalmente incluye:
+
+- Alta del usuario.
+- Modificación de la cuenta.
+- Cambio de permisos.
+- Suspensión o desactivación.
+- Eliminación.
+
+Cada una de estas fases debe gestionarse de forma controlada y documentada.
+
+---
+
+### Alta de usuarios
+
+La primera fase consiste en la creación de la cuenta.
+
+Durante este proceso se definen aspectos como:
+
+- Nombre de usuario.
+- Contraseña inicial.
+- Grupo o departamento.
+- Permisos necesarios.
+- Recursos a los que tendrá acceso.
+
+Ejemplo:
+
+```text
+Nuevo empleado
+
+↓
+
+Crear cuenta
+
+↓
+
+Asignar grupo
+
+↓
+
+Configurar permisos
+```
+
+Es recomendable que el usuario cambie la contraseña en el primer inicio de sesión.
+
+---
+
+### Modificación de cuentas
+
+A lo largo del tiempo pueden producirse cambios que requieran modificar la configuración de la cuenta.
+
+Por ejemplo:
+
+- Cambio de departamento.
+- Cambio de puesto.
+- Modificación del nombre.
+- Asignación de nuevos permisos.
+- Eliminación de accesos innecesarios.
+
+Siempre que cambie la función del usuario deben revisarse también sus permisos para evitar accesos innecesarios.
+
+---
+
+### Gestión de permisos
+
+Los permisos deben mantenerse actualizados durante toda la vida de la cuenta.
+
+Se recomienda aplicar el **principio de mínimo privilegio**, otorgando únicamente los accesos necesarios para desempeñar las funciones asignadas.
+
+Una revisión periódica de los permisos ayuda a evitar privilegios excesivos y reduce la superficie de ataque.
+
+---
+
+### Suspensión o desactivación de cuentas
+
+Cuando un usuario deja de utilizar temporalmente una cuenta, suele ser preferible desactivarla en lugar de eliminarla.
+
+Algunos ejemplos son:
+
+- Baja temporal.
+- Excedencia.
+- Permiso prolongado.
+- Cambio de funciones.
+
+Ejemplo:
+
+```text
+Usuario
+
+↓
+
+Cuenta deshabilitada
+
+↓
+
+Sin acceso al sistema
+```
+
+La información permanece disponible y la cuenta puede reactivarse posteriormente.
+
+---
+
+### Eliminación de cuentas
+
+Cuando una cuenta deja de ser necesaria debe eliminarse de forma controlada.
+
+Antes de hacerlo conviene:
+
+- Realizar una copia de la información necesaria.
+- Transferir archivos importantes a otro usuario.
+- Revocar todos los permisos.
+- Documentar la eliminación.
+
+Ejemplo:
+
+```text
+Empleado deja la empresa
+
+↓
+
+Desactivar cuenta
+
+↓
+
+Transferir información
+
+↓
+
+Eliminar cuenta
+```
+
+---
+
+### Gestión del ciclo de vida en Windows
+
+En Windows y Active Directory las tareas más habituales son:
+
+- Crear usuarios.
+- Modificar propiedades.
+- Restablecer contraseñas.
+- Bloquear y desbloquear cuentas.
+- Deshabilitar usuarios.
+- Eliminar cuentas.
+
+Estas operaciones pueden realizarse mediante:
+
+- Usuarios y equipos de Active Directory.
+- Administración de equipos.
+- PowerShell.
+
+---
+
+### Gestión del ciclo de vida en Linux
+
+Linux dispone de distintos comandos para administrar las cuentas de usuario.
+
+Crear un usuario:
+
+```bash
+sudo useradd usuario
+```
+
+Asignar contraseña:
+
+```bash
+sudo passwd usuario
+```
+
+Bloquear una cuenta:
+
+```bash
+sudo usermod -L usuario
+```
+
+Desbloquear una cuenta:
+
+```bash
+sudo usermod -U usuario
+```
+
+Eliminar una cuenta:
+
+```bash
+sudo userdel usuario
+```
+
+Eliminar también el directorio personal:
+
+```bash
+sudo userdel -r usuario
+```
+
+---
+
+### Automatización del ciclo de vida
+
+En organizaciones con un gran número de usuarios es habitual automatizar estas tareas.
+
+Algunos ejemplos son:
+
+- Creación automática de cuentas.
+- Asignación de grupos.
+- Configuración inicial de permisos.
+- Desactivación automática de usuarios inactivos.
+- Eliminación de cuentas tras un periodo determinado.
+
+La automatización reduce errores y agiliza la administración.
+
+---
+
+### Ejemplo práctico
+
+Un empleado cambia de departamento y pasa del área comercial al departamento de informática.
+
+Procedimiento:
+
+```text
+Modificar grupo de usuarios
+
+↓
+
+Actualizar permisos
+
+↓
+
+Eliminar accesos antiguos
+
+↓
+
+Asignar nuevos permisos
+
+↓
+
+Verificar funcionamiento
+```
+
+Así se garantiza que el usuario únicamente dispone de los accesos necesarios para su nuevo puesto.
+
+---
+
+### Resumen
+
+La gestión del ciclo de vida de los usuarios permite administrar las cuentas desde su creación hasta su eliminación, asegurando que cada usuario disponga únicamente de los permisos necesarios durante el tiempo imprescindible.
+
+Una correcta administración de estas fases mejora la seguridad, facilita el mantenimiento del sistema y reduce el riesgo de accesos no autorizados.
+
+---
+
 [⬆️ Volver al índice](#índice)
 
 
-<!-- AGREGAR GESTIÓN DEL CICLO -->
+## Auditoría de usuarios y permisos
 
-<!-- AGREGAR AUDITORÍA -->
+## Introducción
 
+La auditoría de usuarios y permisos consiste en supervisar y registrar las acciones realizadas por las cuentas del sistema, así como revisar periódicamente los permisos asignados a cada usuario. Su objetivo es garantizar que los accesos sean adecuados, detectar actividades sospechosas y facilitar la investigación de incidencias de seguridad.
+
+En entornos empresariales, la auditoría es un elemento fundamental para cumplir normativas de seguridad, mantener la trazabilidad de las acciones realizadas y proteger la información de la organización.
+
+---
+
+### ¿Qué es una auditoría de usuarios?
+
+Una auditoría de usuarios es el proceso mediante el cual se revisan las cuentas existentes, sus permisos y la actividad realizada por cada una de ellas.
+
+Permite responder a preguntas como:
+
+- ¿Quién ha iniciado sesión?
+- ¿Qué recursos ha utilizado?
+- ¿Qué cambios ha realizado?
+- ¿Dispone de permisos adecuados?
+- ¿Existen cuentas inactivas o innecesarias?
+
+---
+
+### Objetivos de la auditoría
+
+Las auditorías persiguen diversos objetivos:
+
+- Detectar accesos no autorizados.
+- Revisar los permisos asignados.
+- Identificar cuentas inactivas.
+- Garantizar el cumplimiento de las políticas de seguridad.
+- Obtener trazabilidad sobre las acciones realizadas.
+- Facilitar investigaciones forenses.
+
+Una auditoría periódica ayuda a reducir riesgos y mantener un entorno seguro.
+
+---
+
+### Información que debe revisarse
+
+Durante una auditoría es recomendable comprobar:
+
+- Usuarios existentes.
+- Grupos a los que pertenece cada usuario.
+- Permisos asignados.
+- Último inicio de sesión.
+- Intentos fallidos de autenticación.
+- Cuentas bloqueadas o deshabilitadas.
+- Cambios recientes en permisos.
+
+Toda esta información permite detectar posibles anomalías.
+
+---
+
+### Auditoría en Windows
+
+Windows incorpora diferentes herramientas para auditar usuarios y permisos.
+
+Las principales son:
+
+- Visor de eventos.
+- Usuarios y grupos locales.
+- Active Directory.
+- Directivas de seguridad.
+- PowerShell.
+
+El **Visor de eventos** permite consultar registros relacionados con:
+
+- Inicios de sesión.
+- Cierres de sesión.
+- Cambios de permisos.
+- Bloqueos de cuentas.
+- Modificaciones de usuarios.
+
+Puede abrirse mediante:
+
+```text
+eventvwr.msc
+```
+
+---
+
+### Auditoría mediante PowerShell
+
+PowerShell facilita la obtención de información sobre usuarios y grupos.
+
+Mostrar usuarios locales:
+
+```powershell
+Get-LocalUser
+```
+
+Mostrar grupos locales:
+
+```powershell
+Get-LocalGroup
+```
+
+Mostrar los miembros de un grupo:
+
+```powershell
+Get-LocalGroupMember Administradores
+```
+
+En entornos con Active Directory también pueden utilizarse cmdlets específicos para consultar usuarios, grupos y permisos.
+
+---
+
+### Auditoría en Linux
+
+Linux almacena información sobre autenticación y actividad de los usuarios en diferentes archivos de registro.
+
+Los más habituales son:
+
+```text
+/var/log/auth.log
+
+/var/log/secure
+
+/var/log/syslog
+```
+
+Estos registros permiten consultar:
+
+- Inicios de sesión.
+- Intentos fallidos de acceso.
+- Uso de privilegios administrativos.
+- Cambios en las cuentas de usuario.
+
+---
+
+### Comandos útiles en Linux
+
+Mostrar usuarios conectados:
+
+```bash
+who
+```
+
+Consultar el historial de inicios de sesión:
+
+```bash
+last
+```
+
+Ver los intentos fallidos de autenticación (según la distribución):
+
+```bash
+sudo cat /var/log/auth.log
+```
+
+Comprobar los grupos de un usuario:
+
+```bash
+groups usuario
+```
+
+Consultar el identificador del usuario:
+
+```bash
+id usuario
+```
+
+---
+
+### Revisión de permisos
+
+Una auditoría también debe incluir la revisión de los permisos sobre archivos y carpetas.
+
+Es recomendable comprobar:
+
+- Permisos excesivos.
+- Recursos compartidos innecesariamente.
+- Archivos accesibles por todos los usuarios.
+- Herencias incorrectas.
+- Cambios recientes en los permisos.
+
+El objetivo es asegurar que únicamente las personas autorizadas puedan acceder a cada recurso.
+
+---
+
+### Frecuencia de las auditorías
+
+La periodicidad dependerá del tamaño y las necesidades de la organización.
+
+Habitualmente se recomienda:
+
+- Revisiones mensuales de usuarios.
+- Auditorías trimestrales de permisos.
+- Auditorías extraordinarias tras incidentes de seguridad.
+- Revisión inmediata cuando un empleado abandona la organización.
+
+Una supervisión continua permite detectar problemas antes de que tengan impacto.
+
+---
+
+### Buenas prácticas
+
+Durante la auditoría es recomendable:
+
+- Eliminar cuentas que ya no se utilicen.
+- Revisar periódicamente los grupos.
+- Comprobar los permisos administrativos.
+- Registrar todas las modificaciones realizadas.
+- Analizar los registros de eventos.
+- Aplicar el principio de mínimo privilegio.
+
+Estas prácticas ayudan a mantener un entorno más seguro y organizado.
+
+---
+
+### Ejemplo práctico
+
+Durante una auditoría se detecta que un empleado que abandonó la empresa hace varios meses continúa teniendo una cuenta activa.
+
+Procedimiento:
+
+```text
+Comprobar la cuenta
+
+↓
+
+Verificar permisos
+
+↓
+
+Realizar copia de la información necesaria
+
+↓
+
+Deshabilitar la cuenta
+
+↓
+
+Eliminarla siguiendo el procedimiento establecido
+
+↓
+
+Documentar la actuación
+```
+
+Este proceso evita accesos no autorizados y mantiene actualizado el sistema de usuarios.
+
+---
+
+### Resumen
+
+La auditoría de usuarios y permisos permite supervisar las cuentas del sistema, revisar los accesos asignados y analizar la actividad realizada por cada usuario.
+
+Realizar auditorías periódicas contribuye a mejorar la seguridad, detectar configuraciones incorrectas y garantizar que los permisos concedidos sean adecuados para las funciones desempeñadas por cada usuario.
+
+---
 
 [⬆️ Volver al índice](#índice)
 
