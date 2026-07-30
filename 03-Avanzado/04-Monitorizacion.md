@@ -42,7 +42,7 @@ Mientras que una comprobación manual muestra el estado del sistema en un moment
 
 ---
 
-# Objetivos de la monitorización
+### Objetivos de la monitorización
 
 Una correcta monitorización permite:
 
@@ -56,7 +56,7 @@ Una correcta monitorización permite:
 
 ---
 
-# ¿Qué se puede monitorizar?
+### ¿Qué se puede monitorizar?
 
 Prácticamente cualquier elemento de una infraestructura puede supervisarse.
 
@@ -78,11 +78,11 @@ Los más habituales son:
 
 ---
 
-# Monitorización proactiva y reactiva
+### Monitorización proactiva y reactiva
 
 Existen dos formas principales de actuar frente a una incidencia.
 
-## Reactiva
+### Reactiva
 
 Se interviene cuando el problema ya ha ocurrido.
 
@@ -102,7 +102,7 @@ El administrador recibe el aviso
 
 ---
 
-## Proactiva
+### Proactiva
 
 El sistema detecta el problema antes de que afecte al servicio.
 
@@ -128,7 +128,7 @@ La monitorización moderna busca trabajar siempre de forma proactiva.
 
 ---
 
-# Métricas
+### Métricas
 
 Una **métrica** es un dato numérico que describe el estado de un recurso.
 
@@ -147,7 +147,7 @@ Estas métricas se almacenan periódicamente para analizar su evolución.
 
 ---
 
-# Eventos
+### Eventos
 
 Un **evento** representa un hecho ocurrido en el sistema.
 
@@ -164,7 +164,7 @@ Los eventos suelen almacenarse en registros o logs.
 
 ---
 
-# Alertas
+### Alertas
 
 Una **alerta** se genera cuando una métrica supera un umbral definido.
 
@@ -198,7 +198,7 @@ Las alertas permiten actuar rápidamente ante posibles problemas.
 
 ---
 
-# Dashboard
+### Dashboard
 
 Un **dashboard** es un panel que muestra gráficamente el estado de la infraestructura.
 
@@ -216,7 +216,7 @@ Permite conocer de un vistazo la situación general del sistema.
 
 ---
 
-# Disponibilidad
+### Disponibilidad
 
 Uno de los aspectos más importantes de la monitorización es comprobar que los servicios permanecen disponibles.
 
@@ -232,7 +232,7 @@ En muchos casos basta con verificar que un puerto o servicio responde correctame
 
 ---
 
-# Umbrales
+### Umbrales
 
 Los umbrales determinan cuándo debe generarse una alerta.
 
@@ -249,7 +249,7 @@ Estos valores pueden variar según el tipo de infraestructura.
 
 ---
 
-# Frecuencia de monitorización
+### Frecuencia de monitorización
 
 No todos los recursos necesitan comprobarse con la misma frecuencia.
 
@@ -268,7 +268,7 @@ Una frecuencia demasiado alta puede generar una carga innecesaria sobre el siste
 
 ---
 
-# Almacenamiento histórico
+### Almacenamiento histórico
 
 Las plataformas de monitorización suelen guardar los datos recopilados durante semanas, meses o incluso años.
 
@@ -281,7 +281,7 @@ Esto permite:
 
 ---
 
-# Componentes de un sistema de monitorización
+### Componentes de un sistema de monitorización
 
 Un sistema de monitorización suele estar formado por:
 
@@ -313,7 +313,7 @@ Cada componente cumple una función específica dentro del proceso.
 
 ---
 
-# Beneficios
+### Beneficios
 
 Una infraestructura correctamente monitorizada permite:
 
@@ -327,7 +327,7 @@ Una infraestructura correctamente monitorizada permite:
 
 ---
 
-# Resumen
+### Resumen
 
 | Concepto | Descripción |
 |----------|-------------|
@@ -350,7 +350,7 @@ En la práctica, las organizaciones suelen combinar varios tipos de monitorizaci
 
 ---
 
-# Monitorización de infraestructura
+### Monitorización de infraestructura
 
 Se centra en supervisar el estado del hardware y del sistema operativo.
 
@@ -381,7 +381,7 @@ Alerta
 
 ---
 
-# Monitorización de servicios
+### Monitorización de servicios
 
 Comprueba que los servicios se encuentren disponibles y funcionando correctamente.
 
@@ -402,7 +402,7 @@ No basta con que el servidor esté encendido; el servicio también debe responde
 
 ---
 
-# Monitorización de aplicaciones
+### Monitorización de aplicaciones
 
 Analiza el funcionamiento de aplicaciones concretas.
 
@@ -425,7 +425,7 @@ Permite conocer:
 
 ---
 
-# Monitorización de red
+### Monitorización de red
 
 Supervisa el estado de la infraestructura de comunicaciones.
 
@@ -449,7 +449,7 @@ Las métricas más habituales son:
 
 ---
 
-# Monitorización de almacenamiento
+### Monitorización de almacenamiento
 
 Permite supervisar el estado de discos y sistemas de almacenamiento.
 
@@ -466,7 +466,7 @@ Detectar un fallo de disco antes de que se produzca una pérdida de datos es uno
 
 ---
 
-# Monitorización de seguridad
+### Monitorización de seguridad
 
 Se centra en detectar comportamientos anómalos o posibles incidentes de seguridad.
 
@@ -483,7 +483,7 @@ Suele complementarse con plataformas SIEM.
 
 ---
 
-# Monitorización de disponibilidad
+### Monitorización de disponibilidad
 
 También conocida como **monitorización de uptime**.
 
@@ -513,7 +513,7 @@ Es uno de los tipos de monitorización más sencillos y utilizados.
 
 ---
 
-# Monitorización del rendimiento
+### Monitorización del rendimiento
 
 Analiza cómo utilizan los recursos las aplicaciones y el sistema operativo.
 
@@ -530,7 +530,7 @@ Su objetivo es detectar cuellos de botella y optimizar el funcionamiento del sis
 
 ---
 
-# Monitorización activa
+### Monitorización activa
 
 En la monitorización activa, la herramienta realiza comprobaciones periódicas enviando solicitudes al sistema.
 
@@ -550,7 +550,7 @@ Ventajas:
 
 ---
 
-# Monitorización pasiva
+### Monitorización pasiva
 
 En este caso, el sistema monitorizado envía información cuando ocurre un evento.
 
@@ -569,7 +569,7 @@ Ventajas:
 
 ---
 
-# Monitorización basada en agentes
+### Monitorización basada en agentes
 
 Se instala un software (agente) en el equipo monitorizado.
 
@@ -601,7 +601,7 @@ Inconvenientes:
 
 ---
 
-# Monitorización sin agentes
+### Monitorización sin agentes
 
 No se instala ningún software adicional.
 
@@ -625,7 +625,7 @@ Inconvenientes:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Tipo | Qué supervisa |
 |------|---------------|
@@ -640,7 +640,7 @@ Inconvenientes:
 
 ---
 
-# Activa vs Pasiva
+### Activa vs Pasiva
 
 | Activa | Pasiva |
 |---------|---------|
@@ -650,7 +650,7 @@ Inconvenientes:
 
 ---
 
-# Agentes vs Sin agentes
+### Agentes vs Sin agentes
 
 | Con agentes | Sin agentes |
 |--------------|-------------|
@@ -660,7 +660,7 @@ Inconvenientes:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Una empresa puede utilizar varios tipos de monitorización al mismo tiempo:
 
@@ -704,7 +704,7 @@ De esta forma se obtiene una visión completa del estado del sistema.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Combina distintos tipos de monitorización para cubrir toda la infraestructura.
 - No te limites a comprobar que un servidor está encendido; verifica también que sus servicios funcionan correctamente.
@@ -733,7 +733,7 @@ Las métricas pueden obtenerse cada pocos segundos, minutos u horas, dependiendo
 
 ---
 
-# CPU
+### CPU
 
 Una de las métricas más importantes.
 
@@ -760,7 +760,7 @@ Un uso elevado constante puede indicar un cuello de botella o un proceso con un 
 
 ---
 
-# Memoria RAM
+### Memoria RAM
 
 Permite conocer la disponibilidad de memoria física.
 
@@ -787,7 +787,7 @@ Si el sistema comienza a utilizar memoria virtual de forma continua, el rendimie
 
 ---
 
-# Disco
+### Disco
 
 Las métricas relacionadas con el almacenamiento incluyen:
 
@@ -813,7 +813,7 @@ Es habitual configurar alertas cuando el espacio libre desciende por debajo de d
 
 ---
 
-# Red
+### Red
 
 Las métricas de red permiten supervisar el estado de las comunicaciones.
 
@@ -840,7 +840,7 @@ Una latencia elevada o la pérdida de paquetes suelen indicar problemas de conec
 
 ---
 
-# Procesos
+### Procesos
 
 Es importante controlar los procesos que consumen más recursos.
 
@@ -856,7 +856,7 @@ Esto facilita la identificación de aplicaciones problemáticas.
 
 ---
 
-# Servicios
+### Servicios
 
 No basta con saber que un servidor está encendido; también hay que comprobar que los servicios funcionan correctamente.
 
@@ -879,7 +879,7 @@ Activo
 
 ---
 
-# Disponibilidad
+### Disponibilidad
 
 La disponibilidad (*uptime*) indica el tiempo durante el que un sistema permanece operativo.
 
@@ -902,7 +902,7 @@ Muchas organizaciones establecen objetivos de disponibilidad, como:
 
 ---
 
-# Temperatura
+### Temperatura
 
 En servidores físicos también es habitual supervisar:
 
@@ -918,7 +918,7 @@ Un aumento excesivo puede provocar:
 
 ---
 
-# Alimentación
+### Alimentación
 
 En equipos empresariales se monitoriza:
 
@@ -931,7 +931,7 @@ Una fuente defectuosa puede generar una alerta antes de provocar una interrupci�
 
 ---
 
-# Estado SMART
+### Estado SMART
 
 Los discos modernos proporcionan información sobre su estado mediante la tecnología **SMART (Self-Monitoring, Analysis and Reporting Technology)**.
 
@@ -947,7 +947,7 @@ Monitorizar estos valores ayuda a detectar discos próximos al fallo.
 
 ---
 
-# Tiempo de respuesta
+### Tiempo de respuesta
 
 Muchas aplicaciones se supervisan midiendo cuánto tardan en responder.
 
@@ -965,7 +965,7 @@ Un incremento progresivo del tiempo de respuesta suele indicar problemas de rend
 
 ---
 
-# Usuarios conectados
+### Usuarios conectados
 
 En determinados servicios resulta útil conocer:
 
@@ -978,7 +978,7 @@ Esto permite detectar incrementos de carga o accesos inusuales.
 
 ---
 
-# Tendencias
+### Tendencias
 
 Una métrica aislada aporta poca información.
 
@@ -1008,7 +1008,7 @@ Una tendencia creciente puede indicar la necesidad de ampliar recursos o investi
 
 ---
 
-# Métricas habituales
+### Métricas habituales
 
 | Recurso | Métricas principales |
 |----------|----------------------|
@@ -1023,7 +1023,7 @@ Una tendencia creciente puede indicar la necesidad de ampliar recursos o investi
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servidor presenta las siguientes métricas:
 
@@ -1055,7 +1055,7 @@ En este caso, la CPU es el recurso que requiere atención, mientras que el resto
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa únicamente métricas relevantes para cada tipo de sistema.
 - Establece umbrales adecuados para generar alertas.
@@ -1085,7 +1085,7 @@ La monitorización puede realizarse desde:
 
 ---
 
-# Herramientas locales
+### Herramientas locales
 
 Las herramientas locales permiten conocer el estado del sistema directamente desde el propio servidor.
 
@@ -1108,7 +1108,7 @@ Estas herramientas resultan ideales para el diagnóstico de incidencias directam
 
 ---
 
-# Monitorización mediante logs
+### Monitorización mediante logs
 
 Linux registra continuamente información sobre el funcionamiento del sistema.
 
@@ -1140,7 +1140,7 @@ La revisión de estos registros permite detectar errores, fallos de servicios y 
 
 ---
 
-# journalctl
+### journalctl
 
 En sistemas que utilizan **systemd**, los registros pueden consultarse mediante:
 
@@ -1168,7 +1168,7 @@ journalctl -p err
 
 ---
 
-# Monitorización de servicios
+### Monitorización de servicios
 
 Comprobar el estado de un servicio:
 
@@ -1192,7 +1192,7 @@ Esto permite detectar rápidamente servicios detenidos o con errores.
 
 ---
 
-# Monitorización de procesos
+### Monitorización de procesos
 
 Consultar los procesos con mayor consumo de CPU:
 
@@ -1214,7 +1214,7 @@ htop
 
 ---
 
-# Monitorización de red
+### Monitorización de red
 
 Comprobar conexiones activas:
 
@@ -1248,7 +1248,7 @@ traceroute google.com
 
 ---
 
-# Monitorización del almacenamiento
+### Monitorización del almacenamiento
 
 Consultar espacio libre:
 
@@ -1276,7 +1276,7 @@ sudo iotop
 
 ---
 
-# Estado del hardware
+### Estado del hardware
 
 Consultar dispositivos de almacenamiento:
 
@@ -1304,7 +1304,7 @@ hostnamectl
 
 ---
 
-# SMART
+### SMART
 
 El estado de los discos puede comprobarse mediante SMART.
 
@@ -1329,7 +1329,7 @@ smartmontools
 
 ---
 
-# Monitorización remota
+### Monitorización remota
 
 En entornos empresariales es habitual centralizar toda la información.
 
@@ -1347,7 +1347,7 @@ Estas plataformas permiten monitorizar decenas o miles de servidores desde un ú
 
 ---
 
-# Agentes
+### Agentes
 
 Muchas plataformas utilizan un agente instalado en el servidor.
 
@@ -1371,7 +1371,7 @@ Ejemplos:
 
 ---
 
-# Monitorización sin agentes
+### Monitorización sin agentes
 
 Algunas herramientas obtienen información utilizando protocolos estándar.
 
@@ -1393,7 +1393,7 @@ Inconvenientes:
 
 ---
 
-# Automatización
+### Automatización
 
 Muchas tareas de monitorización pueden automatizarse mediante scripts.
 
@@ -1415,7 +1415,7 @@ También es habitual utilizar:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Función |
 |-------------|---------|
@@ -1430,7 +1430,7 @@ También es habitual utilizar:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Diagnóstico de un servidor con problemas de rendimiento:
 
@@ -1468,7 +1468,7 @@ Con estas comprobaciones suele ser posible identificar rápidamente el origen de
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Utiliza herramientas locales para diagnósticos rápidos y plataformas centralizadas para la monitorización continua.
 - Revisa periódicamente los registros del sistema.
@@ -1497,7 +1497,7 @@ La monitorización puede realizarse mediante:
 
 ---
 
-# Administrador de tareas
+### Administrador de tareas
 
 Es la herramienta más utilizada para comprobar rápidamente el estado del sistema.
 
@@ -1522,7 +1522,7 @@ Resulta ideal para realizar un diagnóstico inicial.
 
 ---
 
-# Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -1544,7 +1544,7 @@ Además muestra qué proceso está utilizando exactamente cada recurso.
 
 ---
 
-# Monitor de rendimiento (PerfMon)
+### Monitor de rendimiento (PerfMon)
 
 Abrir:
 
@@ -1566,7 +1566,7 @@ Es muy utilizada en servidores Windows.
 
 ---
 
-# Contadores de rendimiento
+### Contadores de rendimiento
 
 PerfMon utiliza **Performance Counters**, que proporcionan métricas del sistema.
 
@@ -1616,7 +1616,7 @@ Estos contadores pueden visualizarse en tiempo real o almacenarse para su análi
 
 ---
 
-# Visor de eventos
+### Visor de eventos
 
 Abrir:
 
@@ -1638,7 +1638,7 @@ Es una herramienta fundamental para investigar errores y fallos del sistema.
 
 ---
 
-# Monitor de confiabilidad
+### Monitor de confiabilidad
 
 Abrir:
 
@@ -1658,13 +1658,13 @@ Facilita la identificación de incidencias repetitivas.
 
 ---
 
-# PowerShell
+### PowerShell
 
 PowerShell permite automatizar la recopilación de información.
 
 ---
 
-## Procesos
+### Procesos
 
 Procesos con mayor consumo de CPU:
 
@@ -1682,7 +1682,7 @@ Sort-Object WorkingSet -Descending
 
 ---
 
-## Información del sistema
+### Información del sistema
 
 ```powershell
 Get-ComputerInfo
@@ -1698,7 +1698,7 @@ Obtiene información sobre:
 
 ---
 
-## Rendimiento
+### Rendimiento
 
 Consultar el uso de CPU:
 
@@ -1728,7 +1728,7 @@ Get-Counter '\Network Interface(*)\Bytes Total/sec'
 
 ---
 
-# Supervisión de servicios
+### Supervisión de servicios
 
 Consultar todos los servicios:
 
@@ -1753,7 +1753,7 @@ Esto permite comprobar rápidamente el estado de los servicios críticos.
 
 ---
 
-# Supervisión de procesos
+### Supervisión de procesos
 
 Procesos ordenados por memoria:
 
@@ -1777,7 +1777,7 @@ Stop-Process -Id 1234
 
 ---
 
-# Supervisión de red
+### Supervisión de red
 
 Consultar adaptadores:
 
@@ -1805,7 +1805,7 @@ Test-Connection google.com
 
 ---
 
-# Supervisión del almacenamiento
+### Supervisión del almacenamiento
 
 Consultar discos físicos:
 
@@ -1827,7 +1827,7 @@ Get-PSDrive -PSProvider FileSystem
 
 ---
 
-# WMI
+### WMI
 
 Windows permite obtener información mediante **WMI (Windows Management Instrumentation)**.
 
@@ -1851,7 +1851,7 @@ Muchas plataformas de monitorización utilizan WMI para obtener información de 
 
 ---
 
-# Plataformas de monitorización
+### Plataformas de monitorización
 
 Las soluciones empresariales más utilizadas son:
 
@@ -1868,7 +1868,7 @@ Estas herramientas permiten centralizar la monitorización de cientos o miles de
 
 ---
 
-# Agentes
+### Agentes
 
 Muchas plataformas utilizan un agente instalado en el equipo.
 
@@ -1883,7 +1883,7 @@ El agente recopila información y la envía al servidor de monitorización.
 
 ---
 
-# Automatización
+### Automatización
 
 PowerShell permite automatizar tareas de supervisión.
 
@@ -1910,7 +1910,7 @@ Estos scripts pueden ejecutarse mediante:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Función |
 |-------------|---------|
@@ -1924,7 +1924,7 @@ Estos scripts pueden ejecutarse mediante:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Diagnóstico de un servidor Windows:
 
@@ -1962,7 +1962,7 @@ Este procedimiento permite identificar rápidamente la mayoría de problemas rel
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Utiliza el Administrador de tareas para un análisis rápido y PerfMon para una supervisión más completa.
 - Revisa periódicamente el Visor de eventos y el Monitor de confiabilidad.
@@ -1996,7 +1996,7 @@ Dependiendo de la solución elegida, pueden monitorizar:
 
 ---
 
-# Prometheus
+### Prometheus
 
 **Prometheus** es una plataforma de monitorización de código abierto desarrollada inicialmente por SoundCloud.
 
@@ -2014,7 +2014,7 @@ Es una de las herramientas más utilizadas actualmente en entornos Linux y cloud
 
 ---
 
-# Grafana
+### Grafana
 
 **Grafana** es una plataforma de visualización de datos.
 
@@ -2038,7 +2038,7 @@ Es habitual utilizar Grafana junto con Prometheus.
 
 ---
 
-# Zabbix
+### Zabbix
 
 **Zabbix** es una plataforma de monitorización empresarial muy completa.
 
@@ -2068,7 +2068,7 @@ Es una de las soluciones más utilizadas en empresas.
 
 ---
 
-# Nagios
+### Nagios
 
 **Nagios** es una de las herramientas de monitorización más veteranas.
 
@@ -2083,7 +2083,7 @@ Aunque su interfaz es menos moderna que otras soluciones, sigue siendo ampliamen
 
 ---
 
-# Checkmk
+### Checkmk
 
 **Checkmk** simplifica la administración de grandes infraestructuras.
 
@@ -2099,7 +2099,7 @@ Está especialmente orientada a grandes organizaciones.
 
 ---
 
-# PRTG Network Monitor
+### PRTG Network Monitor
 
 **PRTG** es una solución comercial desarrollada por Paessler.
 
@@ -2118,7 +2118,7 @@ Incluye una interfaz muy sencilla y rápida de configurar.
 
 ---
 
-# Netdata
+### Netdata
 
 **Netdata** es una herramienta centrada en la monitorización en tiempo real.
 
@@ -2133,7 +2133,7 @@ Resulta ideal para supervisar servidores Linux individuales.
 
 ---
 
-# LibreNMS
+### LibreNMS
 
 **LibreNMS** está orientado principalmente a la monitorización de redes.
 
@@ -2155,7 +2155,7 @@ Incluye:
 
 ---
 
-# Microsoft SCOM
+### Microsoft SCOM
 
 **System Center Operations Manager (SCOM)** es la solución de Microsoft para la monitorización empresarial.
 
@@ -2172,7 +2172,7 @@ Permite una integración muy profunda con el ecosistema Microsoft.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Código abierto | Windows | Linux | Dashboards | Alertas |
 |--------------|:-------------:|:--------:|:------:|:----------:|:--------:|
@@ -2188,7 +2188,7 @@ Permite una integración muy profunda con el ecosistema Microsoft.
 
 ---
 
-# Agentes
+### Agentes
 
 Muchas herramientas utilizan un agente instalado en el equipo.
 
@@ -2207,7 +2207,7 @@ Ejemplos:
 
 ---
 
-# Sin agentes
+### Sin agentes
 
 Otras herramientas utilizan protocolos estándar.
 
@@ -2231,7 +2231,7 @@ Inconvenientes:
 
 ---
 
-# Exporters
+### Exporters
 
 En Prometheus es habitual utilizar **exporters**, pequeños servicios que exponen métricas para distintos componentes.
 
@@ -2248,7 +2248,7 @@ Algunos ejemplos:
 
 ---
 
-# ¿Qué herramienta elegir?
+### ¿Qué herramienta elegir?
 
 La elección depende del entorno.
 
@@ -2266,7 +2266,7 @@ No existe una solución única para todos los escenarios.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos una empresa con:
 
@@ -2297,7 +2297,7 @@ En otros entornos podría optarse por una única plataforma como Zabbix para cen
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Elige la herramienta en función del tamaño y las necesidades de la infraestructura.
 - Centraliza la monitorización siempre que sea posible.
@@ -2320,7 +2320,7 @@ Esto permite actuar rápidamente y, en muchos casos, evitar que el problema lleg
 
 ---
 
-# ¿Qué es una alerta?
+### ¿Qué es una alerta?
 
 Una alerta es una notificación que se genera cuando una métrica o un evento cumple una condición previamente definida.
 
@@ -2348,7 +2348,7 @@ Las alertas pueden configurarse para prácticamente cualquier recurso monitoriza
 
 ---
 
-# ¿Cuándo generar una alerta?
+### ¿Cuándo generar una alerta?
 
 No todas las situaciones requieren una alerta.
 
@@ -2368,7 +2368,7 @@ Ejemplos:
 
 ---
 
-# Umbrales
+### Umbrales
 
 Las alertas se basan normalmente en **umbrales**.
 
@@ -2387,7 +2387,7 @@ Utilizar varios niveles permite priorizar las incidencias.
 
 ---
 
-# Niveles de severidad
+### Niveles de severidad
 
 La mayoría de plataformas clasifican las alertas según su gravedad.
 
@@ -2403,7 +2403,7 @@ Esta clasificación ayuda a priorizar el trabajo del administrador.
 
 ---
 
-# Evitar falsos positivos
+### Evitar falsos positivos
 
 Una alerta no debería generarse por un problema puntual de pocos segundos.
 
@@ -2439,7 +2439,7 @@ De esta forma se reducen los avisos innecesarios.
 
 ---
 
-# Tipos de notificaciones
+### Tipos de notificaciones
 
 Las plataformas de monitorización permiten enviar avisos mediante distintos canales.
 
@@ -2459,7 +2459,7 @@ En muchas organizaciones se utilizan varios canales al mismo tiempo.
 
 ---
 
-# Escalado de alertas
+### Escalado de alertas
 
 Cuando una incidencia no se resuelve en un tiempo determinado, puede notificarse automáticamente a otro responsable.
 
@@ -2493,7 +2493,7 @@ Este mecanismo se conoce como **escalado**.
 
 ---
 
-# Alertas por disponibilidad
+### Alertas por disponibilidad
 
 Una de las comprobaciones más habituales consiste en verificar que un servicio sigue disponible.
 
@@ -2520,7 +2520,7 @@ Otros ejemplos:
 
 ---
 
-# Alertas por rendimiento
+### Alertas por rendimiento
 
 También pueden configurarse alertas relacionadas con el uso de recursos.
 
@@ -2564,7 +2564,7 @@ Alerta
 
 ---
 
-# Alertas por eventos
+### Alertas por eventos
 
 No todas las alertas dependen de métricas.
 
@@ -2583,7 +2583,7 @@ Estas alertas suelen obtenerse a partir de registros o logs.
 
 ---
 
-# Mantenimiento programado
+### Mantenimiento programado
 
 Antes de realizar tareas de mantenimiento es recomendable desactivar temporalmente las alertas relacionadas.
 
@@ -2605,7 +2605,7 @@ Una vez finalizado el mantenimiento, las alertas deben volver a habilitarse.
 
 ---
 
-# Buenas prácticas para las alertas
+### Buenas prácticas para las alertas
 
 Una alerta debe cumplir varias condiciones:
 
@@ -2620,7 +2620,7 @@ Una alerta mal diseñada genera más problemas que beneficios.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos que un servidor alcanza un uso elevado de CPU.
 
@@ -2654,7 +2654,7 @@ Si el uso vuelve a la normalidad antes de los cinco minutos, no se genera ningun
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Tipo de alerta | Ejemplo |
 |----------------|---------|
@@ -2668,7 +2668,7 @@ Si el uso vuelve a la normalidad antes de los cinco minutos, no se genera ningun
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Configura umbrales realistas adaptados a tu infraestructura.
 - Utiliza varios niveles de severidad para priorizar las incidencias.
@@ -2692,7 +2692,7 @@ Aplicar buenas prácticas permite obtener información útil, reducir falsos pos
 
 ---
 
-# Monitoriza lo realmente importante
+### Monitoriza lo realmente importante
 
 No es necesario monitorizar absolutamente todo.
 
@@ -2709,7 +2709,7 @@ Esto facilita la identificación rápida de incidencias relevantes.
 
 ---
 
-# Define umbrales adecuados
+### Define umbrales adecuados
 
 Los umbrales deben adaptarse a las características de cada sistema.
 
@@ -2723,7 +2723,7 @@ Evita utilizar los mismos valores para todos los equipos.
 
 ---
 
-# Evita los falsos positivos
+### Evita los falsos positivos
 
 Uno de los problemas más habituales es generar demasiadas alertas.
 
@@ -2740,7 +2740,7 @@ Una alerta debe indicar un problema real.
 
 ---
 
-# Clasifica las alertas
+### Clasifica las alertas
 
 No todas las incidencias tienen la misma importancia.
 
@@ -2758,7 +2758,7 @@ Esta clasificación facilita la priorización del trabajo.
 
 ---
 
-# Centraliza la monitorización
+### Centraliza la monitorización
 
 Siempre que sea posible, utiliza una plataforma centralizada.
 
@@ -2774,7 +2774,7 @@ Esto resulta especialmente útil en infraestructuras con numerosos equipos.
 
 ---
 
-# Conserva métricas históricas
+### Conserva métricas históricas
 
 Los datos históricos permiten:
 
@@ -2789,7 +2789,7 @@ La información histórica es muy valiosa para la administración del sistema.
 
 ---
 
-# Documenta la configuración
+### Documenta la configuración
 
 Registra información como:
 
@@ -2803,7 +2803,7 @@ Una buena documentación facilita el mantenimiento y la resolución de incidenci
 
 ---
 
-# Revisa periódicamente la configuración
+### Revisa periódicamente la configuración
 
 La infraestructura cambia con el tiempo.
 
@@ -2819,7 +2819,7 @@ Esto evita mantener configuraciones innecesarias.
 
 ---
 
-# Supervisa la propia plataforma
+### Supervisa la propia plataforma
 
 La herramienta de monitorización también puede fallar.
 
@@ -2836,7 +2836,7 @@ Una plataforma caída no podrá detectar incidencias en el resto de la infraestr
 
 ---
 
-# Automatiza siempre que sea posible
+### Automatiza siempre que sea posible
 
 Automatiza tareas como:
 
@@ -2851,7 +2851,7 @@ La automatización reduce errores y simplifica la administración.
 
 ---
 
-# Protege la plataforma
+### Protege la plataforma
 
 La monitorización suele almacenar información muy sensible.
 
@@ -2868,7 +2868,7 @@ La seguridad de la plataforma es tan importante como la del resto de la infraest
 
 ---
 
-# Prueba las alertas
+### Prueba las alertas
 
 Configurar una alerta no garantiza que funcione correctamente.
 
@@ -2882,7 +2882,7 @@ Esto evita descubrir fallos en el sistema de notificaciones durante una incidenc
 
 ---
 
-# Escala la monitorización
+### Escala la monitorización
 
 A medida que la infraestructura crece, la plataforma debe adaptarse.
 
@@ -2898,7 +2898,7 @@ Una plataforma sobredimensionada o infradimensionada puede afectar a la calidad 
 
 ---
 
-# Resumen de recomendaciones
+### Resumen de recomendaciones
 
 | Recomendación | Beneficio |
 |---------------|-----------|

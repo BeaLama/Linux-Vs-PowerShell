@@ -4,8 +4,6 @@
 
 Los servicios son procesos especiales que se ejecutan en segundo plano para proporcionar funciones esenciales al sistema operativo o a las aplicaciones.
 
-En niveles anteriores se ha visto cómo iniciar, detener o consultar servicios. En este apartado se profundiza en su funcionamiento interno, administración avanzada, dependencias, recuperación ante fallos, registro de eventos, automatización y herramientas de diagnóstico tanto en Linux como en Windows.
-
 Comprender el funcionamiento de los servicios es fundamental para mantener la disponibilidad de servidores, solucionar incidencias y administrar infraestructuras de forma eficiente.
 
 ---
@@ -34,7 +32,7 @@ Los servicios son fundamentales para el funcionamiento de servidores y equipos d
 
 ---
 
-# ¿Qué es un servicio?
+### ¿Qué es un servicio?
 
 Un servicio es una aplicación que:
 
@@ -55,7 +53,7 @@ Ejemplos:
 
 ---
 
-# Diferencia entre proceso y servicio
+### Diferencia entre proceso y servicio
 
 Aunque ambos son procesos en ejecución, tienen finalidades distintas.
 
@@ -70,7 +68,7 @@ Todo servicio es un proceso, pero no todo proceso es un servicio.
 
 ---
 
-# Ciclo de vida de un servicio
+### Ciclo de vida de un servicio
 
 De forma simplificada, un servicio sigue este ciclo:
 
@@ -102,7 +100,7 @@ Durante este ciclo el sistema operativo controla su estado y disponibilidad.
 
 ---
 
-# Componentes de un servicio
+### Componentes de un servicio
 
 Un servicio suele estar formado por varios elementos.
 
@@ -120,7 +118,7 @@ Cada uno cumple una función específica dentro del funcionamiento del servicio.
 
 ---
 
-# Ejecutable
+### Ejecutable
 
 Es el programa que realiza el trabajo del servicio.
 
@@ -146,7 +144,7 @@ spoolsv.exe
 
 ---
 
-# Configuración
+### Configuración
 
 Los servicios utilizan archivos o parámetros de configuración para definir su funcionamiento.
 
@@ -180,7 +178,7 @@ La configuración suele almacenarse en:
 
 ---
 
-# Cuenta de ejecución
+### Cuenta de ejecución
 
 Todo servicio necesita ejecutarse con una identidad determinada.
 
@@ -212,7 +210,7 @@ La elección de la cuenta afecta directamente a los permisos disponibles.
 
 ---
 
-# Estado
+### Estado
 
 Los servicios pueden encontrarse en distintos estados.
 
@@ -229,7 +227,7 @@ Estos estados permiten conocer su situación en cada momento.
 
 ---
 
-# Tipo de inicio
+### Tipo de inicio
 
 El sistema operativo determina cuándo debe iniciarse un servicio.
 
@@ -244,7 +242,7 @@ No todos los servicios necesitan iniciarse automáticamente.
 
 ---
 
-# Dependencias
+### Dependencias
 
 Muchos servicios necesitan que otros servicios estén disponibles antes de poder iniciarse.
 
@@ -270,7 +268,7 @@ Las dependencias permiten garantizar un orden correcto durante el arranque.
 
 ---
 
-# Registros
+### Registros
 
 Los servicios suelen generar información de funcionamiento.
 
@@ -287,7 +285,7 @@ Son una herramienta fundamental para el diagnóstico.
 
 ---
 
-# Servicios en Linux
+### Servicios en Linux
 
 En la mayoría de distribuciones actuales los servicios son administrados por:
 
@@ -305,7 +303,7 @@ sshd.service
 
 ---
 
-# Servicios en Windows
+### Servicios en Windows
 
 Windows utiliza el **Service Control Manager (SCM)** para administrar todos los servicios del sistema.
 
@@ -321,7 +319,7 @@ Es el componente central de administración de servicios en Windows.
 
 ---
 
-# Ejemplos de servicios habituales
+### Ejemplos de servicios habituales
 
 | Servicio | Función |
 |-----------|----------|
@@ -335,7 +333,7 @@ Es el componente central de administración de servicios en Windows.
 
 ---
 
-# Comparativa Linux / Windows
+### Comparativa Linux / Windows
 
 | Linux | Windows |
 |--------|----------|
@@ -347,7 +345,7 @@ Es el componente central de administración de servicios en Windows.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos un servidor web.
 
@@ -379,7 +377,7 @@ Mientras permanezca iniciado, el servicio continuará funcionando aunque ningún
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Ejecuta cada servicio con la cuenta que disponga únicamente de los permisos necesarios.
 - Mantén los archivos de configuración organizados y documentados.
@@ -404,7 +402,7 @@ Comprender las dependencias resulta fundamental para diagnosticar errores de arr
 
 ---
 
-# ¿Qué es una dependencia?
+### ¿Qué es una dependencia?
 
 Una dependencia indica que un servicio necesita otro servicio para funcionar correctamente.
 
@@ -430,7 +428,7 @@ Si alguno de estos servicios falla, el servidor web podría no iniciarse o funci
 
 ---
 
-# ¿Por qué son importantes?
+### ¿Por qué son importantes?
 
 Las dependencias permiten:
 
@@ -443,11 +441,11 @@ Sin ellas, un servicio podría iniciarse antes de que existan los recursos que n
 
 ---
 
-# Dependencias directas e indirectas
+### Dependencias directas e indirectas
 
 Existen dos tipos principales.
 
-## Dependencia directa
+### Dependencia directa
 
 Un servicio necesita otro servicio específico.
 
@@ -461,7 +459,7 @@ Servicio B
 
 ---
 
-## Dependencia indirecta
+### Dependencia indirecta
 
 El servicio depende de otro que, a su vez, depende de un tercero.
 
@@ -481,7 +479,7 @@ Si el servicio C falla, A tampoco podrá funcionar correctamente.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos un servidor de bases de datos.
 
@@ -504,7 +502,7 @@ Si el almacenamiento no está disponible:
 
 ---
 
-# Dependencias en Linux
+### Dependencias en Linux
 
 En sistemas modernos, las dependencias son gestionadas por **systemd**.
 
@@ -521,7 +519,7 @@ Algunas directivas habituales son:
 
 ---
 
-## Requires
+### Requires
 
 Indica que otro servicio es imprescindible.
 
@@ -535,7 +533,7 @@ Si `mysql.service` falla, el servicio actual también fallará.
 
 ---
 
-## Wants
+### Wants
 
 Indica una dependencia no obligatoria.
 
@@ -547,7 +545,7 @@ Si el servicio indicado no está disponible, el sistema intentará continuar con
 
 ---
 
-## After
+### After
 
 No crea una dependencia.
 
@@ -579,7 +577,7 @@ Nuestro servicio
 
 ---
 
-## Before
+### Before
 
 Es la directiva opuesta.
 
@@ -591,7 +589,7 @@ Indica que el servicio debe iniciarse antes que Apache.
 
 ---
 
-# Consultar dependencias
+### Consultar dependencias
 
 Mostrar dependencias de un servicio:
 
@@ -609,7 +607,7 @@ Esto permite conocer qué servicios dependen de él.
 
 ---
 
-# Dependencias en Windows
+### Dependencias en Windows
 
 Windows también permite definir relaciones entre servicios.
 
@@ -622,7 +620,7 @@ Si una dependencia no está disponible, Windows impedirá el inicio del servicio
 
 ---
 
-## Consultar dependencias
+### Consultar dependencias
 
 PowerShell:
 
@@ -638,7 +636,7 @@ Get-Service Spooler | Select-Object -ExpandProperty DependentServices
 
 ---
 
-## Consola Servicios
+### Consola Servicios
 
 También pueden consultarse desde:
 
@@ -661,7 +659,7 @@ Se mostrará:
 
 ---
 
-# Problemas habituales
+### Problemas habituales
 
 Los errores más frecuentes relacionados con dependencias son:
 
@@ -674,7 +672,7 @@ Los errores más frecuentes relacionados con dependencias son:
 
 ---
 
-# Dependencias circulares
+### Dependencias circulares
 
 Una dependencia circular ocurre cuando dos servicios dependen mutuamente.
 
@@ -696,7 +694,7 @@ Este tipo de configuración impide el inicio correcto de ambos servicios y debe 
 
 ---
 
-# Diagnóstico
+### Diagnóstico
 
 Cuando un servicio no inicia correctamente:
 
@@ -722,7 +720,7 @@ Get-Service NombreServicio
 
 ---
 
-# Buen diseño
+### Buen diseño
 
 En infraestructuras grandes es recomendable:
 
@@ -736,7 +734,7 @@ Esto facilita el mantenimiento y reduce el riesgo de fallos en cascada.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -748,7 +746,7 @@ Esto facilita el mantenimiento y reduce el riesgo de fallos en cascada.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servicio web depende de una base de datos.
 
@@ -777,7 +775,7 @@ Por ello es importante definir correctamente las dependencias y comprobar el est
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Define únicamente las dependencias realmente necesarias.
 - Diferencia entre dependencias obligatorias y opcionales.
@@ -803,7 +801,7 @@ Comprender esta diferencia facilita el diagnóstico de problemas relacionados co
 
 ---
 
-# Tipo de inicio
+### Tipo de inicio
 
 El tipo de inicio define cómo y cuándo el sistema operativo iniciará un servicio.
 
@@ -818,7 +816,7 @@ No todos los servicios deben iniciarse automáticamente.
 
 ---
 
-# Inicio automático
+### Inicio automático
 
 El servicio se inicia durante el arranque del sistema operativo.
 
@@ -847,7 +845,7 @@ Es el modo habitual para:
 
 ---
 
-# Inicio automático (retrasado)
+### Inicio automático (retrasado)
 
 Disponible principalmente en Windows.
 
@@ -863,7 +861,7 @@ Se utiliza en servicios que no necesitan estar disponibles inmediatamente.
 
 ---
 
-# Inicio manual
+### Inicio manual
 
 El servicio no se inicia automáticamente.
 
@@ -877,7 +875,7 @@ Resulta útil para servicios poco utilizados.
 
 ---
 
-# Servicio deshabilitado
+### Servicio deshabilitado
 
 El sistema operativo no permitirá iniciar el servicio.
 
@@ -897,7 +895,7 @@ Debe utilizarse únicamente cuando se tenga la certeza de que el servicio no es 
 
 ---
 
-# Estados de un servicio
+### Estados de un servicio
 
 Durante su funcionamiento un servicio puede encontrarse en distintos estados.
 
@@ -913,7 +911,7 @@ Los más habituales son:
 
 ---
 
-# Servicio iniciado
+### Servicio iniciado
 
 El servicio está funcionando correctamente.
 
@@ -929,7 +927,7 @@ Es el estado esperado para los servicios que proporcionan funciones al sistema.
 
 ---
 
-# Servicio detenido
+### Servicio detenido
 
 El servicio no está ejecutándose.
 
@@ -942,7 +940,7 @@ Puede deberse a:
 
 ---
 
-# Iniciando
+### Iniciando
 
 Durante el arranque algunos servicios permanecen unos segundos en estado:
 
@@ -954,7 +952,7 @@ Hasta completar su inicialización.
 
 ---
 
-# Deteniendo
+### Deteniendo
 
 Cuando se solicita la detención de un servicio, este puede necesitar tiempo para:
 
@@ -971,7 +969,7 @@ Stopping...
 
 ---
 
-# Pausado
+### Pausado
 
 Algunos servicios permiten suspender temporalmente su funcionamiento.
 
@@ -991,7 +989,7 @@ No todos los servicios soportan este estado.
 
 ---
 
-# Servicio con error
+### Servicio con error
 
 Si un servicio no consigue iniciarse correctamente puede aparecer en estado de error.
 
@@ -1008,7 +1006,7 @@ En estos casos deben consultarse los registros antes de intentar reiniciarlo.
 
 ---
 
-# Estados en Linux
+### Estados en Linux
 
 En sistemas con **systemd**, los estados más habituales son:
 
@@ -1028,7 +1026,7 @@ systemctl status servicio
 
 ---
 
-# Estados en Windows
+### Estados en Windows
 
 Windows utiliza estados similares.
 
@@ -1050,7 +1048,7 @@ Pueden consultarse desde:
 
 ---
 
-# Cambio de estado
+### Cambio de estado
 
 El ciclo habitual de un servicio es:
 
@@ -1090,7 +1088,7 @@ Detenido
 
 ---
 
-# Diagnóstico
+### Diagnóstico
 
 Si un servicio no está disponible conviene comprobar:
 
@@ -1104,7 +1102,7 @@ No siempre un servicio detenido implica una incidencia; puede estar configurado 
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servidor web deja de estar disponible.
 
@@ -1130,7 +1128,7 @@ Tras configurarlo como automático y arrancarlo, el servicio volverá a estar di
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Configura como automáticos únicamente los servicios necesarios.
 - Utiliza el inicio manual para servicios poco utilizados.
@@ -1153,7 +1151,7 @@ Estos servicios reciben el nombre de **servicios críticos** y deben administrar
 
 ---
 
-# ¿Qué es un servicio crítico?
+### ¿Qué es un servicio crítico?
 
 Un servicio crítico es aquel cuya ejecución resulta necesaria para que el sistema operativo o aplicaciones esenciales funcionen correctamente.
 
@@ -1172,7 +1170,7 @@ Su detención puede afectar a uno o varios componentes del sistema.
 
 ---
 
-# Características
+### Características
 
 Los servicios críticos suelen:
 
@@ -1186,7 +1184,7 @@ En muchos casos, otros servicios dependen directamente de ellos.
 
 ---
 
-# Servicios críticos en Linux
+### Servicios críticos en Linux
 
 Algunos ejemplos habituales son:
 
@@ -1203,7 +1201,7 @@ Dependiendo de la distribución, pueden existir otros servicios igualmente impor
 
 ---
 
-# Servicios críticos en Windows
+### Servicios críticos en Windows
 
 Entre los más importantes se encuentran:
 
@@ -1221,7 +1219,7 @@ Muchos servicios de Windows dependen del servicio **RPC**, por lo que su interru
 
 ---
 
-# Dependencias
+### Dependencias
 
 Los servicios críticos suelen tener numerosas dependencias.
 
@@ -1251,7 +1249,7 @@ Si un servicio de nivel inferior deja de funcionar, todos los superiores pueden 
 
 ---
 
-# Riesgos al detener un servicio crítico
+### Riesgos al detener un servicio crítico
 
 Detener un servicio importante puede provocar:
 
@@ -1266,7 +1264,7 @@ Por ello siempre debe evaluarse el impacto antes de detener un servicio.
 
 ---
 
-# ¿Cómo identificar un servicio crítico?
+### ¿Cómo identificar un servicio crítico?
 
 Antes de realizar cualquier cambio conviene comprobar:
 
@@ -1280,7 +1278,7 @@ Nunca debe asumirse que un servicio puede deshabilitarse únicamente porque su n
 
 ---
 
-# Servicios innecesarios
+### Servicios innecesarios
 
 No todos los servicios instalados son críticos.
 
@@ -1295,7 +1293,7 @@ En servidores es habitual deshabilitar servicios que no sean necesarios para red
 
 ---
 
-# Antes de deshabilitar un servicio
+### Antes de deshabilitar un servicio
 
 Es recomendable seguir este procedimiento:
 
@@ -1308,7 +1306,7 @@ Es recomendable seguir este procedimiento:
 
 ---
 
-# Recuperación
+### Recuperación
 
 Si un servicio crítico deja de funcionar:
 
@@ -1322,7 +1320,7 @@ En algunos casos puede ser necesario reiniciar el sistema para restaurar determi
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un administrador deshabilita el servicio de resolución DNS pensando que no se utiliza.
 
@@ -1348,7 +1346,7 @@ Aunque la red siga funcionando, muchas aplicaciones dejarán de comunicarse corr
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Servicio | Linux | Windows |
 |----------|--------|----------|
@@ -1360,7 +1358,7 @@ Aunque la red siga funcionando, muchas aplicaciones dejarán de comunicarse corr
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - No deshabilites un servicio sin conocer exactamente su función.
 - Comprueba siempre las dependencias antes de detener un servicio.
@@ -1384,7 +1382,7 @@ Estas funciones son especialmente importantes en servidores y servicios crítico
 
 ---
 
-# ¿Qué es la recuperación automática?
+### ¿Qué es la recuperación automática?
 
 La recuperación automática consiste en ejecutar una acción cuando un servicio finaliza de forma inesperada.
 
@@ -1400,7 +1398,7 @@ El objetivo es reducir el tiempo de indisponibilidad del servicio.
 
 ---
 
-# ¿Cuándo se utiliza?
+### ¿Cuándo se utiliza?
 
 La recuperación automática es recomendable para servicios como:
 
@@ -1416,7 +1414,7 @@ En cambio, no suele ser necesaria para servicios utilizados de forma puntual o m
 
 ---
 
-# Recuperación en Linux
+### Recuperación en Linux
 
 En sistemas con **systemd**, la recuperación se configura mediante el archivo de unidad (`.service`).
 
@@ -1436,7 +1434,7 @@ Estas opciones indican cuándo debe reiniciarse automáticamente el servicio.
 
 ---
 
-# Directiva Restart
+### Directiva Restart
 
 Las opciones más utilizadas son:
 
@@ -1456,7 +1454,7 @@ Restart=on-failure
 
 ---
 
-# Tiempo de espera
+### Tiempo de espera
 
 Puede configurarse un retraso antes del reinicio.
 
@@ -1470,7 +1468,7 @@ Esto hace que systemd espere cinco segundos antes de volver a iniciar el servici
 
 ---
 
-# Ejemplo
+### Ejemplo
 
 ```ini
 [Service]
@@ -1498,7 +1496,7 @@ Reinicio automático
 
 ---
 
-# Límite de reinicios
+### Límite de reinicios
 
 Para evitar bucles infinitos, systemd controla cuántas veces puede reiniciarse un servicio en un periodo determinado.
 
@@ -1520,7 +1518,7 @@ Será necesaria la intervención del administrador.
 
 ---
 
-# Recuperación en Windows
+### Recuperación en Windows
 
 Windows incorpora opciones de recuperación desde las propiedades del servicio.
 
@@ -1540,7 +1538,7 @@ Recuperación
 
 ---
 
-# Acciones disponibles
+### Acciones disponibles
 
 Windows permite configurar acciones distintas para:
 
@@ -1559,7 +1557,7 @@ Esto ofrece una gran flexibilidad para adaptarse a distintos escenarios.
 
 ---
 
-# Reinicio automático
+### Reinicio automático
 
 Ejemplo:
 
@@ -1591,7 +1589,7 @@ Es una configuración habitual en servicios críticos.
 
 ---
 
-# Ejecutar un programa
+### Ejecutar un programa
 
 En Windows también es posible ejecutar un programa cuando un servicio falla.
 
@@ -1604,7 +1602,7 @@ Ejemplos:
 
 ---
 
-# Reinicio del equipo
+### Reinicio del equipo
 
 En situaciones críticas puede configurarse el reinicio automático del servidor.
 
@@ -1616,7 +1614,7 @@ Debe utilizarse únicamente cuando:
 
 ---
 
-# Monitorización
+### Monitorización
 
 La recuperación automática no sustituye a la monitorización.
 
@@ -1630,7 +1628,7 @@ Si un servicio entra en un ciclo continuo de reinicios, debe investigarse antes 
 
 ---
 
-# Problemas habituales
+### Problemas habituales
 
 Algunos errores frecuentes son:
 
@@ -1644,7 +1642,7 @@ La recuperación automática debe complementar el diagnóstico, no sustituirlo.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servidor web falla debido a un error temporal.
 
@@ -1678,7 +1676,7 @@ El usuario apenas percibe una breve interrupción.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -1690,7 +1688,7 @@ El usuario apenas percibe una breve interrupción.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Configura la recuperación automática únicamente en servicios que deban permanecer siempre disponibles.
 - Utiliza tiempos de espera razonables antes de reiniciar un servicio.
@@ -1714,7 +1712,7 @@ En entornos de producción, una buena estrategia de monitorización reduce el ti
 
 ---
 
-# ¿Qué es la monitorización?
+### ¿Qué es la monitorización?
 
 La monitorización consiste en supervisar continuamente el estado de uno o varios servicios.
 
@@ -1731,7 +1729,7 @@ Su objetivo es detectar problemas lo antes posible.
 
 ---
 
-# ¿Qué es el diagnóstico?
+### ¿Qué es el diagnóstico?
 
 El diagnóstico comienza cuando se detecta una incidencia.
 
@@ -1747,7 +1745,7 @@ El objetivo es localizar la causa del problema y aplicar la solución adecuada.
 
 ---
 
-# Información importante
+### Información importante
 
 Cuando un servicio falla conviene recopilar:
 
@@ -1764,7 +1762,7 @@ Cuanta más información se obtenga, más sencillo será encontrar la causa.
 
 ---
 
-# Registros del sistema
+### Registros del sistema
 
 Los registros son la principal fuente de información para diagnosticar servicios.
 
@@ -1784,7 +1782,7 @@ Muchos problemas pueden resolverse revisando únicamente los registros.
 
 ---
 
-# Registros del servicio
+### Registros del servicio
 
 Además de los registros generales, muchas aplicaciones generan sus propios archivos de log.
 
@@ -1822,7 +1820,7 @@ Estos registros contienen información específica sobre el funcionamiento del s
 
 ---
 
-# Supervisión del estado
+### Supervisión del estado
 
 Un servicio puede encontrarse en diferentes estados:
 
@@ -1836,7 +1834,7 @@ Es recomendable supervisar periódicamente los servicios críticos para detectar
 
 ---
 
-# Supervisión del rendimiento
+### Supervisión del rendimiento
 
 No basta con comprobar que un servicio está iniciado.
 
@@ -1855,7 +1853,7 @@ Un servicio puede estar funcionando y, aun así, ofrecer un rendimiento deficien
 
 ---
 
-# Alertas
+### Alertas
 
 Las plataformas de monitorización suelen generar alertas cuando detectan situaciones como:
 
@@ -1870,7 +1868,7 @@ Estas alertas permiten actuar antes de que el problema afecte a los usuarios.
 
 ---
 
-# Herramientas habituales
+### Herramientas habituales
 
 Algunas herramientas utilizadas para monitorizar servicios son:
 
@@ -1898,7 +1896,7 @@ En entornos empresariales también es habitual utilizar soluciones como:
 
 ---
 
-# Diagnóstico paso a paso
+### Diagnóstico paso a paso
 
 Cuando un servicio deja de funcionar, un procedimiento habitual sería:
 
@@ -1915,7 +1913,7 @@ Seguir siempre el mismo procedimiento ayuda a reducir errores durante la resoluc
 
 ---
 
-# Problemas habituales
+### Problemas habituales
 
 Entre las causas más frecuentes de fallo se encuentran:
 
@@ -1932,7 +1930,7 @@ No todos los fallos tienen el mismo origen, por lo que es importante analizar la
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servicio web deja de responder.
 
@@ -1970,7 +1968,7 @@ Este enfoque sistemático permite localizar el problema de forma más rápida y 
 
 ---
 
-# Monitorización continua
+### Monitorización continua
 
 En servidores críticos es recomendable implementar monitorización permanente.
 
@@ -1986,7 +1984,7 @@ La monitorización continua es una parte esencial de cualquier infraestructura p
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa periódicamente todos los servicios críticos.
 - Revisa los registros antes de reiniciar un servicio.
@@ -2019,7 +2017,7 @@ Proteger los servicios es una parte esencial de la administración de sistemas.
 
 ---
 
-# Principio de mínimo privilegio
+### Principio de mínimo privilegio
 
 Todo servicio debe ejecutarse únicamente con los permisos estrictamente necesarios para realizar su función.
 
@@ -2055,7 +2053,7 @@ Reducir los privilegios limita el impacto de un posible compromiso.
 
 ---
 
-# Cuentas de servicio
+### Cuentas de servicio
 
 Es recomendable utilizar cuentas específicas para cada servicio.
 
@@ -2082,7 +2080,7 @@ Esto facilita el control de permisos y mejora el aislamiento entre aplicaciones.
 
 ---
 
-# Limitar permisos
+### Limitar permisos
 
 Un servicio solo debería tener acceso a:
 
@@ -2100,7 +2098,7 @@ Debe evitarse conceder permisos innecesarios sobre:
 
 ---
 
-# Servicios innecesarios
+### Servicios innecesarios
 
 Cada servicio activo aumenta la superficie de ataque.
 
@@ -2114,7 +2112,7 @@ Menos servicios activos implican menos posibilidades de explotación.
 
 ---
 
-# Mantener el software actualizado
+### Mantener el software actualizado
 
 Las vulnerabilidades descubiertas en un servicio suelen corregirse mediante actualizaciones.
 
@@ -2130,7 +2128,7 @@ Una actualización puede solucionar fallos de seguridad críticos.
 
 ---
 
-# Protección de la configuración
+### Protección de la configuración
 
 Los archivos de configuración suelen contener información sensible.
 
@@ -2150,7 +2148,7 @@ Es recomendable:
 
 ---
 
-# Exposición a la red
+### Exposición a la red
 
 No todos los servicios deben estar accesibles desde Internet.
 
@@ -2165,7 +2163,7 @@ Siempre que sea posible, limita el acceso mediante reglas de firewall.
 
 ---
 
-# Cifrado
+### Cifrado
 
 Cuando un servicio transmite información sensible debe utilizar conexiones cifradas.
 
@@ -2181,7 +2179,7 @@ Evita protocolos inseguros cuando existan alternativas cifradas.
 
 ---
 
-# Autenticación
+### Autenticación
 
 Los servicios deben utilizar mecanismos de autenticación adecuados.
 
@@ -2197,7 +2195,7 @@ Evita el uso de credenciales predeterminadas.
 
 ---
 
-# Auditoría
+### Auditoría
 
 Es recomendable registrar:
 
@@ -2211,7 +2209,7 @@ Estos registros permiten detectar comportamientos anómalos y facilitar investig
 
 ---
 
-# Supervisión
+### Supervisión
 
 Además de proteger el servicio, conviene supervisarlo continuamente.
 
@@ -2228,7 +2226,7 @@ Una supervisión adecuada permite detectar incidentes antes de que afecten al fu
 
 ---
 
-# Aislamiento
+### Aislamiento
 
 Siempre que sea posible, los servicios deben ejecutarse de forma aislada.
 
@@ -2243,7 +2241,7 @@ El aislamiento reduce el impacto en caso de compromiso.
 
 ---
 
-# Problemas habituales
+### Problemas habituales
 
 Algunas configuraciones inseguras son:
 
@@ -2257,7 +2255,7 @@ Algunas configuraciones inseguras son:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servidor web utiliza una cuenta con privilegios de administrador.
 
@@ -2281,7 +2279,7 @@ Si el servicio se hubiera ejecutado con una cuenta de permisos limitados, el imp
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Medida | Beneficio |
 |---------|-----------|
@@ -2296,7 +2294,7 @@ Si el servicio se hubiera ejecutado con una cuenta de permisos limitados, el imp
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Ejecuta cada servicio con la cuenta de menor privilegio posible.
 - Deshabilita o elimina los servicios que no sean necesarios.
@@ -2322,7 +2320,7 @@ Las tareas automatizadas pueden utilizarse tanto para mantenimiento preventivo c
 
 ---
 
-# ¿Qué es la automatización?
+### ¿Qué es la automatización?
 
 Automatizar consiste en ejecutar acciones sin intervención manual mediante:
 
@@ -2335,7 +2333,7 @@ Su objetivo es reducir el tiempo dedicado a tareas repetitivas.
 
 ---
 
-# Ventajas
+### Ventajas
 
 La automatización permite:
 
@@ -2350,7 +2348,7 @@ Es una práctica habitual en cualquier infraestructura empresarial.
 
 ---
 
-# Tareas que pueden automatizarse
+### Tareas que pueden automatizarse
 
 Algunos ejemplos son:
 
@@ -2367,7 +2365,7 @@ Muchas de estas tareas pueden ejecutarse diariamente sin intervención del admin
 
 ---
 
-# Automatización mediante scripts
+### Automatización mediante scripts
 
 Los scripts son una de las formas más habituales de automatizar servicios.
 
@@ -2385,7 +2383,7 @@ Los scripts permiten combinar múltiples acciones en un único procedimiento.
 
 ---
 
-# Ejemplo de automatización
+### Ejemplo de automatización
 
 Un script podría realizar el siguiente proceso:
 
@@ -2417,7 +2415,7 @@ Todo ello sin intervención manual.
 
 ---
 
-# Programación de tareas
+### Programación de tareas
 
 La automatización suele combinarse con tareas programadas.
 
@@ -2436,7 +2434,7 @@ Esto permite ejecutar comprobaciones periódicas.
 
 ---
 
-# Supervisión automática
+### Supervisión automática
 
 Un procedimiento habitual consiste en comprobar periódicamente:
 
@@ -2449,7 +2447,7 @@ Cuando se detecta una anomalía, el sistema puede actuar automáticamente.
 
 ---
 
-# Alertas
+### Alertas
 
 Los scripts pueden generar avisos cuando ocurre una incidencia.
 
@@ -2465,7 +2463,7 @@ Esto permite actuar rápidamente incluso antes de que los usuarios detecten el p
 
 ---
 
-# Automatización masiva
+### Automatización masiva
 
 En grandes organizaciones es habitual administrar cientos o miles de equipos.
 
@@ -2497,7 +2495,7 @@ Este procedimiento sería inviable de realizar manualmente.
 
 ---
 
-# Herramientas habituales
+### Herramientas habituales
 
 Algunas soluciones utilizadas para automatizar la administración de servicios son:
 
@@ -2514,7 +2512,7 @@ Estas plataformas permiten gestionar infraestructuras completas desde un único 
 
 ---
 
-# Automatización segura
+### Automatización segura
 
 Automatizar no significa ejecutar cualquier acción sin control.
 
@@ -2530,7 +2528,7 @@ La automatización debe aumentar la fiabilidad, no introducir nuevos problemas.
 
 ---
 
-# Errores habituales
+### Errores habituales
 
 Algunos fallos frecuentes son:
 
@@ -2544,7 +2542,7 @@ Una automatización mal diseñada puede generar más incidencias que las que pre
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Cada cinco minutos se comprueba el estado de un servidor web.
 
@@ -2582,7 +2580,7 @@ De este modo el tiempo de indisponibilidad se reduce al mínimo.
 
 ---
 
-# Automatización vs intervención manual
+### Automatización vs intervención manual
 
 | Automatización | Administración manual |
 |----------------|-----------------------|
@@ -2596,7 +2594,7 @@ Lo habitual es combinar ambos enfoques según la situación.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Automatiza únicamente tareas repetitivas y bien definidas.
 - Prueba los scripts antes de utilizarlos en producción.
@@ -2621,7 +2619,7 @@ Estas recomendaciones son aplicables tanto a equipos de usuario como a servidore
 
 ---
 
-# Conoce la función de cada servicio
+### Conoce la función de cada servicio
 
 Antes de modificar un servicio es importante conocer:
 
@@ -2634,7 +2632,7 @@ No deshabilites un servicio únicamente porque su nombre resulte desconocido.
 
 ---
 
-# Mantén solo los servicios necesarios
+### Mantén solo los servicios necesarios
 
 Cada servicio en ejecución consume recursos y aumenta la superficie de ataque.
 
@@ -2648,7 +2646,7 @@ Un sistema con menos servicios activos suele ser más seguro y eficiente.
 
 ---
 
-# Utiliza el principio de mínimo privilegio
+### Utiliza el principio de mínimo privilegio
 
 Ejecuta cada servicio con la cuenta que disponga únicamente de los permisos necesarios.
 
@@ -2663,7 +2661,7 @@ Esto limita el impacto de un posible compromiso del servicio.
 
 ---
 
-# Documenta los cambios
+### Documenta los cambios
 
 Cada modificación importante debería quedar registrada.
 
@@ -2680,7 +2678,7 @@ La documentación facilita el mantenimiento y las auditorías.
 
 ---
 
-# Revisa los registros
+### Revisa los registros
 
 Cuando un servicio falle:
 
@@ -2692,7 +2690,7 @@ Evita solucionar problemas únicamente mediante reinicios continuos.
 
 ---
 
-# Configura la recuperación automática
+### Configura la recuperación automática
 
 Los servicios críticos deberían disponer de mecanismos de recuperación.
 
@@ -2714,7 +2712,7 @@ Esto reduce el tiempo de indisponibilidad y mejora la continuidad del servicio.
 
 ---
 
-# Supervisa el estado de los servicios
+### Supervisa el estado de los servicios
 
 Realiza comprobaciones periódicas para verificar:
 
@@ -2729,7 +2727,7 @@ La monitorización continua permite detectar problemas antes de que afecten a lo
 
 ---
 
-# Mantén el software actualizado
+### Mantén el software actualizado
 
 Las actualizaciones permiten:
 
@@ -2747,7 +2745,7 @@ Mantén actualizados:
 
 ---
 
-# Protege la configuración
+### Protege la configuración
 
 Los archivos de configuración pueden contener información sensible.
 
@@ -2760,7 +2758,7 @@ Es recomendable:
 
 ---
 
-# Automatiza tareas repetitivas
+### Automatiza tareas repetitivas
 
 Siempre que sea posible:
 
@@ -2773,7 +2771,7 @@ La automatización mejora la eficiencia y reduce los errores humanos.
 
 ---
 
-# Prueba antes de aplicar cambios
+### Prueba antes de aplicar cambios
 
 Antes de modificar servicios críticos:
 
@@ -2786,7 +2784,7 @@ Aplicar cambios directamente en producción incrementa el riesgo de interrupcion
 
 ---
 
-# Planifica el mantenimiento
+### Planifica el mantenimiento
 
 Las intervenciones importantes deberían realizarse:
 
@@ -2799,7 +2797,7 @@ Una buena planificación reduce el impacto sobre la disponibilidad del servicio.
 
 ---
 
-# Auditorías periódicas
+### Auditorías periódicas
 
 Es recomendable revisar de forma periódica:
 
@@ -2814,7 +2812,7 @@ Estas revisiones ayudan a detectar configuraciones obsoletas o problemas potenci
 
 ---
 
-# Resumen de recomendaciones
+### Resumen de recomendaciones
 
 | Recomendación | Beneficio |
 |---------------|-----------|

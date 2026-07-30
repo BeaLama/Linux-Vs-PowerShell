@@ -4,8 +4,6 @@
 
 Los procesos son la unidad básica de ejecución de un sistema operativo. En niveles anteriores se han visto las operaciones más habituales, como listar procesos, consultar su consumo de recursos o finalizarlos.
 
-En este apartado se profundiza en aspectos avanzados relacionados con la gestión, planificación, prioridad, afinidad, señales, monitorización y depuración de procesos, así como en las herramientas utilizadas por administradores de sistemas para diagnosticar problemas complejos.
-
 Comprender el funcionamiento interno de los procesos resulta fundamental para optimizar el rendimiento, detectar bloqueos, analizar cuellos de botella y mantener sistemas estables tanto en Linux como en Windows.
 
 ---
@@ -36,11 +34,11 @@ Comprender cómo está organizado internamente un proceso resulta fundamental pa
 
 ---
 
-# Programa vs proceso
+### Programa vs proceso
 
 Aunque suelen utilizarse como sinónimos, no significan lo mismo.
 
-## Programa
+### Programa
 
 Es un conjunto de instrucciones almacenadas en un archivo.
 
@@ -62,7 +60,7 @@ Un programa no consume CPU ni memoria hasta que se ejecuta.
 
 ---
 
-## Proceso
+### Proceso
 
 Es un programa que ya está ejecutándose.
 
@@ -84,7 +82,7 @@ Un mismo programa puede generar varios procesos independientes.
 
 ---
 
-# Componentes de un proceso
+### Componentes de un proceso
 
 Un proceso está formado por diferentes elementos.
 
@@ -103,7 +101,7 @@ Todos ellos permiten que el proceso funcione correctamente.
 
 ---
 
-# Identificador de proceso (PID)
+### Identificador de proceso (PID)
 
 Cada proceso recibe un identificador único denominado **PID (Process ID)**.
 
@@ -126,7 +124,7 @@ No pueden existir dos procesos con el mismo PID al mismo tiempo.
 
 ---
 
-# Proceso padre e hijo
+### Proceso padre e hijo
 
 Muchos procesos crean otros procesos durante su ejecución.
 
@@ -158,7 +156,7 @@ pstree
 
 ---
 
-# Espacio de memoria
+### Espacio de memoria
 
 Cada proceso dispone de su propio espacio de memoria.
 
@@ -178,7 +176,7 @@ Normalmente se divide en varias zonas.
 
 ---
 
-## Código (Text)
+### Código (Text)
 
 Contiene las instrucciones del programa.
 
@@ -186,7 +184,7 @@ Generalmente es de solo lectura.
 
 ---
 
-## Datos
+### Datos
 
 Almacena:
 
@@ -196,7 +194,7 @@ Almacena:
 
 ---
 
-## Heap
+### Heap
 
 Zona utilizada para memoria dinámica.
 
@@ -220,7 +218,7 @@ HeapAlloc()
 
 ---
 
-## Stack
+### Stack
 
 Contiene:
 
@@ -232,7 +230,7 @@ Cada hilo dispone de su propia pila (*stack*).
 
 ---
 
-# Contexto del proceso
+### Contexto del proceso
 
 El sistema operativo necesita conocer el estado exacto del proceso para poder detenerlo y reanudarlo posteriormente.
 
@@ -250,7 +248,7 @@ Cuando el planificador cambia de un proceso a otro se produce un **cambio de con
 
 ---
 
-# Recursos asociados
+### Recursos asociados
 
 Cada proceso puede utilizar distintos recursos.
 
@@ -269,7 +267,7 @@ El sistema operativo controla todos estos recursos para evitar conflictos entre 
 
 ---
 
-# Hilos (Threads)
+### Hilos (Threads)
 
 Un proceso puede contener uno o varios hilos de ejecución.
 
@@ -301,7 +299,7 @@ Los hilos permiten realizar varias tareas simultáneamente dentro del mismo proc
 
 ---
 
-# Variables de entorno
+### Variables de entorno
 
 Los procesos heredan normalmente determinadas variables del entorno desde el proceso padre.
 
@@ -331,7 +329,7 @@ Estas variables influyen en el comportamiento de las aplicaciones.
 
 ---
 
-# Descriptores
+### Descriptores
 
 Cuando un proceso utiliza un recurso, el sistema operativo le asigna un descriptor o identificador interno.
 
@@ -350,7 +348,7 @@ lsof
 
 ---
 
-# Ciclo de vida
+### Ciclo de vida
 
 De forma simplificada, un proceso sigue este ciclo:
 
@@ -378,7 +376,7 @@ Durante este ciclo el sistema operativo administra todos sus recursos.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Elemento | Función |
 |----------|---------|
@@ -393,7 +391,7 @@ Durante este ciclo el sistema operativo administra todos sus recursos.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos que un usuario abre Google Chrome.
 
@@ -431,7 +429,7 @@ Todo este proceso ocurre en apenas unos milisegundos.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Comprende la diferencia entre programa y proceso antes de diagnosticar incidencias.
 - Utiliza el PID para identificar procesos de forma inequívoca.
@@ -457,7 +455,7 @@ Comprender estos estados resulta fundamental para diagnosticar bloqueos, cuellos
 
 ---
 
-# Ciclo de vida de un proceso
+### Ciclo de vida de un proceso
 
 De forma simplificada, un proceso pasa por los siguientes estados:
 
@@ -493,7 +491,7 @@ Un proceso puede alternar varias veces entre **Preparado**, **Ejecución** y **E
 
 ---
 
-# Nuevo (New)
+### Nuevo (New)
 
 Es el estado inicial.
 
@@ -508,7 +506,7 @@ El proceso todavía no está preparado para ejecutarse.
 
 ---
 
-# Preparado (Ready)
+### Preparado (Ready)
 
 El proceso ya dispone de todos los recursos necesarios excepto uno:
 
@@ -532,7 +530,7 @@ Puede haber numerosos procesos preparados simultáneamente.
 
 ---
 
-# En ejecución (Running)
+### En ejecución (Running)
 
 El proceso está utilizando el procesador.
 
@@ -546,7 +544,7 @@ Por ejemplo:
 
 ---
 
-# Espera o bloqueado (Waiting / Blocked)
+### Espera o bloqueado (Waiting / Blocked)
 
 El proceso necesita esperar a que ocurra algún evento antes de continuar.
 
@@ -562,7 +560,7 @@ Mientras espera, no consume tiempo de CPU.
 
 ---
 
-# Finalizado (Terminated)
+### Finalizado (Terminated)
 
 Cuando el proceso termina:
 
@@ -575,7 +573,7 @@ Después desaparece de la lista de procesos activos.
 
 ---
 
-# Suspensión
+### Suspensión
 
 Algunos sistemas permiten suspender temporalmente un proceso.
 
@@ -590,7 +588,7 @@ Esto suele utilizarse cuando existe presión sobre la memoria RAM.
 
 ---
 
-# Cambio de contexto
+### Cambio de contexto
 
 Cuando el sistema operativo cambia de un proceso a otro se produce un **Context Switch**.
 
@@ -618,7 +616,7 @@ Este mecanismo permite ejecutar múltiples procesos aparentemente al mismo tiemp
 
 ---
 
-# Planificador (Scheduler)
+### Planificador (Scheduler)
 
 El planificador decide:
 
@@ -632,7 +630,7 @@ Los algoritmos varían según el sistema operativo.
 
 ---
 
-# Estados en Linux
+### Estados en Linux
 
 En Linux los procesos muestran una letra que indica su estado.
 
@@ -654,7 +652,7 @@ ps aux
 
 ---
 
-# Estado Zombie
+### Estado Zombie
 
 Un **Zombie** es un proceso que ya ha terminado, pero cuyo proceso padre todavía no ha recogido su estado de finalización.
 
@@ -675,7 +673,7 @@ Un número elevado de procesos Zombie puede indicar errores de programación.
 
 ---
 
-# Estado Huérfano (Orphan)
+### Estado Huérfano (Orphan)
 
 Un proceso huérfano es aquel cuyo proceso padre finaliza antes que él.
 
@@ -695,7 +693,7 @@ De esta forma pueden finalizar correctamente sin quedar abandonados.
 
 ---
 
-# Estados en Windows
+### Estados en Windows
 
 Windows no muestra exactamente los mismos estados que Linux, pero internamente también distingue situaciones como:
 
@@ -710,7 +708,7 @@ Herramientas como **Process Explorer** permiten visualizar información mucho m�
 
 ---
 
-# Transiciones
+### Transiciones
 
 Un proceso puede cambiar continuamente de estado.
 
@@ -744,7 +742,7 @@ Estas transiciones ocurren miles de veces por segundo en un sistema con múltipl
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Estado | Descripción |
 |----------|-------------|
@@ -757,7 +755,7 @@ Estas transiciones ocurren miles de veces por segundo en un sistema con múltipl
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos que un usuario abre un editor de texto.
 
@@ -801,7 +799,7 @@ Durante toda su ejecución el proceso habrá cambiado varias veces de estado.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Comprende el significado de cada estado antes de investigar problemas de rendimiento.
 - Identifica procesos bloqueados durante largos periodos para detectar cuellos de botella.
@@ -830,7 +828,7 @@ La prioridad de un proceso influye directamente en estas decisiones.
 
 ---
 
-# ¿Qué es el planificador?
+### ¿Qué es el planificador?
 
 El **scheduler** es el componente del sistema operativo encargado de repartir el tiempo de CPU entre todos los procesos.
 
@@ -845,7 +843,7 @@ Cada sistema operativo implementa sus propios algoritmos de planificación.
 
 ---
 
-# ¿Qué es la prioridad?
+### ¿Qué es la prioridad?
 
 La prioridad indica la importancia relativa de un proceso frente al resto.
 
@@ -858,7 +856,7 @@ La prioridad **no garantiza** que un proceso se ejecute inmediatamente, pero sí
 
 ---
 
-# Planificación preventiva
+### Planificación preventiva
 
 Los sistemas actuales utilizan planificación **preventiva** (*Preemptive Scheduling*).
 
@@ -890,7 +888,7 @@ Este mecanismo mejora la capacidad de respuesta del sistema.
 
 ---
 
-# Quantum
+### Quantum
 
 El **quantum** es el tiempo máximo que un proceso puede utilizar la CPU antes de que el planificador evalúe si debe seguir ejecutándose o dar paso a otro proceso.
 
@@ -920,7 +918,7 @@ El valor del quantum depende del sistema operativo y de su configuración.
 
 ---
 
-# Prioridades en Linux
+### Prioridades en Linux
 
 Linux utiliza un sistema basado en dos conceptos:
 
@@ -953,7 +951,7 @@ Cuanto menor es el valor Nice, mayor prioridad tendrá el proceso.
 
 ---
 
-## Consultar prioridades
+### Consultar prioridades
 
 Mostrar procesos:
 
@@ -971,7 +969,7 @@ La columna **NI** indica el valor Nice.
 
 ---
 
-## Ejecutar con otra prioridad
+### Ejecutar con otra prioridad
 
 Ejecutar un proceso con prioridad baja:
 
@@ -987,7 +985,7 @@ nice -n -10 comando
 
 ---
 
-## Modificar un proceso existente
+### Modificar un proceso existente
 
 Cambiar la prioridad:
 
@@ -1003,7 +1001,7 @@ renice -10 -p 1234
 
 ---
 
-# Prioridades en Windows
+### Prioridades en Windows
 
 Windows utiliza distintas clases de prioridad.
 
@@ -1020,7 +1018,7 @@ La prioridad **Realtime** debe utilizarse únicamente en situaciones muy concret
 
 ---
 
-## Cambiar prioridad
+### Cambiar prioridad
 
 Administrador de tareas:
 
@@ -1054,7 +1052,7 @@ Modificar prioridad:
 
 ---
 
-# Herencia de prioridad
+### Herencia de prioridad
 
 En muchos casos los procesos hijos heredan la prioridad del proceso padre.
 
@@ -1080,7 +1078,7 @@ Posteriormente la prioridad puede modificarse de forma independiente.
 
 ---
 
-# Inversión de prioridad
+### Inversión de prioridad
 
 Puede producirse cuando:
 
@@ -1094,7 +1092,7 @@ Muchos sistemas modernos implementan mecanismos para reducir este efecto.
 
 ---
 
-# Starvation
+### Starvation
 
 La **inanición** (*Starvation*) ocurre cuando un proceso permanece demasiado tiempo sin ejecutarse porque otros procesos reciben siempre prioridad.
 
@@ -1112,7 +1110,7 @@ Los planificadores modernos intentan evitar esta situación ajustando dinámicam
 
 ---
 
-# Tiempo real
+### Tiempo real
 
 Algunos sistemas permiten ejecutar procesos en tiempo real.
 
@@ -1128,7 +1126,7 @@ En estos casos el objetivo principal no es el rendimiento, sino garantizar tiemp
 
 ---
 
-# Comparativa Linux / Windows
+### Comparativa Linux / Windows
 
 | Linux | Windows |
 |--------|----------|
@@ -1140,7 +1138,7 @@ En estos casos el objetivo principal no es el rendimiento, sino garantizar tiemp
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos dos procesos:
 
@@ -1160,7 +1158,7 @@ Cuando ambos compitan por la CPU, el sistema tenderá a ejecutar antes el **Proc
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Mantén la prioridad por defecto salvo que exista una necesidad justificada.
 - Utiliza prioridades altas únicamente para procesos realmente críticos.
@@ -1183,7 +1181,7 @@ Sin embargo, en determinadas situaciones puede resultar útil limitar un proceso
 
 ---
 
-# ¿Qué es la afinidad?
+### ¿Qué es la afinidad?
 
 La afinidad define el conjunto de procesadores que un proceso puede utilizar.
 
@@ -1213,7 +1211,7 @@ El proceso solo podrá ejecutarse sobre esos dos núcleos.
 
 ---
 
-# ¿Para qué sirve?
+### ¿Para qué sirve?
 
 La afinidad se utiliza principalmente para:
 
@@ -1227,7 +1225,7 @@ No suele ser necesario modificarla en un uso normal del sistema.
 
 ---
 
-# Afinidad automática
+### Afinidad automática
 
 En condiciones normales, el sistema operativo administra automáticamente la afinidad.
 
@@ -1241,7 +1239,7 @@ Este comportamiento suele ofrecer el mejor rendimiento general.
 
 ---
 
-# Afinidad en Linux
+### Afinidad en Linux
 
 Consultar el procesador donde se ejecuta un proceso:
 
@@ -1253,7 +1251,7 @@ La columna **PSR** indica el núcleo utilizado en ese momento.
 
 ---
 
-## Consultar afinidad
+### Consultar afinidad
 
 ```bash
 taskset -p PID
@@ -1267,7 +1265,7 @@ taskset -p 1234
 
 ---
 
-## Establecer afinidad
+### Establecer afinidad
 
 Ejecutar un programa únicamente en el núcleo 0:
 
@@ -1289,7 +1287,7 @@ taskset -cp 0,1 1234
 
 ---
 
-# Afinidad en Windows
+### Afinidad en Windows
 
 Windows permite modificar la afinidad desde el Administrador de tareas.
 
@@ -1327,7 +1325,7 @@ Ejemplo:
 
 ---
 
-## PowerShell
+### PowerShell
 
 Consultar un proceso:
 
@@ -1339,7 +1337,7 @@ Aunque PowerShell permite acceder a esta información mediante .NET, normalmente
 
 ---
 
-# Máscara de afinidad
+### Máscara de afinidad
 
 Internamente la afinidad suele representarse mediante una **máscara de bits**.
 
@@ -1356,7 +1354,7 @@ Esta representación es utilizada por muchas APIs del sistema operativo.
 
 ---
 
-# Ventajas
+### Ventajas
 
 En determinados escenarios, configurar la afinidad puede ofrecer beneficios como:
 
@@ -1368,7 +1366,7 @@ En determinados escenarios, configurar la afinidad puede ofrecer beneficios como
 
 ---
 
-# Inconvenientes
+### Inconvenientes
 
 Una configuración incorrecta también puede provocar problemas.
 
@@ -1383,7 +1381,7 @@ Por ello, no se recomienda modificar la afinidad sin una necesidad concreta.
 
 ---
 
-# Casos de uso
+### Casos de uso
 
 La afinidad puede resultar útil en situaciones como:
 
@@ -1398,7 +1396,7 @@ En equipos de escritorio suele dejarse la configuración por defecto.
 
 ---
 
-# Hyper-Threading y núcleos lógicos
+### Hyper-Threading y núcleos lógicos
 
 Muchos procesadores modernos disponen de **Hyper-Threading** (Intel) o tecnologías equivalentes.
 
@@ -1416,7 +1414,7 @@ La afinidad puede configurarse sobre los procesadores lógicos visibles para el 
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -1427,7 +1425,7 @@ La afinidad puede configurarse sobre los procesadores lógicos visibles para el 
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos un servidor con ocho núcleos.
 
@@ -1461,7 +1459,7 @@ De este modo el resto de procesos podrán utilizar libremente los demás núcleo
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Deja que el sistema operativo gestione automáticamente la afinidad salvo que exista una necesidad específica.
 - Modifica la afinidad únicamente tras realizar pruebas de rendimiento.
@@ -1492,7 +1490,7 @@ Dominar estas herramientas es esencial para cualquier administrador de sistemas 
 
 ---
 
-# Listar procesos
+### Listar procesos
 
 La herramienta más utilizada es:
 
@@ -1524,7 +1522,7 @@ Información habitual:
 
 ---
 
-# top
+### top
 
 `top` muestra el estado del sistema en tiempo real.
 
@@ -1546,7 +1544,7 @@ Es una de las herramientas más utilizadas para diagnóstico rápido.
 
 ---
 
-# htop
+### htop
 
 Versión mejorada de `top`.
 
@@ -1568,7 +1566,7 @@ En muchas distribuciones debe instalarse previamente.
 
 ---
 
-# Buscar procesos
+### Buscar procesos
 
 Buscar procesos por nombre:
 
@@ -1590,7 +1588,7 @@ pidof firefox
 
 ---
 
-# Árbol de procesos
+### Árbol de procesos
 
 Visualizar relaciones entre procesos:
 
@@ -1616,7 +1614,7 @@ Facilita la identificación de procesos padre e hijo.
 
 ---
 
-# Finalizar procesos
+### Finalizar procesos
 
 Finalizar mediante PID:
 
@@ -1640,7 +1638,7 @@ Estas herramientas permiten detener procesos individuales o varios procesos simu
 
 ---
 
-# Señales
+### Señales
 
 El comando `kill` envía señales al proceso.
 
@@ -1670,7 +1668,7 @@ Siempre es preferible utilizar primero **SIGTERM**.
 
 ---
 
-# Prioridad
+### Prioridad
 
 Consultar prioridad:
 
@@ -1692,7 +1690,7 @@ nice -n 10 comando
 
 ---
 
-# Afinidad
+### Afinidad
 
 Consultar afinidad:
 
@@ -1714,7 +1712,7 @@ taskset -cp 0,1 1234
 
 ---
 
-# Información detallada
+### Información detallada
 
 Consultar información de un proceso:
 
@@ -1732,7 +1730,7 @@ El sistema de archivos `/proc` contiene gran cantidad de información sobre cada
 
 ---
 
-# Archivos abiertos
+### Archivos abiertos
 
 Consultar archivos utilizados por un proceso:
 
@@ -1750,7 +1748,7 @@ Para mostrar todos los archivos abiertos del sistema.
 
 ---
 
-# Conexiones de red
+### Conexiones de red
 
 Consultar conexiones abiertas por un proceso:
 
@@ -1770,7 +1768,7 @@ Permite identificar qué proceso utiliza cada puerto.
 
 ---
 
-# Procesos en segundo plano
+### Procesos en segundo plano
 
 Ejecutar una aplicación en segundo plano:
 
@@ -1798,7 +1796,7 @@ fg
 
 ---
 
-# nohup
+### nohup
 
 Permite que un proceso continúe ejecutándose incluso después de cerrar la sesión.
 
@@ -1812,7 +1810,7 @@ Muy útil para procesos largos.
 
 ---
 
-# screen
+### screen
 
 `screen` permite mantener sesiones persistentes.
 
@@ -1836,7 +1834,7 @@ screen -r
 
 ---
 
-# tmux
+### tmux
 
 Alternativa moderna a `screen`.
 
@@ -1862,7 +1860,7 @@ Muy utilizada en servidores Linux.
 
 ---
 
-# Depuración
+### Depuración
 
 Seguir llamadas al sistema:
 
@@ -1880,7 +1878,7 @@ Estas herramientas ayudan a diagnosticar bloqueos y errores complejos.
 
 ---
 
-# Consumo de recursos
+### Consumo de recursos
 
 Procesos con mayor uso de CPU:
 
@@ -1896,7 +1894,7 @@ ps aux --sort=-%mem
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Función |
 |-------------|---------|
@@ -1918,7 +1916,7 @@ ps aux --sort=-%mem
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servidor presenta un uso elevado de CPU.
 
@@ -1962,7 +1960,7 @@ kill -9 PID
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Utiliza `top` o `htop` para una primera evaluación del estado del sistema.
 - Emplea `pgrep` o `pidof` para localizar procesos rápidamente.
@@ -1995,7 +1993,7 @@ Muchas de estas herramientas forman parte del propio sistema operativo, mientras
 
 ---
 
-# Administrador de tareas
+### Administrador de tareas
 
 Es la herramienta más utilizada para gestionar procesos.
 
@@ -2020,7 +2018,7 @@ Resulta ideal para un diagnóstico rápido.
 
 ---
 
-# Pestaña Procesos
+### Pestaña Procesos
 
 Muestra todas las aplicaciones y procesos en ejecución.
 
@@ -2038,7 +2036,7 @@ Los procesos pueden ordenarse por cualquiera de estas columnas.
 
 ---
 
-# Pestaña Detalles
+### Pestaña Detalles
 
 Ofrece información más técnica.
 
@@ -2060,7 +2058,7 @@ Desde esta pestaña también es posible:
 
 ---
 
-# Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -2083,7 +2081,7 @@ También muestra:
 
 ---
 
-# PowerShell
+### PowerShell
 
 PowerShell proporciona una forma muy flexible de administrar procesos.
 
@@ -2101,7 +2099,7 @@ Get-Process notepad
 
 ---
 
-# Ordenar procesos
+### Ordenar procesos
 
 Mayor consumo de CPU:
 
@@ -2119,7 +2117,7 @@ Sort-Object WorkingSet -Descending
 
 ---
 
-# Finalizar procesos
+### Finalizar procesos
 
 Finalizar mediante nombre:
 
@@ -2143,7 +2141,7 @@ Debe utilizarse únicamente cuando el proceso no responde.
 
 ---
 
-# Iniciar procesos
+### Iniciar procesos
 
 Ejecutar una aplicación:
 
@@ -2165,7 +2163,7 @@ Start-Process C:\Temp
 
 ---
 
-# Prioridad
+### Prioridad
 
 Consultar prioridad:
 
@@ -2190,7 +2188,7 @@ Clases disponibles:
 
 ---
 
-# Afinidad
+### Afinidad
 
 Desde el Administrador de tareas:
 
@@ -2210,7 +2208,7 @@ Permite seleccionar los núcleos del procesador que podrá utilizar un proceso.
 
 ---
 
-# Process Explorer
+### Process Explorer
 
 **Process Explorer** forma parte de la suite **Microsoft Sysinternals**.
 
@@ -2232,7 +2230,7 @@ Es una herramienta imprescindible para administradores y analistas.
 
 ---
 
-# Process Monitor
+### Process Monitor
 
 **Process Monitor (ProcMon)** registra en tiempo real la actividad del sistema.
 
@@ -2249,7 +2247,7 @@ Se utiliza para diagnosticar problemas complejos relacionados con aplicaciones y
 
 ---
 
-# Handles
+### Handles
 
 Un **handle** es un identificador que Windows asigna a los recursos utilizados por un proceso.
 
@@ -2267,7 +2265,7 @@ Process Explorer permite visualizar todos los handles abiertos por un proceso.
 
 ---
 
-# Hilos
+### Hilos
 
 Cada proceso puede contener múltiples hilos.
 
@@ -2283,7 +2281,7 @@ Esta información resulta útil para investigar bloqueos y problemas de rendimie
 
 ---
 
-# Procesos del sistema
+### Procesos del sistema
 
 Algunos procesos importantes son:
 
@@ -2301,7 +2299,7 @@ Estos procesos no deben finalizarse salvo en situaciones muy específicas.
 
 ---
 
-# Diagnóstico
+### Diagnóstico
 
 Si una aplicación deja de responder, puede seguirse este procedimiento:
 
@@ -2319,7 +2317,7 @@ Si una aplicación deja de responder, puede seguirse este procedimiento:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Función |
 |-------------|---------|
@@ -2331,7 +2329,7 @@ Si una aplicación deja de responder, puede seguirse este procedimiento:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Una aplicación consume toda la CPU.
 
@@ -2359,7 +2357,7 @@ Stop-Process -Id PID
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Utiliza el Administrador de tareas para diagnósticos rápidos y Process Explorer para análisis avanzados.
 - Comprueba el consumo de CPU, memoria, disco y red antes de finalizar un proceso.
@@ -2388,7 +2386,7 @@ En Linux este mecanismo se basa en el envío de **señales** (*signals*), mientr
 
 ---
 
-# ¿Qué es una señal?
+### ¿Qué es una señal?
 
 Una señal es un mecanismo de comunicación entre el sistema operativo y un proceso.
 
@@ -2406,7 +2404,7 @@ Las señales son una característica propia de los sistemas tipo Unix (Linux, BS
 
 ---
 
-# Señales más utilizadas
+### Señales más utilizadas
 
 Las señales más habituales son:
 
@@ -2424,7 +2422,7 @@ No todas las señales pueden ser ignoradas por un proceso.
 
 ---
 
-# SIGTERM
+### SIGTERM
 
 Es la señal recomendada para finalizar un proceso.
 
@@ -2466,7 +2464,7 @@ ya que `SIGTERM` es la señal utilizada por defecto.
 
 ---
 
-# SIGKILL
+### SIGKILL
 
 Finaliza inmediatamente el proceso.
 
@@ -2494,7 +2492,7 @@ Debe utilizarse únicamente cuando el proceso no responde a `SIGTERM`.
 
 ---
 
-# SIGINT
+### SIGINT
 
 Se genera normalmente al pulsar:
 
@@ -2506,7 +2504,7 @@ La mayoría de aplicaciones interpretan esta señal como una solicitud de finali
 
 ---
 
-# SIGHUP
+### SIGHUP
 
 Originalmente indicaba que se había perdido la conexión del terminal.
 
@@ -2526,7 +2524,7 @@ Es habitual en servicios como:
 
 ---
 
-# SIGSTOP y SIGCONT
+### SIGSTOP y SIGCONT
 
 Permiten pausar y reanudar procesos.
 
@@ -2546,7 +2544,7 @@ Resulta útil para tareas de administración y depuración.
 
 ---
 
-# kill
+### kill
 
 Enviar una señal mediante PID:
 
@@ -2568,7 +2566,7 @@ kill -l
 
 ---
 
-# killall
+### killall
 
 Permite finalizar procesos utilizando su nombre.
 
@@ -2582,7 +2580,7 @@ Finalizará todas las instancias del proceso indicado.
 
 ---
 
-# pkill
+### pkill
 
 Busca procesos por nombre o patrón y les envía una señal.
 
@@ -2596,7 +2594,7 @@ También permite utilizar expresiones regulares y filtros más avanzados.
 
 ---
 
-# Procesos que no finalizan
+### Procesos que no finalizan
 
 Si un proceso continúa ejecutándose tras enviar `SIGTERM`, el procedimiento habitual es:
 
@@ -2622,7 +2620,7 @@ kill -9 PID
 
 ---
 
-# Finalización en Windows
+### Finalización en Windows
 
 Windows no utiliza señales como Linux.
 
@@ -2660,7 +2658,7 @@ Stop-Process -Id 1234 -Force
 
 ---
 
-# taskkill
+### taskkill
 
 Ejemplos:
 
@@ -2684,7 +2682,7 @@ taskkill /F /IM notepad.exe
 
 ---
 
-# Riesgos de una finalización forzada
+### Riesgos de una finalización forzada
 
 Finalizar un proceso de forma inmediata puede provocar:
 
@@ -2698,7 +2696,7 @@ Por ello siempre debe intentarse primero una finalización ordenada.
 
 ---
 
-# Procesos críticos
+### Procesos críticos
 
 Algunos procesos no deberían finalizarse manualmente.
 
@@ -2722,7 +2720,7 @@ Finalizarlos puede provocar la inestabilidad del sistema o incluso un reinicio.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -2735,7 +2733,7 @@ Finalizarlos puede provocar la inestabilidad del sistema o incluso un reinicio.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un proceso deja de responder en Linux.
 
@@ -2779,7 +2777,7 @@ Stop-Process -Id PID -Force
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Finaliza siempre los procesos de forma ordenada antes de recurrir a métodos forzados.
 - Utiliza `SIGTERM` como primera opción en Linux.
@@ -2802,7 +2800,7 @@ Linux y Windows disponen de numerosas herramientas para estas tareas, desde util
 
 ---
 
-# ¿Qué es la monitorización?
+### ¿Qué es la monitorización?
 
 Consiste en observar el comportamiento de un proceso mientras se está ejecutando.
 
@@ -2820,7 +2818,7 @@ El objetivo es detectar anomalías antes de que provoquen una incidencia.
 
 ---
 
-# ¿Qué es la depuración?
+### ¿Qué es la depuración?
 
 La depuración (*debugging*) consiste en analizar un proceso para descubrir la causa de un error.
 
@@ -2837,7 +2835,7 @@ Normalmente implica un análisis mucho más profundo que la simple monitorizaci�
 
 ---
 
-# Monitorización en Linux
+### Monitorización en Linux
 
 Las herramientas más habituales son:
 
@@ -2855,7 +2853,7 @@ Estas utilidades permiten obtener una visión global del estado del sistema.
 
 ---
 
-# Monitorización en Windows
+### Monitorización en Windows
 
 Las herramientas principales son:
 
@@ -2869,7 +2867,7 @@ Cada una ofrece distintos niveles de detalle según el tipo de análisis necesar
 
 ---
 
-# PerfMon
+### PerfMon
 
 El **Monitor de rendimiento** (*Performance Monitor*) permite recopilar métricas del sistema mediante contadores.
 
@@ -2892,7 +2890,7 @@ También permite crear registros históricos para analizar la evolución del sis
 
 ---
 
-# Process Explorer
+### Process Explorer
 
 Process Explorer muestra información avanzada sobre cada proceso.
 
@@ -2910,7 +2908,7 @@ Es especialmente útil para investigar procesos desconocidos o bloqueados.
 
 ---
 
-# Process Monitor
+### Process Monitor
 
 **Process Monitor (ProcMon)** registra en tiempo real la actividad del sistema.
 
@@ -2926,7 +2924,7 @@ Cada operación queda registrada con información detallada, lo que facilita el 
 
 ---
 
-# strace
+### strace
 
 En Linux, `strace` permite observar las llamadas al sistema realizadas por un proceso.
 
@@ -2948,7 +2946,7 @@ Es una herramienta muy útil para detectar dónde queda bloqueado un proceso.
 
 ---
 
-# ltrace
+### ltrace
 
 Mientras que `strace` muestra llamadas al sistema, `ltrace` permite observar las llamadas a bibliotecas compartidas.
 
@@ -2962,7 +2960,7 @@ Resulta útil para analizar aplicaciones que utilizan bibliotecas dinámicas.
 
 ---
 
-# gdb
+### gdb
 
 **GNU Debugger (gdb)** es el depurador estándar de Linux.
 
@@ -2984,7 +2982,7 @@ Está orientado principalmente a desarrolladores, aunque también puede utilizar
 
 ---
 
-# Volcados de memoria (Core Dumps)
+### Volcados de memoria (Core Dumps)
 
 Cuando un proceso falla de forma inesperada, puede generar un **core dump**.
 
@@ -3001,7 +2999,7 @@ Herramientas como `gdb` permiten abrir y estudiar estos archivos.
 
 ---
 
-# Registros del sistema
+### Registros del sistema
 
 Muchas incidencias pueden diagnosticarse revisando los registros.
 
@@ -3025,7 +3023,7 @@ Estos registros suelen contener información muy útil sobre errores de procesos
 
 ---
 
-# Consumo de recursos
+### Consumo de recursos
 
 Al monitorizar un proceso conviene prestar atención a:
 
@@ -3041,7 +3039,7 @@ Una variación anómala en cualquiera de estos recursos puede indicar un problem
 
 ---
 
-# Diagnóstico de un proceso lento
+### Diagnóstico de un proceso lento
 
 Un procedimiento habitual sería:
 
@@ -3056,7 +3054,7 @@ Seguir un orden sistemático facilita localizar el origen de la incidencia.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Sistema | Función |
 |-------------|---------|---------|
@@ -3072,7 +3070,7 @@ Seguir un orden sistemático facilita localizar el origen de la incidencia.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un proceso consume mucha CPU y deja de responder.
 
@@ -3088,7 +3086,7 @@ Este enfoque permite localizar la causa antes de reiniciar o finalizar el proces
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa periódicamente los procesos críticos del sistema.
 - Utiliza herramientas de monitorización antes de recurrir a la depuración avanzada.
@@ -3111,7 +3109,7 @@ Aplicar buenas prácticas permite mejorar el rendimiento, facilitar el diagnóst
 
 ---
 
-# Identifica el proceso antes de actuar
+### Identifica el proceso antes de actuar
 
 Antes de modificar o finalizar un proceso, identifica claramente:
 
@@ -3125,7 +3123,7 @@ No tomes decisiones únicamente por el nombre del proceso.
 
 ---
 
-# No finalices procesos críticos
+### No finalices procesos críticos
 
 Muchos procesos forman parte del propio sistema operativo.
 
@@ -3154,7 +3152,7 @@ Finalizar alguno de ellos puede provocar:
 
 ---
 
-# Utiliza herramientas de monitorización
+### Utiliza herramientas de monitorización
 
 Antes de intervenir sobre un proceso, analiza su comportamiento.
 
@@ -3177,7 +3175,7 @@ Una correcta monitorización suele evitar intervenciones innecesarias.
 
 ---
 
-# Finaliza procesos de forma ordenada
+### Finaliza procesos de forma ordenada
 
 Siempre que sea posible:
 
@@ -3211,7 +3209,7 @@ Una finalización ordenada reduce el riesgo de pérdida de datos.
 
 ---
 
-# Modifica prioridades con precaución
+### Modifica prioridades con precaución
 
 Aumentar la prioridad de un proceso puede afectar al resto del sistema.
 
@@ -3225,7 +3223,7 @@ Mantén la prioridad predeterminada siempre que sea posible.
 
 ---
 
-# No modifiques la afinidad sin necesidad
+### No modifiques la afinidad sin necesidad
 
 El planificador del sistema operativo distribuye automáticamente la carga entre los distintos núcleos del procesador.
 
@@ -3238,7 +3236,7 @@ Modificar manualmente la afinidad solo es recomendable en casos concretos como:
 
 ---
 
-# Investiga antes de reiniciar
+### Investiga antes de reiniciar
 
 Cuando una aplicación deja de responder, evita reiniciarla inmediatamente.
 
@@ -3255,7 +3253,7 @@ En muchas ocasiones el problema puede identificarse sin necesidad de cerrar el p
 
 ---
 
-# Utiliza herramientas avanzadas cuando sea necesario
+### Utiliza herramientas avanzadas cuando sea necesario
 
 Para incidencias complejas, emplea herramientas especializadas.
 
@@ -3276,7 +3274,7 @@ Estas herramientas proporcionan mucha más información que los monitores básic
 
 ---
 
-# Supervisa el consumo de recursos
+### Supervisa el consumo de recursos
 
 Controla periódicamente:
 
@@ -3292,7 +3290,7 @@ Un aumento inesperado suele indicar una incidencia o una degradación del servic
 
 ---
 
-# Automatiza tareas repetitivas
+### Automatiza tareas repetitivas
 
 PowerShell y Bash permiten automatizar muchas operaciones relacionadas con procesos.
 
@@ -3308,7 +3306,7 @@ La automatización reduce errores y ahorra tiempo.
 
 ---
 
-# Mantén el sistema actualizado
+### Mantén el sistema actualizado
 
 Muchos problemas relacionados con procesos pueden solucionarse mediante:
 
@@ -3321,7 +3319,7 @@ Mantener el software actualizado mejora la estabilidad y el rendimiento.
 
 ---
 
-# Documenta las incidencias
+### Documenta las incidencias
 
 Cuando un proceso provoque una incidencia importante, registra información como:
 
@@ -3337,7 +3335,7 @@ Esta documentación facilita el análisis de problemas recurrentes.
 
 ---
 
-# Revisa los registros
+### Revisa los registros
 
 Antes de realizar cambios importantes, consulta los registros del sistema.
 
@@ -3355,7 +3353,7 @@ Los registros suelen proporcionar información muy valiosa para identificar el o
 
 ---
 
-# Resumen de recomendaciones
+### Resumen de recomendaciones
 
 | Recomendación | Beneficio |
 |---------------|-----------|

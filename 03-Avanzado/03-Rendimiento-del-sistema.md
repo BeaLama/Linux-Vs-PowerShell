@@ -48,7 +48,7 @@ El rendimiento depende del equilibrio entre varios componentes de hardware y sof
 
 ---
 
-# Recursos principales
+### Recursos principales
 
 Los recursos que más influyen en el rendimiento son:
 
@@ -62,7 +62,7 @@ Cada uno cumple una función específica y debe analizarse de forma independient
 
 ---
 
-# CPU
+### CPU
 
 El procesador ejecuta las instrucciones de los programas y del sistema operativo.
 
@@ -78,7 +78,7 @@ Un uso alto de CPU no siempre indica un problema; puede deberse a tareas intensi
 
 ---
 
-# Memoria RAM
+### Memoria RAM
 
 La memoria RAM almacena temporalmente la información que necesitan el sistema operativo y las aplicaciones mientras se están ejecutando.
 
@@ -92,7 +92,7 @@ No siempre es necesario mantener un gran porcentaje de memoria libre; muchos sis
 
 ---
 
-# Almacenamiento
+### Almacenamiento
 
 El rendimiento del almacenamiento depende de varios factores:
 
@@ -106,7 +106,7 @@ Un disco muy ocupado puede afectar al rendimiento incluso aunque la CPU y la mem
 
 ---
 
-# Red
+### Red
 
 La red puede convertirse en un factor limitante cuando existe:
 
@@ -124,7 +124,7 @@ Los problemas de red suelen reflejarse en:
 
 ---
 
-# Procesos
+### Procesos
 
 Cada aplicación que se ejecuta crea uno o varios procesos.
 
@@ -139,7 +139,7 @@ Identificar el proceso responsable suele ser el primer paso para resolver un pro
 
 ---
 
-# Servicios
+### Servicios
 
 Muchos servicios del sistema permanecen ejecutándose continuamente en segundo plano.
 
@@ -154,7 +154,7 @@ Por este motivo es recomendable revisar periódicamente los servicios activos.
 
 ---
 
-# Cuello de botella
+### Cuello de botella
 
 Se denomina **cuello de botella** al recurso que limita el rendimiento del sistema.
 
@@ -176,7 +176,7 @@ En este caso, el almacenamiento constituye el cuello de botella.
 
 ---
 
-# Monitorización
+### Monitorización
 
 Monitorizar consiste en observar el estado de los recursos del sistema para detectar problemas antes de que afecten a los usuarios.
 
@@ -197,7 +197,7 @@ Puede realizarse:
 
 ---
 
-# Indicadores habituales
+### Indicadores habituales
 
 Al analizar el rendimiento suelen revisarse indicadores como:
 
@@ -211,7 +211,7 @@ Al analizar el rendimiento suelen revisarse indicadores como:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -222,7 +222,7 @@ Al analizar el rendimiento suelen revisarse indicadores como:
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Analiza siempre varios recursos antes de identificar un problema.
 - No te centres únicamente en el porcentaje de CPU.
@@ -259,7 +259,7 @@ Lo importante es identificar **qué proceso** está utilizando la CPU y durante 
 
 ---
 
-# Conceptos importantes
+### Conceptos importantes
 
 Al analizar el procesador suelen revisarse los siguientes indicadores:
 
@@ -276,9 +276,9 @@ Al analizar el procesador suelen revisarse los siguientes indicadores:
 
 ---
 
-# Analizar la CPU en Linux
+### Analizar la CPU en Linux
 
-## Ver uso en tiempo real
+### Ver uso en tiempo real
 
 La herramienta más utilizada es:
 
@@ -295,7 +295,7 @@ Muestra:
 
 ---
 
-## Versión mejorada: `htop`
+### Versión mejorada: `htop`
 
 Si está instalada:
 
@@ -313,7 +313,7 @@ Ventajas:
 
 ---
 
-## Ver la carga del sistema
+### Ver la carga del sistema
 
 ```bash
 uptime
@@ -338,7 +338,7 @@ Como referencia:
 
 ---
 
-## Información del procesador
+### Información del procesador
 
 ```bash
 lscpu
@@ -355,7 +355,7 @@ Muestra información como:
 
 ---
 
-## Mostrar procesos ordenados por CPU
+### Mostrar procesos ordenados por CPU
 
 ```bash
 ps aux --sort=-%cpu
@@ -371,9 +371,9 @@ Permite identificar rápidamente los procesos que más CPU están consumiendo.
 
 ---
 
-# Analizar la CPU en Windows
+### Analizar la CPU en Windows
 
-## Administrador de tareas
+### Administrador de tareas
 
 Abrir:
 
@@ -402,7 +402,7 @@ Se muestra información como:
 
 ---
 
-## Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -425,7 +425,7 @@ Permite observar:
 
 ---
 
-## Monitor de rendimiento
+### Monitor de rendimiento
 
 Abrir:
 
@@ -439,7 +439,7 @@ Muy utilizado en servidores Windows.
 
 ---
 
-## PowerShell
+### PowerShell
 
 Consultar procesos ordenados por consumo de CPU:
 
@@ -457,7 +457,7 @@ Select-Object -First 10
 
 ---
 
-## Información del procesador
+### Información del procesador
 
 ```powershell
 Get-CimInstance Win32_Processor
@@ -473,7 +473,7 @@ Muestra:
 
 ---
 
-# Interpretación del uso de CPU
+### Interpretación del uso de CPU
 
 | Situación | Interpretación |
 |------------|----------------|
@@ -484,7 +484,7 @@ Muestra:
 
 ---
 
-# Diagnóstico
+### Diagnóstico
 
 Si la CPU presenta un uso elevado:
 
@@ -498,7 +498,7 @@ No siempre es recomendable finalizar un proceso de inmediato, ya que puede trata
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -510,9 +510,9 @@ No siempre es recomendable finalizar un proceso de inmediato, ya que puede trata
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
-## Linux
+### Linux
 
 Mostrar los procesos que más CPU consumen:
 
@@ -528,7 +528,7 @@ htop
 
 ---
 
-## Windows
+### Windows
 
 Mostrar los procesos con mayor consumo de CPU:
 
@@ -546,7 +546,7 @@ Get-CimInstance Win32_Processor
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa la CPU de forma periódica, especialmente en servidores.
 - Analiza el consumo junto con la memoria, el disco y la red para obtener una visión completa del sistema.
@@ -569,7 +569,7 @@ Cuando la memoria RAM disponible es insuficiente, el sistema comienza a utilizar
 
 ---
 
-# Conceptos importantes
+### Conceptos importantes
 
 Al analizar la memoria RAM conviene conocer los siguientes términos:
 
@@ -585,7 +585,7 @@ Al analizar la memoria RAM conviene conocer los siguientes términos:
 
 ---
 
-# ¿Es malo tener la RAM llena?
+### ¿Es malo tener la RAM llena?
 
 No necesariamente.
 
@@ -601,9 +601,9 @@ Lo realmente preocupante es cuando:
 
 ---
 
-# Analizar la memoria en Linux
+### Analizar la memoria en Linux
 
-## Ver memoria disponible
+### Ver memoria disponible
 
 ```bash
 free -h
@@ -627,7 +627,7 @@ ya que representa la memoria realmente disponible para nuevas aplicaciones.
 
 ---
 
-## Monitorización en tiempo real
+### Monitorización en tiempo real
 
 ```bash
 top
@@ -648,7 +648,7 @@ Permiten observar:
 
 ---
 
-## Mostrar procesos por consumo de memoria
+### Mostrar procesos por consumo de memoria
 
 ```bash
 ps aux --sort=-%mem
@@ -662,7 +662,7 @@ ps aux --sort=-%mem | head
 
 ---
 
-## Información detallada
+### Información detallada
 
 ```bash
 vmstat
@@ -678,9 +678,9 @@ Muestra información sobre:
 
 ---
 
-# Analizar la memoria en Windows
+### Analizar la memoria en Windows
 
-## Administrador de tareas
+### Administrador de tareas
 
 Abrir:
 
@@ -709,7 +709,7 @@ Se muestran datos como:
 
 ---
 
-## Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -733,7 +733,7 @@ Permite analizar:
 
 ---
 
-## PowerShell
+### PowerShell
 
 Consultar la memoria física instalada:
 
@@ -757,7 +757,7 @@ Select-Object TotalVisibleMemorySize,
 
 ---
 
-## Procesos con mayor consumo de memoria
+### Procesos con mayor consumo de memoria
 
 ```powershell
 Get-Process |
@@ -767,7 +767,7 @@ Select-Object -First 10 Name, WorkingSet
 
 ---
 
-# Memoria virtual
+### Memoria virtual
 
 Cuando la RAM se llena, el sistema utiliza espacio en disco.
 
@@ -793,7 +793,7 @@ Un uso continuo de memoria virtual suele indicar:
 
 ---
 
-# Fugas de memoria
+### Fugas de memoria
 
 Una **fuga de memoria** ocurre cuando un programa reserva memoria pero no la libera correctamente.
 
@@ -807,7 +807,7 @@ Una aplicación con una fuga de memoria suele mostrar un crecimiento continuo de
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -819,9 +819,9 @@ Una aplicación con una fuga de memoria suele mostrar un crecimiento continuo de
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
-## Linux
+### Linux
 
 Mostrar memoria disponible:
 
@@ -837,7 +837,7 @@ ps aux --sort=-%mem | head
 
 ---
 
-## Windows
+### Windows
 
 Procesos con mayor consumo de memoria:
 
@@ -857,7 +857,7 @@ Select-Object TotalVisibleMemorySize,
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa periódicamente el uso de la memoria RAM.
 - Analiza el consumo junto con la CPU y el disco para obtener una visión completa del sistema.
@@ -886,7 +886,7 @@ Por ello es importante supervisar tanto el espacio disponible como la actividad 
 
 ---
 
-# Conceptos importantes
+### Conceptos importantes
 
 Al analizar un disco suelen revisarse los siguientes indicadores:
 
@@ -902,7 +902,7 @@ Al analizar un disco suelen revisarse los siguientes indicadores:
 
 ---
 
-# HDD vs SSD
+### HDD vs SSD
 
 El tipo de almacenamiento tiene un gran impacto en el rendimiento.
 
@@ -918,9 +918,9 @@ En servidores modernos es habitual utilizar SSD o NVMe para mejorar el rendimien
 
 ---
 
-# Analizar el disco en Linux
+### Analizar el disco en Linux
 
-## Espacio disponible
+### Espacio disponible
 
 ```bash
 df -h
@@ -935,7 +935,7 @@ Filesystem      Size  Used Avail Use%
 
 ---
 
-## Uso de directorios
+### Uso de directorios
 
 ```bash
 du -sh carpeta
@@ -955,7 +955,7 @@ du -sh *
 
 ---
 
-## Actividad del disco
+### Actividad del disco
 
 ```bash
 iostat
@@ -978,7 +978,7 @@ Muestra información como:
 
 ---
 
-## Procesos que utilizan el disco
+### Procesos que utilizan el disco
 
 ```bash
 iotop
@@ -990,7 +990,7 @@ Permite identificar qué procesos están realizando más operaciones de lectura 
 
 ---
 
-## Información de los dispositivos
+### Información de los dispositivos
 
 ```bash
 lsblk
@@ -1005,9 +1005,9 @@ Muestra:
 
 ---
 
-# Analizar el disco en Windows
+### Analizar el disco en Windows
 
-## Administrador de tareas
+### Administrador de tareas
 
 Abrir:
 
@@ -1034,7 +1034,7 @@ Se muestra:
 
 ---
 
-## Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -1057,7 +1057,7 @@ Permite visualizar:
 
 ---
 
-## Monitor de rendimiento
+### Monitor de rendimiento
 
 Abrir:
 
@@ -1075,7 +1075,7 @@ Algunos contadores útiles:
 
 ---
 
-## PowerShell
+### PowerShell
 
 Consultar los discos físicos:
 
@@ -1101,7 +1101,7 @@ Select-Object DriveLetter,
 
 ---
 
-# Interpretación
+### Interpretación
 
 | Situación | Interpretación |
 |------------|----------------|
@@ -1113,7 +1113,7 @@ Select-Object DriveLetter,
 
 ---
 
-# Fragmentación
+### Fragmentación
 
 En discos mecánicos (HDD), los archivos pueden quedar almacenados en fragmentos distribuidos por el disco.
 
@@ -1127,7 +1127,7 @@ En discos SSD no es recomendable realizar desfragmentaciones tradicionales, ya q
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -1140,9 +1140,9 @@ En discos SSD no es recomendable realizar desfragmentaciones tradicionales, ya q
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
-## Linux
+### Linux
 
 Consultar espacio disponible:
 
@@ -1164,7 +1164,7 @@ sudo iotop
 
 ---
 
-## Windows
+### Windows
 
 Consultar los discos físicos:
 
@@ -1183,7 +1183,7 @@ Select-Object DriveLetter,
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Mantén suficiente espacio libre en las unidades (habitualmente se recomienda disponer de al menos un 15–20 % libre).
 - Supervisa periódicamente la actividad del disco en servidores.
@@ -1197,7 +1197,7 @@ Select-Object DriveLetter,
 
 [⬆️ Volver al índice](#índice)
 
-## Rendimiento de red
+### Rendimiento de red
 
 La red es uno de los recursos más importantes en cualquier sistema conectado.
 
@@ -1214,7 +1214,7 @@ Para diagnosticar estos problemas es necesario analizar tanto la configuración 
 
 ---
 
-# Conceptos importantes
+### Conceptos importantes
 
 Los principales indicadores de rendimiento de red son:
 
@@ -1230,7 +1230,7 @@ Los principales indicadores de rendimiento de red son:
 
 ---
 
-# Ancho de banda vs velocidad
+### Ancho de banda vs velocidad
 
 Es habitual confundir ambos conceptos.
 
@@ -1257,9 +1257,9 @@ La velocidad real dependerá de:
 
 ---
 
-# Analizar la red en Linux
+### Analizar la red en Linux
 
-## Configuración de interfaces
+### Configuración de interfaces
 
 ```bash
 ip addr
@@ -1274,7 +1274,7 @@ Muestra:
 
 ---
 
-## Estadísticas de red
+### Estadísticas de red
 
 ```bash
 ip -s link
@@ -1289,7 +1289,7 @@ Permite consultar:
 
 ---
 
-## Conexiones activas
+### Conexiones activas
 
 ```bash
 ss -tuln
@@ -1303,7 +1303,7 @@ Muestra:
 
 ---
 
-## Tráfico en tiempo real
+### Tráfico en tiempo real
 
 ```bash
 iftop
@@ -1319,7 +1319,7 @@ Visualiza:
 
 ---
 
-## Monitor sencillo
+### Monitor sencillo
 
 ```bash
 nload
@@ -1333,7 +1333,7 @@ Muestra:
 
 ---
 
-## Comprobar conectividad
+### Comprobar conectividad
 
 ```bash
 ping 8.8.8.8
@@ -1346,7 +1346,7 @@ Permite conocer:
 
 ---
 
-## Analizar la ruta
+### Analizar la ruta
 
 ```bash
 traceroute google.com
@@ -1356,9 +1356,9 @@ Muestra los saltos que siguen los paquetes hasta el destino.
 
 ---
 
-# Analizar la red en Windows
+### Analizar la red en Windows
 
-## Administrador de tareas
+### Administrador de tareas
 
 Abrir:
 
@@ -1384,7 +1384,7 @@ Se muestra:
 
 ---
 
-## Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -1407,7 +1407,7 @@ Permite consultar:
 
 ---
 
-## PowerShell
+### PowerShell
 
 Consultar los adaptadores de red:
 
@@ -1442,7 +1442,7 @@ Salida:
 
 ---
 
-## Comprobar conectividad
+### Comprobar conectividad
 
 ```powershell
 Test-Connection google.com
@@ -1456,7 +1456,7 @@ ping google.com
 
 ---
 
-## Conexiones abiertas
+### Conexiones abiertas
 
 ```powershell
 Get-NetTCPConnection
@@ -1471,7 +1471,7 @@ Permite consultar:
 
 ---
 
-# Interpretación
+### Interpretación
 
 | Situación | Interpretación |
 |------------|----------------|
@@ -1483,7 +1483,7 @@ Permite consultar:
 
 ---
 
-# Herramientas adicionales
+### Herramientas adicionales
 
 Algunas herramientas muy utilizadas para analizar el rendimiento de red son:
 
@@ -1499,7 +1499,7 @@ Algunas herramientas muy utilizadas para analizar el rendimiento de red son:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -1512,9 +1512,9 @@ Algunas herramientas muy utilizadas para analizar el rendimiento de red son:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
-## Linux
+### Linux
 
 Consultar la configuración IP:
 
@@ -1542,7 +1542,7 @@ sudo iftop
 
 ---
 
-## Windows
+### Windows
 
 Consultar los adaptadores:
 
@@ -1570,7 +1570,7 @@ Get-NetTCPConnection
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa periódicamente el uso de la red en servidores y equipos críticos.
 - Comprueba la latencia y la pérdida de paquetes cuando existan problemas de conectividad.
@@ -1601,7 +1601,7 @@ Las herramientas pueden clasificarse según el recurso que monitorizan:
 
 ---
 
-# top
+### top
 
 `top` es una de las herramientas más conocidas para monitorizar el sistema en tiempo real.
 
@@ -1630,7 +1630,7 @@ Controles útiles:
 
 ---
 
-# htop
+### htop
 
 `htop` es una versión mejorada de `top`.
 
@@ -1659,7 +1659,7 @@ sudo apt install htop
 
 ---
 
-# free
+### free
 
 Consultar el estado de la memoria:
 
@@ -1679,7 +1679,7 @@ Es una de las herramientas más utilizadas para comprobar rápidamente el consum
 
 ---
 
-# vmstat
+### vmstat
 
 Consultar estadísticas generales:
 
@@ -1705,7 +1705,7 @@ Resulta especialmente útil para detectar cuellos de botella.
 
 ---
 
-# iostat
+### iostat
 
 Analizar el rendimiento del almacenamiento:
 
@@ -1724,7 +1724,7 @@ Permite consultar:
 
 ---
 
-# iotop
+### iotop
 
 Monitorizar la actividad de entrada y salida por proceso:
 
@@ -1742,7 +1742,7 @@ Muy útil cuando el disco permanece al 100 % de uso.
 
 ---
 
-# sar
+### sar
 
 `sar` (*System Activity Reporter*) permite analizar el rendimiento del sistema utilizando datos históricos.
 
@@ -1776,7 +1776,7 @@ A diferencia de otras herramientas, `sar` puede mostrar información recopilada 
 
 ---
 
-# pidstat
+### pidstat
 
 Analizar procesos individualmente:
 
@@ -1806,7 +1806,7 @@ Permite conocer el comportamiento de cada proceso con gran nivel de detalle.
 
 ---
 
-# dstat
+### dstat
 
 `dstat` combina información de varias herramientas en una única vista.
 
@@ -1840,7 +1840,7 @@ Donde:
 
 ---
 
-# uptime
+### uptime
 
 Consultar:
 
@@ -1863,7 +1863,7 @@ Muestra:
 
 ---
 
-# Herramientas de red
+### Herramientas de red
 
 Algunas herramientas habituales para monitorizar la red son:
 
@@ -1887,7 +1887,7 @@ nload
 
 ---
 
-# Monitorización remota
+### Monitorización remota
 
 En servidores es habitual utilizar plataformas de monitorización centralizada.
 
@@ -1908,7 +1908,7 @@ Estas herramientas permiten:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Función principal |
 |-------------|------------------|
@@ -1925,7 +1925,7 @@ Estas herramientas permiten:
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Diagnóstico de un servidor lento:
 
@@ -1963,7 +1963,7 @@ Este procedimiento permite localizar rápidamente el recurso que está actuando 
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa periódicamente los recursos críticos del sistema.
 - Utiliza herramientas distintas según el recurso que quieras analizar.
@@ -1993,7 +1993,7 @@ Dependiendo de la información que se necesite, puede utilizarse una herramienta
 
 ---
 
-# Administrador de tareas
+### Administrador de tareas
 
 El **Administrador de tareas** es la herramienta de monitorización más utilizada.
 
@@ -2015,7 +2015,7 @@ Administrador de tareas
 
 ---
 
-## Pestaña Procesos
+### Pestaña Procesos
 
 Permite visualizar:
 
@@ -2031,7 +2031,7 @@ Puede ordenarse cada columna para localizar rápidamente los procesos que más r
 
 ---
 
-## Pestaña Rendimiento
+### Pestaña Rendimiento
 
 Muestra información en tiempo real sobre:
 
@@ -2052,7 +2052,7 @@ También incluye datos como:
 
 ---
 
-## Pestaña Usuarios
+### Pestaña Usuarios
 
 Permite conocer:
 
@@ -2064,7 +2064,7 @@ Resulta especialmente útil en servidores con Escritorio Remoto (RDS).
 
 ---
 
-# Monitor de recursos
+### Monitor de recursos
 
 Abrir:
 
@@ -2089,7 +2089,7 @@ Cada pestaña muestra los procesos responsables del consumo de recursos.
 
 ---
 
-## CPU
+### CPU
 
 Permite visualizar:
 
@@ -2100,7 +2100,7 @@ Permite visualizar:
 
 ---
 
-## Memoria
+### Memoria
 
 Muestra:
 
@@ -2111,7 +2111,7 @@ Muestra:
 
 ---
 
-## Disco
+### Disco
 
 Permite consultar:
 
@@ -2123,7 +2123,7 @@ Permite consultar:
 
 ---
 
-## Red
+### Red
 
 Incluye información sobre:
 
@@ -2134,7 +2134,7 @@ Incluye información sobre:
 
 ---
 
-# Monitor de rendimiento (PerfMon)
+### Monitor de rendimiento (PerfMon)
 
 Abrir:
 
@@ -2156,7 +2156,7 @@ Es ampliamente utilizada en servidores.
 
 ---
 
-## Contadores habituales
+### Contadores habituales
 
 Algunos de los contadores más utilizados son:
 
@@ -2202,7 +2202,7 @@ Bytes Total/sec
 
 ---
 
-# Monitor de confiabilidad
+### Monitor de confiabilidad
 
 Abrir:
 
@@ -2228,7 +2228,7 @@ Es especialmente útil para investigar problemas recurrentes.
 
 ---
 
-# Administrador de dispositivos
+### Administrador de dispositivos
 
 Aunque no es una herramienta de monitorización en tiempo real, permite detectar problemas relacionados con el hardware.
 
@@ -2246,13 +2246,13 @@ Permite identificar:
 
 ---
 
-# PowerShell
+### PowerShell
 
 PowerShell permite obtener información de rendimiento mediante diferentes cmdlets.
 
 ---
 
-## Procesos
+### Procesos
 
 Mostrar procesos ordenados por CPU:
 
@@ -2270,7 +2270,7 @@ Sort-Object WorkingSet -Descending
 
 ---
 
-## Rendimiento mediante Get-Counter
+### Rendimiento mediante Get-Counter
 
 Consultar el uso de CPU:
 
@@ -2300,7 +2300,7 @@ Get-Counter '\Network Interface(*)\Bytes Total/sec'
 
 ---
 
-## Información general
+### Información general
 
 ```powershell
 Get-ComputerInfo
@@ -2316,7 +2316,7 @@ Permite consultar:
 
 ---
 
-# Visor de eventos
+### Visor de eventos
 
 Abrir:
 
@@ -2335,7 +2335,7 @@ Aunque no mide directamente el rendimiento, resulta muy útil para identificar e
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Herramienta | Función principal |
 |-------------|------------------|
@@ -2348,7 +2348,7 @@ Aunque no mide directamente el rendimiento, resulta muy útil para identificar e
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Diagnóstico de un equipo lento:
 
@@ -2389,7 +2389,7 @@ Este procedimiento permite localizar rápidamente la causa de la mayoría de los
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Utiliza el Administrador de tareas para un diagnóstico rápido.
 - Emplea el Monitor de recursos cuando necesites más detalle.
@@ -2420,7 +2420,7 @@ La optimización puede realizarse sobre:
 
 ---
 
-# Identificar el cuello de botella
+### Identificar el cuello de botella
 
 El primer paso siempre debe ser analizar el sistema.
 
@@ -2442,7 +2442,7 @@ Una optimización eficaz comienza identificando correctamente el recurso que lim
 
 ---
 
-# Optimización de la CPU
+### Optimización de la CPU
 
 Cuando el procesador mantiene un uso elevado durante largos periodos, pueden aplicarse medidas como:
 
@@ -2456,7 +2456,7 @@ También conviene comprobar si el uso elevado es puntual o constante.
 
 ---
 
-# Optimización de la memoria RAM
+### Optimización de la memoria RAM
 
 Si la memoria disponible es insuficiente:
 
@@ -2469,7 +2469,7 @@ Una utilización alta de RAM no siempre implica un problema; lo importante es co
 
 ---
 
-# Optimización del almacenamiento
+### Optimización del almacenamiento
 
 El almacenamiento suele ser uno de los principales cuellos de botella.
 
@@ -2484,7 +2484,7 @@ Algunas medidas habituales son:
 
 ---
 
-# Optimización de la red
+### Optimización de la red
 
 Cuando existen problemas de conectividad o saturación:
 
@@ -2497,7 +2497,7 @@ Cuando existen problemas de conectividad o saturación:
 
 ---
 
-# Optimización de procesos
+### Optimización de procesos
 
 Los procesos innecesarios consumen recursos del sistema.
 
@@ -2512,7 +2512,7 @@ No deben finalizarse procesos del sistema sin conocer previamente su función.
 
 ---
 
-# Optimización de servicios
+### Optimización de servicios
 
 Muchos servicios permanecen activos aunque no sean necesarios.
 
@@ -2527,7 +2527,7 @@ Siempre debe comprobarse el impacto antes de deshabilitar un servicio.
 
 ---
 
-# Optimización en Linux
+### Optimización en Linux
 
 Algunas acciones habituales son:
 
@@ -2559,7 +2559,7 @@ ps aux --sort=-%mem
 
 ---
 
-# Optimización en Windows
+### Optimización en Windows
 
 Herramientas útiles:
 
@@ -2602,7 +2602,7 @@ Sort-Object CPU -Descending
 
 ---
 
-# Actualizaciones
+### Actualizaciones
 
 Mantener el sistema actualizado mejora tanto la seguridad como el rendimiento.
 
@@ -2618,7 +2618,7 @@ Muchas actualizaciones incluyen mejoras de rendimiento y corrección de errores.
 
 ---
 
-# Automatización
+### Automatización
 
 En servidores resulta habitual automatizar determinadas tareas:
 
@@ -2632,7 +2632,7 @@ Esto reduce la carga administrativa y ayuda a mantener un rendimiento estable.
 
 ---
 
-# Cuándo ampliar hardware
+### Cuándo ampliar hardware
 
 En ocasiones la optimización del software no es suficiente.
 
@@ -2647,7 +2647,7 @@ La ampliación de hardware debe realizarse después de analizar el sistema y con
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Recurso | Posibles optimizaciones |
 |----------|-------------------------|
@@ -2659,7 +2659,7 @@ La ampliación de hardware debe realizarse después de analizar el sistema y con
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos un servidor con los siguientes datos:
 
@@ -2685,7 +2685,7 @@ No tendría sentido ampliar la memoria RAM o sustituir el procesador, ya que no 
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Analiza el sistema antes de aplicar cambios.
 - Optimiza únicamente el recurso que actúe como cuello de botella.
@@ -2713,7 +2713,7 @@ Aplicar buenas prácticas permite:
 
 ---
 
-# Monitorizar de forma periódica
+### Monitorizar de forma periódica
 
 No esperes a que aparezca un problema para revisar el rendimiento.
 
@@ -2730,7 +2730,7 @@ En servidores es recomendable utilizar herramientas de monitorización continua.
 
 ---
 
-# Identificar el cuello de botella
+### Identificar el cuello de botella
 
 Antes de aplicar cualquier optimización, determina qué recurso está limitando realmente el rendimiento.
 
@@ -2745,7 +2745,7 @@ Analiza siempre:
 
 ---
 
-# Mantener espacio libre en disco
+### Mantener espacio libre en disco
 
 Un disco casi lleno puede provocar:
 
@@ -2758,7 +2758,7 @@ Como recomendación general, intenta mantener al menos un **15–20 %** de espac
 
 ---
 
-# Revisar procesos y servicios
+### Revisar procesos y servicios
 
 Comprueba periódicamente:
 
@@ -2771,7 +2771,7 @@ Finaliza únicamente aquellos procesos cuya función conozcas.
 
 ---
 
-# Mantener el sistema actualizado
+### Mantener el sistema actualizado
 
 Instala las actualizaciones del:
 
@@ -2784,7 +2784,7 @@ Muchas actualizaciones incluyen mejoras de rendimiento además de correcciones d
 
 ---
 
-# Automatizar tareas de mantenimiento
+### Automatizar tareas de mantenimiento
 
 Siempre que sea posible, automatiza tareas como:
 
@@ -2799,7 +2799,7 @@ Esto reduce el trabajo manual y ayuda a mantener un rendimiento constante.
 
 ---
 
-# Utilizar herramientas adecuadas
+### Utilizar herramientas adecuadas
 
 Cada herramienta está orientada a un tipo de análisis.
 
@@ -2826,7 +2826,7 @@ Utiliza la herramienta más adecuada para el recurso que deseas analizar.
 
 ---
 
-# Configurar alertas
+### Configurar alertas
 
 En servidores resulta recomendable configurar alertas para situaciones como:
 
@@ -2841,7 +2841,7 @@ Las alertas permiten actuar antes de que el problema afecte a los usuarios.
 
 ---
 
-# Documentar incidencias
+### Documentar incidencias
 
 Cuando se produzca un problema de rendimiento, registra información como:
 
@@ -2856,7 +2856,7 @@ Esta información resulta muy útil para resolver incidencias similares en el fu
 
 ---
 
-# Planificar el crecimiento
+### Planificar el crecimiento
 
 El aumento del número de usuarios o servicios puede hacer que los recursos actuales resulten insuficientes.
 
@@ -2871,7 +2871,7 @@ Esto permite anticipar ampliaciones de hardware antes de que aparezcan problemas
 
 ---
 
-# Realizar mantenimiento preventivo
+### Realizar mantenimiento preventivo
 
 Algunas tareas recomendables son:
 
@@ -2886,7 +2886,7 @@ El mantenimiento preventivo ayuda a reducir averías y mejorar la disponibilidad
 
 ---
 
-# Resumen de recomendaciones
+### Resumen de recomendaciones
 
 | Recomendación | Beneficio |
 |---------------|-----------|

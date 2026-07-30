@@ -1,5 +1,15 @@
 # 07 - Auditoría y seguridad
 
+## Introducción
+
+La auditoría y la seguridad son elementos fundamentales en la administración de sistemas modernos. No basta con configurar correctamente un servidor o mantenerlo actualizado; también es necesario registrar la actividad del sistema, controlar quién accede a los recursos, supervisar continuamente posibles amenazas y disponer de procedimientos para responder ante incidentes de seguridad.
+
+En este apartado se estudian los principales mecanismos de auditoría, los registros de seguridad, el control de acceso, la autenticación, las políticas de seguridad, el hardening de sistemas y la monitorización de eventos, así como las buenas prácticas para proteger infraestructuras tanto Linux como Windows.
+
+El conocimiento de estos conceptos permite mejorar la seguridad, facilitar las tareas de administración y responder de forma eficaz ante posibles incidentes.
+
+---
+
 ## Índice
 
 - [Auditoría de sistemas](#auditoría-de-sistemas)
@@ -24,7 +34,7 @@ Es una práctica fundamental para la administración de sistemas, la seguridad i
 
 ---
 
-# ¿Qué es una auditoría?
+### ¿Qué es una auditoría?
 
 Una auditoría es el proceso de registrar y analizar los eventos que ocurren en un sistema.
 
@@ -42,7 +52,7 @@ Toda esta información queda registrada para su posterior análisis.
 
 ---
 
-# Objetivos de la auditoría
+### Objetivos de la auditoría
 
 La auditoría permite:
 
@@ -57,7 +67,7 @@ No está orientada únicamente a detectar ataques, sino también a comprender el
 
 ---
 
-# ¿Qué información registra?
+### ¿Qué información registra?
 
 Dependiendo de la configuración, un sistema puede registrar información como:
 
@@ -82,7 +92,7 @@ Resultado: Correcto
 
 ---
 
-# Tipos de auditoría
+### Tipos de auditoría
 
 Las auditorías pueden centrarse en distintos aspectos.
 
@@ -100,7 +110,7 @@ Cada una proporciona información sobre un área concreta del sistema.
 
 ---
 
-# Auditoría de accesos
+### Auditoría de accesos
 
 Registra quién accede al sistema.
 
@@ -116,7 +126,7 @@ Es una de las auditorías más utilizadas.
 
 ---
 
-# Auditoría de archivos
+### Auditoría de archivos
 
 Permite registrar operaciones realizadas sobre archivos y carpetas.
 
@@ -132,7 +142,7 @@ Es especialmente útil cuando se trabaja con información sensible.
 
 ---
 
-# Auditoría de cambios
+### Auditoría de cambios
 
 Registra modificaciones importantes en el sistema.
 
@@ -148,7 +158,7 @@ Facilita identificar quién realizó cada cambio.
 
 ---
 
-# Auditoría en Linux
+### Auditoría en Linux
 
 Linux registra gran parte de la actividad mediante:
 
@@ -160,7 +170,7 @@ Cuando se requiere una auditoría detallada, suele utilizarse **Auditd**, que pe
 
 ---
 
-# Auditoría en Windows
+### Auditoría en Windows
 
 Windows incorpora un sistema de auditoría integrado.
 
@@ -177,7 +187,7 @@ La información se almacena en el **Visor de eventos**, especialmente en el regi
 
 ---
 
-# Importancia de los registros
+### Importancia de los registros
 
 Una auditoría solo resulta útil si los registros son:
 
@@ -190,7 +200,7 @@ Eliminar o alterar los registros dificulta el análisis de cualquier incidencia.
 
 ---
 
-# Limitaciones
+### Limitaciones
 
 La auditoría también presenta algunos inconvenientes.
 
@@ -205,7 +215,7 @@ Por ello conviene registrar únicamente la información realmente necesaria.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un administrador detecta que un archivo importante ha sido eliminado.
 
@@ -235,7 +245,7 @@ Esta información permite reconstruir lo ocurrido y determinar el origen del inc
 
 ---
 
-# Beneficios
+### Beneficios
 
 Una auditoría correctamente configurada permite:
 
@@ -249,7 +259,7 @@ Es una herramienta imprescindible en cualquier entorno profesional.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -260,7 +270,7 @@ Es una herramienta imprescindible en cualquier entorno profesional.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Audita únicamente los eventos que aporten información útil.
 - Conserva los registros durante el tiempo establecido por la organización o la normativa aplicable.
@@ -284,7 +294,7 @@ Su correcta configuración y revisión constituye uno de los pilares de la admin
 
 ---
 
-# ¿Qué es un registro de seguridad?
+### ¿Qué es un registro de seguridad?
 
 Un registro de seguridad contiene información sobre eventos que afectan a la protección del sistema.
 
@@ -301,7 +311,7 @@ Cada evento queda almacenado junto con información adicional para facilitar su 
 
 ---
 
-# Información registrada
+### Información registrada
 
 Un evento suele incluir:
 
@@ -327,7 +337,7 @@ Resultado: Correcto
 
 ---
 
-# Tipos de eventos
+### Tipos de eventos
 
 Los registros de seguridad pueden contener información sobre:
 
@@ -344,7 +354,7 @@ Cada sistema operativo organiza estos eventos de forma distinta.
 
 ---
 
-# Registros en Linux
+### Registros en Linux
 
 Linux dispone de varios registros relacionados con la seguridad.
 
@@ -362,7 +372,7 @@ La ubicación puede variar según la distribución utilizada.
 
 ---
 
-# journalctl
+### journalctl
 
 En sistemas con **systemd**, gran parte de la información puede consultarse mediante:
 
@@ -390,7 +400,7 @@ journalctl -f
 
 ---
 
-# Registros en Windows
+### Registros en Windows
 
 Windows almacena los eventos mediante el **Visor de eventos**.
 
@@ -406,7 +416,7 @@ El registro más importante para auditoría suele ser el de **Seguridad**.
 
 ---
 
-# Visor de eventos
+### Visor de eventos
 
 Puede abrirse mediante:
 
@@ -428,7 +438,7 @@ Permite filtrar, buscar y exportar eventos para su análisis.
 
 ---
 
-# Identificadores de evento (Event ID)
+### Identificadores de evento (Event ID)
 
 Cada evento de Windows dispone de un identificador numérico.
 
@@ -447,7 +457,7 @@ Estos identificadores facilitan la búsqueda de eventos concretos.
 
 ---
 
-# ¿Qué revisar?
+### ¿Qué revisar?
 
 Durante una revisión de seguridad conviene prestar atención a:
 
@@ -463,7 +473,7 @@ La combinación de varios eventos puede indicar un incidente de seguridad.
 
 ---
 
-# Conservación de registros
+### Conservación de registros
 
 Los registros no deben conservarse indefinidamente.
 
@@ -479,7 +489,7 @@ Esto evita la pérdida de información importante y facilita su gestión.
 
 ---
 
-# Protección de los registros
+### Protección de los registros
 
 Los registros deben protegerse frente a modificaciones o eliminaciones no autorizadas.
 
@@ -494,7 +504,7 @@ Si un atacante modifica los registros, la investigación posterior será mucho m
 
 ---
 
-# Correlación de eventos
+### Correlación de eventos
 
 En muchas ocasiones un único evento no proporciona suficiente información.
 
@@ -526,7 +536,7 @@ Analizar la secuencia completa facilita comprender lo sucedido.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Se detectan numerosos intentos fallidos de inicio de sesión.
 
@@ -542,7 +552,7 @@ Gracias a los registros puede determinarse si se trata de un error del usuario o
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -553,7 +563,7 @@ Gracias a los registros puede determinarse si se trata de un error del usuario o
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Revisa periódicamente los registros de seguridad.
 - Configura la rotación y conservación de los registros para evitar su pérdida.
@@ -577,7 +587,7 @@ Es uno de los principios fundamentales de la seguridad informática y está pres
 
 ---
 
-# ¿Qué es el control de acceso?
+### ¿Qué es el control de acceso?
 
 El control de acceso consiste en verificar si un usuario o proceso tiene permiso para realizar una determinada acción.
 
@@ -594,7 +604,7 @@ No basta con conocer la identidad del usuario; también es necesario comprobar s
 
 ---
 
-# Objetivos
+### Objetivos
 
 El control de acceso permite:
 
@@ -608,7 +618,7 @@ Su finalidad es garantizar la **confidencialidad**, la **integridad** y la **dis
 
 ---
 
-# Elementos del control de acceso
+### Elementos del control de acceso
 
 Todo sistema de control de acceso se basa en tres elementos:
 
@@ -632,7 +642,7 @@ Lectura
 
 ---
 
-# Tipos de permisos
+### Tipos de permisos
 
 Los permisos más habituales son:
 
@@ -647,7 +657,7 @@ Cada recurso puede tener una combinación distinta de permisos.
 
 ---
 
-# Principio de mínimo privilegio
+### Principio de mínimo privilegio
 
 Una de las reglas más importantes consiste en conceder únicamente los permisos necesarios.
 
@@ -675,7 +685,7 @@ Reducir los privilegios limita el impacto de errores y posibles ataques.
 
 ---
 
-# Control de acceso en Linux
+### Control de acceso en Linux
 
 Linux utiliza un sistema basado principalmente en:
 
@@ -699,7 +709,7 @@ Este modelo resulta sencillo y eficiente para la mayoría de situaciones.
 
 ---
 
-# ACL (Access Control Lists)
+### ACL (Access Control Lists)
 
 Cuando los permisos tradicionales no son suficientes, Linux permite utilizar **Listas de Control de Acceso (ACL)**.
 
@@ -709,7 +719,7 @@ Resultan especialmente útiles en entornos con múltiples usuarios.
 
 ---
 
-# Control de acceso en Windows
+### Control de acceso en Windows
 
 Windows utiliza **ACL (Access Control Lists)** como mecanismo principal de autorización.
 
@@ -729,7 +739,7 @@ Entre los permisos más habituales se encuentran:
 
 ---
 
-# Herencia de permisos
+### Herencia de permisos
 
 Muchos sistemas permiten heredar permisos desde un recurso superior.
 
@@ -753,7 +763,7 @@ Esto simplifica la administración de grandes estructuras de directorios.
 
 ---
 
-# Permisos explícitos e heredados
+### Permisos explícitos e heredados
 
 Los permisos pueden ser:
 
@@ -764,7 +774,7 @@ Es importante diferenciarlos para comprender el origen de cada permiso y evitar 
 
 ---
 
-# Acceso denegado
+### Acceso denegado
 
 Un acceso puede rechazarse por diversos motivos:
 
@@ -778,7 +788,7 @@ El sistema operativo registrará normalmente este tipo de eventos en los registr
 
 ---
 
-# Gestión mediante grupos
+### Gestión mediante grupos
 
 En lugar de asignar permisos individualmente a cada usuario, es recomendable utilizar grupos.
 
@@ -802,7 +812,7 @@ Esto facilita enormemente la administración.
 
 ---
 
-# Riesgos de una mala configuración
+### Riesgos de una mala configuración
 
 Una configuración incorrecta puede provocar:
 
@@ -816,7 +826,7 @@ Por ello es importante revisar periódicamente la configuración de acceso.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Una carpeta contiene documentación confidencial.
 
@@ -850,7 +860,7 @@ De este modo solo el personal autorizado podrá consultar la información.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Linux | Windows |
 |--------|----------|
@@ -862,7 +872,7 @@ De este modo solo el personal autorizado podrá consultar la información.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Aplica siempre el principio de mínimo privilegio.
 - Asigna permisos preferentemente mediante grupos en lugar de usuarios individuales.
@@ -893,7 +903,7 @@ Comprender esta diferencia es fundamental para administrar correctamente usuario
 
 ---
 
-# ¿Qué es la autenticación?
+### ¿Qué es la autenticación?
 
 La autenticación es el proceso mediante el cual el sistema verifica la identidad de un usuario, dispositivo o aplicación.
 
@@ -903,7 +913,7 @@ Solo después de autenticarse correctamente podrá acceder al sistema.
 
 ---
 
-# Métodos de autenticación
+### Métodos de autenticación
 
 Existen diferentes formas de autenticar a un usuario.
 
@@ -921,11 +931,11 @@ Cada organización selecciona el método más adecuado según sus necesidades.
 
 ---
 
-# Factores de autenticación
+### Factores de autenticación
 
 Los métodos de autenticación suelen clasificarse en tres factores principales.
 
-## Algo que sabes
+### Algo que sabes
 
 Información conocida únicamente por el usuario.
 
@@ -937,7 +947,7 @@ Ejemplos:
 
 ---
 
-## Algo que tienes
+### Algo que tienes
 
 Elemento físico que posee el usuario.
 
@@ -950,7 +960,7 @@ Ejemplos:
 
 ---
 
-## Algo que eres
+### Algo que eres
 
 Características biométricas del usuario.
 
@@ -963,7 +973,7 @@ Ejemplos:
 
 ---
 
-# Autenticación multifactor (MFA)
+### Autenticación multifactor (MFA)
 
 La autenticación multifactor combina dos o más factores distintos.
 
@@ -989,7 +999,7 @@ El uso de MFA aumenta significativamente la seguridad frente al robo de credenci
 
 ---
 
-# ¿Qué es la autorización?
+### ¿Qué es la autorización?
 
 Una vez autenticado el usuario, el sistema debe determinar qué acciones puede realizar.
 
@@ -1007,7 +1017,7 @@ Dos usuarios autenticados correctamente pueden disponer de permisos completament
 
 ---
 
-# Relación entre autenticación y autorización
+### Relación entre autenticación y autorización
 
 El proceso habitual es:
 
@@ -1035,7 +1045,7 @@ La autorización nunca debería producirse sin una autenticación previa.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Supongamos dos usuarios.
 
@@ -1059,7 +1069,7 @@ Ambos se autentican correctamente, pero reciben permisos distintos según su rol
 
 ---
 
-# Autenticación en Linux
+### Autenticación en Linux
 
 Linux admite distintos mecanismos de autenticación.
 
@@ -1075,7 +1085,7 @@ En servidores suele recomendarse el uso de claves SSH en lugar de contraseñas p
 
 ---
 
-# PAM (Pluggable Authentication Modules)
+### PAM (Pluggable Authentication Modules)
 
 PAM permite centralizar y modular los mecanismos de autenticación.
 
@@ -1091,7 +1101,7 @@ Muchos servicios del sistema utilizan PAM para validar usuarios.
 
 ---
 
-# Autenticación en Windows
+### Autenticación en Windows
 
 Windows utiliza distintos mecanismos según el entorno.
 
@@ -1108,7 +1118,7 @@ En entornos empresariales, Active Directory suele centralizar la autenticación 
 
 ---
 
-# Autorización mediante permisos
+### Autorización mediante permisos
 
 Una vez autenticado, el sistema consulta los permisos asignados.
 
@@ -1123,7 +1133,7 @@ El resultado determinará las acciones permitidas sobre cada recurso.
 
 ---
 
-# Roles
+### Roles
 
 En muchas organizaciones se asignan permisos mediante **roles**.
 
@@ -1157,7 +1167,7 @@ Este enfoque simplifica la administración y reduce errores.
 
 ---
 
-# Errores habituales
+### Errores habituales
 
 Algunos problemas frecuentes son:
 
@@ -1171,7 +1181,7 @@ Algunos problemas frecuentes son:
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Autenticación | Autorización |
 |---------------|--------------|
@@ -1183,7 +1193,7 @@ Algunos problemas frecuentes son:
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Utiliza contraseñas robustas y únicas.
 - Habilita la autenticación multifactor siempre que sea posible.
@@ -1208,7 +1218,7 @@ Una política bien definida ayuda tanto a prevenir incidentes como a responder a
 
 ---
 
-# ¿Qué es una política de seguridad?
+##### ¿Qué es una política de seguridad?
 
 Una política de seguridad es un documento que define:
 
@@ -1222,7 +1232,7 @@ Debe ser conocida por todos los usuarios de la organización.
 
 ---
 
-# Objetivos
+### Objetivos
 
 Las políticas de seguridad permiten:
 
@@ -1237,7 +1247,7 @@ No sustituyen a las medidas técnicas, sino que las complementan.
 
 ---
 
-# Alcance
+### Alcance
 
 Una política puede aplicarse a:
 
@@ -1253,7 +1263,7 @@ Es importante definir claramente qué sistemas quedan incluidos.
 
 ---
 
-# Políticas habituales
+### Políticas habituales
 
 Entre las más comunes se encuentran:
 
@@ -1269,7 +1279,7 @@ Cada organización puede definir políticas adicionales según sus necesidades.
 
 ---
 
-# Política de contraseñas
+### Política de contraseñas
 
 Debe establecer aspectos como:
 
@@ -1293,7 +1303,7 @@ Una política adecuada reduce el riesgo de ataques por fuerza bruta o credencial
 
 ---
 
-# Política de cuentas
+### Política de cuentas
 
 Debe definir:
 
@@ -1307,7 +1317,7 @@ El objetivo es mantener un control adecuado sobre las identidades que acceden al
 
 ---
 
-# Política de actualizaciones
+### Política de actualizaciones
 
 Debe indicar:
 
@@ -1320,7 +1330,7 @@ Mantener el software actualizado reduce la exposición a vulnerabilidades conoci
 
 ---
 
-# Política de copias de seguridad
+### Política de copias de seguridad
 
 Debe responder a cuestiones como:
 
@@ -1334,7 +1344,7 @@ Una copia de seguridad que nunca se ha probado puede no ser útil cuando realmen
 
 ---
 
-# Política de acceso remoto
+### Política de acceso remoto
 
 Cuando los usuarios acceden desde fuera de la organización, conviene definir:
 
@@ -1348,7 +1358,7 @@ El acceso remoto suele ser uno de los puntos más sensibles desde el punto de vi
 
 ---
 
-# Política de uso aceptable
+### Política de uso aceptable
 
 Establece qué usos están permitidos y cuáles no.
 
@@ -1368,7 +1378,7 @@ No permitido:
 
 ---
 
-# Política de respuesta ante incidentes
+### Política de respuesta ante incidentes
 
 Debe definir:
 
@@ -1382,7 +1392,7 @@ Disponer de un procedimiento claro reduce el tiempo de actuación.
 
 ---
 
-# Revisión de las políticas
+### Revisión de las políticas
 
 Las políticas no deben permanecer invariables.
 
@@ -1397,7 +1407,7 @@ Las necesidades de una organización evolucionan con el tiempo.
 
 ---
 
-# Cumplimiento
+### Cumplimiento
 
 Una política solo resulta útil si realmente se aplica.
 
@@ -1412,7 +1422,7 @@ Las políticas deben ser conocidas y comprendidas por todo el personal.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Una organización establece la siguiente política de contraseñas:
 
@@ -1436,7 +1446,7 @@ Estas medidas reducen significativamente el riesgo de accesos no autorizados med
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Política | Finalidad |
 |-----------|-----------|
@@ -1450,7 +1460,7 @@ Estas medidas reducen significativamente el riesgo de accesos no autorizados med
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Define políticas claras, sencillas y fáciles de aplicar.
 - Adapta las políticas al tamaño y necesidades de la organización.
@@ -1474,7 +1484,7 @@ El hardening no elimina todos los riesgos, pero dificulta considerablemente un a
 
 ---
 
-# ¿Qué es el hardening?
+### ¿Qué es el hardening?
 
 El hardening consiste en reforzar la seguridad de un sistema mediante cambios de configuración y buenas prácticas.
 
@@ -1491,7 +1501,7 @@ Su finalidad es reducir al máximo la superficie de ataque.
 
 ---
 
-# Objetivos
+### Objetivos
 
 El hardening permite:
 
@@ -1505,7 +1515,7 @@ Debe realizarse antes de poner un sistema en producción.
 
 ---
 
-# Reducir la superficie de ataque
+### Reducir la superficie de ataque
 
 Cada componente instalado representa una posible vía de ataque.
 
@@ -1520,7 +1530,7 @@ Cuantos menos componentes existan, menor será el riesgo.
 
 ---
 
-# Actualizaciones
+### Actualizaciones
 
 Mantener el sistema actualizado es una de las medidas de hardening más importantes.
 
@@ -1536,7 +1546,7 @@ Las actualizaciones corrigen errores y vulnerabilidades conocidas.
 
 ---
 
-# Configuración segura
+### Configuración segura
 
 Es recomendable revisar la configuración predeterminada del sistema.
 
@@ -1552,7 +1562,7 @@ La configuración inicial rara vez es la más segura.
 
 ---
 
-# Gestión de servicios
+### Gestión de servicios
 
 Solo deberían permanecer activos los servicios imprescindibles.
 
@@ -1567,7 +1577,7 @@ Reducir el número de servicios disminuye la superficie de ataque.
 
 ---
 
-# Gestión de usuarios
+### Gestión de usuarios
 
 Un sistema endurecido debe mantener un control estricto sobre las cuentas.
 
@@ -1582,7 +1592,7 @@ Las cuentas privilegiadas deben revisarse periódicamente.
 
 ---
 
-# Configuración de permisos
+### Configuración de permisos
 
 Los permisos deben limitarse a lo estrictamente necesario.
 
@@ -1597,7 +1607,7 @@ Una mala configuración de permisos puede facilitar una escalada de privilegios.
 
 ---
 
-# Protección de la red
+### Protección de la red
 
 El hardening también incluye medidas relacionadas con la conectividad.
 
@@ -1613,7 +1623,7 @@ No todos los servicios deben ser accesibles desde cualquier red.
 
 ---
 
-# Auditoría y registros
+### Auditoría y registros
 
 Un sistema endurecido debe registrar los eventos importantes.
 
@@ -1629,7 +1639,7 @@ Estos registros facilitan la detección e investigación de incidentes.
 
 ---
 
-# Herramientas de hardening
+### Herramientas de hardening
 
 Existen herramientas que ayudan a comprobar el nivel de seguridad de un sistema.
 
@@ -1650,7 +1660,7 @@ Estas herramientas ayudan a detectar configuraciones inseguras y proponen mejora
 
 ---
 
-# Listas de comprobación (Checklists)
+### Listas de comprobación (Checklists)
 
 Muchas organizaciones utilizan listas de comprobación para verificar que un sistema cumple unos requisitos mínimos de seguridad.
 
@@ -1667,7 +1677,7 @@ Las checklists ayudan a mantener una configuración homogénea.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Antes de poner en producción un servidor se realizan las siguientes acciones:
 
@@ -1703,7 +1713,7 @@ Este procedimiento reduce significativamente el riesgo de exposición.
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Sistema sin hardening | Sistema con hardening |
 |------------------------|-----------------------|
@@ -1716,7 +1726,7 @@ Este procedimiento reduce significativamente el riesgo de exposición.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Aplica el hardening antes de poner un sistema en producción.
 - Elimina software y servicios que no sean necesarios.
@@ -1742,7 +1752,7 @@ Mientras que la auditoría registra lo ocurrido, la monitorización permite dete
 
 ---
 
-# ¿Qué es la monitorización de seguridad?
+### ¿Qué es la monitorización de seguridad?
 
 La monitorización de seguridad recopila y analiza eventos generados por:
 
@@ -1758,7 +1768,7 @@ Toda esta información ayuda a identificar actividades sospechosas.
 
 ---
 
-# Objetivos
+### Objetivos
 
 La monitorización permite:
 
@@ -1773,7 +1783,7 @@ Cuanto antes se detecte un problema, menor será su impacto.
 
 ---
 
-# ¿Qué debe supervisarse?
+### ¿Qué debe supervisarse?
 
 Los elementos más importantes son:
 
@@ -1791,7 +1801,7 @@ No todos los eventos tienen la misma importancia, por lo que conviene priorizar 
 
 ---
 
-# Indicadores de compromiso (IoC)
+### Indicadores de compromiso (IoC)
 
 Durante la monitorización pueden detectarse **Indicadores de Compromiso (IoC)**.
 
@@ -1808,7 +1818,7 @@ Un único IoC no siempre confirma un ataque, pero varios relacionados pueden ind
 
 ---
 
-# Alertas
+### Alertas
 
 Las herramientas de monitorización pueden generar alertas cuando detectan determinados eventos.
 
@@ -1842,7 +1852,7 @@ Las alertas permiten actuar con rapidez sin necesidad de revisar continuamente l
 
 ---
 
-# Monitorización de usuarios
+### Monitorización de usuarios
 
 Es recomendable supervisar especialmente:
 
@@ -1855,7 +1865,7 @@ Estas cuentas representan un mayor riesgo si son comprometidas.
 
 ---
 
-# Monitorización de integridad
+### Monitorización de integridad
 
 Además de la actividad del sistema, también puede supervisarse la integridad de archivos importantes.
 
@@ -1870,7 +1880,7 @@ Si alguno cambia inesperadamente, el sistema puede generar una alerta.
 
 ---
 
-# Herramientas habituales
+### Herramientas habituales
 
 Algunas herramientas utilizadas para monitorizar la seguridad son:
 
@@ -1899,7 +1909,7 @@ Estas soluciones permiten centralizar la información de múltiples equipos.
 
 ---
 
-# SIEM
+### SIEM
 
 Un **SIEM** (*Security Information and Event Management*) recopila eventos procedentes de distintos sistemas y los analiza de forma centralizada.
 
@@ -1914,7 +1924,7 @@ En organizaciones grandes suele ser una pieza fundamental de la monitorización 
 
 ---
 
-# Correlación de eventos
+### Correlación de eventos
 
 Una única actividad puede no resultar sospechosa.
 
@@ -1946,7 +1956,7 @@ La correlación permite detectar patrones que pasarían desapercibidos si se ana
 
 ---
 
-# Monitorización continua
+### Monitorización continua
 
 La monitorización debe realizarse de forma permanente.
 
@@ -1962,7 +1972,7 @@ No debe limitarse únicamente a revisar los registros cuando ocurre un problema.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Un servidor recibe cientos de intentos fallidos de inicio de sesión en pocos minutos.
 
@@ -1988,7 +1998,7 @@ Gracias a esta detección temprana es posible bloquear la dirección IP o invest
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Auditoría | Monitorización |
 |------------|----------------|
@@ -2001,7 +2011,7 @@ Ambos procesos son complementarios y necesarios.
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Supervisa de forma continua los sistemas críticos.
 - Configura alertas para eventos relevantes relacionados con la seguridad.
@@ -2026,7 +2036,7 @@ Disponer de un plan de respuesta permite actuar de forma rápida, coordinada y e
 
 ---
 
-# ¿Qué es un incidente?
+### ¿Qué es un incidente?
 
 Un incidente de seguridad puede ser:
 
@@ -2042,7 +2052,7 @@ No todos los incidentes tienen la misma gravedad, pero todos deben tratarse sigu
 
 ---
 
-# Objetivos
+### Objetivos
 
 La respuesta ante incidentes persigue varios objetivos:
 
@@ -2056,7 +2066,7 @@ Una actuación rápida puede evitar daños mucho mayores.
 
 ---
 
-# Fases de la respuesta
+### Fases de la respuesta
 
 La mayoría de metodologías siguen un ciclo similar:
 
@@ -2092,7 +2102,7 @@ Cada fase tiene una finalidad concreta.
 
 ---
 
-# 1. Preparación
+### 1. Preparación
 
 Antes de que ocurra un incidente es recomendable disponer de:
 
@@ -2107,7 +2117,7 @@ Una buena preparación facilita la respuesta posterior.
 
 ---
 
-# 2. Detección
+### 2. Detección
 
 El incidente puede detectarse mediante:
 
@@ -2122,7 +2132,7 @@ Cuanto antes se detecte, menor será el impacto.
 
 ---
 
-# 3. Análisis
+### 3. Análisis
 
 Una vez detectado el incidente debe determinarse:
 
@@ -2136,7 +2146,7 @@ No conviene actuar sin comprender previamente la situación.
 
 ---
 
-# 4. Contención
+### 4. Contención
 
 El objetivo es impedir que el incidente continúe propagándose.
 
@@ -2152,7 +2162,7 @@ La contención debe realizarse intentando minimizar el impacto sobre el resto de
 
 ---
 
-# 5. Erradicación
+### 5. Erradicación
 
 Consiste en eliminar la causa del incidente.
 
@@ -2168,7 +2178,7 @@ La erradicación debe realizarse únicamente cuando el incidente esté controlad
 
 ---
 
-# 6. Recuperación
+### 6. Recuperación
 
 Una vez eliminado el problema, se restauran los sistemas afectados.
 
@@ -2184,7 +2194,7 @@ Antes de considerar finalizado el incidente debe comprobarse que el sistema func
 
 ---
 
-# 7. Lecciones aprendidas
+### 7. Lecciones aprendidas
 
 Tras resolver el incidente es recomendable analizar:
 
@@ -2198,7 +2208,7 @@ Esta fase ayuda a fortalecer la seguridad de la organización.
 
 ---
 
-# Conservación de evidencias
+### Conservación de evidencias
 
 Durante la investigación es importante preservar las evidencias.
 
@@ -2214,7 +2224,7 @@ Modificar o eliminar información puede dificultar el análisis posterior.
 
 ---
 
-# Comunicación
+### Comunicación
 
 Dependiendo del incidente, puede ser necesario informar a:
 
@@ -2228,7 +2238,7 @@ La comunicación debe ser clara, documentada y realizada por las personas autori
 
 ---
 
-# Documentación
+### Documentación
 
 Todo incidente debería registrarse.
 
@@ -2246,7 +2256,7 @@ Esta información resulta muy útil para futuras investigaciones y auditorías.
 
 ---
 
-# Ejemplo práctico
+### Ejemplo práctico
 
 Se detecta un intento de acceso mediante una cuenta comprometida.
 
@@ -2284,7 +2294,7 @@ Gracias a este procedimiento el incidente puede resolverse de forma ordenada y c
 
 ---
 
-# Comparativa
+### Comparativa
 
 | Fase | Objetivo |
 |------|----------|
@@ -2298,7 +2308,7 @@ Gracias a este procedimiento el incidente puede resolverse de forma ordenada y c
 
 ---
 
-# Buenas prácticas
+### Buenas prácticas
 
 - Mantén un procedimiento de respuesta documentado y actualizado.
 - Forma al personal para actuar correctamente ante un incidente.
@@ -2323,7 +2333,7 @@ Estas recomendaciones son aplicables tanto a estaciones de trabajo como a servid
 
 ---
 
-# Aplica el principio de mínimo privilegio
+### Aplica el principio de mínimo privilegio
 
 Concede a cada usuario únicamente los permisos necesarios para realizar su trabajo.
 
@@ -2337,7 +2347,7 @@ Cuantos menos privilegios tenga una cuenta, menor será el impacto si resulta co
 
 ---
 
-# Utiliza contraseñas robustas
+### Utiliza contraseñas robustas
 
 Las contraseñas deben ser:
 
@@ -2357,7 +2367,7 @@ Siempre que sea posible, utiliza un gestor de contraseñas.
 
 ---
 
-# Habilita la autenticación multifactor
+### Habilita la autenticación multifactor
 
 La autenticación multifactor (MFA) añade una capa adicional de seguridad.
 
@@ -2372,7 +2382,7 @@ Debe utilizarse especialmente en:
 
 ---
 
-# Mantén el sistema actualizado
+### Mantén el sistema actualizado
 
 Instala periódicamente las actualizaciones de:
 
@@ -2386,7 +2396,7 @@ Las actualizaciones corrigen vulnerabilidades conocidas y mejoran la estabilidad
 
 ---
 
-# Deshabilita lo que no utilices
+### Deshabilita lo que no utilices
 
 Elimina o deshabilita:
 
@@ -2400,7 +2410,7 @@ Reducir la superficie de ataque es una de las medidas de protección más eficac
 
 ---
 
-# Revisa los registros
+### Revisa los registros
 
 Consulta periódicamente los registros de seguridad para detectar:
 
@@ -2414,7 +2424,7 @@ La revisión periódica permite identificar incidentes antes de que provoquen da
 
 ---
 
-# Realiza copias de seguridad
+### Realiza copias de seguridad
 
 Mantén copias de seguridad periódicas de:
 
@@ -2429,7 +2439,7 @@ Una copia de seguridad que no puede recuperarse carece de utilidad.
 
 ---
 
-# Protege el acceso remoto
+### Protege el acceso remoto
 
 Cuando un sistema sea accesible desde Internet:
 
@@ -2443,7 +2453,7 @@ Evita exponer servicios innecesarios directamente a Internet.
 
 ---
 
-# Documenta los cambios
+### Documenta los cambios
 
 Registra siempre:
 
@@ -2457,7 +2467,7 @@ La documentación facilita el mantenimiento y las investigaciones posteriores.
 
 ---
 
-# Supervisa continuamente
+### Supervisa continuamente
 
 No esperes a que aparezca un problema.
 
@@ -2474,7 +2484,7 @@ La monitorización continua reduce el tiempo necesario para detectar y responder
 
 ---
 
-# Forma a los usuarios
+### Forma a los usuarios
 
 Muchos incidentes tienen su origen en errores humanos.
 
@@ -2490,7 +2500,7 @@ La concienciación es una de las mejores medidas preventivas.
 
 ---
 
-# Realiza auditorías periódicas
+### Realiza auditorías periódicas
 
 Comprueba regularmente:
 
@@ -2505,7 +2515,7 @@ Las auditorías permiten detectar configuraciones incorrectas antes de que sean 
 
 ---
 
-# Planifica la respuesta ante incidentes
+### Planifica la respuesta ante incidentes
 
 Todo sistema debería disponer de un procedimiento para actuar cuando ocurre un incidente.
 
@@ -2521,7 +2531,7 @@ Una buena preparación reduce considerablemente el impacto de cualquier incident
 
 ---
 
-# Resumen de recomendaciones
+### Resumen de recomendaciones
 
 | Recomendación | Beneficio |
 |---------------|-----------|
@@ -2538,7 +2548,7 @@ Una buena preparación reduce considerablemente el impacto de cualquier incident
 
 ---
 
-# Errores habituales
+### Errores habituales
 
 Algunas prácticas que deben evitarse son:
 
