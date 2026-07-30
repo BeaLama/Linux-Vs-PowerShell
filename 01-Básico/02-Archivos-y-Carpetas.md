@@ -1001,8 +1001,7 @@ Crea varios archivos vacíos mediante un único comando.
 ### PowerShell
 
 ```powershell
-New-Item archivo1.txt, archivo2.txt, archivo3.txt -ItemType File
-```
+New-Item -Path archivo1.txt, archivo2.txt, archivo3.txt -ItemType File```
 
 **Descripción**
 
@@ -1049,7 +1048,7 @@ touch /home/usuario/Documentos/notas.txt \
 PowerShell
 
 ```powershell
-New-Item `
+New-Item -Path `
 "C:\Users\usuario\Documents\notas.txt",
 "C:\Users\usuario\Documents\informe.txt",
 "C:\Users\usuario\Documents\copia_notas.txt" `

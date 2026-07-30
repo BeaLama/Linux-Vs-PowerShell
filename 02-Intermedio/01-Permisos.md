@@ -15,7 +15,7 @@ Linux y Windows utilizan modelos de permisos diferentes, pero ambos persiguen el
 - [Interpretar los permisos](#interpretar-los-permisos)
 - [Cambiar permisos](#cambiar-permisos)
 - [Cambiar propietario](#cambiar-propietario)
-- [Cambiar grupo](#cambiar-grupo)
+- [Cambiar grupo](#cambiar-grupo) <!-- CORREGIR Y AÑADIR -->
 - [Permisos recursivos](#permisos-recursivos)
 - [Permisos especiales](#permisos-especiales)
 - [Resumen de equivalencias](#resumen-de-equivalencias)

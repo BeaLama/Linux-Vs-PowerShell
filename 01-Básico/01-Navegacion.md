@@ -881,126 +881,8 @@ New-Item -Path C:\Users\usuario\Proyecto -ItemType Directory
 
 [⬆️ Volver al índice](#índice)
 
-## Crear un directorio
 
-### Linux
-
-```bash
-mkdir <nombre_directorio>
-```
-
-**Descripción**
-
-Crea un nuevo directorio en la ubicación actual o en la ruta especificada.
-
----
-
-### PowerShell
-
-```powershell
-New-Item -Path <nombre_directorio> -ItemType Directory
-```
-
-También puede utilizarse el alias:
-
-```powershell
-mkdir <nombre_directorio>
-```
-
-**Descripción**
-
-Crea un nuevo directorio en la ubicación indicada.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Crear un directorio | `mkdir` | `New-Item -ItemType Directory` (`mkdir`) |
-
----
-
-### Ejemplos
-
-**Crear un directorio en la ubicación actual**
-
-Linux
-
-```bash
-mkdir Proyecto
-```
-
-PowerShell
-
-```powershell
-New-Item -Path Proyecto -ItemType Directory
-```
-
----
-
-**Crear varios directorios**
-
-Linux
-
-```bash
-mkdir Docs Scripts Backups
-```
-
-PowerShell
-
-```powershell
-New-Item Docs -ItemType Directory
-New-Item Scripts -ItemType Directory
-New-Item Backups -ItemType Directory
-```
-
----
-
-**Crear un directorio en una ruta específica**
-
-Linux
-
-```bash
-mkdir /home/usuario/Proyecto
-```
-
-PowerShell
-
-```powershell
-New-Item -Path C:\Users\usuario\Proyecto -ItemType Directory
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `mkdir` es el comando principal para crear directorios. | El cmdlet oficial es `New-Item`, aunque `mkdir` es un alias. |
-| Permite crear varios directorios en un único comando. | Habitualmente se crea un directorio por comando, aunque puede automatizarse fácilmente. |
-
----
-
-### Buenas prácticas
-
-- Utiliza nombres descriptivos para los directorios.
-- Comprueba que el directorio no exista previamente para evitar errores.
-- En scripts, utiliza rutas absolutas cuando sea posible.
-
----
-
-### Comandos relacionados
-
-- [Cambiar de directorio](#cambiar-de-directorio)
-- [Listar el contenido de un directorio](#listar-archivos)
-- [Eliminar un directorio vacío](#eliminar-un-directorio-vacío)
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Navegar utilizando rutas absolutas
+## Utilizar rutas absolutas
 
 ### Linux
 
@@ -1094,14 +976,14 @@ Set-Location C:\Users\usuario\Documents
 ### Comandos relacionados
 
 - [Cambiar de directorio](#cambiar-de-directorio)
-- [Navegar utilizando rutas relativas](#navegar-utilizando-rutas-relativas)
+- [Navegar utilizando rutas relativas](#utilizar-rutas-relativas)
 - [Mostrar el directorio actual](#mostrar-el-directorio-actual)
 
 ---
 
 [⬆️ Volver al índice](#índice)
 
-## Navegar utilizando rutas relativas
+## Utilizar rutas relativas
 
 ### Linux
 
@@ -1228,7 +1110,7 @@ Set-Location ..\Descargas
 
 - [Cambiar de directorio](#cambiar-de-directorio)
 - [Volver al directorio anterior](#volver-al-directorio-anterior)
-- [Navegar utilizando rutas absolutas](#navegar-utilizando-rutas-absolutas)
+- [Navegar utilizando rutas absolutas](#utilizar-rutas-absolutas)
 
 ---
 

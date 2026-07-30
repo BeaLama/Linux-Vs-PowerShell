@@ -12,13 +12,13 @@ Aprender a consultar, supervisar y administrar procesos permite detectar problem
 
 - [Listar procesos](#listar-procesos)
 - [Buscar un proceso](#buscar-un-proceso)
-- [Mostrar el consumo de recursos](mostrar-el-consumo-de-recursos)
-- [Ordenar procesos](ordenar-procesos)
-- [Finalizar un proceso](finalizar-un-proceso)
-- [Finalizar un proceso por PID](finalizar-un-proceso-por-pid)
-- [Iniciar un proceso](iniciar-un-proceso)
-- [Procesos en segundo plano](procesos-en-segundo-plano)
-- [Resumen de equivalencias](resumen-de-equivalencias)
+- [Mostrar el consumo de recursos](#mostrar-el-consumo-de-recursos)
+- [Ordenar procesos](#ordenar-procesos)
+- [Finalizar un proceso](#finalizar-un-proceso)
+- [Finalizar un proceso por PID](#finalizar-un-proceso-por-pid)
+- [Iniciar un proceso](#iniciar-un-proceso)
+- [Procesos en segundo plano](#procesos-en-segundo-plano)
+- [Resumen de equivalencias](#resumen-de-equivalencias)
 
 ---
 
@@ -53,7 +53,7 @@ Get-Process
 
 **Descripción**
 
-Muestra todos los procesos que se están ejecutando en el sistema, incluyendo información como el nombre del proceso, el identificador (PID), el uso de meoria y el tiempo de CPU.
+Muestra todos los procesos que se están ejecutando en el sistema, incluyendo información como el nombre del proceso, el identificador (PID), el uso de memoria y el tiempo de CPU.
 
 ---
 
@@ -152,7 +152,7 @@ Get-Process -Id 1256
 ps aux | grep <proceso>
 ```
 
-**Descripcion**
+**Descripción**
 
 Buscar un proceso cuyo nombre coincida con el texto especificado.
 
