@@ -6761,8 +6761,6 @@ Eliminar cuenta tras el periodo establecido
 
 A continuación se presentan varios escenarios habituales relacionados con la gestión de usuarios y permisos en entornos empresariales.
 
-Estos ejemplos muestran cómo aplicar los conceptos estudiados durante el capítulo y sirven como referencia para situaciones reales que pueden surgir en el día a día de un departamento de IT.
-
 ---
 
 # Caso práctico 1: Alta de un nuevo empleado
