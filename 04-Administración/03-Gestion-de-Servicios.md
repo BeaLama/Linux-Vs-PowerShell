@@ -6,8 +6,6 @@ Los **servicios** son programas especializados que se ejecutan en segundo plano 
 
 La correcta administración de los servicios es una tarea fundamental para cualquier administrador de sistemas, ya que de ellos dependen funciones críticas como la conectividad de red, la autenticación de usuarios, la impresión, las copias de seguridad o el funcionamiento de servidores web y bases de datos.
 
-En este capítulo se estudiará qué son los servicios, cómo funcionan, cuáles son sus estados y dependencias, así como las principales herramientas para administrarlos tanto en **Windows** como en **Linux**. También se abordarán técnicas de monitorización, resolución de incidencias y las buenas prácticas recomendadas para mantener un sistema seguro, estable y eficiente.
-
 ---
 
 ## Índice
