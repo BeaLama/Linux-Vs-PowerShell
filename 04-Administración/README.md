@@ -1,4 +1,4 @@
-# 04 Adimistración
+# 04 Administración
 
 ## Índice
 
