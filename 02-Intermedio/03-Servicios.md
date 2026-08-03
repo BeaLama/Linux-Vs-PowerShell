@@ -25,115 +25,20 @@ La administración de servicios es una tarea fundamental para mantener la dispon
 
 ## Listar servicios
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `systemctl list-units --type=service` | `Get-Service` |
 
-```bash
-systemctl list-units --type=service
-```
-
-También puede utilizarse:
-
-```bash
-systemctl --type=service
-```
-
-**Descripción**
-
-Muestra todos los servicios gestionados por **systemd** que se encuentran cargados en el sistema.
-
-La salida incluye información como:
-
-- Nombre del servicio.
-- Estado de carga.
-- Estado de ejecución.
-- Descripción.
-
----
-
-### PowerShell
-
-```powershell
-Get-Service
-```
-
-**Descripción**
-
-Muestra todos los servicios instalados en el sistema, indicando información como:
-
-- Nombre del servicio.
-- Nombre para mostrar.
-- Estado.
-- Tipo de inicio.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Listar servicios | `systemctl list-units --type=service` | `Get-Service` |
-
----
-
-### Ejemplos
-
-**Mostrar todos los servicios**
-
-Linux
-
-```bash
-systemctl list-units --type=service
-```
-
-PowerShell
-
-```powershell
-Get-Service
-```
-
----
-
-**Mostrar únicamente los servicios en ejecución**
-
-Linux
-
+**Ejemplo**
 ```bash
 systemctl list-units --type=service --state=running
 ```
-
-PowerShell
-
 ```powershell
 Get-Service |
 Where-Object {$_.Status -eq "Running"}
 ```
 
----
-
-**Mostrar únicamente los servicios detenidos**
-
-Linux
-
-```bash
-systemctl list-units --type=service --state=inactive
-```
-
-PowerShell
-
-```powershell
-Get-Service |
-Where-Object {$_.Status -eq "Stopped"}
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `systemctl` administra los servicios mediante **systemd**. | `Get-Service` consulta el Administrador de Control de Servicios (SCM) de Windows. |
-| Puede filtrar directamente por estado utilizando `--state`. | Habitualmente se utiliza `Where-Object` para filtrar resultados. |
-| La salida es texto estructurado. | La salida son objetos que pueden procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `systemctl` administra los servicios mediante **systemd**. · 🪟 `Get-Service` consulta el Administrador de Control de Servicios (SCM) de Windows.
 
 ---
 
@@ -158,116 +63,15 @@ Where-Object {$_.Status -eq "Stopped"}
 
 ## Buscar un servicio
 
-### Linux
-
+**Sintaxis**
 ```bash
 systemctl list-units --type=service | grep <servicio>
 ```
-
-También puede utilizarse:
-
-```bash
-systemctl | grep <servicio>
-```
-
-**Descripción**
-
-Permite localizar uno o varios servicios cuyo nombre coincida con el texto especificado.
-
-Generalmente se utiliza junto con `grep` para filtrar la salida de `systemctl`.
-
----
-
-### PowerShell
-
 ```powershell
 Get-Service <servicio>
 ```
 
-También puede utilizarse:
-
-```powershell
-Get-Service | Where-Object {$_.Name -like "*<servicio>*"}
-```
-
-o
-
-```powershell
-Get-Service | Where-Object {$_.DisplayName -like "*<servicio>*"}
-```
-
-**Descripción**
-
-Permite buscar servicios por su nombre interno (`Name`) o por su nombre descriptivo (`DisplayName`).
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Buscar un servicio | `systemctl \| grep` | `Get-Service` / `Where-Object` |
-
----
-
-### Ejemplos
-
-**Buscar el servicio SSH**
-
-Linux
-
-```bash
-systemctl list-units --type=service | grep ssh
-```
-
-PowerShell
-
-```powershell
-Get-Service sshd
-```
-
----
-
-**Buscar el servicio de impresión**
-
-Linux
-
-```bash
-systemctl list-units --type=service | grep cups
-```
-
-PowerShell
-
-```powershell
-Get-Service Spooler
-```
-
----
-
-**Buscar todos los servicios relacionados con SQL**
-
-Linux
-
-```bash
-systemctl list-units --type=service | grep sql
-```
-
-PowerShell
-
-```powershell
-Get-Service |
-Where-Object {$_.DisplayName -like "*SQL*"}
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| Utiliza `grep` para filtrar la salida de `systemctl`. | Puede buscar directamente por nombre mediante `Get-Service`. |
-| La búsqueda se realiza sobre texto. | La búsqueda puede realizarse sobre las propiedades `Name` o `DisplayName`. |
-| La salida continúa siendo texto. | La salida son objetos que pueden seguir procesándose mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 Utiliza `grep` para filtrar la salida de `systemctl`. · 🪟 Puede buscar directamente por nombre mediante `Get-Service`.
 
 ---
 
@@ -292,115 +96,12 @@ Where-Object {$_.DisplayName -like "*SQL*"}
 
 ## Consultar el estado de un servicio
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `systemctl status <servicio>` | `Get-Service <servicio>` |
+| **Ejemplo** | `systemctl status cups` | `Get-Service Spooler` |
 
-```bash
-systemctl status <servicio>
-```
-
-**Descripción**
-
-Muestra información detallada sobre un servicio concreto, incluyendo:
-
-- Estado actual.
-- Si está activo o detenido.
-- Fecha y hora del último inicio.
-- PID principal.
-- Consumo de recursos.
-- Mensajes recientes del registro relacionados con el servicio.
-
----
-
-### PowerShell
-
-```powershell
-Get-Service <servicio>
-```
-
-También puede utilizarse:
-
-```powershell
-Get-Service <servicio> | Select-Object Name, Status, StartType
-```
-
-**Descripción**
-
-Permite consultar el estado actual de un servicio.
-
-La información más habitual incluye:
-
-- Nombre del servicio.
-- Estado (`Running`, `Stopped`, etc.).
-- Tipo de inicio.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Consultar el estado de un servicio | `systemctl status` | `Get-Service` |
-
----
-
-### Ejemplos
-
-**Consultar el estado del servicio SSH**
-
-Linux
-
-```bash
-systemctl status ssh
-```
-
-PowerShell
-
-```powershell
-Get-Service sshd
-```
-
----
-
-**Consultar el estado del servicio de impresión**
-
-Linux
-
-```bash
-systemctl status cups
-```
-
-PowerShell
-
-```powershell
-Get-Service Spooler
-```
-
----
-
-**Mostrar únicamente el estado y el tipo de inicio**
-
-Linux
-
-```bash
-systemctl status ssh
-```
-
-PowerShell
-
-```powershell
-Get-Service Spooler |
-Select-Object Name, Status, StartType
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `systemctl status` muestra información muy detallada del servicio. | `Get-Service` muestra información básica del servicio. |
-| Incluye registros recientes del servicio. | Para obtener más información suele combinarse con otros cmdlets como `Get-CimInstance`. |
-| Permite comprobar rápidamente si el servicio está funcionando correctamente. | Devuelve un objeto que puede utilizarse en otros comandos. |
+> 💡 **Diferencia clave** — 🐧 `systemctl status` muestra información muy detallada del servicio. · 🪟 `Get-Service` muestra información básica del servicio.
 
 ---
 
@@ -425,99 +126,12 @@ Select-Object Name, Status, StartType
 
 ## Iniciar un servicio
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `sudo systemctl start <servicio>` | `Start-Service <servicio>` |
+| **Ejemplo** | `sudo systemctl start cups` | `Start-Service Spooler` |
 
-```bash
-sudo systemctl start <servicio>
-```
-
-**Descripción**
-
-Inicia un servicio que se encuentra detenido.
-
-Si el servicio ya está en ejecución, el comando no produce ningún cambio.
-
----
-
-### PowerShell
-
-```powershell
-Start-Service <servicio>
-```
-
-**Descripción**
-
-Inicia un servicio detenido.
-
-Si el servicio ya está iniciado, PowerShell mostrará un mensaje indicando que el servicio ya se encuentra en ejecución.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Iniciar un servicio | `systemctl start` | `Start-Service` |
-
----
-
-### Ejemplos
-
-**Iniciar el servicio SSH**
-
-Linux
-
-```bash
-sudo systemctl start ssh
-```
-
-PowerShell
-
-```powershell
-Start-Service sshd
-```
-
----
-
-**Iniciar el servicio de impresión**
-
-Linux
-
-```bash
-sudo systemctl start cups
-```
-
-PowerShell
-
-```powershell
-Start-Service Spooler
-```
-
----
-
-**Comprobar que el servicio se ha iniciado correctamente**
-
-Linux
-
-```bash
-systemctl status ssh
-```
-
-PowerShell
-
-```powershell
-Get-Service sshd
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `systemctl start` inicia el servicio mediante **systemd**. | `Start-Service` solicita al Administrador de Control de Servicios (SCM) que inicie el servicio. |
-| Generalmente requiere privilegios de administrador (`sudo`). | Normalmente requiere ejecutar PowerShell como administrador. |
-| Es habitual comprobar el resultado con `systemctl status`. | Es habitual comprobar el resultado con `Get-Service`. |
+> 💡 **Diferencia clave** — 🐧 `systemctl start` inicia el servicio mediante **systemd**. · 🪟 `Start-Service` solicita al Administrador de Control de Servicios (SCM) que inicie el servicio.
 
 ---
 
@@ -542,99 +156,12 @@ Get-Service sshd
 
 ## Detener un servicio
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `sudo systemctl stop <servicio>` | `Stop-Service <servicio>` |
+| **Ejemplo** | `sudo systemctl stop cups` | `Stop-Service Spooler` |
 
-```bash
-sudo systemctl stop <servicio>
-```
-
-**Descripción**
-
-Detiene un servicio que se encuentra en ejecución.
-
-Si el servicio ya está detenido, el comando no produce ningún cambio.
-
----
-
-### PowerShell
-
-```powershell
-Stop-Service <servicio>
-```
-
-**Descripción**
-
-Detiene un servicio en ejecución.
-
-Si el servicio ya está detenido, PowerShell mostrará un mensaje indicando que el servicio no está en ejecución.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Detener un servicio | `systemctl stop` | `Stop-Service` |
-
----
-
-### Ejemplos
-
-**Detener el servicio SSH**
-
-Linux
-
-```bash
-sudo systemctl stop ssh
-```
-
-PowerShell
-
-```powershell
-Stop-Service sshd
-```
-
----
-
-**Detener el servicio de impresión**
-
-Linux
-
-```bash
-sudo systemctl stop cups
-```
-
-PowerShell
-
-```powershell
-Stop-Service Spooler
-```
-
----
-
-**Comprobar que el servicio se ha detenido correctamente**
-
-Linux
-
-```bash
-systemctl status ssh
-```
-
-PowerShell
-
-```powershell
-Get-Service sshd
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `systemctl stop` detiene el servicio mediante **systemd**. | `Stop-Service` solicita al Administrador de Control de Servicios (SCM) que detenga el servicio. |
-| Generalmente requiere privilegios de administrador (`sudo`). | Normalmente requiere ejecutar PowerShell como administrador. |
-| Es habitual comprobar el resultado con `systemctl status`. | Es habitual comprobar el resultado con `Get-Service`. |
+> 💡 **Diferencia clave** — 🐧 `systemctl stop` detiene el servicio mediante **systemd**. · 🪟 `Stop-Service` solicita al Administrador de Control de Servicios (SCM) que detenga el servicio.
 
 ---
 
@@ -655,119 +182,16 @@ Get-Service sshd
 
 ---
 
-> **⚠️ Advertencia:** Detener un servicio puede interrumpir aplicaciones, conexiones de red o funciones del sistema que dependan de él. Asegúrate de conocer el impacto antes de ejecutar el comando.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Reiniciar un servicio
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `sudo systemctl restart <servicio>` | `Restart-Service <servicio>` |
+| **Ejemplo** | `sudo systemctl restart cups` | `Restart-Service Spooler` |
 
-```bash
-sudo systemctl restart <servicio>
-```
-
-También puede utilizarse:
-
-```bash
-sudo systemctl reload <servicio>
-```
-
-**Descripción**
-
-Permite reiniciar un servicio para que vuelva a cargarse desde cero.
-
-- `restart` detiene el servicio y lo inicia de nuevo.
-- `reload` recarga la configuración del servicio sin detener completamente su ejecución (solo si el servicio lo admite).
-
----
-
-### PowerShell
-
-```powershell
-Restart-Service <servicio>
-```
-
-**Descripción**
-
-Detiene e inicia nuevamente un servicio.
-
-Es útil cuando un servicio deja de responder o cuando se han realizado cambios en su configuración.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Reiniciar un servicio | `systemctl restart` | `Restart-Service` |
-| Recargar configuración | `systemctl reload` | No existe un equivalente directo |
-
----
-
-### Ejemplos
-
-**Reiniciar el servicio SSH**
-
-Linux
-
-```bash
-sudo systemctl restart ssh
-```
-
-PowerShell
-
-```powershell
-Restart-Service sshd
-```
-
----
-
-**Reiniciar el servicio de impresión**
-
-Linux
-
-```bash
-sudo systemctl restart cups
-```
-
-PowerShell
-
-```powershell
-Restart-Service Spooler
-```
-
----
-
-**Recargar la configuración de un servicio**
-
-Linux
-
-```bash
-sudo systemctl reload ssh
-```
-
-PowerShell
-
-No existe un comando equivalente.
-
-En la mayoría de los casos es necesario reiniciar el servicio:
-
-```powershell
-Restart-Service sshd
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `restart` reinicia completamente el servicio. | `Restart-Service` detiene e inicia nuevamente el servicio. |
-| Algunos servicios permiten utilizar `reload` para aplicar cambios sin reiniciar completamente. | No existe un cmdlet equivalente a `reload`; normalmente es necesario reiniciar el servicio. |
-| Generalmente requiere privilegios de administrador (`sudo`). | Normalmente requiere ejecutar PowerShell como administrador. |
+> 💡 **Diferencia clave** — 🐧 `restart` reinicia completamente el servicio. · 🪟 `Restart-Service` detiene e inicia nuevamente el servicio.
 
 ---
 
@@ -792,127 +216,12 @@ Restart-Service sshd
 
 ## Configurar el inicio automático
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `sudo systemctl enable <servicio>` | `Set-Service -Name <servicio> -StartupType Automatic` |
+| **Ejemplo** | `sudo systemctl disable cups` | `Set-Service -Name Spooler -StartupType Disabled` |
 
-```bash
-sudo systemctl enable <servicio>
-```
-
-También puede utilizarse:
-
-```bash
-sudo systemctl disable <servicio>
-```
-
-**Descripción**
-
-Permite configurar si un servicio debe iniciarse automáticamente durante el arranque del sistema.
-
-- `enable` habilita el inicio automático.
-- `disable` deshabilita el inicio automático.
-
----
-
-### PowerShell
-
-```powershell
-Set-Service -Name <servicio> -StartupType Automatic
-```
-
-También puede utilizarse:
-
-```powershell
-Set-Service -Name <servicio> -StartupType Disabled
-```
-
-o
-
-```powershell
-Set-Service -Name <servicio> -StartupType Manual
-```
-
-**Descripción**
-
-Permite modificar el tipo de inicio de un servicio.
-
-Los tipos de inicio más habituales son:
-
-- `Automatic` → Se inicia automáticamente al arrancar Windows.
-- `Manual` → Se inicia únicamente cuando es necesario.
-- `Disabled` → El servicio no puede iniciarse hasta volver a habilitarlo.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Habilitar inicio automático | `systemctl enable` | `Set-Service -StartupType Automatic` |
-| Deshabilitar inicio automático | `systemctl disable` | `Set-Service -StartupType Disabled` |
-
----
-
-### Ejemplos
-
-**Configurar el inicio automático del servicio SSH**
-
-Linux
-
-```bash
-sudo systemctl enable ssh
-```
-
-PowerShell
-
-```powershell
-Set-Service -Name sshd -StartupType Automatic
-```
-
----
-
-**Deshabilitar el inicio automático del servicio de impresión**
-
-Linux
-
-```bash
-sudo systemctl disable cups
-```
-
-PowerShell
-
-```powershell
-Set-Service -Name Spooler -StartupType Disabled
-```
-
----
-
-**Configurar un servicio para iniciarlo manualmente**
-
-Linux
-
-No existe un equivalente directo mediante `systemctl`.
-
-Para impedir el inicio automático basta con:
-
-```bash
-sudo systemctl disable ssh
-```
-
-PowerShell
-
-```powershell
-Set-Service -Name sshd -StartupType Manual
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `enable` y `disable` controlan el inicio automático del servicio. | `Set-Service` permite configurar varios tipos de inicio. |
-| Un servicio deshabilitado puede iniciarse manualmente mediante `systemctl start` (salvo que esté enmascarado con `mask`). | Un servicio con inicio `Manual` puede iniciarse cuando sea necesario; uno `Disabled` no puede iniciarse hasta volver a habilitarlo. |
-| La configuración se realiza mediante **systemd**. | La configuración se almacena en el Administrador de Control de Servicios (SCM). |
+> 💡 **Diferencia clave** — 🐧 `enable` y `disable` controlan el inicio automático del servicio. · 🪟 `Set-Service` permite configurar varios tipos de inicio.
 
 ---
 

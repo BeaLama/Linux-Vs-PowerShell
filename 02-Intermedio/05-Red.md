@@ -24,125 +24,12 @@ Dominar estos comandos resulta fundamental para solucionar incidencias relaciona
 
 ## Ver la configuración de red
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `ip addr` | `Get-NetIPAddress` |
+| **Ejemplo** | `ip -4 addr` | `Get-NetIPAddress -AddressFamily IPv4` |
 
-```bash
-ip addr
-```
-
-También puede utilizarse:
-
-```bash
-ip address
-```
-
-**Descripción**
-
-Muestra la configuración de todas las interfaces de red del sistema.
-
-La información incluye:
-
-- Nombre de la interfaz.
-- Estado de la interfaz.
-- Dirección IPv4.
-- Dirección IPv6.
-- Dirección MAC.
-- Máscara de red.
-
----
-
-### PowerShell
-
-```powershell
-Get-NetIPAddress
-```
-
-También puede utilizarse:
-
-```powershell
-Get-NetIPConfiguration
-```
-
-**Descripción**
-
-Permite consultar la configuración de red del equipo.
-
-La información mostrada puede incluir:
-
-- Dirección IPv4.
-- Dirección IPv6.
-- Máscara de subred.
-- Puerta de enlace.
-- Adaptador de red.
-- Configuración DNS.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ver la configuración de red | `ip addr` | `Get-NetIPAddress` / `Get-NetIPConfiguration` |
-
----
-
-### Ejemplos
-
-**Mostrar toda la configuración de red**
-
-Linux
-
-```bash
-ip addr
-```
-
-PowerShell
-
-```powershell
-Get-NetIPConfiguration
-```
-
----
-
-**Mostrar únicamente las direcciones IPv4**
-
-Linux
-
-```bash
-ip -4 addr
-```
-
-PowerShell
-
-```powershell
-Get-NetIPAddress -AddressFamily IPv4
-```
-
----
-
-**Mostrar únicamente las direcciones IPv6**
-
-Linux
-
-```bash
-ip -6 addr
-```
-
-PowerShell
-
-```powershell
-Get-NetIPAddress -AddressFamily IPv6
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `ip addr` muestra toda la información de las interfaces de red. | `Get-NetIPAddress` muestra únicamente las direcciones IP. |
-| Puede filtrarse por IPv4 o IPv6 mediante opciones del comando. | Puede filtrarse utilizando el parámetro `-AddressFamily`. |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `ip addr` muestra toda la información de las interfaces de red. · 🪟 `Get-NetIPAddress` muestra únicamente las direcciones IP.
 
 ---
 
@@ -167,115 +54,12 @@ Get-NetIPAddress -AddressFamily IPv6
 
 ## Comprobar la conectividad (Ping)
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `ping <destino>` | `Test-Connection <destino>` |
+| **Ejemplo** | `ping -c 4 google.com` | `Test-Connection google.com -Count 4` |
 
-```bash
-ping <destino>
-```
-
-También puede utilizarse:
-
-```bash
-ping -c 4 <destino>
-```
-
-**Descripción**
-
-Permite comprobar si existe conectividad entre el equipo local y otro dispositivo de la red.
-
-El comando envía paquetes **ICMP Echo Request** al destino y espera una respuesta (**ICMP Echo Reply**).
-
-La información obtenida incluye:
-
-- Tiempo de respuesta (latencia).
-- Número de paquetes enviados y recibidos.
-- Pérdida de paquetes.
-
----
-
-### PowerShell
-
-```powershell
-Test-Connection <destino>
-```
-
-También puede utilizarse:
-
-```powershell
-Test-Connection <destino> -Count 4
-```
-
-**Descripción**
-
-Comprueba la conectividad con otro equipo utilizando ICMP, mostrando información sobre el tiempo de respuesta y el resultado de cada intento.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Comprobar conectividad | `ping` | `Test-Connection` |
-
----
-
-### Ejemplos
-
-**Comprobar la conectividad con Google**
-
-Linux
-
-```bash
-ping google.com
-```
-
-PowerShell
-
-```powershell
-Test-Connection google.com
-```
-
----
-
-**Enviar únicamente cuatro paquetes**
-
-Linux
-
-```bash
-ping -c 4 google.com
-```
-
-PowerShell
-
-```powershell
-Test-Connection google.com -Count 4
-```
-
----
-
-**Comprobar la conectividad con una dirección IP**
-
-Linux
-
-```bash
-ping 8.8.8.8
-```
-
-PowerShell
-
-```powershell
-Test-Connection 8.8.8.8
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `ping` continúa enviando paquetes hasta detenerlo manualmente (`Ctrl + C`). | `Test-Connection` envía cuatro solicitudes por defecto. |
-| Para limitar el número de paquetes se utiliza `-c`. | Para indicar el número de intentos se utiliza `-Count`. |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `ping` continúa enviando paquetes hasta detenerlo manualmente (`Ctrl + C`). · 🪟 `Test-Connection` envía cuatro solicitudes por defecto.
 
 ---
 
@@ -296,125 +80,24 @@ Test-Connection 8.8.8.8
 
 ---
 
-> **💡 Consejo:** Si `ping 8.8.8.8` funciona pero `ping google.com` no, la conectividad a Internet probablemente existe y el problema suele estar relacionado con la resolución DNS.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Consultar la configuración DNS
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `cat /etc/resolv.conf` | `Get-DnsClientServerAddress` |
 
-```bash
-cat /etc/resolv.conf
-```
-
-También puede utilizarse:
-
-```bash
-resolvectl status
-```
-
-(en sistemas con **systemd-resolved**)
-
-**Descripción**
-
-Permite consultar la configuración de los servidores DNS utilizados por el sistema.
-
-La información puede incluir:
-
-- Servidores DNS configurados.
-- Dominio de búsqueda.
-- Configuración de resolución de nombres.
-
----
-
-### PowerShell
-
-```powershell
-Get-DnsClientServerAddress
-```
-
-**Descripción**
-
-Muestra los servidores DNS configurados para cada adaptador de red del equipo.
-
-La salida incluye información como:
-
-- Nombre de la interfaz.
-- Direcciones de los servidores DNS.
-- Familia de direcciones (IPv4 o IPv6).
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Consultar la configuración DNS | `cat /etc/resolv.conf` / `resolvectl status` | `Get-DnsClientServerAddress` |
-
----
-
-### Ejemplos
-
-**Mostrar la configuración DNS**
-
-Linux
-
-```bash
-cat /etc/resolv.conf
-```
-
-PowerShell
-
-```powershell
-Get-DnsClientServerAddress
-```
-
----
-
-**Mostrar únicamente los servidores DNS IPv4**
-
-Linux
-
+**Ejemplo**
 ```bash
 grep nameserver /etc/resolv.conf
 ```
-
-PowerShell
-
 ```powershell
 Get-DnsClientServerAddress `
 -AddressFamily IPv4
 ```
 
----
-
-**Consultar la configuración DNS de una interfaz concreta**
-
-Linux
-
-```bash
-resolvectl status eth0
-```
-
-PowerShell
-
-```powershell
-Get-DnsClientServerAddress `
--InterfaceAlias "Ethernet"
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| La configuración suele encontrarse en `/etc/resolv.conf` o gestionarse mediante `systemd-resolved`. | Cada adaptador mantiene su propia configuración DNS. |
-| Puede existir uno o varios servidores DNS configurados. | Es posible consultar la configuración por interfaz o por familia de direcciones. |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 La configuración suele encontrarse en `/etc/resolv.conf` o gestionarse mediante `systemd-resolved`. · 🪟 Cada adaptador mantiene su propia configuración DNS.
 
 ---
 
@@ -435,130 +118,25 @@ Get-DnsClientServerAddress `
 
 ---
 
-> **💡 Consejo:** Si el equipo tiene conexión a Internet pero no puede acceder a páginas web por su nombre, revisa primero la configuración de los servidores DNS. En muchos casos, el problema no está en la red, sino en la resolución de nombres.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Resolver nombres DNS
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `nslookup <dominio>` | `Resolve-DnsName <dominio>` |
 
-```bash
-nslookup <dominio>
-```
-
-También puede utilizarse:
-
-```bash
-dig <dominio>
-```
-
-(si está instalado)
-
-**Descripción**
-
-Permite consultar los registros DNS asociados a un nombre de dominio.
-
-Puede utilizarse para comprobar si un nombre de dominio se resuelve correctamente y obtener información como:
-
-- Dirección IP.
-- Servidor DNS utilizado.
-- Tiempo de respuesta.
-- Registros DNS (A, AAAA, MX, NS, TXT, etc., mediante `dig`).
-
----
-
-### PowerShell
-
-```powershell
-Resolve-DnsName <dominio>
-```
-
-También puede utilizarse:
-
-```powershell
-nslookup <dominio>
-```
-
-**Descripción**
-
-Resuelve un nombre de dominio mediante los servidores DNS configurados en el sistema.
-
-`Resolve-DnsName` devuelve información detallada sobre los registros DNS encontrados.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Resolver un nombre DNS | `nslookup` / `dig` | `Resolve-DnsName` |
-
----
-
-### Ejemplos
-
-**Resolver un dominio**
-
-Linux
-
-```bash
-nslookup google.com
-```
-
-PowerShell
-
-```powershell
-Resolve-DnsName google.com
-```
-
----
-
-**Consultar un registro MX**
-
-Linux
-
+**Ejemplo**
 ```bash
 dig google.com MX
 ```
-
-PowerShell
-
 ```powershell
 Resolve-DnsName `
 -Name google.com `
 -Type MX
 ```
 
----
-
-**Consultar un registro TXT**
-
-Linux
-
-```bash
-dig google.com TXT
-```
-
-PowerShell
-
-```powershell
-Resolve-DnsName `
--Name google.com `
--Type TXT
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `nslookup` ofrece consultas básicas. | `Resolve-DnsName` devuelve objetos con información detallada. |
-| `dig` permite consultar prácticamente cualquier tipo de registro DNS. | El tipo de registro se especifica mediante el parámetro `-Type`. |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `nslookup` ofrece consultas básicas. · 🪟 `Resolve-DnsName` devuelve objetos con información detallada.
 
 ---
 
@@ -579,141 +157,24 @@ Resolve-DnsName `
 
 ---
 
-> **💡 Consejo:** Un dominio puede resolverse correctamente mediante DNS y, aun así, el servidor no estar disponible. La resolución de nombres únicamente confirma que el DNS funciona; no garantiza que el servicio esté accesible.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Ver las conexiones de red activas
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `ss -tuln` | `Get-NetTCPConnection` |
 
-```bash
-ss -tuln
-```
-
-También puede utilizarse:
-
-```bash
-ss -tunap
-```
-
-**Descripción**
-
-Permite consultar las conexiones de red activas y los puertos que se encuentran en escucha.
-
-La información puede incluir:
-
-- Protocolo (TCP o UDP).
-- Dirección local.
-- Dirección remota.
-- Puerto.
-- Estado de la conexión.
-- Proceso asociado (con `-p`).
-
----
-
-### PowerShell
-
-```powershell
-Get-NetTCPConnection
-```
-
-También puede utilizarse:
-
-```powershell
-Get-NetUDPEndpoint
-```
-
-**Descripción**
-
-Permite consultar las conexiones TCP activas y los puertos abiertos del equipo.
-
-La salida incluye información como:
-
-- Dirección local.
-- Dirección remota.
-- Puerto local.
-- Puerto remoto.
-- Estado de la conexión.
-- Proceso propietario (PID).
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ver conexiones TCP | `ss -tuln` | `Get-NetTCPConnection` |
-| Ver conexiones UDP | `ss -u` | `Get-NetUDPEndpoint` |
-
----
-
-### Ejemplos
-
-**Mostrar todas las conexiones y puertos en escucha**
-
-Linux
-
-```bash
-ss -tuln
-```
-
-PowerShell
-
-```powershell
-Get-NetTCPConnection
-```
-
----
-
-**Mostrar únicamente los puertos en escucha**
-
-Linux
-
+**Ejemplo**
 ```bash
 ss -tln
 ```
-
-PowerShell
-
 ```powershell
 Get-NetTCPConnection |
 Where-Object {$_.State -eq "Listen"}
 ```
 
----
-
-**Mostrar el proceso asociado a cada conexión**
-
-Linux
-
-```bash
-sudo ss -tunap
-```
-
-PowerShell
-
-```powershell
-Get-NetTCPConnection |
-Select-Object LocalAddress,
-              LocalPort,
-              RemoteAddress,
-              RemotePort,
-              State,
-              OwningProcess
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `ss` sustituye al antiguo `netstat` y ofrece un mejor rendimiento. | `Get-NetTCPConnection` muestra únicamente conexiones TCP. |
-| Con `-p` puede mostrarse el proceso asociado a cada conexión. | El proceso se identifica mediante el PID (`OwningProcess`). |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `ss` sustituye al antiguo `netstat` y ofrece un mejor rendimiento. · 🪟 `Get-NetTCPConnection` muestra únicamente conexiones TCP.
 
 ---
 
@@ -734,128 +195,24 @@ Select-Object LocalAddress,
 
 ---
 
-> **💡 Consejo:** Si necesitas saber qué programa está utilizando un puerto concreto, identifica primero el **PID** y después consulta el proceso correspondiente (`ps` en Linux o `Get-Process` en PowerShell).
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Consultar la tabla de rutas
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `ip route` | `Get-NetRoute` |
 
-```bash
-ip route
-```
-
-También puede utilizarse:
-
-```bash
-ip r
-```
-
-**Descripción**
-
-Permite mostrar la tabla de rutas del sistema.
-
-La tabla de rutas indica cómo decide el sistema operativo enviar los paquetes hacia otras redes.
-
-La información incluye:
-
-- Red de destino.
-- Puerta de enlace (Gateway).
-- Interfaz utilizada.
-- Métrica de la ruta.
-
----
-
-### PowerShell
-
-```powershell
-Get-NetRoute
-```
-
-**Descripción**
-
-Muestra la tabla de rutas configurada en el equipo.
-
-La salida incluye información como:
-
-- Red de destino.
-- Prefijo de red.
-- Puerta de enlace.
-- Interfaz de salida.
-- Métrica.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Consultar la tabla de rutas | `ip route` | `Get-NetRoute` |
-
----
-
-### Ejemplos
-
-**Mostrar toda la tabla de rutas**
-
-Linux
-
-```bash
-ip route
-```
-
-PowerShell
-
-```powershell
-Get-NetRoute
-```
-
----
-
-**Mostrar la puerta de enlace predeterminada**
-
-Linux
-
+**Ejemplo**
 ```bash
 ip route | grep default
 ```
-
-PowerShell
-
 ```powershell
 Get-NetRoute `
 | Where-Object {$_.DestinationPrefix -eq "0.0.0.0/0"}
 ```
 
----
-
-**Mostrar únicamente las rutas IPv4**
-
-Linux
-
-```bash
-ip -4 route
-```
-
-PowerShell
-
-```powershell
-Get-NetRoute `
--AddressFamily IPv4
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `ip route` muestra la tabla de rutas gestionada por el kernel. | `Get-NetRoute` consulta la tabla de rutas de Windows. |
-| Puede filtrarse fácilmente mediante `grep`. | Puede filtrarse mediante `Where-Object` o utilizando parámetros del cmdlet. |
-| La salida es texto estructurado. | La salida son objetos que pueden procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `ip route` muestra la tabla de rutas gestionada por el kernel. · 🪟 `Get-NetRoute` consulta la tabla de rutas de Windows.
 
 ---
 
@@ -876,129 +233,25 @@ Get-NetRoute `
 
 ---
 
-> **💡 Consejo:** Si un equipo puede comunicarse con otros dispositivos de su red local pero no con redes externas, uno de los primeros aspectos que debes comprobar es la **ruta predeterminada**. Una puerta de enlace incorrecta suele ser una causa frecuente de este tipo de problemas.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Probar puertos de red
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `nc -zv <host> <puerto>` | `Test-NetConnection <host> -Port <puerto>` |
 
-```bash
-nc -zv <host> <puerto>
-```
-
-También puede utilizarse:
-
-```bash
-telnet <host> <puerto>
-```
-
-(si está instalado)
-
-**Descripción**
-
-Permite comprobar si un puerto TCP remoto se encuentra accesible.
-
-Es una herramienta muy utilizada para verificar si un servicio está escuchando correctamente o si existe algún problema de conectividad o filtrado por firewall.
-
-- `nc` (Netcat) es la opción recomendada.
-- `telnet` sigue utilizándose en algunos entornos, aunque está prácticamente en desuso para este tipo de comprobaciones.
-
----
-
-### PowerShell
-
-```powershell
-Test-NetConnection <host> -Port <puerto>
-```
-
-**Descripción**
-
-Comprueba si un puerto TCP remoto está abierto y accesible.
-
-Además del resultado de la prueba, muestra información adicional como:
-
-- Dirección IP del destino.
-- Resolución DNS.
-- Interfaz utilizada.
-- Estado de la conexión TCP.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Probar un puerto TCP | `nc -zv` | `Test-NetConnection -Port` |
-
----
-
-### Ejemplos
-
-**Comprobar el puerto HTTPS (443)**
-
-Linux
-
-```bash
-nc -zv google.com 443
-```
-
-PowerShell
-
-```powershell
-Test-NetConnection `
-google.com `
--Port 443
-```
-
----
-
-**Comprobar el puerto SSH (22)**
-
-Linux
-
+**Ejemplo**
 ```bash
 nc -zv servidor.local 22
 ```
-
-PowerShell
-
 ```powershell
 Test-NetConnection `
 servidor.local `
 -Port 22
 ```
 
----
-
-**Comprobar el puerto RDP (3389)**
-
-Linux
-
-```bash
-nc -zv servidor.local 3389
-```
-
-PowerShell
-
-```powershell
-Test-NetConnection `
-servidor.local `
--Port 3389
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `nc` comprueba rápidamente si un puerto está abierto. | `Test-NetConnection` muestra información mucho más detallada sobre la prueba. |
-| También puede utilizarse `telnet`, aunque está obsoleto para este uso. | El cmdlet integra resolución DNS, conectividad ICMP y prueba TCP en un único comando. |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `nc` comprueba rápidamente si un puerto está abierto. · 🪟 `Test-NetConnection` muestra información mucho más detallada sobre la prueba.
 
 ---
 
@@ -1019,129 +272,24 @@ servidor.local `
 
 ---
 
-> **💡 Consejo:** Si el ping funciona pero `Test-NetConnection` o `nc` indican que el puerto está cerrado, normalmente el problema se encuentra en el servicio remoto o en un firewall, no en la conectividad de red.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Ver la caché ARP
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `ip neigh` | `Get-NetNeighbor` |
 
-```bash
-ip neigh
-```
-
-También puede utilizarse:
-
-```bash
-arp -a
-```
-
-(si está instalado)
-
-**Descripción**
-
-Permite mostrar la caché ARP (Address Resolution Protocol) del sistema.
-
-La caché ARP relaciona las direcciones IP con sus correspondientes direcciones MAC dentro de la red local.
-
-La información mostrada incluye:
-
-- Dirección IP.
-- Dirección MAC.
-- Interfaz de red.
-- Estado de la entrada.
-
----
-
-### PowerShell
-
-```powershell
-Get-NetNeighbor
-```
-
-**Descripción**
-
-Muestra la tabla de vecinos del sistema (Neighbor Cache), que contiene las asociaciones entre direcciones IP y direcciones MAC.
-
-La salida incluye información como:
-
-- Dirección IP.
-- Dirección MAC.
-- Interfaz de red.
-- Estado de la entrada.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ver la caché ARP | `ip neigh` | `Get-NetNeighbor` |
-
----
-
-### Ejemplos
-
-**Mostrar toda la caché ARP**
-
-Linux
-
-```bash
-ip neigh
-```
-
-PowerShell
-
-```powershell
-Get-NetNeighbor
-```
-
----
-
-**Buscar una dirección IP concreta**
-
-Linux
-
+**Ejemplo**
 ```bash
 ip neigh | grep 192.168.1.1
 ```
-
-PowerShell
-
 ```powershell
 Get-NetNeighbor `
 | Where-Object {$_.IPAddress -eq "192.168.1.1"}
 ```
 
----
-
-**Mostrar únicamente las entradas alcanzables**
-
-Linux
-
-```bash
-ip neigh | grep REACHABLE
-```
-
-PowerShell
-
-```powershell
-Get-NetNeighbor `
-| Where-Object {$_.State -eq "Reachable"}
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `ip neigh` muestra la caché ARP gestionada por el kernel. | `Get-NetNeighbor` consulta la tabla de vecinos de Windows. |
-| También pueden mostrarse estados como `STALE`, `DELAY` o `FAILED`. | Los estados aparecen con nombres similares (`Reachable`, `Stale`, `Unreachable`, etc.). |
-| La salida es texto estructurado. | La salida son objetos que pueden filtrarse y procesarse mediante la tubería. |
+> 💡 **Diferencia clave** — 🐧 `ip neigh` muestra la caché ARP gestionada por el kernel. · 🪟 `Get-NetNeighbor` consulta la tabla de vecinos de Windows.
 
 ---
 
@@ -1159,10 +307,6 @@ Get-NetNeighbor `
 - [Ver la configuración de red](#ver-la-configuración-de-red)
 - [Comprobar la conectividad (Ping)](#comprobar-la-conectividad-ping)
 - [Ver las conexiones de red activas](#ver-las-conexiones-de-red-activas)
-
----
-
-> **💡 Consejo:** Si un equipo responde al `ping` pero aparece con una dirección MAC diferente de la esperada, podría tratarse de un cambio de hardware, una configuración incorrecta o, en casos poco frecuentes, un intento de **ARP Spoofing**.
 
 ---
 
