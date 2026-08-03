@@ -13,6 +13,10 @@ El objetivo del proyecto es facilitar la transición entre ambos sistemas operat
 
 ---
 
+## Índice
+
+### - [Introducción](00-Introduccion.md)
+
 ## Contenido
 
 ### 00 - Introducción
@@ -139,7 +143,7 @@ Si detectas algún error, una equivalencia incorrecta o deseas añadir nuevos co
 
 ---
 
-## Licencia
+## [Licencia](#LICENSE)
 
 Este proyecto se distribuye bajo la licencia **MIT**.
 
