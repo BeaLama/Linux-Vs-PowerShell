@@ -46,13 +46,3 @@
 ### - [07. Automatización](04-Administración\07-Automatizacion.md)
 ### - [08. Administración Linux](04-Administración\08-Administracion-Linux.md)
 ### - [09. Administración Windows](04-Administración\09-Administracion-Windows.md)
-
-## 05 - Automatización
-
-## - [01-Navegación]()
-## - [01-Navegación]()
-## - [01-Navegación]()
-## - [01-Navegación]()
-## - [01-Navegación]()
-## - [01-Navegación]()
-## - [01-Navegación]()
