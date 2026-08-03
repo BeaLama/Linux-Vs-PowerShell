@@ -13,22 +13,6 @@ El objetivo del proyecto es facilitar la transición entre ambos sistemas operat
 
 ---
 
-# Estructura del proyecto
-
-
-Linux-vs-PowerShell/  
-├── [README.md](README.md)  
-├── [00-Introduccion.md](00-Introduccion.md)  
-├── [01-Básico](01-Básico/README.md)  
-├── [02-Intermedio](02-Intermedio/README.md)  
-├── [03-Avanzado](03-Avanzado/README.md)  
-├── [04-Administración](04-Administración/README.md)  
-├── [05-Automatización](05-Automatización/README.md)  
-└── [LICENSE](LICENSE)
-
-
-Cada nivel agrupa los comandos y conceptos según su dificultad.
-
 # Contenido
 
 ## 00 - Introducción
