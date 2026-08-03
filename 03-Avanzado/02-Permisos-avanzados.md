@@ -215,15 +215,3 @@ La **auditoría de permisos** consiste en revisar y supervisar quién tiene acce
 ---
 
 [⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-Una correcta gestión de permisos es esencial para proteger la información, reducir riesgos de seguridad y facilitar la administración de sistemas.*
-
-| 🐧 Linux | 🪟 PowerShell |
-|---|---|
-| `find /datos -perm -777` | `Get-Acl C:\Compartido` |
-
----
-
-[⬆️ Volver al índice](#índice)
