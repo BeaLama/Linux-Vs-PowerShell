@@ -13,9 +13,9 @@ El objetivo del proyecto es facilitar la transición entre ambos sistemas operat
 
 ---
 
-# Contenido
+## Contenido
 
-## 00 - Introducción
+### 00 - Introducción
 
 Presentación del proyecto.
 
@@ -29,7 +29,7 @@ Incluye:
 
 ---
 
-## 01 - Básico
+### 01 - Básico
 
 Comandos imprescindibles.
 
@@ -44,7 +44,7 @@ Ejemplos:
 
 ---
 
-## 02 - Intermedio
+### 02 - Intermedio
 
 Administración básica del sistema.
 
@@ -61,7 +61,7 @@ Ejemplos:
 
 ---
 
-## 03 - Avanzado
+### 03 - Avanzado
 
 Administración avanzada.
 
@@ -77,7 +77,7 @@ Ejemplos:
 
 ---
 
-## 04 - Administración
+### 04 - Administración
 
 Administración de infraestructuras.
 
@@ -92,7 +92,7 @@ Ejemplos:
 
 ---
 
-## 05 -  Automatización
+### 05 -  Automatización
 
 Automatización de tareas.
 
@@ -108,9 +108,9 @@ Ejemplos:
 
 ---
 
-# Requisitos
+## Requisitos
 
-## Linux
+### Linux
 
 - Bash
 - Distribuciones compatibles:
@@ -121,7 +121,7 @@ Ejemplos:
   - AlmaLinux
   - Arch Linux (cuando aplique)
 
-## Windows
+### Windows
 
 - Windows 10
 - Windows 11
@@ -131,7 +131,7 @@ Ejemplos:
 
 ---
 
-# Contribuciones
+## Contribuciones
 
 Las contribuciones son bienvenidas.
 
@@ -139,7 +139,7 @@ Si detectas algún error, una equivalencia incorrecta o deseas añadir nuevos co
 
 ---
 
-# Licencia
+## Licencia
 
 Este proyecto se distribuye bajo la licencia **MIT**.
 
@@ -147,6 +147,6 @@ Consulta el archivo `LICENSE` para obtener más información.
 
 ---
 
-# Autor
+## Autor
 
 **Beatriz Lama**
