@@ -18,7 +18,6 @@ Cada distribución Linux utiliza su propio gestor de paquetes (APT, DNF, YUM, Pa
 - [Mostrar los paquetes instalados](#mostrar-los-paquetes-instalados)
 - [Obtener información de un paquete](#obtener-información-de-un-paquete)
 - [Limpiar la caché de paquetes](#limpiar-la-caché-de-paquetes)
-- [Resumen de equivalencias](#resumen-de-equivalencias)
 
 ---
 
@@ -30,15 +29,6 @@ Cada distribución Linux utiliza su propio gestor de paquetes (APT, DNF, YUM, Pa
 | **Ejemplo** | `apt search code` | `winget search vscode` |
 
 > 💡 **Diferencia clave** — 🐧 Busca paquetes disponibles en los repositorios APT configurados. · 🪟 Busca aplicaciones disponibles en los orígenes configurados de Winget.
-
----
-
-### Buenas prácticas
-
-- Utiliza palabras clave cortas si no recuerdas el nombre exacto del paquete.
-- Comprueba siempre el nombre oficial antes de instalar un paquete.
-- Revisa la descripción para asegurarte de que corresponde al software que necesitas.
-- Si existen varios resultados similares, verifica el identificador o el origen antes de instalar.
 
 ---
 
@@ -63,15 +53,6 @@ Cada distribución Linux utiliza su propio gestor de paquetes (APT, DNF, YUM, Pa
 
 ---
 
-### Buenas prácticas
-
-- Actualiza la información de los repositorios antes de instalar software nuevo.
-- Instala únicamente paquetes procedentes de repositorios o fuentes de confianza.
-- Comprueba el nombre o el identificador del paquete antes de iniciar la instalación.
-- Verifica que la instalación se haya completado correctamente antes de utilizar la aplicación.
-
----
-
 ### Comandos relacionados
 
 - [Buscar un paquete](#buscar-un-paquete)
@@ -93,15 +74,6 @@ Cada distribución Linux utiliza su propio gestor de paquetes (APT, DNF, YUM, Pa
 
 ---
 
-### Buenas prácticas
-
-- Ejecuta `apt update` antes de instalar o actualizar paquetes.
-- Mantén el sistema actualizado para corregir errores y vulnerabilidades de seguridad.
-- Revisa los paquetes que van a actualizarse antes de confirmar la operación.
-- Reinicia el sistema cuando una actualización afecte al núcleo o a componentes críticos.
-
----
-
 ### Comandos relacionados
 
 - [Actualizar un paquete concreto](#actualizar-un-paquete-concreto)
@@ -120,15 +92,6 @@ Cada distribución Linux utiliza su propio gestor de paquetes (APT, DNF, YUM, Pa
 | **Ejemplo** | `sudo apt install --only-upgrade code` | `winget upgrade Microsoft.VisualStudioCode` |
 
 > 💡 **Diferencia clave** — 🐧 Solo actualiza el paquete indicado si ya está instalado. · 🪟 Actualiza únicamente la aplicación seleccionada.
-
----
-
-### Buenas prácticas
-
-- Actualiza únicamente el paquete que necesites cuando no quieras modificar el resto del sistema.
-- Comprueba previamente si existe una versión más reciente disponible.
-- Utiliza el identificador (`--id`) en Winget para evitar instalar o actualizar una aplicación incorrecta.
-- Verifica el funcionamiento de la aplicación después de la actualización.
 
 ---
 
@@ -168,15 +131,6 @@ winget uninstall Git.Git
 
 ---
 
-### Buenas prácticas
-
-- Comprueba que el paquete no sea una dependencia crítica antes de eliminarlo.
-- Utiliza `apt purge` cuando quieras eliminar completamente un paquete y su configuración.
-- Ejecuta `apt autoremove` periódicamente para liberar espacio eliminando dependencias innecesarias.
-- Verifica que la aplicación se ha desinstalado correctamente antes de instalar una versión diferente.
-
----
-
 ### Comandos relacionados
 
 - [Instalar un paquete](#instalar-un-paquete)
@@ -205,15 +159,6 @@ winget list git
 
 ---
 
-### Buenas prácticas
-
-- Revisa periódicamente el software instalado para detectar aplicaciones innecesarias.
-- Comprueba la versión instalada antes de actualizar o desinstalar un paquete.
-- Utiliza filtros o búsquedas cuando trabajes con sistemas que tengan un gran número de paquetes instalados.
-- Mantén únicamente el software necesario para reducir la superficie de ataque del sistema.
-
----
-
 ### Comandos relacionados
 
 - [Buscar un paquete](#buscar-un-paquete)
@@ -232,15 +177,6 @@ winget list git
 | **Ejemplo** | `apt show code` | `winget show Microsoft.VisualStudioCode` |
 
 > 💡 **Diferencia clave** — 🐧 Muestra información procedente de los repositorios APT. · 🪟 Muestra información del repositorio configurado en Winget.
-
----
-
-### Buenas prácticas
-
-- Consulta siempre la información del paquete antes de instalarlo.
-- Revisa las dependencias cuando el paquete vaya a instalarse en servidores o sistemas de producción.
-- Comprueba el origen del paquete para asegurarte de que procede de una fuente confiable.
-- Utiliza el identificador (`--id`) en Winget cuando existan varias aplicaciones con nombres similares.
 
 ---
 
@@ -265,52 +201,11 @@ winget list git
 
 ---
 
-### Buenas prácticas
-
-- Ejecuta `apt clean` cuando necesites liberar espacio en disco.
-- Utiliza `apt autoclean` como opción habitual, ya que elimina únicamente los paquetes innecesarios.
-- No elimines la caché con frecuencia si realizas instalaciones repetidas, ya que APT tendrá que volver a descargar los paquetes.
-- Si Winget presenta problemas al buscar o instalar aplicaciones, prueba a restablecer sus orígenes mediante `winget source reset --force`.
-
----
-
 ### Comandos relacionados
 
 - [Actualizar los paquetes](#actualizar-los-paquetes)
 - [Buscar un paquete](#buscar-un-paquete)
 - [Mostrar los paquetes instalados](#mostrar-los-paquetes-instalados)
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Resumen de equivalencias
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Buscar un paquete | `apt search` | `winget search` |
-| Instalar un paquete | `apt install` | `winget install` |
-| Actualizar los repositorios | `apt update` | `winget source update` |
-| Actualizar todos los paquetes | `apt upgrade` | `winget upgrade --all` |
-| Actualizar un paquete concreto | `apt install --only-upgrade` | `winget upgrade` |
-| Eliminar un paquete | `apt remove` | `winget uninstall` |
-| Eliminar paquete y configuración | `apt purge` | No existe un equivalente directo |
-| Eliminar dependencias innecesarias | `apt autoremove` | No existe un equivalente directo |
-| Mostrar paquetes instalados | `apt list --installed` | `winget list` |
-| Obtener información de un paquete | `apt show` | `winget show` |
-| Limpiar la caché de paquetes | `apt clean` | No existe un equivalente directo |
-
----
-
-### Buenas prácticas generales
-
-- Mantén siempre actualizados los repositorios antes de instalar software nuevo.
-- Instala únicamente paquetes procedentes de repositorios o fuentes de confianza.
-- Revisa el nombre o identificador del paquete antes de instalarlo o actualizarlo.
-- Elimina aplicaciones que ya no utilices para reducir la superficie de ataque del sistema.
-- Mantén el sistema actualizado para corregir errores y vulnerabilidades de seguridad.
-- Ejecuta `apt autoremove` periódicamente para eliminar dependencias innecesarias.
-- Consulta la información del paquete antes de instalar software desconocido.
 
 ---
 

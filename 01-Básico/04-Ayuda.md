@@ -16,7 +16,6 @@ Tanto Linux como PowerShell incorporan herramientas que permiten acceder a infor
 - [Mostrar ejemplos de uso](#mostrar-ejemplos-de-uso)
 - [Consultar los parámetros de un comando](#consultar-los-parámetros-de-un-comando)
 - [Actualizar la ayuda (PowerShell)](#actualizar-la-ayuda-powershell)
-- [Resumen de equivalencias](#resumen-de-equivalencias)
 
 ---
 
@@ -67,14 +66,6 @@ Get-Command Get*
 
 ---
 
-### Buenas prácticas
-
-- Utiliza `Get-Command` como primer paso cuando desconozcas el nombre exacto de un cmdlet.
-- Aprovecha los comodines para localizar comandos similares.
-- En Linux, utiliza `apropos` cuando conozcas la función que deseas realizar, pero no recuerdes el nombre del comando.
-
----
-
 ### Comandos relacionados
 
 - [Mostrar la ayuda de un comando](#mostrar-la-ayuda-de-un-comando)
@@ -93,14 +84,6 @@ Get-Command Get*
 | **Ejemplo** | `apropos process` | `Get-Command *Process*` |
 
 > 💡 **Diferencia clave** — 🐧 `apropos` busca palabras dentro de la descripción de las páginas del manual. · 🪟 `Get-Command -Verb` busca cmdlets utilizando los verbos estándar de PowerShell.
-
----
-
-### Buenas prácticas
-
-- Utiliza palabras clave sencillas para obtener mejores resultados.
-- En PowerShell, intenta buscar primero por verbo (`Get`, `Set`, `New`, `Remove`, etc.).
-- Si no encuentras el comando adecuado, utiliza comodines para ampliar la búsqueda.
 
 ---
 
@@ -125,14 +108,6 @@ Get-Command Get*
 > 
 ---
 
-### Buenas prácticas
-
-- Consulta siempre los ejemplos antes de utilizar un comando desconocido.
-- Modifica los ejemplos según tus necesidades en lugar de ejecutarlos directamente.
-- Si un comando no dispone de ejemplos, consulta la documentación completa mediante `man` o `Get-Help`.
-
----
-
 ### Comandos relacionados
 
 - [Mostrar la ayuda de un comando](#mostrar-la-ayuda-de-un-comando)
@@ -154,14 +129,6 @@ Get-Command Get*
 
 ---
 
-### Buenas prácticas
-
-- Consulta la documentación completa cuando necesites conocer todos los parámetros disponibles.
-- Utiliza `--help` para una consulta rápida y `man` para una explicación detallada.
-- En PowerShell, utiliza `Get-Help -Full` antes de ejecutar cmdlets desconocidos.
-
----
-
 ### Comandos relacionados
 
 - [Mostrar la ayuda de un comando](#mostrar-la-ayuda-de-un-comando)
@@ -180,14 +147,6 @@ Get-Command Get*
 | **Ejemplo** | `sudo mandb` | `Update-Help -Module Microsoft.PowerShell.Management` |
 
 > 💡 **Diferencia clave** — 🐧 `mandb` reconstruye la base de datos de las páginas del manual instaladas en el sistema. · 🪟 `Update-Help` descarga la documentación más reciente desde Internet.
-
----
-
-### Buenas prácticas
-
-- Ejecuta `Update-Help` periódicamente para disponer de la documentación más reciente.
-- En Linux, utiliza `mandb` cuando instales nuevas páginas del manual o si `apropos` no encuentra resultados esperados.
-- Ejecuta ambos comandos con privilegios de administrador cuando sea necesario.
 
 ---
 

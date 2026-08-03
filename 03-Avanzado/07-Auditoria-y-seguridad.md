@@ -4,8 +4,6 @@
 
 La auditoría y la seguridad son elementos fundamentales en la administración de sistemas modernos. No basta con configurar correctamente un servidor o mantenerlo actualizado; también es necesario registrar la actividad del sistema, controlar quién accede a los recursos, supervisar continuamente posibles amenazas y disponer de procedimientos para responder ante incidentes de seguridad.
 
-En este apartado se estudian los principales mecanismos de auditoría, los registros de seguridad, el control de acceso, la autenticación, las políticas de seguridad, el hardening de sistemas y la monitorización de eventos, así como las buenas prácticas para proteger infraestructuras tanto Linux como Windows.
-
 El conocimiento de estos conceptos permite mejorar la seguridad, facilitar las tareas de administración y responder de forma eficaz ante posibles incidentes.
 
 ---
@@ -20,7 +18,6 @@ El conocimiento de estos conceptos permite mejorar la seguridad, facilitar las t
 - [Hardening del sistema](#hardening-del-sistema)
 - [Monitorización de seguridad](#monitorización-de-seguridad)
 - [Respuesta ante incidentes](#respuesta-ante-incidentes)
-- [Buenas prácticas](#buenas-prácticas)
 
 ---
 
@@ -237,18 +234,6 @@ Es una herramienta imprescindible en cualquier entorno profesional.
 | `syslog` | Registro de Seguridad |
 | `auditd` | Directivas de auditoría |
 | Archivos de log | Eventos centralizados |
-
----
-
-### Buenas prácticas
-
-- Audita únicamente los eventos que aporten información útil.
-- Conserva los registros durante el tiempo establecido por la organización o la normativa aplicable.
-- Protege los registros frente a modificaciones o eliminaciones no autorizadas.
-- Sincroniza la hora de los equipos para garantizar la coherencia temporal de los eventos.
-- Revisa periódicamente los registros en busca de actividades anómalas.
-- Documenta la configuración de la auditoría para facilitar su mantenimiento y revisión.
-- Automatiza el análisis de registros cuando el volumen de información sea elevado.
 
 ---
 
@@ -517,18 +502,6 @@ Analizar la secuencia completa facilita comprender lo sucedido.
 
 ---
 
-### Buenas prácticas
-
-- Revisa periódicamente los registros de seguridad.
-- Configura la rotación y conservación de los registros para evitar su pérdida.
-- Protege los archivos de registro frente a modificaciones no autorizadas.
-- Sincroniza la hora de todos los equipos mediante NTP para mantener una línea temporal coherente.
-- Filtra y prioriza los eventos relevantes para evitar el exceso de información.
-- Automatiza el análisis cuando el volumen de registros sea elevado.
-- Conserva los registros durante el tiempo establecido por la organización o la normativa aplicable.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Control de acceso
@@ -789,19 +762,6 @@ Por ello es importante revisar periódicamente la configuración de acceso.
 | Otros | Usuarios específicos |
 | Permisos rwx | ACL |
 | ACL opcionales | ACL integradas |
-
----
-
-### Buenas prácticas
-
-- Aplica siempre el principio de mínimo privilegio.
-- Asigna permisos preferentemente mediante grupos en lugar de usuarios individuales.
-- Revisa periódicamente los permisos de archivos y carpetas.
-- Elimina permisos que ya no sean necesarios.
-- Evita conceder control total salvo cuando sea imprescindible.
-- Mantén habilitada la herencia únicamente cuando simplifique la administración y no comprometa la seguridad.
-- Audita los accesos a recursos sensibles para detectar actividades no autorizadas.
-- Documenta los cambios importantes relacionados con permisos y accesos.
 
 ---
 
@@ -1089,19 +1049,6 @@ Algunos problemas frecuentes son:
 
 ---
 
-### Buenas prácticas
-
-- Utiliza contraseñas robustas y únicas.
-- Habilita la autenticación multifactor siempre que sea posible.
-- Evita compartir cuentas entre varios usuarios.
-- Aplica el principio de mínimo privilegio al asignar permisos.
-- Revisa periódicamente los permisos y roles de los usuarios.
-- Deshabilita o elimina las cuentas que ya no sean necesarias.
-- Registra los intentos de autenticación y los accesos a recursos sensibles.
-- Documenta las políticas de autenticación y autorización de la organización.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Políticas de seguridad
@@ -1332,18 +1279,6 @@ Las políticas deben ser conocidas y comprendidas por todo el personal.
 
 ---
 
-### Buenas prácticas
-
-- Define políticas claras, sencillas y fáciles de aplicar.
-- Adapta las políticas al tamaño y necesidades de la organización.
-- Revisa y actualiza la documentación periódicamente.
-- Forma a los usuarios sobre las normas de seguridad.
-- Aplica el principio de mínimo privilegio en todas las políticas relacionadas con permisos.
-- Supervisa el cumplimiento mediante auditorías y revisiones periódicas.
-- Documenta las excepciones y autorízalas únicamente cuando exista una necesidad justificada.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Hardening del sistema
@@ -1559,20 +1494,6 @@ Las checklists ayudan a mantener una configuración homogénea.
 | Permisos amplios | Mínimo privilegio |
 | Actualizaciones pendientes | Sistema actualizado |
 | Escasa auditoría | Auditoría configurada |
-
----
-
-### Buenas prácticas
-
-- Aplica el hardening antes de poner un sistema en producción.
-- Elimina software y servicios que no sean necesarios.
-- Mantén el sistema y las aplicaciones completamente actualizados.
-- Cambia todas las credenciales predeterminadas.
-- Configura correctamente el firewall y limita los puertos abiertos.
-- Revisa periódicamente los permisos y las cuentas privilegiadas.
-- Activa la auditoría y conserva los registros de seguridad.
-- Utiliza herramientas de evaluación para verificar el nivel de endurecimiento.
-- Documenta todas las modificaciones realizadas durante el proceso de hardening.
 
 ---
 
@@ -1821,19 +1742,6 @@ Ambos procesos son complementarios y necesarios.
 
 ---
 
-### Buenas prácticas
-
-- Supervisa de forma continua los sistemas críticos.
-- Configura alertas para eventos relevantes relacionados con la seguridad.
-- Revisa periódicamente las cuentas con privilegios elevados.
-- Centraliza los registros cuando existan múltiples servidores o equipos.
-- Correlaciona eventos para detectar patrones de ataque.
-- Ajusta los umbrales de alerta para reducir los falsos positivos.
-- Conserva un historial suficiente para facilitar investigaciones posteriores.
-- Documenta las alertas relevantes y las acciones realizadas.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Respuesta ante incidentes
@@ -2077,261 +1985,6 @@ Esta información resulta muy útil para futuras investigaciones y auditorías.
 | Erradicación | Eliminar la causa |
 | Recuperación | Restaurar los servicios |
 | Lecciones aprendidas | Mejorar la respuesta futura |
-
----
-
-### Buenas prácticas
-
-- Mantén un procedimiento de respuesta documentado y actualizado.
-- Forma al personal para actuar correctamente ante un incidente.
-- Actúa con rapidez, pero evita tomar decisiones precipitadas.
-- Conserva las evidencias necesarias para el análisis.
-- Documenta todas las acciones realizadas durante la respuesta.
-- Revisa los registros y verifica que el incidente ha sido completamente erradicado.
-- Analiza las causas y aplica medidas preventivas para evitar incidentes similares.
-- Realiza simulacros periódicos para comprobar la eficacia del procedimiento.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-La seguridad de un sistema no depende únicamente del software utilizado, sino también de la forma en que se administra.
-
-Aplicar buenas prácticas reduce significativamente el riesgo de incidentes, facilita la detección de problemas y mejora la protección de la infraestructura frente a amenazas internas y externas.
-
-Estas recomendaciones son aplicables tanto a estaciones de trabajo como a servidores Linux y Windows.
-
----
-
-### Aplica el principio de mínimo privilegio
-
-Concede a cada usuario únicamente los permisos necesarios para realizar su trabajo.
-
-Evita:
-
-- Cuentas con privilegios excesivos.
-- Usuarios administradores innecesarios.
-- Servicios ejecutándose como `root` o Administrador sin justificación.
-
-Cuantos menos privilegios tenga una cuenta, menor será el impacto si resulta comprometida.
-
----
-
-### Utiliza contraseñas robustas
-
-Las contraseñas deben ser:
-
-- Largas.
-- Únicas.
-- Difíciles de adivinar.
-- Distintas para cada servicio.
-
-Evita utilizar:
-
-- Fechas de nacimiento.
-- Nombres propios.
-- Palabras del diccionario.
-- Contraseñas reutilizadas.
-
-Siempre que sea posible, utiliza un gestor de contraseñas.
-
----
-
-### Habilita la autenticación multifactor
-
-La autenticación multifactor (MFA) añade una capa adicional de seguridad.
-
-Aunque un atacante obtenga la contraseña, necesitará un segundo factor para acceder.
-
-Debe utilizarse especialmente en:
-
-- Accesos remotos.
-- Cuentas administrativas.
-- Servicios en la nube.
-- Correo corporativo.
-
----
-
-### Mantén el sistema actualizado
-
-Instala periódicamente las actualizaciones de:
-
-- Sistema operativo.
-- Aplicaciones.
-- Servicios.
-- Firmware.
-- Controladores cuando sea necesario.
-
-Las actualizaciones corrigen vulnerabilidades conocidas y mejoran la estabilidad del sistema.
-
----
-
-### Deshabilita lo que no utilices
-
-Elimina o deshabilita:
-
-- Servicios innecesarios.
-- Aplicaciones sin uso.
-- Protocolos obsoletos.
-- Puertos abiertos innecesariamente.
-- Cuentas inactivas.
-
-Reducir la superficie de ataque es una de las medidas de protección más eficaces.
-
----
-
-### Revisa los registros
-
-Consulta periódicamente los registros de seguridad para detectar:
-
-- Intentos fallidos de autenticación.
-- Cambios inesperados.
-- Accesos fuera de horario.
-- Errores repetitivos.
-- Actividad sospechosa.
-
-La revisión periódica permite identificar incidentes antes de que provoquen daños importantes.
-
----
-
-### Realiza copias de seguridad
-
-Mantén copias de seguridad periódicas de:
-
-- Configuración.
-- Bases de datos.
-- Archivos críticos.
-- Documentación.
-
-Además, verifica regularmente que pueden restaurarse correctamente.
-
-Una copia de seguridad que no puede recuperarse carece de utilidad.
-
----
-
-### Protege el acceso remoto
-
-Cuando un sistema sea accesible desde Internet:
-
-- Utiliza VPN cuando sea posible.
-- Habilita MFA.
-- Limita las direcciones IP autorizadas.
-- Utiliza protocolos cifrados.
-- Supervisa las conexiones.
-
-Evita exponer servicios innecesarios directamente a Internet.
-
----
-
-### Documenta los cambios
-
-Registra siempre:
-
-- Cambios de configuración.
-- Modificaciones de permisos.
-- Instalación de software.
-- Actualizaciones importantes.
-- Incidentes de seguridad.
-
-La documentación facilita el mantenimiento y las investigaciones posteriores.
-
----
-
-### Supervisa continuamente
-
-No esperes a que aparezca un problema.
-
-Monitoriza:
-
-- Servicios.
-- Recursos.
-- Usuarios.
-- Registros.
-- Red.
-- Alertas de seguridad.
-
-La monitorización continua reduce el tiempo necesario para detectar y responder a incidentes.
-
----
-
-### Forma a los usuarios
-
-Muchos incidentes tienen su origen en errores humanos.
-
-Es recomendable formar a los usuarios sobre:
-
-- Phishing.
-- Gestión de contraseñas.
-- Uso seguro del correo electrónico.
-- Ingeniería social.
-- Manejo de información sensible.
-
-La concienciación es una de las mejores medidas preventivas.
-
----
-
-### Realiza auditorías periódicas
-
-Comprueba regularmente:
-
-- Permisos.
-- Usuarios.
-- Servicios.
-- Configuración.
-- Registros.
-- Políticas de seguridad.
-
-Las auditorías permiten detectar configuraciones incorrectas antes de que sean explotadas.
-
----
-
-### Planifica la respuesta ante incidentes
-
-Todo sistema debería disponer de un procedimiento para actuar cuando ocurre un incidente.
-
-Debe incluir:
-
-- Personas responsables.
-- Procedimientos.
-- Contactos.
-- Copias de seguridad.
-- Documentación.
-
-Una buena preparación reduce considerablemente el impacto de cualquier incidente.
-
----
-
-### Resumen de recomendaciones
-
-| Recomendación | Beneficio |
-|---------------|-----------|
-| Mínimo privilegio | Reduce el impacto de un compromiso |
-| Contraseñas robustas | Protege las credenciales |
-| MFA | Añade una capa adicional de seguridad |
-| Actualizaciones | Corrigen vulnerabilidades |
-| Deshabilitar servicios innecesarios | Reduce la superficie de ataque |
-| Revisar registros | Detecta actividades sospechosas |
-| Copias de seguridad | Facilita la recuperación |
-| Documentar cambios | Mejora la trazabilidad |
-| Monitorización continua | Reduce el tiempo de detección |
-| Formación de usuarios | Disminuye el riesgo de errores humanos |
-
----
-
-### Errores habituales
-
-Algunas prácticas que deben evitarse son:
-
-- Utilizar cuentas administrativas para tareas cotidianas.
-- Reutilizar contraseñas en distintos servicios.
-- Ignorar las actualizaciones de seguridad.
-- No revisar los registros del sistema.
-- Mantener servicios innecesarios activos.
-- Compartir cuentas entre varios usuarios.
-- No documentar cambios importantes.
-- No comprobar periódicamente las copias de seguridad.
 
 ---
 

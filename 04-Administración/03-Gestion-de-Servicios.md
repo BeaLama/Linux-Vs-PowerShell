@@ -22,8 +22,6 @@ La correcta administración de los servicios es una tarea fundamental para cualq
 - [Administración mediante CMD](#administración-mediante-cmd)
 - [Administración mediante systemctl](#administración-mediante-systemctl)
 - [Monitorización y resolución de problemas](#monitorización-y-resolución-de-problemas)
-- [Buenas prácticas en la gestión de servicios](#buenas-prácticas-en-la-gestión-de-servicios)
-- [Casos prácticos](#casos-prácticos)
 
 ---
 ## Concepto de servicio
@@ -982,20 +980,6 @@ Por ello, antes de detener o deshabilitar un servicio conviene comprobar si otro
 
 ---
 
-### Buenas prácticas
-
-Para evitar problemas relacionados con las dependencias se recomienda:
-
-- Revisar las dependencias antes de modificar un servicio.
-- No deshabilitar servicios críticos sin conocer su función.
-- Comprobar el estado de los servicios relacionados.
-- Documentar las modificaciones realizadas.
-- Verificar el funcionamiento del sistema tras cualquier cambio.
-
-Estas medidas reducen el riesgo de interrupciones inesperadas.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Gestión de servicios en Windows
@@ -1253,20 +1237,6 @@ En muchos casos, este procedimiento permite resolver la incidencia sin necesidad
 
 ---
 
-### Buenas prácticas
-
-Durante la administración de servicios en Windows se recomienda:
-
-- No deshabilitar servicios sin conocer su función.
-- Revisar las dependencias antes de realizar cambios.
-- Mantener el tipo de inicio adecuado para cada servicio.
-- Utilizar PowerShell para automatizar tareas repetitivas.
-- Documentar cualquier modificación importante.
-
-Estas prácticas ayudan a mantener la estabilidad y seguridad del sistema.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Gestión de servicios en Linux
@@ -1495,20 +1465,6 @@ Estos registros permiten analizar errores, advertencias y el historial de ejecuc
 
 ---
 
-### Buenas prácticas
-
-Durante la administración de servicios en Linux se recomienda:
-
-- No detener servicios críticos sin conocer su función.
-- Comprobar las dependencias antes de realizar modificaciones.
-- Revisar periódicamente los registros del sistema.
-- Mantener únicamente los servicios necesarios.
-- Documentar los cambios realizados.
-
-Estas medidas ayudan a mantener un sistema estable y seguro.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Inicio automático y tipos de inicio
@@ -1670,20 +1626,6 @@ Como norma general:
 - Servicios innecesarios → Deshabilitado.
 
 Modificar el tipo de inicio sin conocer la función del servicio puede provocar fallos en el sistema o en determinadas aplicaciones.
-
----
-
-### Buenas prácticas
-
-Para configurar correctamente los servicios se recomienda:
-
-- Mantener en automático únicamente los servicios esenciales.
-- Utilizar el inicio retrasado cuando sea posible para mejorar el arranque.
-- Configurar como manual los servicios de uso ocasional.
-- Deshabilitar únicamente servicios cuya función se conozca perfectamente.
-- Revisar las dependencias antes de modificar el tipo de inicio.
-
-Estas prácticas ayudan a optimizar el rendimiento y mantener la estabilidad del sistema.
 
 ---
 
@@ -1875,18 +1817,6 @@ Este script comprueba si el servicio está detenido y, en caso afirmativo, lo in
 
 ---
 
-### Buenas prácticas
-
-Durante la administración mediante PowerShell se recomienda:
-
-- Ejecutar la consola con privilegios de administrador cuando sea necesario.
-- Comprobar el estado del servicio antes de modificarlo.
-- Revisar las dependencias antes de detener un servicio.
-- Automatizar únicamente tareas bien documentadas.
-- Probar los scripts en entornos de pruebas antes de utilizarlos en producción.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Administración mediante CMD
@@ -2072,18 +2002,6 @@ Aunque ofrece menos opciones que `sc`, sigue siendo muy utilizado por su sencill
 | Permite configurar servicios. | Solo permite iniciar y detener servicios. |
 | Muestra información detallada. | Proporciona información básica. |
 | Muy utilizado en administración avanzada. | Muy utilizado para tareas rápidas. |
-
----
-
-### Buenas prácticas
-
-Durante la administración mediante CMD se recomienda:
-
-- Ejecutar la consola como administrador cuando sea necesario.
-- Verificar el estado del servicio antes de modificarlo.
-- Revisar las dependencias antes de detener un servicio.
-- Utilizar `sc` para tareas avanzadas y `net` para operaciones básicas.
-- Documentar cualquier cambio realizado en servicios críticos.
 
 ---
 
@@ -2279,18 +2197,6 @@ journalctl -u apache2 -n 20
 ```
 
 Estos registros son fundamentales para diagnosticar errores y fallos de funcionamiento.
-
----
-
-### Buenas prácticas
-
-Durante la administración mediante `systemctl` se recomienda:
-
-- Verificar el estado del servicio antes de realizar cambios.
-- Comprobar las dependencias antes de detener un servicio.
-- Revisar los registros cuando se produzca un error.
-- Habilitar únicamente los servicios necesarios durante el arranque.
-- Documentar cualquier modificación realizada en servicios críticos.
 
 ---
 
@@ -2491,177 +2397,6 @@ Algunas de las más conocidas son:
 - Grafana.
 
 Estas herramientas permiten generar alertas cuando un servicio deja de funcionar o presenta un comportamiento anómalo.
-
----
-
-### Buenas prácticas
-
-Para mantener los servicios correctamente supervisados se recomienda:
-
-- Revisar periódicamente su estado.
-- Consultar los registros ante cualquier incidencia.
-- Automatizar la monitorización siempre que sea posible.
-- Documentar las incidencias y su resolución.
-- No reiniciar servicios críticos sin analizar previamente la causa del problema.
-
-Una supervisión adecuada reduce el tiempo de inactividad y mejora la disponibilidad del sistema.
-
----
-
-## Buenas prácticas en la gestión de servicios
-
-Introducción
-
-Una correcta administración de los servicios es fundamental para mantener un sistema operativo estable, seguro y con un rendimiento óptimo. Una configuración inadecuada puede provocar problemas de funcionamiento, aumentar el consumo de recursos o generar vulnerabilidades de seguridad.
-
-Aplicar buenas prácticas durante la gestión de los servicios ayuda a reducir incidencias, facilitar el mantenimiento y garantizar la disponibilidad de las funciones esenciales del sistema.
-
----
-
-### Conocer la función de cada servicio
-
-Antes de modificar, detener o deshabilitar un servicio es imprescindible conocer su función.
-
-Es recomendable consultar:
-
-- La documentación oficial.
-- Las dependencias del servicio.
-- Su impacto sobre el sistema.
-- Las aplicaciones que lo utilizan.
-
-Modificar un servicio sin conocer su propósito puede provocar errores difíciles de diagnosticar.
-
----
-
-### No deshabilitar servicios críticos
-
-Algunos servicios son esenciales para el funcionamiento del sistema operativo.
-
-Deshabilitarlos puede provocar:
-
-- Errores durante el arranque.
-- Problemas de autenticación.
-- Fallos de red.
-- Imposibilidad de utilizar determinadas aplicaciones.
-
-Solo deben deshabilitarse aquellos servicios cuya función se conozca perfectamente y que realmente no sean necesarios.
-
----
-
-### Revisar las dependencias
-
-Antes de detener un servicio conviene comprobar si otros dependen de él.
-
-Una dependencia incorrectamente gestionada puede provocar que varios servicios dejen de funcionar simultáneamente.
-
-Siempre es recomendable revisar las dependencias antes de realizar cambios.
-
----
-
-### Configurar correctamente el tipo de inicio
-
-Cada servicio debe disponer del tipo de inicio adecuado según su función.
-
-Como norma general:
-
-- **Automático** para servicios esenciales.
-- **Automático (inicio retrasado)** para servicios importantes que no son críticos durante el arranque.
-- **Manual** para servicios de uso ocasional.
-- **Deshabilitado** únicamente cuando se tenga la certeza de que no será necesario.
-
-Una configuración adecuada mejora el rendimiento del sistema y reduce el tiempo de arranque.
-
----
-
-### Mantener únicamente los servicios necesarios
-
-Cada servicio consume recursos del sistema.
-
-Por ello se recomienda:
-
-- Desinstalar aplicaciones que ya no se utilicen.
-- Eliminar servicios obsoletos.
-- Revisar periódicamente los servicios instalados.
-- Evitar la ejecución de servicios innecesarios.
-
-Reducir el número de servicios activos contribuye a mejorar el rendimiento y la seguridad.
-
----
-
-### Supervisar periódicamente los servicios
-
-Es recomendable comprobar regularmente:
-
-- Estado de los servicios.
-- Consumo de recursos.
-- Errores registrados.
-- Reinicios inesperados.
-- Disponibilidad de los servicios críticos.
-
-La supervisión periódica permite detectar problemas antes de que afecten a los usuarios.
-
----
-
-### Revisar los registros del sistema
-
-Ante cualquier incidencia relacionada con un servicio deben consultarse los registros del sistema.
-
-En Windows:
-
-- Visor de eventos.
-
-En Linux:
-
-- `journalctl`.
-- Archivos de `/var/log`.
-
-Los registros suelen proporcionar información suficiente para localizar la causa del problema.
-
----
-
-### Automatizar tareas repetitivas
-
-Las tareas de administración frecuentes pueden automatizarse mediante scripts.
-
-Algunos ejemplos son:
-
-- Reinicio de servicios.
-- Comprobación de estado.
-- Generación de informes.
-- Supervisión de disponibilidad.
-
-La automatización reduce errores y agiliza las tareas administrativas.
-
----
-
-### Mantener el sistema actualizado
-
-Las actualizaciones corrigen errores y mejoran la estabilidad de los servicios.
-
-Es recomendable mantener actualizados:
-
-- Sistema operativo.
-- Aplicaciones.
-- Servicios instalados.
-- Herramientas de administración.
-
-Esto reduce la probabilidad de fallos y mejora la seguridad.
-
----
-
-### Documentar las modificaciones
-
-Toda modificación realizada sobre un servicio debería quedar registrada.
-
-Es aconsejable documentar:
-
-- Fecha.
-- Servicio afectado.
-- Cambio realizado.
-- Motivo del cambio.
-- Resultado obtenido.
-
-Una buena documentación facilita futuras intervenciones y auditorías.
 
 ---
 

@@ -4,8 +4,6 @@
 
 Los servicios son procesos especiales que se ejecutan en segundo plano para proporcionar funciones esenciales al sistema operativo o a las aplicaciones.
 
-Comprender el funcionamiento de los servicios es fundamental para mantener la disponibilidad de servidores, solucionar incidencias y administrar infraestructuras de forma eficiente.
-
 ---
 
 ## Índice
@@ -18,7 +16,6 @@ Comprender el funcionamiento de los servicios es fundamental para mantener la di
 - [Monitorización y diagnóstico](#monitorización-y-diagnóstico)
 - [Seguridad de los servicios](#seguridad-de-los-servicios)
 - [Automatización](#automatización)
-- [Buenas prácticas](#buenas-prácticas)
 
 ---
 
@@ -26,32 +23,15 @@ Comprender el funcionamiento de los servicios es fundamental para mantener la di
 
 Un **servicio** es un tipo especial de proceso diseñado para ejecutarse en segundo plano y proporcionar funciones al sistema operativo o a otras aplicaciones.
 
-A diferencia de un programa convencional, un servicio no necesita la intervención directa del usuario y suele iniciarse automáticamente durante el arranque del sistema.
-
-Los servicios son fundamentales para el funcionamiento de servidores y equipos de escritorio, ya que gestionan tareas como la red, la autenticación, el almacenamiento, la impresión o las bases de datos.
-
+| Linux | Windows |
+|--------|----------|
+| systemd | Service Control Manager |
+| Unidades `.service` | Servicios registrados en el SCM |
+| Archivos de configuración | Registro y archivos de configuración |
+| Usuarios del sistema | Cuentas de servicio |
+| `systemctl` | Consola Servicios / PowerShell |
 ---
 
-### ¿Qué es un servicio?
-
-Un servicio es una aplicación que:
-
-- Se ejecuta en segundo plano.
-- No requiere interacción con el usuario.
-- Puede iniciarse automáticamente.
-- Permanece activa hasta que se detiene o finaliza.
-
-Ejemplos:
-
-- Servidor web.
-- Servidor DNS.
-- Servicio SSH.
-- Servicio de impresión.
-- Base de datos.
-- Antivirus.
-- Servicio de actualizaciones.
-
----
 
 ### Diferencia entre proceso y servicio
 
@@ -65,38 +45,6 @@ Aunque ambos son procesos en ejecución, tienen finalidades distintas.
 | Depende del usuario. | Proporciona funciones al sistema o a otras aplicaciones. |
 
 Todo servicio es un proceso, pero no todo proceso es un servicio.
-
----
-
-### Ciclo de vida de un servicio
-
-De forma simplificada, un servicio sigue este ciclo:
-
-```text
-Instalación
-
-↓
-
-Inicio
-
-↓
-
-Ejecución
-
-↓
-
-Detención
-
-↓
-
-Reinicio (opcional)
-
-↓
-
-Finalización
-```
-
-Durante este ciclo el sistema operativo controla su estado y disponibilidad.
 
 ---
 
@@ -136,12 +84,6 @@ Windows:
 svchost.exe
 ```
 
-o
-
-```text
-spoolsv.exe
-```
-
 ---
 
 ### Configuración
@@ -154,16 +96,6 @@ Habitualmente se almacenan en:
 
 ```text
 /etc
-```
-
-Ejemplos:
-
-```text
-/etc/ssh/sshd_config
-```
-
-```text
-/etc/nginx/nginx.conf
 ```
 
 Windows:
@@ -316,43 +248,6 @@ El SCM se encarga de:
 - Supervisar estados.
 
 Es el componente central de administración de servicios en Windows.
-
----
-
-### Ejemplos de servicios habituales
-
-| Servicio | Función |
-|-----------|----------|
-| SSH | Acceso remoto seguro |
-| Apache / Nginx | Servidor web |
-| MySQL / PostgreSQL | Base de datos |
-| DNS | Resolución de nombres |
-| DHCP | Asignación automática de IP |
-| Print Spooler | Gestión de impresión |
-| Windows Update | Actualizaciones del sistema |
-
----
-
-### Comparativa Linux / Windows
-
-| Linux | Windows |
-|--------|----------|
-| systemd | Service Control Manager |
-| Unidades `.service` | Servicios registrados en el SCM |
-| Archivos de configuración | Registro y archivos de configuración |
-| Usuarios del sistema | Cuentas de servicio |
-| `systemctl` | Consola Servicios / PowerShell |
-
----
-
-### Buenas prácticas
-
-- Ejecuta cada servicio con la cuenta que disponga únicamente de los permisos necesarios.
-- Mantén los archivos de configuración organizados y documentados.
-- Revisa periódicamente el estado de los servicios críticos.
-- Comprueba las dependencias antes de modificar o deshabilitar un servicio.
-- Consulta los registros cuando un servicio no funcione correctamente.
-- Deshabilita los servicios que no sean necesarios para reducir la superficie de ataque y el consumo de recursos.
 
 ---
 
@@ -691,17 +586,6 @@ Esto facilita el mantenimiento y reduce el riesgo de fallos en cascada.
 
 ---
 
-### Buenas prácticas
-
-- Define únicamente las dependencias realmente necesarias.
-- Diferencia entre dependencias obligatorias y opcionales.
-- Evita crear dependencias circulares.
-- Comprueba siempre las dependencias antes de deshabilitar un servicio.
-- Revisa los registros cuando un servicio falle durante el arranque.
-- Documenta las relaciones entre servicios en servidores de producción para facilitar futuras intervenciones.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Tipos de inicio y estados
@@ -1018,17 +902,6 @@ No siempre un servicio detenido implica una incidencia; puede estar configurado 
 
 ---
 
-### Buenas prácticas
-
-- Configura como automáticos únicamente los servicios necesarios.
-- Utiliza el inicio manual para servicios poco utilizados.
-- Evita deshabilitar servicios sin conocer su función.
-- Comprueba siempre el estado antes de reiniciar un servicio.
-- Consulta los registros cuando un servicio aparezca en estado de error.
-- Revisa periódicamente los servicios configurados para iniciarse automáticamente y elimina aquellos que no sean necesarios.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Servicios críticos del sistema
@@ -1219,18 +1092,6 @@ En algunos casos puede ser necesario reiniciar el sistema para restaurar determi
 | Gestión de red | `NetworkManager` | DHCP Client / DNS Client |
 | Programación de tareas | `cron` | Task Scheduler |
 | Acceso remoto | `sshd` | Remote Desktop Services (si está habilitado) |
-
----
-
-### Buenas prácticas
-
-- No deshabilites un servicio sin conocer exactamente su función.
-- Comprueba siempre las dependencias antes de detener un servicio.
-- Mantén activos los servicios esenciales para el funcionamiento del sistema.
-- Deshabilita únicamente servicios innecesarios y tras evaluar su impacto.
-- Documenta cualquier cambio realizado sobre servicios críticos.
-- Realiza las pruebas en un entorno controlado antes de aplicar cambios en producción.
-- Consulta los registros del sistema si un servicio crítico deja de funcionar.
 
 ---
 
@@ -1518,18 +1379,6 @@ La recuperación automática debe complementar el diagnóstico, no sustituirlo.
 
 ---
 
-### Buenas prácticas
-
-- Configura la recuperación automática únicamente en servicios que deban permanecer siempre disponibles.
-- Utiliza tiempos de espera razonables antes de reiniciar un servicio.
-- Evita los bucles de reinicio continuo.
-- Revisa siempre los registros tras un reinicio automático.
-- Corrige la causa del fallo en lugar de depender únicamente de la recuperación automática.
-- Documenta la política de recuperación aplicada a los servicios críticos.
-- Comprueba periódicamente que las acciones de recuperación siguen siendo adecuadas para el entorno.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Monitorización y diagnóstico
@@ -1773,18 +1622,6 @@ Esto permite:
 - Mejorar la disponibilidad del servicio.
 
 La monitorización continua es una parte esencial de cualquier infraestructura profesional.
-
----
-
-### Buenas prácticas
-
-- Supervisa periódicamente todos los servicios críticos.
-- Revisa los registros antes de reiniciar un servicio.
-- Analiza tanto el estado como el rendimiento del servicio.
-- Configura alertas para detectar fallos importantes de forma automática.
-- Documenta las incidencias y las acciones realizadas durante el diagnóstico.
-- Mantén un procedimiento de diagnóstico estructurado para evitar omitir comprobaciones importantes.
-- Utiliza herramientas de monitorización centralizada en entornos con múltiples servidores.
 
 ---
 
@@ -2062,20 +1899,6 @@ Algunas configuraciones inseguras son:
 
 ---
 
-### Buenas prácticas
-
-- Ejecuta cada servicio con la cuenta de menor privilegio posible.
-- Deshabilita o elimina los servicios que no sean necesarios.
-- Mantén el sistema y las aplicaciones actualizados.
-- Protege los archivos de configuración y las credenciales.
-- Expón únicamente los servicios que deban ser accesibles desde la red.
-- Utiliza protocolos cifrados para transmitir información sensible.
-- Revisa periódicamente los registros y los intentos de acceso.
-- Documenta los cambios de configuración relacionados con la seguridad.
-- Realiza auditorías periódicas sobre los servicios críticos.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Automatización
@@ -2321,241 +2144,6 @@ Una automatización mal diseñada puede generar más incidencias que las que pre
 | Requiere planificación | Útil para tareas puntuales |
 
 Lo habitual es combinar ambos enfoques según la situación.
-
----
-
-### Buenas prácticas
-
-- Automatiza únicamente tareas repetitivas y bien definidas.
-- Prueba los scripts antes de utilizarlos en producción.
-- Registra todas las acciones realizadas automáticamente.
-- Controla los errores y excepciones de los scripts.
-- Utiliza cuentas con los permisos mínimos necesarios.
-- Programa comprobaciones periódicas para los servicios críticos.
-- Revisa y actualiza los scripts cuando cambie la infraestructura.
-- Documenta el funcionamiento de cada automatización.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-Una correcta administración de los servicios es fundamental para garantizar la disponibilidad, el rendimiento y la seguridad de un sistema.
-
-Aplicar buenas prácticas reduce el riesgo de interrupciones, facilita el mantenimiento y simplifica la resolución de incidencias.
-
-Estas recomendaciones son aplicables tanto a equipos de usuario como a servidores Linux y Windows.
-
----
-
-### Conoce la función de cada servicio
-
-Antes de modificar un servicio es importante conocer:
-
-- Qué función realiza.
-- Qué aplicaciones lo utilizan.
-- Qué dependencias tiene.
-- Qué impacto tendría su detención.
-
-No deshabilites un servicio únicamente porque su nombre resulte desconocido.
-
----
-
-### Mantén solo los servicios necesarios
-
-Cada servicio en ejecución consume recursos y aumenta la superficie de ataque.
-
-Es recomendable:
-
-- Deshabilitar servicios que no se utilicen.
-- Eliminar aplicaciones innecesarias.
-- Revisar periódicamente los servicios instalados.
-
-Un sistema con menos servicios activos suele ser más seguro y eficiente.
-
----
-
-### Utiliza el principio de mínimo privilegio
-
-Ejecuta cada servicio con la cuenta que disponga únicamente de los permisos necesarios.
-
-Evita utilizar:
-
-- `root` en Linux.
-- Administrador o **Local System** en Windows.
-
-Salvo cuando sea estrictamente necesario.
-
-Esto limita el impacto de un posible compromiso del servicio.
-
----
-
-### Documenta los cambios
-
-Cada modificación importante debería quedar registrada.
-
-Por ejemplo:
-
-- Fecha.
-- Servicio afectado.
-- Motivo del cambio.
-- Configuración anterior.
-- Configuración nueva.
-- Responsable.
-
-La documentación facilita el mantenimiento y las auditorías.
-
----
-
-### Revisa los registros
-
-Cuando un servicio falle:
-
-1. Consulta los registros del sistema.
-2. Revisa los registros propios de la aplicación.
-3. Analiza el mensaje de error antes de reiniciar el servicio.
-
-Evita solucionar problemas únicamente mediante reinicios continuos.
-
----
-
-### Configura la recuperación automática
-
-Los servicios críticos deberían disponer de mecanismos de recuperación.
-
-Por ejemplo:
-
-```text
-Error
-
-↓
-
-Reinicio automático
-
-↓
-
-Servicio operativo
-```
-
-Esto reduce el tiempo de indisponibilidad y mejora la continuidad del servicio.
-
----
-
-### Supervisa el estado de los servicios
-
-Realiza comprobaciones periódicas para verificar:
-
-- Estado.
-- Tiempo de actividad.
-- Consumo de CPU.
-- Memoria.
-- Errores.
-- Reinicios inesperados.
-
-La monitorización continua permite detectar problemas antes de que afecten a los usuarios.
-
----
-
-### Mantén el software actualizado
-
-Las actualizaciones permiten:
-
-- Corregir vulnerabilidades.
-- Mejorar el rendimiento.
-- Solucionar errores.
-- Incorporar nuevas funciones.
-
-Mantén actualizados:
-
-- Sistema operativo.
-- Servicios.
-- Aplicaciones.
-- Dependencias.
-
----
-
-### Protege la configuración
-
-Los archivos de configuración pueden contener información sensible.
-
-Es recomendable:
-
-- Restringir los permisos de acceso.
-- Proteger credenciales y certificados.
-- Realizar copias de seguridad antes de modificarlos.
-- Documentar los cambios realizados.
-
----
-
-### Automatiza tareas repetitivas
-
-Siempre que sea posible:
-
-- Automatiza comprobaciones.
-- Genera informes automáticamente.
-- Programa tareas de mantenimiento.
-- Envía alertas cuando se detecten incidencias.
-
-La automatización mejora la eficiencia y reduce los errores humanos.
-
----
-
-### Prueba antes de aplicar cambios
-
-Antes de modificar servicios críticos:
-
-- Utiliza un entorno de pruebas cuando sea posible.
-- Verifica la configuración.
-- Comprueba las dependencias.
-- Evalúa el impacto del cambio.
-
-Aplicar cambios directamente en producción incrementa el riesgo de interrupciones.
-
----
-
-### Planifica el mantenimiento
-
-Las intervenciones importantes deberían realizarse:
-
-- En horarios de baja actividad.
-- Con copia de seguridad disponible.
-- Informando previamente a los usuarios si procede.
-- Con un plan de reversión en caso de fallo.
-
-Una buena planificación reduce el impacto sobre la disponibilidad del servicio.
-
----
-
-### Auditorías periódicas
-
-Es recomendable revisar de forma periódica:
-
-- Servicios instalados.
-- Servicios activos.
-- Configuración.
-- Permisos.
-- Dependencias.
-- Registros de errores.
-
-Estas revisiones ayudan a detectar configuraciones obsoletas o problemas potenciales.
-
----
-
-### Resumen de recomendaciones
-
-| Recomendación | Beneficio |
-|---------------|-----------|
-| Conocer la función de cada servicio | Evita cambios innecesarios |
-| Mantener solo los servicios necesarios | Reduce consumo y superficie de ataque |
-| Aplicar el principio de mínimo privilegio | Mejora la seguridad |
-| Documentar los cambios | Facilita el mantenimiento |
-| Revisar los registros | Agiliza el diagnóstico |
-| Configurar recuperación automática | Reduce el tiempo de indisponibilidad |
-| Supervisar los servicios | Detecta incidencias de forma temprana |
-| Mantener el software actualizado | Corrige errores y vulnerabilidades |
-| Automatizar tareas | Reduce errores humanos |
-| Probar antes de modificar | Disminuye el riesgo en producción |
 
 ---
 

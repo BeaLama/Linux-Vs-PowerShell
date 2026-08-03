@@ -4,8 +4,6 @@
 
 Las copias de seguridad constituyen uno de los pilares fundamentales de la administración de sistemas. Su objetivo es garantizar la recuperación de la información ante incidentes como fallos de hardware, errores humanos, ataques de ransomware, desastres naturales o cualquier otra situación que comprometa la disponibilidad de los datos.
 
-En este apartado se profundiza en las estrategias de backup utilizadas en entornos profesionales, los distintos tipos de copias, tecnologías de almacenamiento, automatización, recuperación de datos y buenas prácticas para asegurar la continuidad del servicio.
-
 ---
 
 ## Índice
@@ -17,7 +15,6 @@ En este apartado se profundiza en las estrategias de backup utilizadas en entorn
 - [Automatización y herramientas](#automatización-y-herramientas)
 - [Restauración y recuperación](#restauración-y-recuperación)
 - [Seguridad de las copias](#seguridad-de-las-copias)
-- [Buenas prácticas](#buenas-prácticas)
 
 ---
 
@@ -274,19 +271,6 @@ Una buena documentación facilita enormemente la recuperación ante incidentes.
 | Sincronización | Mantener datos iguales |
 | Replicación | Alta disponibilidad |
 | RAID | Redundancia frente a fallos de disco |
-
----
-
-### Buenas prácticas
-
-- Realiza copias de seguridad de toda la información crítica.
-- Define una política clara sobre qué datos deben protegerse y con qué frecuencia.
-- Guarda las copias en un soporte distinto al original.
-- Comprueba periódicamente que las copias pueden restaurarse correctamente.
-- Documenta todos los procedimientos de copia y recuperación.
-- Protege también las configuraciones de servidores y dispositivos de red.
-- Automatiza los procesos siempre que sea posible.
-- Considera el backup como parte esencial del plan de continuidad del negocio.
 
 ---
 
@@ -621,19 +605,6 @@ Muchas organizaciones utilizan ambos tipos simultáneamente.
 
 ---
 
-### Buenas prácticas
-
-- Combina copias completas con incrementales o diferenciales para optimizar tiempo y almacenamiento.
-- Programa los backups completos en momentos de baja actividad.
-- Utiliza snapshots antes de realizar cambios importantes en sistemas o máquinas virtuales.
-- Evita depender únicamente de copias espejo, ya que no conservan versiones anteriores.
-- Comprueba periódicamente que todos los tipos de copia pueden restaurarse correctamente.
-- Documenta la estrategia utilizada y el calendario de ejecución.
-- Ajusta el tipo de copia a la criticidad y al volumen de cambios de cada sistema.
-- Revisa periódicamente el espacio ocupado por las copias para evitar problemas de capacidad.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Estrategias y planificación
@@ -946,19 +917,6 @@ La documentación facilita la actuación durante una incidencia.
 | 3-2-1-1-0 | Protección avanzada contra ransomware |
 | RPO | Limitar la pérdida de datos |
 | RTO | Reducir el tiempo de recuperación |
-
----
-
-### Buenas prácticas
-
-- Diseña una estrategia adaptada a la criticidad de los datos.
-- Define claramente los objetivos de RPO y RTO.
-- Aplica la regla 3-2-1 como mínimo y considera la 3-2-1-1-0 para entornos críticos.
-- Establece una política de retención adecuada a las necesidades de la organización.
-- Programa las copias durante las ventanas de menor actividad.
-- Realiza pruebas periódicas de restauración para validar las copias.
-- Documenta todos los procedimientos de backup y recuperación.
-- Revisa periódicamente la estrategia para adaptarla al crecimiento de la infraestructura.
 
 ---
 
@@ -1340,19 +1298,6 @@ Muchos programas de backup aplican compresión automáticamente.
 
 ---
 
-### Buenas prácticas
-
-- Almacena las copias en un soporte diferente al de los datos originales.
-- Combina almacenamiento local y externo para mejorar la resiliencia.
-- Mantén al menos una copia offline u offsite.
-- Utiliza almacenamiento inmutable para protegerte frente al ransomware.
-- Cifra siempre las copias que contengan información sensible.
-- Aprovecha la deduplicación y la compresión para optimizar el espacio disponible.
-- Supervisa periódicamente la capacidad de almacenamiento y planifica su crecimiento.
-- Comprueba regularmente que las copias almacenadas siguen siendo accesibles y restaurables.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Automatización y herramientas
@@ -1701,19 +1646,6 @@ Esto permite validar periódicamente que las copias siguen siendo utilizables.
 | Duplicati | Multiplataforma | Interfaz web y nube |
 | Veeam | Empresarial | Backup y replicación |
 | Nakivo | Empresarial | Virtualización y cloud |
-
----
-
-### Buenas prácticas
-
-- Automatiza todas las copias de seguridad siempre que sea posible.
-- Programa los backups durante las horas de menor actividad.
-- Utiliza herramientas adecuadas al tamaño y complejidad de la infraestructura.
-- Configura alertas para detectar inmediatamente cualquier fallo en las copias.
-- Revisa diariamente los informes automáticos.
-- Automatiza también las verificaciones y las pruebas de restauración.
-- Mantén actualizadas las herramientas de backup para beneficiarte de mejoras y correcciones de seguridad.
-- Documenta la configuración y la programación de todas las tareas automatizadas.
 
 ---
 
@@ -2067,19 +1999,6 @@ Elegir el entorno adecuado depende del tipo de incidencia.
 
 ---
 
-### Buenas prácticas
-
-- Comprueba periódicamente que todas las copias pueden restaurarse correctamente.
-- Documenta detalladamente los procedimientos de recuperación.
-- Realiza pruebas de restauración en entornos controlados.
-- Verifica siempre la integridad de los datos recuperados.
-- Asegúrate de eliminar cualquier malware antes de restaurar un sistema comprometido.
-- Prioriza la recuperación de los servicios más críticos para la organización.
-- Controla que los objetivos de RPO y RTO se cumplen durante las pruebas y las incidencias reales.
-- Registra todas las restauraciones realizadas para facilitar auditorías y análisis posteriores.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Seguridad de las copias
@@ -2357,321 +2276,6 @@ La supervisión continua reduce el riesgo de fallos inesperados.
 | Offsite | Protección ante desastres |
 | Auditoría | Registrar actividades |
 | Hashes | Verificar integridad |
-
----
-
-### Buenas prácticas
-
-- Cifra todas las copias que contengan información sensible.
-- Protege las cuentas del software de backup mediante MFA.
-- Utiliza cuentas específicas con el principio de mínimo privilegio.
-- Mantén al menos una copia offline y otra offsite.
-- Implementa copias inmutables siempre que sea posible.
-- Verifica periódicamente la integridad de los backups mediante restauraciones de prueba.
-- Registra todas las operaciones relacionadas con las copias de seguridad.
-- Revisa regularmente los permisos de acceso y las políticas de seguridad.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-Una estrategia de copias de seguridad solo resulta eficaz cuando se mantiene de forma constante y se adapta a las necesidades de la organización. Las siguientes recomendaciones ayudan a minimizar el riesgo de pérdida de información y garantizan que los datos puedan recuperarse cuando sea necesario.
-
-Aplicar estas buenas prácticas permite reducir el impacto de fallos, ataques informáticos y errores humanos, mejorando la continuidad del negocio.
-
----
-
-### Diseñar una estrategia de backup
-
-Antes de implementar cualquier solución conviene definir:
-
-- Qué información debe protegerse.
-- Frecuencia de las copias.
-- Tiempo de conservación.
-- Ubicación de las copias.
-- Objetivos de RPO y RTO.
-- Procedimientos de restauración.
-
-Una estrategia bien planificada evita improvisaciones durante una incidencia.
-
----
-
-### Aplicar la regla 3-2-1
-
-Como mínimo se recomienda disponer de:
-
-- **3** copias de la información.
-- **2** soportes diferentes.
-- **1** copia almacenada fuera de la ubicación principal.
-
-Siempre que sea posible, es recomendable evolucionar hacia la regla **3-2-1-1-0**, incorporando una copia inmutable y verificaciones periódicas.
-
----
-
-### Automatizar los procesos
-
-Las copias manuales aumentan el riesgo de errores.
-
-Es recomendable automatizar:
-
-- Backups.
-- Informes.
-- Alertas.
-- Verificaciones.
-- Pruebas de restauración.
-
-La automatización garantiza que las tareas se ejecuten de forma constante.
-
----
-
-### Realizar copias periódicas
-
-La frecuencia debe ajustarse a la importancia de los datos.
-
-Ejemplo:
-
-| Información | Frecuencia recomendada |
-|--------------|------------------------|
-| Bases de datos críticas | Cada hora o varias veces al día |
-| Servidores | Diaria |
-| Equipos de usuario | Semanal |
-| Archivos históricos | Mensual |
-
-No todos los sistemas requieren el mismo nivel de protección.
-
----
-
-### Verificar las copias
-
-Una copia que no puede restaurarse no tiene ningún valor.
-
-Es recomendable comprobar periódicamente:
-
-- Integridad.
-- Accesibilidad.
-- Restauración.
-- Consistencia.
-
-Estas verificaciones deben formar parte del mantenimiento habitual.
-
----
-
-### Probar la restauración
-
-Las restauraciones deben realizarse regularmente en entornos de prueba.
-
-Proceso:
-
-```text
-Seleccionar backup
-
-↓
-
-Restaurar
-
-↓
-
-Validar funcionamiento
-
-↓
-
-Documentar resultado
-```
-
-Esto permite detectar problemas antes de una incidencia real.
-
----
-
-### Mantener varias versiones
-
-Conservar únicamente la última copia puede ser insuficiente.
-
-Es recomendable mantener:
-
-- Copias diarias.
-- Copias semanales.
-- Copias mensuales.
-- Copias anuales.
-
-Disponer de varias versiones facilita la recuperación de información modificada o eliminada hace tiempo.
-
----
-
-### Proteger las copias
-
-Los backups contienen información crítica.
-
-Debe protegerse mediante:
-
-- Cifrado.
-- MFA.
-- Control de acceso.
-- Copias offline.
-- Copias inmutables.
-
-La seguridad del backup debe ser equivalente a la de los datos originales.
-
----
-
-### Almacenar las copias en diferentes ubicaciones
-
-No es recomendable guardar todas las copias en un único lugar.
-
-Una estrategia habitual consiste en combinar:
-
-```text
-Servidor
-
-↓
-
-NAS local
-```
-
-```text
-↓
-
-Cloud
-```
-
-```text
-↓
-
-Disco offline
-```
-
-Así se reduce el riesgo de pérdida total.
-
----
-
-### Supervisar el almacenamiento
-
-Conviene revisar periódicamente:
-
-- Espacio disponible.
-- Estado de los discos.
-- Rendimiento.
-- Integridad de los datos.
-
-Un almacenamiento saturado puede impedir la realización de nuevas copias.
-
----
-
-### Documentar el proceso
-
-Toda estrategia debería incluir documentación sobre:
-
-- Equipos protegidos.
-- Calendario.
-- Política de retención.
-- Procedimientos de restauración.
-- Responsables.
-- Herramientas utilizadas.
-
-La documentación agiliza la recuperación ante incidentes.
-
----
-
-### Revisar la estrategia periódicamente
-
-Las necesidades de la organización cambian con el tiempo.
-
-Es recomendable revisar regularmente:
-
-- Nuevos servidores.
-- Nuevas aplicaciones.
-- Cambios en el volumen de datos.
-- Nuevos riesgos.
-- Cambios normativos.
-
-La estrategia debe evolucionar junto con la infraestructura.
-
----
-
-### Cumplir la normativa
-
-Dependiendo del tipo de información, pueden existir requisitos legales relacionados con:
-
-- Protección de datos.
-- Conservación documental.
-- Auditorías.
-- Ubicación del almacenamiento.
-
-La política de backups debe cumplir la legislación vigente.
-
----
-
-### Formar a los administradores
-
-El personal encargado de los backups debe conocer:
-
-- Procedimientos de copia.
-- Restauraciones.
-- Herramientas utilizadas.
-- Gestión de incidencias.
-- Medidas de seguridad.
-
-La formación reduce significativamente los errores operativos.
-
----
-
-### Ejemplo de estrategia recomendada
-
-```text
-Backup incremental diario
-
-↓
-
-Backup completo semanal
-
-↓
-
-Backup mensual externo
-
-↓
-
-Copia inmutable
-
-↓
-
-Prueba mensual de restauración
-```
-
-Esta combinación proporciona un alto nivel de protección frente a la mayoría de incidentes.
-
----
-
-### Errores frecuentes
-
-Algunos de los errores más habituales son:
-
-- No comprobar las copias.
-- Guardar todas las copias en el mismo lugar.
-- No cifrar los backups.
-- No realizar pruebas de restauración.
-- Utilizar únicamente copias espejo.
-- No documentar los procedimientos.
-- No actualizar la estrategia con el crecimiento de la infraestructura.
-
-Evitar estos errores mejora considerablemente la fiabilidad del sistema de backup.
-
----
-
-### Resumen de recomendaciones
-
-Las principales buenas prácticas son:
-
-- Diseñar una estrategia de backup antes de implantarla.
-- Aplicar la regla 3-2-1 o 3-2-1-1-0.
-- Automatizar todas las tareas posibles.
-- Realizar copias con la frecuencia adecuada.
-- Verificar periódicamente la integridad de las copias.
-- Ejecutar pruebas de restauración de forma regular.
-- Mantener varias versiones históricas.
-- Cifrar y proteger el acceso a los backups.
-- Combinar almacenamiento local, externo y offline.
-- Revisar y actualizar continuamente la estrategia.
 
 ---
 

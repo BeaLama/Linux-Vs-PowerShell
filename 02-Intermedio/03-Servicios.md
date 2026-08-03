@@ -19,7 +19,6 @@ La administración de servicios es una tarea fundamental para mantener la dispon
 - [Detener un servicio](#detener-un-servicio)
 - [Reiniciar un servicio](#reiniciar-un-servicio)
 - [Configurar el inicio automático](#configurar-el-inicio-automático)
-- [Resumen de equivalencias](#resumen-de-equivalencias)
 
 ---
 
@@ -39,15 +38,6 @@ Where-Object {$_.Status -eq "Running"}
 ```
 
 > 💡 **Diferencia clave** — 🐧 `systemctl` administra los servicios mediante **systemd**. · 🪟 `Get-Service` consulta el Administrador de Control de Servicios (SCM) de Windows.
-
----
-
-### Buenas prácticas
-
-- Comprueba periódicamente qué servicios se encuentran en ejecución.
-- Identifica los servicios detenidos antes de iniciar uno manualmente.
-- No detengas servicios críticos del sistema sin conocer su función.
-- Utiliza filtros para localizar rápidamente la información necesaria.
 
 ---
 
@@ -75,15 +65,6 @@ Get-Service <servicio>
 
 ---
 
-### Buenas prácticas
-
-- Utiliza el nombre exacto del servicio siempre que sea posible.
-- Si desconoces el nombre completo, realiza una búsqueda parcial.
-- Comprueba el estado del servicio antes de iniciarlo o detenerlo.
-- Utiliza `DisplayName` cuando conozcas el nombre visible del servicio pero no su nombre interno.
-
----
-
 ### Comandos relacionados
 
 - [Listar servicios](#listar-servicios)
@@ -102,15 +83,6 @@ Get-Service <servicio>
 | **Ejemplo** | `systemctl status cups` | `Get-Service Spooler` |
 
 > 💡 **Diferencia clave** — 🐧 `systemctl status` muestra información muy detallada del servicio. · 🪟 `Get-Service` muestra información básica del servicio.
-
----
-
-### Buenas prácticas
-
-- Comprueba siempre el estado del servicio antes de iniciarlo o detenerlo.
-- Si un servicio no se inicia correctamente, revisa la información mostrada por `systemctl status`.
-- En PowerShell, consulta también el tipo de inicio cuando un servicio no arranque automáticamente.
-- Si un servicio falla repetidamente, revisa los registros del sistema para identificar la causa.
 
 ---
 
@@ -135,15 +107,6 @@ Get-Service <servicio>
 
 ---
 
-### Buenas prácticas
-
-- Comprueba que el servicio está detenido antes de iniciarlo.
-- Verifica que el servicio ha arrancado correctamente después de ejecutarlo.
-- Si el servicio no inicia, consulta su estado y los registros del sistema para identificar el problema.
-- Evita iniciar servicios innecesarios que puedan consumir recursos o aumentar la superficie de ataque.
-
----
-
 ### Comandos relacionados
 
 - [Consultar el estado de un servicio](#consultar-el-estado-de-un-servicio)
@@ -162,15 +125,6 @@ Get-Service <servicio>
 | **Ejemplo** | `sudo systemctl stop cups` | `Stop-Service Spooler` |
 
 > 💡 **Diferencia clave** — 🐧 `systemctl stop` detiene el servicio mediante **systemd**. · 🪟 `Stop-Service` solicita al Administrador de Control de Servicios (SCM) que detenga el servicio.
-
----
-
-### Buenas prácticas
-
-- Comprueba que el servicio está en ejecución antes de detenerlo.
-- Verifica que otros servicios o aplicaciones no dependan de él.
-- Comprueba el estado del servicio después de detenerlo para confirmar que la operación se ha realizado correctamente.
-- Evita detener servicios críticos del sistema, ya que pueden afectar al funcionamiento del equipo o de la red.
 
 ---
 
@@ -195,15 +149,6 @@ Get-Service <servicio>
 
 ---
 
-### Buenas prácticas
-
-- Utiliza `reload` cuando el servicio lo admita y solo sea necesario aplicar cambios de configuración.
-- Reinicia un servicio únicamente cuando sea necesario, ya que puede interrumpir temporalmente su funcionamiento.
-- Comprueba el estado del servicio después del reinicio para confirmar que se ha iniciado correctamente.
-- Si el servicio no vuelve a iniciarse, revisa los registros del sistema antes de volver a intentarlo.
-
----
-
 ### Comandos relacionados
 
 - [Consultar el estado de un servicio](#consultar-el-estado-de-un-servicio)
@@ -225,62 +170,11 @@ Get-Service <servicio>
 
 ---
 
-### Buenas prácticas
-
-- Configura como automáticos únicamente los servicios necesarios.
-- Deshabilita los servicios que no vayan a utilizarse para reducir el consumo de recursos y la superficie de ataque.
-- Antes de deshabilitar un servicio, comprueba que ninguna aplicación dependa de él.
-- Verifica el tipo de inicio después de realizar cualquier cambio.
-
----
-
 ### Comandos relacionados
 
 - [Iniciar un servicio](#iniciar-un-servicio)
 - [Detener un servicio](#detener-un-servicio)
 - [Reiniciar un servicio](#reiniciar-un-servicio)
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Resumen de equivalencias
-
-| Acción | Linux | PowerShell |
-|--------|--------|------------|
-| Listar servicios | `systemctl list-units --type=service` | `Get-Service` |
-| Buscar un servicio | `systemctl \| grep` | `Get-Service` / `Where-Object` |
-| Consultar el estado de un servicio | `systemctl status` | `Get-Service` |
-| Iniciar un servicio | `systemctl start` | `Start-Service` |
-| Detener un servicio | `systemctl stop` | `Stop-Service` |
-| Reiniciar un servicio | `systemctl restart` | `Restart-Service` |
-| Recargar la configuración de un servicio | `systemctl reload` | No existe un equivalente directo |
-| Habilitar el inicio automático | `systemctl enable` | `Set-Service -StartupType Automatic` |
-| Deshabilitar el inicio automático | `systemctl disable` | `Set-Service -StartupType Disabled` |
-
----
-
-### Buenas prácticas generales
-
-- Comprueba siempre el estado del servicio antes de iniciarlo, detenerlo o reiniciarlo.
-- Evita detener servicios críticos del sistema sin conocer su función.
-- Configura como automáticos únicamente los servicios necesarios.
-- Revisa periódicamente los servicios que se inician durante el arranque del sistema.
-- Utiliza `reload` en lugar de `restart` cuando solo necesites aplicar cambios de configuración y el servicio lo permita.
-- Después de cualquier modificación, verifica que el servicio ha quedado en el estado esperado.
-
----
-
-### Comandos más utilizados
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Listar servicios | `systemctl list-units --type=service` | `Get-Service` |
-| Ver el estado de un servicio | `systemctl status ssh` | `Get-Service sshd` |
-| Iniciar un servicio | `systemctl start ssh` | `Start-Service sshd` |
-| Detener un servicio | `systemctl stop ssh` | `Stop-Service sshd` |
-| Reiniciar un servicio | `systemctl restart ssh` | `Restart-Service sshd` |
-| Habilitar inicio automático | `systemctl enable ssh` | `Set-Service -Name sshd -StartupType Automatic` |
 
 ---
 

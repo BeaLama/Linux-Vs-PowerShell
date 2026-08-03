@@ -320,18 +320,6 @@ No existe una única solución válida para todos los escenarios.
 
 ---
 
-### Buenas prácticas
-
-- Utiliza SSD o NVMe para sistemas operativos y aplicaciones críticas.
-- Reserva los HDD para almacenamiento masivo y copias de seguridad.
-- Separa el almacenamiento del sistema y el de los datos cuando sea posible.
-- Implementa redundancia (RAID) en servidores para mejorar la disponibilidad.
-- Supervisa periódicamente el estado de los dispositivos de almacenamiento.
-- Planifica el crecimiento futuro antes de adquirir nueva capacidad.
-- Mantén copias de seguridad independientemente del tipo de almacenamiento utilizado.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## RAID
@@ -651,19 +639,6 @@ Siempre debe existir una estrategia de backup independiente.
 | Servidor de archivos | RAID 5 |
 | Datos críticos | RAID 6 |
 | Virtualización y bases de datos | RAID 10 |
-
----
-
-### Buenas prácticas
-
-- Utiliza RAID hardware en servidores siempre que sea posible.
-- No consideres RAID como sustituto de las copias de seguridad.
-- Supervisa periódicamente el estado de todos los discos.
-- Sustituye inmediatamente cualquier disco averiado.
-- Configura alertas para detectar fallos cuanto antes.
-- Utiliza discos del mismo modelo, capacidad y rendimiento dentro del mismo RAID.
-- Implementa discos **Hot Spare** en infraestructuras críticas.
-- Comprueba periódicamente el correcto funcionamiento de la reconstrucción del RAID.
 
 ---
 
@@ -1072,19 +1047,6 @@ Su filosofía es muy similar a la utilizada por LVM.
 
 ---
 
-### Buenas prácticas
-
-- Utiliza LVM en servidores cuyo almacenamiento pueda crecer con el tiempo.
-- Planifica correctamente el tamaño inicial del Volume Group.
-- Mantén espacio libre dentro del VG para futuras ampliaciones.
-- Realiza copias de seguridad antes de reducir volúmenes.
-- Utiliza Snapshots antes de realizar cambios importantes.
-- Supervisa periódicamente el estado de los discos físicos.
-- Documenta la estructura de PV, VG y LV.
-- Evita llenar completamente el Volume Group para facilitar futuras ampliaciones.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Sistemas de archivos avanzados
@@ -1431,19 +1393,6 @@ No existe un sistema de archivos perfecto para todas las situaciones.
 | ZFS | Linux/BSD | Máxima integridad |
 | NTFS | Windows | Compatibilidad y seguridad |
 | ReFS | Windows Server | Alta resiliencia |
-
----
-
-### Buenas prácticas
-
-- Utiliza el sistema de archivos más adecuado para cada tipo de servidor.
-- Activa el Journaling siempre que esté disponible.
-- Supervisa periódicamente el estado del sistema de archivos.
-- Ejecuta comprobaciones de integridad cuando el sistema lo permita.
-- Aprovecha los Snapshots antes de realizar cambios importantes.
-- Mantén suficiente espacio libre para evitar pérdidas de rendimiento.
-- Documenta el sistema de archivos utilizado en cada servidor.
-- Recuerda que ningún sistema de archivos sustituye una estrategia adecuada de copias de seguridad.
 
 ---
 
@@ -1877,18 +1826,6 @@ Cada tecnología está orientada a un escenario distinto.
 
 ---
 
-### Buenas prácticas
-
-- Utiliza NAS para compartir archivos y SAN para cargas de trabajo de alto rendimiento.
-- Aplica el principio de mínimo privilegio al configurar permisos.
-- Implementa RAID para mejorar la disponibilidad, pero mantén siempre copias de seguridad independientes.
-- Supervisa periódicamente el estado de discos, red y rendimiento.
-- Utiliza redes dedicadas para iSCSI o Fibre Channel cuando sea posible.
-- Documenta todos los recursos compartidos y los permisos asignados.
-- Protege los servicios mediante autenticación y cifrado cuando esté disponible.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Cuotas de disco
@@ -2180,19 +2117,6 @@ Por ejemplo:
 | Cuota por grupo | Límite compartido |
 | Soft Limit | Genera avisos |
 | Hard Limit | Bloquea la escritura |
-
----
-
-### Buenas prácticas
-
-- Configura cuotas en servidores compartidos.
-- Utiliza Soft Limit antes de aplicar Hard Limit.
-- Establece periodos de gracia razonables.
-- Revisa periódicamente el consumo de almacenamiento.
-- Genera alertas automáticas cuando un usuario se acerque al límite.
-- Ajusta las cuotas según las necesidades reales de cada departamento.
-- Documenta todas las cuotas configuradas.
-- Combina las cuotas con una estrategia adecuada de monitorización y copias de seguridad.
 
 ---
 
@@ -2495,19 +2419,6 @@ Esperar al fallo completo aumenta el riesgo de pérdida de datos.
 | Latencia | Tiempo de respuesta |
 | RAID | Estado de redundancia |
 | Sistema de archivos | Integridad de los datos |
-
----
-
-### Buenas prácticas
-
-- Supervisa continuamente el estado SMART de todos los discos.
-- Configura alertas automáticas para fallos de hardware y falta de espacio.
-- Mantén siempre espacio libre suficiente en los volúmenes.
-- Sustituye los discos degradados antes de que fallen completamente.
-- Comprueba periódicamente el estado del RAID y de los sistemas de archivos.
-- Actualiza el firmware de discos y controladoras cuando sea recomendable.
-- Documenta las tareas de mantenimiento realizadas.
-- Integra la monitorización del almacenamiento en la plataforma de supervisión general de la infraestructura.
 
 ---
 
@@ -2817,264 +2728,6 @@ Toda organización debería disponer de un procedimiento documentado que incluya
 - Verificación posterior.
 
 Este plan facilita una respuesta rápida y coordinada ante cualquier incidente.
-
----
-
-### Buenas prácticas
-
-- Realiza copias de seguridad periódicas y verifica que pueden restaurarse correctamente.
-- Documenta todos los procedimientos de recuperación.
-- Sustituye inmediatamente los discos defectuosos.
-- Utiliza snapshots antes de realizar cambios importantes.
-- Comprueba periódicamente la integridad de los sistemas de archivos.
-- Realiza simulacros de recuperación para validar los procedimientos.
-- No utilices el disco afectado tras una pérdida de datos hasta completar la recuperación.
-- Mantén un plan de continuidad de negocio actualizado.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-La correcta administración del almacenamiento no depende únicamente de la tecnología utilizada, sino también de la aplicación de procedimientos adecuados durante todo el ciclo de vida de la infraestructura.
-
-Implementar buenas prácticas permite mejorar el rendimiento, aumentar la disponibilidad de los servicios, reducir el riesgo de pérdida de datos y facilitar las tareas de administración y mantenimiento.
-
----
-
-### Planificar el almacenamiento
-
-Antes de implementar una infraestructura es recomendable analizar:
-
-- Capacidad necesaria.
-- Crecimiento previsto.
-- Rendimiento requerido.
-- Nivel de disponibilidad.
-- Presupuesto disponible.
-
-Una buena planificación evita futuras ampliaciones complejas y reduce costes a largo plazo.
-
----
-
-### Elegir la tecnología adecuada
-
-No todos los tipos de almacenamiento son apropiados para cualquier escenario.
-
-Por ejemplo:
-
-| Escenario | Tecnología recomendada |
-|-----------|------------------------|
-| Sistema operativo | SSD o NVMe |
-| Bases de datos | SSD NVMe |
-| Virtualización | RAID 10 + SSD |
-| Servidor de archivos | NAS o RAID 5 |
-| Copias de seguridad | HDD de alta capacidad |
-
-Seleccionar correctamente la tecnología mejora el rendimiento y la vida útil de la infraestructura.
-
----
-
-### Implementar redundancia
-
-Siempre que la disponibilidad sea importante, conviene utilizar mecanismos de redundancia.
-
-Los más habituales son:
-
-- RAID.
-- Fuentes de alimentación redundantes.
-- Varias interfaces de red.
-- Controladoras redundantes.
-- Replicación del almacenamiento.
-
-La redundancia reduce el impacto de los fallos de hardware.
-
----
-
-### Mantener copias de seguridad
-
-RAID protege frente al fallo de discos, pero no sustituye una copia de seguridad.
-
-Toda infraestructura debería disponer de una estrategia de backup que contemple:
-
-- Copias periódicas.
-- Versionado.
-- Restauraciones de prueba.
-- Almacenamiento externo.
-- Copias fuera de las instalaciones cuando sea necesario.
-
-Sin una copia de seguridad válida no existe garantía de recuperación.
-
----
-
-### Supervisar continuamente el almacenamiento
-
-La monitorización permite detectar problemas antes de que afecten al servicio.
-
-Conviene revisar:
-
-- Estado SMART.
-- Espacio libre.
-- Estado del RAID.
-- Rendimiento.
-- Latencia.
-- Temperatura.
-- Eventos del sistema.
-
-Las alertas automáticas facilitan una respuesta rápida ante cualquier incidencia.
-
----
-
-### Mantener espacio libre
-
-Un sistema de almacenamiento demasiado lleno puede provocar:
-
-- Disminución del rendimiento.
-- Errores de escritura.
-- Problemas en bases de datos.
-- Fallos en aplicaciones.
-
-Como norma general, es recomendable mantener un porcentaje de espacio libre para garantizar el correcto funcionamiento del sistema.
-
----
-
-### Documentar la infraestructura
-
-Toda la información relacionada con el almacenamiento debería estar documentada.
-
-Por ejemplo:
-
-- Discos instalados.
-- Configuración RAID.
-- Sistemas de archivos.
-- LVM o Storage Spaces.
-- Recursos compartidos.
-- Procedimientos de recuperación.
-
-Una documentación actualizada facilita enormemente la administración y la resolución de incidencias.
-
----
-
-### Verificar las copias de seguridad
-
-Una copia de seguridad solo es útil si puede restaurarse correctamente.
-
-Es recomendable realizar pruebas periódicas de restauración para comprobar:
-
-- Integridad de los datos.
-- Tiempo de recuperación.
-- Funcionamiento de las aplicaciones restauradas.
-
-Esto permite detectar problemas antes de una incidencia real.
-
----
-
-### Sustituir hardware degradado
-
-Los discos no fallan de forma repentina en todos los casos.
-
-Muchos comienzan mostrando signos de degradación.
-
-Cuando se detecten:
-
-- Errores SMART.
-- Sectores defectuosos.
-- Temperaturas anómalas.
-- Fallos repetitivos.
-
-Debe planificarse la sustitución del dispositivo antes de que deje de funcionar completamente.
-
----
-
-### Mantener el software actualizado
-
-Conviene mantener actualizados:
-
-- Firmware de discos.
-- Controladoras RAID.
-- Sistemas de archivos.
-- Sistemas operativos.
-- NAS y cabinas SAN.
-
-Las actualizaciones suelen corregir errores y mejorar la estabilidad y la seguridad.
-
----
-
-### Aplicar el principio de mínimo privilegio
-
-El acceso al almacenamiento debe limitarse únicamente a quienes realmente lo necesiten.
-
-Es recomendable:
-
-- Asignar permisos mediante grupos.
-- Revisar periódicamente los accesos.
-- Eliminar permisos innecesarios.
-- Registrar los cambios realizados.
-
-Esto mejora la seguridad y reduce el riesgo de accesos no autorizados.
-
----
-
-### Automatizar tareas
-
-Muchas tareas de administración pueden automatizarse.
-
-Por ejemplo:
-
-- Supervisión.
-- Informes.
-- Alertas.
-- Copias de seguridad.
-- Limpieza de archivos temporales.
-
-La automatización reduce errores humanos y ahorra tiempo.
-
----
-
-### Revisar periódicamente la capacidad
-
-El crecimiento del almacenamiento debe controlarse de forma continua.
-
-Conviene analizar:
-
-- Evolución del consumo.
-- Tendencias de crecimiento.
-- Necesidades futuras.
-- Posibles ampliaciones.
-
-Una planificación adecuada evita quedarse sin espacio de forma inesperada.
-
----
-
-### Formar a los administradores
-
-El personal encargado del almacenamiento debe conocer:
-
-- RAID.
-- LVM.
-- Sistemas de archivos.
-- Copias de seguridad.
-- Procedimientos de recuperación.
-- Herramientas de monitorización.
-
-Una formación adecuada reduce errores operativos y mejora la capacidad de respuesta ante incidencias.
-
----
-
-### Resumen de recomendaciones
-
-Las principales recomendaciones para una correcta administración del almacenamiento son:
-
-- Planificar la infraestructura antes de su implantación.
-- Seleccionar la tecnología más adecuada para cada escenario.
-- Implementar redundancia cuando la disponibilidad sea importante.
-- Mantener copias de seguridad independientes del almacenamiento principal.
-- Supervisar continuamente el estado de discos y sistemas de archivos.
-- Sustituir el hardware degradado antes de que falle.
-- Automatizar las tareas repetitivas.
-- Documentar toda la infraestructura.
-- Comprobar periódicamente la restauración de las copias de seguridad.
-- Revisar la capacidad disponible y planificar futuras ampliaciones.
 
 ---
 

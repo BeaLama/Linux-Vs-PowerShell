@@ -4,10 +4,6 @@
 
 Las redes son uno de los pilares fundamentales de cualquier infraestructura informática. En niveles anteriores se han visto conceptos básicos como direccionamiento IP, configuración de interfaces o resolución DNS.
 
-En este apartado se profundiza en tecnologías de red utilizadas en entornos empresariales: modelos de comunicación, protocolos avanzados, VLAN, routing, switching, alta disponibilidad, balanceo de carga, seguridad, monitorización y resolución de incidencias.
-
-Comprender estos conceptos permite diseñar, administrar y solucionar problemas en infraestructuras de red modernas.
-
 ---
 
 ## Índice
@@ -19,7 +15,6 @@ Comprender estos conceptos permite diseñar, administrar y solucionar problemas 
 - [Alta disponibilidad y redundancia](#alta-disponibilidad-y-redundancia)
 - [Seguridad en redes](#seguridad-en-redes)
 - [Monitorización y diagnóstico](#monitorización-y-diagnóstico)
-- [Buenas prácticas](#buenas-prácticas)
 
 ---
 
@@ -462,18 +457,6 @@ Esta organización facilita el crecimiento y la administración de la red.
 
 ---
 
-### Buenas prácticas
-
-- Diseña la red de forma modular y escalable.
-- Utiliza topologías en estrella para facilitar el mantenimiento.
-- Documenta todos los dispositivos y conexiones.
-- Segmenta la red según las necesidades de la organización.
-- Evita puntos únicos de fallo cuando sea posible.
-- Comprende el funcionamiento del modelo OSI para agilizar la resolución de incidencias.
-- Mantén un inventario actualizado de la infraestructura de red.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Protocolos de red avanzados
@@ -862,19 +845,6 @@ Son muy utilizados en redes empresariales.
 | Kerberos | Autenticación |
 | SSH | Administración remota segura |
 | Syslog | Centralización de eventos |
-
----
-
-### Buenas prácticas
-
-- Utiliza protocolos seguros como SSH en lugar de Telnet.
-- Mantén sincronizada la hora mediante NTP en todos los dispositivos.
-- Centraliza los registros utilizando Syslog.
-- Implementa SNMP para monitorizar la infraestructura.
-- Utiliza OSPF o protocolos dinámicos en redes medianas y grandes.
-- Reserva BGP para entornos donde realmente sea necesario.
-- Configura protocolos de alta disponibilidad en infraestructuras críticas.
-- Documenta todos los protocolos utilizados en la red.
 
 ---
 
@@ -1269,19 +1239,6 @@ Estas medidas reducen considerablemente la superficie de ataque.
 | RSTP | STP rápido |
 | LACP | Agregación de enlaces |
 | Layer 3 Switch | Routing entre VLAN |
-
----
-
-### Buenas prácticas
-
-- Segmenta la red mediante VLAN según departamentos o servicios.
-- Utiliza puertos Access para los equipos finales y Trunk únicamente entre dispositivos de red.
-- Cambia la VLAN nativa por defecto y evita utilizar la VLAN 1 para usuarios.
-- Activa STP o RSTP para prevenir bucles de red.
-- Implementa LACP cuando sea necesario aumentar el ancho de banda o la redundancia.
-- Configura Port Security para limitar dispositivos no autorizados.
-- Deshabilita los puertos no utilizados.
-- Documenta la asignación de VLAN y la configuración de todos los enlaces Trunk.
 
 ---
 
@@ -1727,19 +1684,6 @@ route print
 
 ---
 
-### Buenas prácticas
-
-- Utiliza rutas estáticas únicamente en redes pequeñas o para casos muy específicos.
-- Implementa protocolos dinámicos como OSPF en infraestructuras medianas y grandes.
-- Configura una ruta por defecto correctamente hacia el proveedor de Internet.
-- Diseña rutas redundantes para evitar puntos únicos de fallo.
-- Utiliza NAT o PAT para proteger las redes privadas y optimizar el uso de direcciones IPv4.
-- Documenta todas las rutas y protocolos configurados.
-- Supervisa el estado de los routers y la convergencia de las rutas.
-- Prueba periódicamente la conectividad y los caminos alternativos.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Alta disponibilidad y redundancia
@@ -2117,19 +2061,6 @@ Cuantos más "nueves" tenga la disponibilidad, menor será el tiempo permitido d
 | RAID | Redundancia del almacenamiento |
 | Replicación | Copia sincronizada de datos |
 | UPS | Protección eléctrica |
-
----
-
-### Buenas prácticas
-
-- Identifica y elimina los puntos únicos de fallo (SPOF).
-- Implementa redundancia en los componentes críticos de la infraestructura.
-- Configura protocolos como HSRP o VRRP para garantizar la disponibilidad de la puerta de enlace.
-- Utiliza LACP para aumentar el ancho de banda y proporcionar tolerancia a fallos.
-- Implementa clústeres y balanceadores de carga en servicios críticos.
-- Protege el almacenamiento mediante RAID y replicación.
-- Asegura el suministro eléctrico con fuentes redundantes y sistemas UPS.
-- Realiza pruebas periódicas de failover y failback para verificar que los mecanismos de alta disponibilidad funcionan correctamente.
 
 ---
 
@@ -2547,19 +2478,6 @@ Es uno de los principios fundamentales de la ciberseguridad.
 | Port Security | Control de dispositivos |
 | 802.1X | Autenticación de acceso |
 | RADIUS | Autenticación centralizada |
-
----
-
-### Buenas prácticas
-
-- Utiliza firewalls para controlar todo el tráfico de entrada y salida.
-- Segmenta la red mediante VLAN y utiliza una DMZ para los servicios públicos.
-- Implementa IDS o IPS para detectar y prevenir ataques.
-- Protege las redes inalámbricas con WPA3 siempre que sea posible.
-- Utiliza VPN para el acceso remoto y evita exponer servicios directamente a Internet.
-- Configura Port Security y 802.1X para controlar qué dispositivos pueden conectarse a la red.
-- Mantén actualizados todos los dispositivos de red y sus firmwares.
-- Centraliza los registros de eventos y revisa periódicamente los logs de seguridad.
 
 ---
 
@@ -2991,348 +2909,6 @@ Las alertas pueden enviarse mediante:
 | SNMP | Monitorización |
 | NetFlow | Análisis de tráfico |
 | Syslog | Centralización de eventos |
-
----
-
-### Buenas prácticas
-
-- Monitoriza todos los dispositivos críticos de la infraestructura.
-- Configura alertas automáticas para detectar incidencias cuanto antes.
-- Centraliza los registros mediante Syslog o un SIEM.
-- Analiza periódicamente el consumo de ancho de banda y la latencia.
-- Utiliza herramientas de captura de tráfico únicamente cuando sea necesario y respetando la normativa de seguridad.
-- Sigue un procedimiento de diagnóstico basado en capas para localizar incidencias de forma ordenada.
-- Documenta las incidencias y las soluciones aplicadas para facilitar futuras intervenciones.
-- Revisa periódicamente los paneles de monitorización para detectar tendencias o degradaciones del servicio.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-Una red empresarial debe diseñarse y administrarse siguiendo una serie de principios que garanticen su seguridad, estabilidad, escalabilidad y facilidad de mantenimiento.
-
-Aplicar buenas prácticas no solo reduce el número de incidencias, sino que también facilita la resolución de problemas, mejora el rendimiento y prepara la infraestructura para futuras ampliaciones.
-
-Estas recomendaciones son aplicables tanto a pequeñas empresas como a grandes organizaciones.
-
----
-
-### Diseñar la red antes de implementarla
-
-Antes de instalar equipos o configurar dispositivos conviene planificar:
-
-- Número de usuarios.
-- Servicios que se ofrecerán.
-- Crecimiento previsto.
-- Nivel de disponibilidad requerido.
-- Medidas de seguridad.
-- Segmentación de la red.
-
-Una buena planificación evita futuras modificaciones complejas.
-
----
-
-### Utilizar direccionamiento organizado
-
-Es recomendable seguir un esquema de direccionamiento coherente.
-
-Por ejemplo:
-
-```text
-192.168.10.0/24
-
-↓
-
-Administración
-```
-
-```text
-192.168.20.0/24
-
-↓
-
-Ventas
-```
-
-```text
-192.168.30.0/24
-
-↓
-
-Invitados
-```
-
-Esto facilita enormemente la administración y el diagnóstico.
-
----
-
-### Segmentar la red
-
-No todos los dispositivos deberían compartir la misma red.
-
-Es recomendable utilizar:
-
-- VLAN.
-- Redes independientes.
-- Firewalls internos.
-
-La segmentación permite:
-
-- Reducir el tráfico broadcast.
-- Mejorar la seguridad.
-- Limitar la propagación de ataques.
-
----
-
-### Evitar puntos únicos de fallo
-
-Los componentes críticos deberían disponer de redundancia.
-
-Ejemplos:
-
-- Dos routers.
-- Dos switches principales.
-- Enlaces duplicados.
-- Balanceadores de carga.
-- Clústeres de servidores.
-
-Eliminar los **SPOF (Single Point of Failure)** aumenta considerablemente la disponibilidad.
-
----
-
-### Proteger el acceso a la red
-
-Todo acceso debe estar controlado.
-
-Es recomendable utilizar:
-
-- 802.1X.
-- RADIUS.
-- VPN.
-- ACL.
-- Port Security.
-
-Estas tecnologías reducen el riesgo de accesos no autorizados.
-
----
-
-### Utilizar protocolos seguros
-
-Siempre que exista una alternativa segura, debe evitarse el uso de protocolos sin cifrado.
-
-Se recomienda utilizar:
-
-| Evitar | Utilizar |
-|---------|-----------|
-| Telnet | SSH |
-| HTTP | HTTPS |
-| FTP | SFTP o FTPS |
-| SNMPv1 | SNMPv3 |
-
-El cifrado protege tanto la información como las credenciales.
-
----
-
-### Documentar toda la infraestructura
-
-La documentación debería incluir:
-
-- Esquema físico.
-- Topología lógica.
-- VLAN.
-- Direccionamiento IP.
-- Routers.
-- Switches.
-- Firewalls.
-- Enlaces WAN.
-- Configuración de servicios.
-
-Una documentación actualizada facilita el mantenimiento y acelera la resolución de incidencias.
-
----
-
-### Monitorizar continuamente la red
-
-Toda infraestructura debería supervisarse de forma permanente.
-
-Conviene monitorizar:
-
-- Disponibilidad.
-- CPU.
-- Memoria.
-- Interfaces.
-- Tráfico.
-- Latencia.
-- Errores.
-- VPN.
-- Firewalls.
-
-Las alertas permiten actuar antes de que aparezcan problemas graves.
-
----
-
-### Realizar copias de seguridad
-
-Las configuraciones de los dispositivos también deben respaldarse.
-
-Es recomendable guardar copias de:
-
-- Routers.
-- Switches.
-- Firewalls.
-- Controladores Wi-Fi.
-- Balanceadores.
-
-Ante un fallo de hardware será posible restaurar rápidamente la configuración.
-
----
-
-### Mantener los dispositivos actualizados
-
-Conviene instalar periódicamente:
-
-- Actualizaciones de firmware.
-- Parches de seguridad.
-- Nuevas versiones del sistema operativo.
-
-Esto permite corregir vulnerabilidades y mejorar la estabilidad.
-
----
-
-### Aplicar el principio de mínimo privilegio
-
-Los usuarios y administradores únicamente deberían disponer de los permisos imprescindibles.
-
-Esto reduce el riesgo de:
-
-- Errores.
-- Ataques internos.
-- Escaladas de privilegios.
-
-También facilita las auditorías de seguridad.
-
----
-
-### Utilizar nombres descriptivos
-
-Asignar nombres claros a los dispositivos simplifica enormemente la administración.
-
-Ejemplos:
-
-```text
-SW-Core-01
-```
-
-```text
-RTR-Sede-Madrid
-```
-
-```text
-FW-Principal
-```
-
-Evita nombres genéricos como:
-
-```text
-Switch1
-```
-
-o
-
-```text
-Router2
-```
-
----
-
-### Revisar periódicamente la infraestructura
-
-Es recomendable comprobar regularmente:
-
-- Estado de los enlaces.
-- Errores de interfaces.
-- Uso del ancho de banda.
-- Configuración de VLAN.
-- Rutas.
-- ACL.
-- Logs.
-- Certificados.
-
-Las revisiones periódicas permiten detectar problemas antes de que afecten al servicio.
-
----
-
-### Automatizar tareas
-
-Muchas tareas repetitivas pueden automatizarse.
-
-Por ejemplo:
-
-- Copias de seguridad.
-- Supervisión.
-- Informes.
-- Configuración masiva.
-- Actualizaciones.
-- Inventarios.
-
-La automatización reduce errores humanos y ahorra tiempo.
-
----
-
-### Disponer de un plan de recuperación
-
-Toda organización debería documentar un procedimiento para actuar ante incidencias.
-
-Debe incluir:
-
-- Contactos.
-- Equipos críticos.
-- Procedimientos.
-- Copias de seguridad.
-- Pasos de recuperación.
-- Responsables.
-
-Esto reduce significativamente el tiempo de recuperación.
-
----
-
-### Formar a los administradores
-
-La tecnología evoluciona continuamente.
-
-Es recomendable mantener una formación constante en:
-
-- Routing.
-- Switching.
-- Seguridad.
-- Wi-Fi.
-- Virtualización.
-- Cloud.
-- Automatización.
-- Monitorización.
-
-La actualización de conocimientos mejora tanto la calidad de la administración como la capacidad de respuesta ante incidencias.
-
----
-
-### Resumen de recomendaciones
-
-Las principales buenas prácticas para administrar una red empresarial son:
-
-- Diseñar la infraestructura antes de su implantación.
-- Utilizar un direccionamiento IP organizado.
-- Segmentar la red mediante VLAN.
-- Eliminar puntos únicos de fallo.
-- Implementar medidas de seguridad en todos los accesos.
-- Utilizar protocolos cifrados.
-- Documentar toda la infraestructura.
-- Supervisar continuamente el estado de la red.
-- Mantener copias de seguridad de las configuraciones.
-- Actualizar regularmente el firmware y los sistemas operativos.
-- Automatizar las tareas repetitivas.
-- Revisar periódicamente toda la infraestructura.
 
 ---
 

@@ -19,7 +19,6 @@ Aunque Linux y PowerShell utilizan una sintaxis diferente, ambos comparten el mi
 - [Variables de entorno](#variables-de-entorno)
 - [Guardar el resultado de un comando](#guardar-el-resultado-de-un-comando)
 - [Utilizar variables en comandos](#utilizar-variables-en-comandos)
-- [Resumen de equivalencias](#resumen-de-equivalencias)
 
 ---
 
@@ -31,15 +30,6 @@ Aunque Linux y PowerShell utilizan una sintaxis diferente, ambos comparten el mi
 | **Ejemplo** | `edad=25` | `$edad = 25` |
 
 > 💡 **Diferencia clave** — 🐧 Las variables no llevan ningún prefijo al crearse. · 🪟 Todas las variables comienzan con `$`.
-
----
-
-### Buenas prácticas
-
-- Utiliza nombres descriptivos para facilitar la lectura del código.
-- Evita caracteres especiales y espacios en el nombre de las variables.
-- Sigue una convención de nombres consistente a lo largo de tus scripts.
-- Utiliza nombres significativos que describan el contenido de la variable.
 
 ---
 
@@ -75,14 +65,6 @@ $ip
 
 ---
 
-### Buenas prácticas
-
-- Comprueba que la variable contiene un valor antes de utilizarla.
-- Utiliza nombres descriptivos para facilitar la lectura del código.
-- Si vas a mostrar varias variables, añade texto explicativo para mejorar la legibilidad de la salida.
-
----
-
 ### Comandos relacionados
 
 - [Crear una variable](#crear-una-variable)
@@ -112,14 +94,6 @@ $ip = "192.168.1.20"
 ```
 
 > 💡 **Diferencia clave** — 🐧 La variable se modifica realizando una nueva asignación. · 🪟 La variable también se modifica realizando una nueva asignación.
-
----
-
-### Buenas prácticas
-
-- Utiliza nombres de variables descriptivos para facilitar la lectura del código.
-- Modifica una variable únicamente cuando sea necesario para evitar confusiones.
-- Comprueba el contenido de la variable después de modificarla si va a utilizarse en operaciones importantes.
 
 ---
 
@@ -155,14 +129,6 @@ Remove-Variable -Name ip
 
 ---
 
-### Buenas prácticas
-
-- Elimina variables que ya no vayas a utilizar en scripts largos.
-- Evita eliminar variables del sistema o de entorno si desconoces su función.
-- Comprueba que la variable existe antes de eliminarla en procesos automatizados.
-
----
-
 ### Comandos relacionados
 
 - [Crear una variable](#crear-una-variable)
@@ -184,14 +150,6 @@ Remove-Variable -Name ip
 
 ---
 
-### Buenas prácticas
-
-- No modifiques variables de entorno si desconoces su función.
-- Consulta siempre el valor de una variable antes de utilizarla en un script.
-- Evita sobrescribir variables importantes como `PATH`, ya que puede afectar al funcionamiento del sistema.
-
----
-
 ### Comandos relacionados
 
 - [Crear una variable](#crear-una-variable)
@@ -210,14 +168,6 @@ Remove-Variable -Name ip
 | **Ejemplo** | `fecha=$(date)` | `$fecha = Get-Date` |
 
 > 💡 **Diferencia clave** — 🐧 Utiliza la sustitución de comandos mediante `$( )`. · 🪟 Basta con asignar directamente el resultado del comando a la variable.
-
----
-
-### Buenas prácticas
-
-- Guarda en variables únicamente la información que vayas a reutilizar.
-- Utiliza nombres descriptivos para identificar fácilmente el contenido de la variable.
-- Comprueba el contenido de la variable antes de utilizarlo en operaciones importantes.
 
 ---
 
@@ -253,48 +203,11 @@ Copy-Item $archivo C:\Backups
 
 ---
 
-### Buenas prácticas
-
-- Utiliza variables para evitar repetir información en un script.
-- Emplea nombres descriptivos para facilitar el mantenimiento del código.
-- Comprueba que la variable contiene un valor válido antes de utilizarla.
-- Reutiliza las variables siempre que sea posible para hacer los scripts más claros y fáciles de modificar.
-
----
-
 ### Comandos relacionados
 
 - [Guardar el resultado de un comando](#guardar-el-resultado-de-un-comando)
 - [Mostrar el valor de una variable](#mostrar-el-valor-de-una-variable)
 - [Variables de entorno](#variables-de-entorno)
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Resumen de equivalencias
-
-| Acción | Linux | PowerShell |
-|--------|--------|------------|
-| Crear una variable | `variable="valor"` | `$variable = "valor"` |
-| Mostrar el valor de una variable | `echo $variable` | `$variable` / `Write-Output $variable` |
-| Modificar una variable | `variable="nuevo_valor"` | `$variable = "nuevo_valor"` |
-| Eliminar una variable | `unset variable` | `Remove-Variable -Name variable` |
-| Mostrar variables de entorno | `printenv` / `env` | `Get-ChildItem Env:` |
-| Mostrar una variable de entorno | `echo $PATH` | `$env:PATH` |
-| Guardar el resultado de un comando | `variable=$(comando)` | `$variable = comando` |
-| Utilizar una variable en un comando | `<comando> $variable` | `<cmdlet> $variable` |
-
----
-
-### Buenas prácticas generales
-
-- Utiliza nombres descriptivos para facilitar la lectura y el mantenimiento de los scripts.
-- Evita sobrescribir variables importantes si todavía van a utilizarse.
-- Comprueba siempre el contenido de una variable antes de utilizarla en operaciones críticas.
-- Reutiliza variables para evitar repetir información y simplificar el código.
-- Utiliza variables de entorno cuando necesites acceder a información del sistema, como rutas o datos del usuario.
-- Mantén una nomenclatura consistente a lo largo de todo el script.
 
 ---
 

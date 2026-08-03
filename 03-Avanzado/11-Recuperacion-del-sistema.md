@@ -4,8 +4,6 @@
 
 La recuperación del sistema comprende el conjunto de procedimientos y herramientas destinados a restaurar el funcionamiento de un equipo o servidor tras un fallo grave. Estos fallos pueden deberse a errores de hardware, corrupción del sistema operativo, malware, configuraciones incorrectas o desastres que impidan el funcionamiento normal de la infraestructura.
 
-En este apartado se estudian las técnicas de recuperación utilizadas tanto en Windows como en Linux, los distintos modos de recuperación, herramientas disponibles, procedimientos de restauración y buenas prácticas para minimizar el tiempo de inactividad y garantizar la continuidad del servicio.
-
 ---
 
 ## Índice
@@ -18,7 +16,6 @@ En este apartado se estudian las técnicas de recuperación utilizadas tanto en 
 - [Recuperación desde copias de seguridad](#recuperación-desde-copias-de-seguridad)
 - [Recuperación ante desastres (Disaster Recovery)](#recuperación-ante-desastres-disaster-recovery)
 - [Pruebas y validación de la recuperación](#pruebas-y-validación-de-la-recuperación)
-- [Buenas prácticas](#buenas-prácticas)
 
 ---
 
@@ -275,19 +272,6 @@ Una documentación clara facilita enormemente la actuación durante una emergenc
 | Backup | Recuperar datos perdidos |
 | Continuidad del negocio | Mantener los servicios disponibles |
 | Disaster Recovery | Recuperar la infraestructura tras un desastre |
-
----
-
-### Buenas prácticas
-
-- Sigue siempre un procedimiento estructurado antes de intervenir.
-- Identifica correctamente la causa del problema antes de aplicar soluciones.
-- Prioriza la recuperación de los servicios críticos.
-- Documenta todas las actuaciones realizadas durante la incidencia.
-- Mantén actualizados los procedimientos de recuperación.
-- Define claramente los objetivos de RPO y RTO.
-- Comprueba el correcto funcionamiento del sistema una vez finalizada la recuperación.
-- Analiza posteriormente la causa raíz para evitar que el problema vuelva a producirse.
 
 ---
 
@@ -557,19 +541,6 @@ La reparación no debe darse por concluida hasta validar el funcionamiento compl
 | Partición EFI corrupta | Reparar o recrear la partición |
 | Sistema de archivos corrupto | Reparar el sistema de archivos |
 | Archivos del sistema dañados | Restaurar archivos del sistema |
-
----
-
-### Buenas prácticas
-
-- Comprueba primero la configuración del BIOS o UEFI antes de realizar cambios más complejos.
-- Mantén siempre disponible un medio de recuperación actualizado.
-- No reinstales el sistema operativo sin intentar previamente reparar el arranque.
-- Realiza diagnósticos antes de modificar particiones o el gestor de arranque.
-- Comprueba el estado físico del disco si aparecen errores repetitivos durante el inicio.
-- Documenta todas las actuaciones realizadas durante la recuperación.
-- Verifica el funcionamiento completo del sistema tras reparar el arranque.
-- Mantén copias de seguridad actualizadas para poder restaurar el sistema en caso de fallo irreversible.
 
 ---
 
@@ -878,19 +849,6 @@ Esta información resulta muy útil para evitar futuras incidencias.
 | Bootrec | Reparar el gestor de arranque |
 | BCDBoot | Reconstruir archivos de arranque |
 | Visor de eventos | Analizar errores del sistema |
-
----
-
-### Buenas prácticas
-
-- Utiliza primero las herramientas automáticas de WinRE antes de aplicar soluciones manuales.
-- Ejecuta **CHKDSK** cuando sospeches de problemas en el disco.
-- Combina **DISM** y **SFC** para reparar archivos del sistema dañados.
-- Mantén siempre un medio de instalación o recuperación actualizado.
-- Crea puntos de restauración antes de realizar cambios importantes.
-- Revisa el Visor de eventos tras recuperar el sistema para identificar la causa del fallo.
-- No reconstruyas el gestor de arranque sin confirmar previamente que el problema está relacionado con él.
-- Documenta todas las acciones realizadas durante la recuperación.
 
 ---
 
@@ -1226,19 +1184,6 @@ Esto permite recuperar el acceso mientras se investiga la incidencia.
 
 ---
 
-### Buenas prácticas
-
-- Mantén siempre un Live USB actualizado para tareas de recuperación.
-- Revisa los registros con **journalctl** antes de realizar cambios importantes.
-- Ejecuta **fsck** únicamente sobre particiones desmontadas siempre que sea posible.
-- Conserva al menos una versión anterior del kernel instalada.
-- Verifica cuidadosamente los cambios en archivos críticos como **fstab** antes de reiniciar.
-- Documenta todas las modificaciones realizadas durante el proceso de recuperación.
-- Utiliza **chroot** para reparar sistemas desde un entorno externo cuando el arranque falle.
-- Comprueba el funcionamiento de todos los servicios tras completar la recuperación.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Recuperación de servicios y aplicaciones
@@ -1543,19 +1488,6 @@ La recuperación no finaliza hasta validar el funcionamiento completo.
 | Certificado caducado | Renovar certificado |
 | Dependencia detenida | Iniciar servicio dependiente |
 | Corrupción grave | Restaurar desde copia de seguridad |
-
----
-
-### Buenas prácticas
-
-- Analiza la causa del fallo antes de reiniciar un servicio.
-- Consulta siempre los registros del sistema y de la aplicación.
-- Comprueba las dependencias antes de intervenir.
-- Verifica el estado de CPU, memoria, almacenamiento y red.
-- Documenta todas las acciones realizadas durante la recuperación.
-- Utiliza snapshots antes de aplicar cambios importantes en servidores virtuales.
-- Mantén copias de seguridad actualizadas de las configuraciones y bases de datos.
-- Valida el funcionamiento del servicio una vez finalizada la recuperación.
 
 ---
 
@@ -1949,19 +1881,6 @@ Esto permite detectar copias corruptas o procedimientos incorrectos.
 
 ---
 
-### Buenas prácticas
-
-- Comprueba regularmente que las copias pueden restaurarse.
-- Define procedimientos claros de recuperación.
-- Mantén diferentes puntos históricos de restauración.
-- Verifica siempre la integridad del backup antes de utilizarlo.
-- Prueba restauraciones en entornos controlados.
-- Prioriza la recuperación de servicios críticos.
-- Documenta cada restauración realizada.
-- Mantén copias protegidas frente a ransomware mediante almacenamiento offline o inmutable.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Recuperación ante desastres (Disaster Recovery)
@@ -2331,20 +2250,6 @@ Tipos de pruebas:
 
 ---
 
-### Buenas prácticas
-
-- Mantén un plan DR documentado y actualizado.
-- Identifica los sistemas críticos mediante un análisis BIA.
-- Define claramente RTO y RPO.
-- Establece responsables para cada tarea.
-- Mantén copias externas e inmutables.
-- Realiza pruebas periódicas del plan.
-- Actualiza la documentación cuando cambie la infraestructura.
-- Prioriza siempre la recuperación de servicios esenciales.
-- Coordina la recuperación técnica con las necesidades del negocio.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Pruebas y validación de la recuperación
@@ -2642,341 +2547,6 @@ Ejemplo:
 | Parcial | Validar componentes concretos |
 | Completa | Comprobar recuperación total |
 | Simulación desastre | Evaluar respuesta global |
-
----
-
-### Buenas prácticas
-
-- Realiza pruebas de recuperación de forma periódica.
-- No confíes únicamente en que los backups existen.
-- Documenta todos los resultados obtenidos.
-- Utiliza entornos aislados cuando sea posible.
-- Mide siempre los tiempos reales de recuperación.
-- Comprueba tanto datos como servicios y aplicaciones.
-- Actualiza los procedimientos cuando aparezcan nuevos problemas.
-- Involucra a las personas responsables de cada área.
-- Revisa que los resultados cumplen los objetivos RPO y RTO establecidos.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Buenas prácticas
-
-Una correcta recuperación del sistema no depende únicamente de disponer de herramientas técnicas. Es necesario establecer procedimientos claros, mantener la documentación actualizada y realizar pruebas periódicas para garantizar que los sistemas puedan recuperarse de forma rápida y segura ante cualquier incidencia.
-
-Las siguientes buenas prácticas ayudan a reducir los tiempos de recuperación, minimizar la pérdida de información y mejorar la capacidad de respuesta de la organización.
-
----
-
-### Planificar antes de que ocurra una incidencia
-
-La recuperación no debe improvisarse durante una emergencia.
-
-Es recomendable definir previamente:
-
-- Procedimientos de actuación.
-- Responsables de recuperación.
-- Sistemas críticos.
-- Orden de restauración.
-- Herramientas necesarias.
-- Métodos de comunicación.
-
-Una planificación adecuada reduce considerablemente el tiempo de respuesta.
-
----
-
-### Mantener procedimientos documentados
-
-Toda organización debería disponer de documentación actualizada sobre recuperación.
-
-Debe incluir:
-
-- Pasos técnicos.
-- Comandos utilizados.
-- Configuraciones necesarias.
-- Contactos importantes.
-- Dependencias entre sistemas.
-- Tiempos estimados.
-
-Una documentación clara permite actuar incluso cuando el personal habitual no está disponible.
-
----
-
-### Priorizar los sistemas críticos
-
-No todos los servicios tienen la misma importancia.
-
-Durante una recuperación debe establecerse un orden de prioridad.
-
-Ejemplo:
-
-```text
-1. Infraestructura de red
-
-↓
-
-2. Active Directory
-
-↓
-
-3. DNS/DHCP
-
-↓
-
-4. Bases de datos
-
-↓
-
-5. Aplicaciones
-
-↓
-
-6. Equipos de usuario
-```
-
-Recuperar las dependencias primero evita problemas posteriores.
-
----
-
-### Mantener copias de seguridad fiables
-
-Las copias son la base de cualquier estrategia de recuperación.
-
-Buenas prácticas:
-
-- Realizar backups periódicos.
-- Mantener varias versiones.
-- Utilizar almacenamiento externo.
-- Aplicar cifrado.
-- Mantener copias offline o inmutables.
-- Verificar restauraciones.
-
-Una copia no probada no garantiza una recuperación exitosa.
-
----
-
-### Realizar pruebas periódicas
-
-Los procedimientos deben comprobarse regularmente.
-
-Las pruebas permiten detectar:
-
-- Copias corruptas.
-- Procedimientos incorrectos.
-- Falta de permisos.
-- Problemas de compatibilidad.
-- Tiempos de recuperación superiores a los previstos.
-
-La práctica mejora la preparación ante incidentes reales.
-
----
-
-### Definir objetivos RPO y RTO
-
-Toda estrategia de recuperación debe establecer:
-
-**RPO:**
-
-Cantidad máxima de datos que puede perderse.
-
-Ejemplo:
-
-```text
-RPO = 1 hora
-```
-
-**RTO:**
-
-Tiempo máximo permitido para recuperar un servicio.
-
-Ejemplo:
-
-```text
-RTO = 4 horas
-```
-
-Estos valores permiten diseñar una estrategia acorde a las necesidades del negocio.
-
----
-
-### Mantener medios de recuperación disponibles
-
-Es recomendable disponer siempre de herramientas preparadas.
-
-Ejemplos:
-
-- USB de instalación de Windows.
-- Live USB Linux.
-- Herramientas de diagnóstico.
-- Imágenes de recuperación.
-- Documentación técnica.
-
-No esperar a una emergencia para preparar estos recursos.
-
----
-
-### Monitorizar los sistemas
-
-La detección temprana facilita la recuperación.
-
-Conviene supervisar:
-
-- Estado de discos.
-- Espacio disponible.
-- Errores del sistema.
-- Servicios críticos.
-- Rendimiento.
-- Copias de seguridad.
-
-Una incidencia detectada rápidamente suele tener menor impacto.
-
----
-
-### Proteger las herramientas de recuperación
-
-Las herramientas utilizadas para recuperar sistemas también deben protegerse.
-
-Medidas recomendadas:
-
-- Control de acceso.
-- Cuentas administrativas separadas.
-- MFA.
-- Almacenamiento seguro.
-- Registro de actividad.
-
-Un atacante que controle las herramientas de recuperación puede inutilizar toda la infraestructura.
-
----
-
-### Aplicar el principio de mínimo privilegio
-
-Durante una recuperación deben utilizarse únicamente los permisos necesarios.
-
-Buenas prácticas:
-
-- Evitar usar cuentas de administrador del dominio sin necesidad.
-- Utilizar cuentas específicas de recuperación.
-- Registrar accesos administrativos.
-
-Esto reduce riesgos durante procesos críticos.
-
----
-
-### Mantener inventario actualizado
-
-Es importante conocer exactamente qué sistemas existen.
-
-El inventario debe incluir:
-
-- Servidores.
-- Aplicaciones.
-- Dependencias.
-- Direcciones IP.
-- Versiones.
-- Ubicación de backups.
-
-Sin un inventario actualizado es difícil recuperar una infraestructura completa.
-
----
-
-### Revisar dependencias entre sistemas
-
-Muchos servicios dependen unos de otros.
-
-Ejemplo:
-
-```text
-Aplicación ERP
-
-↓
-
-Base de datos
-
-↓
-
-Sistema operativo
-
-↓
-
-Almacenamiento
-```
-
-Conocer estas relaciones permite establecer correctamente el orden de recuperación.
-
----
-
-### Automatizar procesos repetitivos
-
-Siempre que sea posible deben automatizarse tareas como:
-
-- Restauraciones.
-- Configuración inicial.
-- Validaciones.
-- Comprobaciones.
-- Informes.
-
-La automatización reduce errores humanos y acelera la recuperación.
-
----
-
-### Analizar las causas después de una incidencia
-
-Después de una recuperación real debe realizarse un análisis posterior.
-
-Debe revisarse:
-
-- Qué provocó el fallo.
-- Qué soluciones funcionaron.
-- Qué problemas aparecieron.
-- Qué mejoras deben aplicarse.
-
-El objetivo es evitar que vuelva a ocurrir.
-
----
-
-### Actualizar continuamente el plan de recuperación
-
-La infraestructura cambia constantemente.
-
-Por ello debe revisarse:
-
-- Nuevos servidores.
-- Nuevas aplicaciones.
-- Cambios de red.
-- Nuevas políticas.
-- Cambios de proveedores.
-
-Un plan desactualizado puede fallar durante una emergencia.
-
----
-
-### Errores frecuentes
-
-Algunos errores habituales son:
-
-- No tener documentación.
-- No probar las restauraciones.
-- No conocer las dependencias.
-- Guardar las copias en una única ubicación.
-- No actualizar procedimientos.
-- Utilizar herramientas sin protección.
-- No definir responsables.
-- Recuperar sistemas sin validar posteriormente.
-
----
-
-### Comparativa
-
-| Buena práctica | Beneficio |
-|----------------|-----------|
-| Documentación | Recuperación más rápida |
-| Pruebas periódicas | Detectar errores antes del desastre |
-| Inventario actualizado | Conocer la infraestructura |
-| RPO/RTO definidos | Establecer objetivos claros |
-| Automatización | Reducir errores |
-| Monitorización | Detectar problemas rápidamente |
-| Análisis posterior | Evitar reincidencias |
 
 ---
 
