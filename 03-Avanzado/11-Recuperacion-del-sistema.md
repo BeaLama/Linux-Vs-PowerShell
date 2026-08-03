@@ -266,40 +266,6 @@ Una documentación clara facilita enormemente la actuación durante una emergenc
 
 ---
 
-### Ejemplo práctico
-
-Un servidor deja de arrancar tras una actualización.
-
-Proceso:
-
-```text
-Servidor
-
-↓
-
-No inicia
-
-↓
-
-Diagnóstico
-
-↓
-
-Reparación del arranque
-
-↓
-
-Verificación
-
-↓
-
-Servidor operativo
-```
-
-En este caso no ha sido necesario restaurar una copia completa del sistema.
-
----
-
 ### Comparativa
 
 | Concepto | Objetivo |
@@ -578,40 +544,6 @@ Una vez finalizada la recuperación conviene comprobar:
 - Que no existen errores en los registros del sistema.
 
 La reparación no debe darse por concluida hasta validar el funcionamiento completo.
-
----
-
-### Ejemplo práctico
-
-Tras un corte eléctrico el servidor deja de arrancar.
-
-Proceso:
-
-```text
-Servidor
-
-↓
-
-Error de Bootloader
-
-↓
-
-USB de recuperación
-
-↓
-
-Reparación del gestor de arranque
-
-↓
-
-Reinicio
-
-↓
-
-Sistema operativo iniciado
-```
-
-Gracias a la reparación del arranque no ha sido necesario restaurar una copia completa del sistema.
 
 ---
 
@@ -930,50 +862,6 @@ Permite consultar:
 - Eventos críticos.
 
 Esta información resulta muy útil para evitar futuras incidencias.
-
----
-
-### Ejemplo práctico
-
-Un equipo deja de arrancar tras un apagado inesperado.
-
-Proceso:
-
-```text
-WinRE
-
-↓
-
-Reparación de inicio
-
-↓
-
-No resuelve
-```
-
-```text
-↓
-
-CHKDSK
-
-↓
-
-Errores corregidos
-```
-
-```text
-↓
-
-SFC
-
-↓
-
-Archivos reparados
-
-↓
-
-Windows inicia correctamente
-```
 
 ---
 
@@ -1322,40 +1210,6 @@ Esto permite recuperar el acceso mientras se investiga la incidencia.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor Linux deja de arrancar tras modificar el archivo **fstab**.
-
-Proceso:
-
-```text
-Sistema
-
-↓
-
-Emergency Mode
-
-↓
-
-Editar /etc/fstab
-
-↓
-
-Guardar cambios
-
-↓
-
-Reinicio
-
-↓
-
-Servidor operativo
-```
-
-No ha sido necesario reinstalar el sistema.
-
----
-
 ### Comparativa
 
 | Herramienta | Función |
@@ -1676,44 +1530,6 @@ Una vez recuperado conviene comprobar:
 - Que el rendimiento es normal.
 
 La recuperación no finaliza hasta validar el funcionamiento completo.
-
----
-
-### Ejemplo práctico
-
-Un servidor IIS deja de responder.
-
-Proceso:
-
-```text
-Usuarios sin acceso
-
-↓
-
-Comprobar IIS
-
-↓
-
-Servicio detenido
-
-↓
-
-Revisar registros
-
-↓
-
-Corregir configuración
-
-↓
-
-Reiniciar IIS
-
-↓
-
-Sitio web operativo
-```
-
-En este caso no ha sido necesario restaurar el servidor completo.
 
 ---
 
@@ -2120,40 +1936,6 @@ Esto permite detectar copias corruptas o procedimientos incorrectos.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor de base de datos sufre corrupción tras un fallo eléctrico.
-
-Proceso:
-
-```text
-Servidor afectado
-
-↓
-
-Detener servicio
-
-↓
-
-Seleccionar backup válido
-
-↓
-
-Restaurar base de datos
-
-↓
-
-Aplicar transacciones
-
-↓
-
-Validar aplicación
-```
-
-El servicio vuelve a estar disponible sin reconstruir completamente el servidor.
-
----
-
 ### Comparativa
 
 | Tipo de recuperación | Uso |
@@ -2536,40 +2318,6 @@ Tipos de pruebas:
 
 ---
 
-### Ejemplo práctico
-
-Un incendio inutiliza el centro de servidores principal.
-
-Proceso:
-
-```text
-Activar DRP
-
-↓
-
-Notificar responsables
-
-↓
-
-Activar infraestructura secundaria
-
-↓
-
-Restaurar servicios críticos
-
-↓
-
-Validar funcionamiento
-
-↓
-
-Continuar actividad
-```
-
-La organización puede seguir operando mientras se recupera la sede principal.
-
----
-
 ### Comparativa
 
 | Estrategia | Tiempo recuperación | Coste |
@@ -2883,40 +2631,6 @@ Ejemplo:
 | Servidores importantes | Trimestral |
 | Sistemas secundarios | Semestral |
 | Documentación | Revisión continua |
-
----
-
-### Ejemplo práctico
-
-Una empresa prueba la recuperación de un servidor de base de datos.
-
-Proceso:
-
-```text
-Backup
-
-↓
-
-Restauración en laboratorio
-
-↓
-
-Inicio del servicio SQL
-
-↓
-
-Comprobación aplicación
-
-↓
-
-Informe final
-```
-
-Resultado:
-
-- Datos recuperados correctamente.
-- Servicio operativo.
-- Tiempo de recuperación dentro del RTO.
 
 ---
 
@@ -3234,40 +2948,6 @@ Por ello debe revisarse:
 - Cambios de proveedores.
 
 Un plan desactualizado puede fallar durante una emergencia.
-
----
-
-### Ejemplo práctico
-
-Una empresa actualiza su procedimiento de recuperación.
-
-Acciones:
-
-```text
-Revisión infraestructura
-
-↓
-
-Actualizar documentación
-
-↓
-
-Probar restauración
-
-↓
-
-Medir RTO
-
-↓
-
-Aplicar mejoras
-```
-
-Resultado:
-
-- Menor tiempo de recuperación.
-- Menos errores.
-- Mayor preparación ante incidentes.
 
 ---
 

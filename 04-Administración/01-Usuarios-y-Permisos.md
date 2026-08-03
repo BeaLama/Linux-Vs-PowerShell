@@ -316,36 +316,6 @@ Sin una correcta gestión de identidades, un sistema no puede determinar quién 
 
 ---
 
-### Ejemplo práctico
-
-Una empresa contrata a un nuevo empleado del departamento de administración.
-
-Proceso:
-
-```text
-Empleado contratado
-
-↓
-
-Crear identidad digital
-
-↓
-
-Asignar usuario
-
-↓
-
-Añadir a grupo Administración
-
-↓
-
-Conceder acceso a recursos necesarios
-```
-
-El usuario podrá acceder únicamente a los recursos permitidos según su función.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Usuarios en sistemas operativos
@@ -734,32 +704,6 @@ Por ello es importante revisar periódicamente las cuentas existentes y sus perm
 [⬆️ Volver al índice](#índice)
 
 ## Tipos de usuarios
-
-### Introducción
-
-No todos los usuarios dentro de un sistema tienen las mismas funciones ni los mismos permisos.
-
-Dependiendo de su finalidad, los usuarios pueden tener diferentes niveles de acceso y privilegios.
-
-La correcta clasificación de usuarios permite aplicar el principio de mínimo privilegio, evitando que una cuenta tenga más permisos de los necesarios para realizar su trabajo.
-
-Ejemplo:
-
-```text
-Empleado de contabilidad
-
-↓
-
-Necesita acceso a documentos financieros
-
-NO
-
-↓
-
-Permisos de administrador del sistema
-```
-
----
 
 ## Usuario estándar
 
@@ -1164,38 +1108,6 @@ Cada identidad tiene únicamente los permisos necesarios para cumplir su funció
 [⬆️ Volver al índice](#índice)
 
 ## Grupos de usuarios
-
-### Introducción
-
-Los grupos de usuarios son conjuntos de cuentas que comparten características comunes o necesitan acceder a los mismos recursos.
-
-En lugar de asignar permisos usuario por usuario, los administradores pueden asignar permisos a un grupo y añadir usuarios dentro de él.
-
-Esto facilita la administración y permite gestionar grandes cantidades de cuentas de forma más eficiente.
-
-Ejemplo:
-
-```text
-Grupo:
-
-Contabilidad
-
-
-Usuarios:
-
-├── Ana
-
-├── Juan
-
-└── Marta
-
-
-Permisos:
-
-Acceso carpeta financiera
-```
-
----
 
 ### ¿Por qué utilizar grupos?
 
@@ -1704,42 +1616,6 @@ Obtiene permisos automáticamente
 
 ## Identificadores de usuario
 
-### Introducción
-
-Los sistemas operativos necesitan una forma única de identificar cada cuenta de usuario internamente.
-
-Aunque los usuarios suelen trabajar con nombres como:
-
-```text
-juan.perez
-```
-
-el sistema no utiliza únicamente ese nombre para identificar la cuenta.
-
-Para evitar conflictos y permitir una gestión más precisa, los sistemas asignan identificadores únicos a cada usuario.
-
-Estos identificadores permiten al sistema saber exactamente qué usuario está realizando una acción y qué permisos debe aplicar.
-
-Ejemplo:
-
-```text
-Nombre visible:
-
-juan.perez
-
-
-Identificador interno:
-
-SID / UID
-
-
-Permisos asociados:
-
-Lectura y escritura
-```
-
----
-
 # Identificadores en Windows
 
 Windows utiliza principalmente los **SID (Security Identifier)** para identificar usuarios y grupos.
@@ -2235,41 +2111,6 @@ El sistema las considera identidades diferentes.
 [⬆️ Volver al índice](#índice)
 
 ## Autenticación y autorización
-
-### Introducción
-
-La autenticación y la autorización son dos conceptos fundamentales dentro de la seguridad informática y la administración de sistemas.
-
-Ambos procesos están relacionados con el control de acceso, pero cumplen funciones diferentes:
-
-- La autenticación determina quién es un usuario.
-- La autorización determina qué acciones puede realizar ese usuario.
-
-Un sistema seguro debe verificar primero la identidad de una persona antes de permitirle acceder a recursos.
-
-Ejemplo:
-
-```text
-Usuario intenta acceder
-
-↓
-
-Autenticación
-
-¿Quién eres?
-
-↓
-
-Autorización
-
-¿Qué puedes hacer?
-
-↓
-
-Acceso permitido
-```
-
----
 
 # Autenticación
 
@@ -2801,24 +2642,6 @@ Una correcta gestión de autenticación y autorización permite:
 
 ## Gestión de usuarios en Windows
 
-### Introducción
-
-Windows ofrece diferentes herramientas para crear, modificar y administrar cuentas de usuario.
-
-Dependiendo de la edición del sistema operativo y del entorno de trabajo, la gestión puede realizarse de forma local o mediante un dominio.
-
-Las tareas más habituales son:
-
-- Crear usuarios.
-- Modificar cuentas.
-- Restablecer contraseñas.
-- Bloquear o desbloquear usuarios.
-- Eliminar cuentas.
-- Gestionar grupos.
-- Asignar permisos.
-
----
-
 # Usuarios locales y usuarios de dominio
 
 Windows permite trabajar con dos tipos principales de cuentas.
@@ -3303,26 +3126,6 @@ Usuario listo para trabajar
 [⬆️ Volver al índice](#índice)
 
 ## Gestión de usuarios en Linux
-
-### Introducción
-
-Linux gestiona los usuarios mediante un sistema basado en identificadores únicos (UID), grupos (GID) y permisos sobre archivos y recursos.
-
-Toda la información de las cuentas se almacena en archivos del sistema, lo que permite administrar usuarios tanto mediante herramientas gráficas como, principalmente, desde la línea de comandos.
-
-La mayoría de tareas de administración en Linux se realizan utilizando comandos específicos ejecutados por el usuario **root** o mediante **sudo**.
-
-Las tareas más habituales son:
-
-- Crear usuarios.
-- Modificar cuentas.
-- Cambiar contraseñas.
-- Eliminar usuarios.
-- Gestionar grupos.
-- Bloquear cuentas.
-- Configurar permisos.
-
----
 
 # Archivos relacionados con los usuarios
 
@@ -3809,36 +3612,6 @@ sudo usermod -aG ventas beatriz
 
 ## Active Directory y usuarios empresariales
 
-### Introducción
-
-En entornos empresariales es habitual que los usuarios no se gestionen de forma individual en cada equipo, sino de manera centralizada.
-
-**Active Directory (AD)** es el servicio de directorio desarrollado por Microsoft que permite administrar usuarios, equipos, grupos y recursos desde un único punto.
-
-Gracias a Active Directory, un usuario puede utilizar las mismas credenciales para acceder a distintos equipos y recursos de la organización, simplificando la administración y mejorando la seguridad.
-
-Ejemplo:
-
-```text
-Administrador
-
-↓
-
-Active Directory
-
-↓
-
-Usuarios
-
-Equipos
-
-Grupos
-
-Recursos
-```
-
----
-
 # ¿Qué es Active Directory?
 
 Active Directory es un servicio de directorio que almacena información sobre los objetos de una red y permite administrarlos de forma centralizada.
@@ -4231,42 +4004,6 @@ Gracias a Active Directory, toda la configuración se aplica automáticamente si
 [⬆️ Volver al índice](#índice)
 
 ## Permisos de archivos y recursos
-
-### Introducción
-
-Los permisos son el mecanismo utilizado por los sistemas operativos para controlar qué acciones puede realizar un usuario sobre un recurso determinado.
-
-Un recurso puede ser:
-
-- Un archivo.
-- Una carpeta.
-- Una impresora.
-- Una unidad de red.
-- Un servicio.
-- Una base de datos.
-- Un dispositivo.
-
-Cuando un usuario intenta acceder a un recurso, el sistema comprueba los permisos asociados a su identidad antes de permitir o denegar la operación.
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Solicita acceso
-
-↓
-
-Sistema comprueba permisos
-
-↓
-
-Acceso permitido o denegado
-```
-
----
 
 # ¿Qué son los permisos?
 
@@ -4771,22 +4508,6 @@ No es necesario modificar los permisos de la carpeta.
 
 ## Listas de Control de Acceso (ACL)
 
-### Introducción
-
-Las **Listas de Control de Acceso** o **ACL (Access Control List)** son un mecanismo utilizado por los sistemas operativos para definir de forma detallada qué usuarios o grupos pueden acceder a un recurso y qué acciones pueden realizar sobre él.
-
-Mientras que los permisos básicos permiten un control general, las ACL ofrecen una administración mucho más granular y flexible.
-
-Las ACL son ampliamente utilizadas en:
-
-- Sistemas Windows (NTFS).
-- Sistemas Linux compatibles con POSIX ACL.
-- Servidores de archivos.
-- NAS.
-- Recursos compartidos.
-
----
-
 # ¿Qué es una ACL?
 
 Una ACL es una lista formada por una o varias entradas que especifican los permisos de distintos usuarios o grupos sobre un recurso.
@@ -5214,36 +4935,6 @@ Una vez finalizada la auditoría, la entrada de la ACL puede eliminarse sin afec
 
 ## Herencia de permisos
 
-### Introducción
-
-La herencia de permisos es un mecanismo que permite que archivos y carpetas reciban automáticamente los permisos definidos en un recurso superior.
-
-Su objetivo es simplificar la administración y garantizar que la estructura de permisos se mantenga uniforme sin necesidad de configurar cada elemento individualmente.
-
-La herencia está presente en sistemas como **Windows (NTFS)** y también puede encontrarse en determinados entornos Linux mediante ACL.
-
-Ejemplo:
-
-```text
-Empresa
-
-↓
-
-Finanzas
-
-↓
-
-Facturas
-
-↓
-
-2026.xlsx
-```
-
-Si la carpeta **Empresa** tiene permisos configurados para el grupo *Finanzas*, estos podrán heredarse automáticamente por las carpetas y archivos contenidos en ella.
-
----
-
 # ¿Cómo funciona la herencia?
 
 Cuando se crea un nuevo archivo o carpeta dentro de otra carpeta, el sistema puede copiar automáticamente los permisos del elemento padre.
@@ -5613,16 +5304,6 @@ El archivo recibe automáticamente los permisos de la carpeta **Finanzas**, sin 
 
 ## Roles y privilegios administrativos
 
-### Introducción
-
-No todos los usuarios de un sistema necesitan el mismo nivel de acceso. Mientras que un usuario estándar puede trabajar con aplicaciones y documentos, un administrador necesita permisos adicionales para configurar el sistema, gestionar usuarios o instalar software.
-
-Los **roles** permiten asignar responsabilidades concretas a los usuarios, mientras que los **privilegios** determinan las acciones que esos usuarios pueden realizar.
-
-Una correcta asignación de roles y privilegios es fundamental para mantener la seguridad de una infraestructura y reducir el riesgo de accesos no autorizados.
-
----
-
 # ¿Qué es un rol?
 
 Un rol es un conjunto de funciones y responsabilidades asignadas a un usuario o grupo de usuarios.
@@ -5967,25 +5648,6 @@ Cada rol dispone únicamente de los privilegios necesarios para desempeñar sus 
 [⬆️ Volver al índice](#índice)
 
 ## Cuentas de servicio
-
-### Introducción
-
-Además de las cuentas utilizadas por personas, los sistemas operativos y las aplicaciones necesitan identidades propias para ejecutar procesos de forma automática.
-
-Estas identidades reciben el nombre de **cuentas de servicio** (*Service Accounts*).
-
-Su función es permitir que aplicaciones, servicios y tareas programadas puedan autenticarse y acceder a los recursos necesarios sin depender de la cuenta personal de un usuario.
-
-Ejemplos habituales:
-
-- Servicios de bases de datos.
-- Servidores web.
-- Aplicaciones empresariales.
-- Sistemas de copias de seguridad.
-- Tareas programadas.
-- Agentes de monitorización.
-
----
 
 # ¿Qué es una cuenta de servicio?
 
@@ -6338,14 +6000,6 @@ Gracias a esta configuración, aunque el servicio se vea comprometido, el atacan
 
 ## Gestión del ciclo de vida de usuarios
 
-## Introducción
-
-La gestión del ciclo de vida de los usuarios consiste en administrar una cuenta desde su creación hasta su eliminación. Este proceso garantiza que cada usuario disponga únicamente de los accesos necesarios durante el tiempo que los requiera, reduciendo riesgos de seguridad y facilitando la administración del sistema.
-
-En entornos empresariales, una correcta gestión del ciclo de vida permite mantener actualizados los permisos, evitar cuentas obsoletas y asegurar el cumplimiento de las políticas de seguridad de la organización.
-
----
-
 ### ¿Qué es el ciclo de vida de un usuario?
 
 El ciclo de vida de un usuario comprende todas las fases por las que pasa una cuenta dentro de un sistema.
@@ -6559,56 +6213,9 @@ La automatización reduce errores y agiliza la administración.
 
 ---
 
-### Ejemplo práctico
-
-Un empleado cambia de departamento y pasa del área comercial al departamento de informática.
-
-Procedimiento:
-
-```text
-Modificar grupo de usuarios
-
-↓
-
-Actualizar permisos
-
-↓
-
-Eliminar accesos antiguos
-
-↓
-
-Asignar nuevos permisos
-
-↓
-
-Verificar funcionamiento
-```
-
-Así se garantiza que el usuario únicamente dispone de los accesos necesarios para su nuevo puesto.
-
----
-
-### Resumen
-
-La gestión del ciclo de vida de los usuarios permite administrar las cuentas desde su creación hasta su eliminación, asegurando que cada usuario disponga únicamente de los permisos necesarios durante el tiempo imprescindible.
-
-Una correcta administración de estas fases mejora la seguridad, facilita el mantenimiento del sistema y reduce el riesgo de accesos no autorizados.
-
----
-
 [⬆️ Volver al índice](#índice)
 
-
 ## Auditoría de usuarios y permisos
-
-## Introducción
-
-La auditoría de usuarios y permisos consiste en supervisar y registrar las acciones realizadas por las cuentas del sistema, así como revisar periódicamente los permisos asignados a cada usuario. Su objetivo es garantizar que los accesos sean adecuados, detectar actividades sospechosas y facilitar la investigación de incidencias de seguridad.
-
-En entornos empresariales, la auditoría es un elemento fundamental para cumplir normativas de seguridad, mantener la trazabilidad de las acciones realizadas y proteger la información de la organización.
-
----
 
 ### ¿Qué es una auditoría de usuarios?
 
@@ -6812,61 +6419,9 @@ Estas prácticas ayudan a mantener un entorno más seguro y organizado.
 
 ---
 
-### Ejemplo práctico
-
-Durante una auditoría se detecta que un empleado que abandonó la empresa hace varios meses continúa teniendo una cuenta activa.
-
-Procedimiento:
-
-```text
-Comprobar la cuenta
-
-↓
-
-Verificar permisos
-
-↓
-
-Realizar copia de la información necesaria
-
-↓
-
-Deshabilitar la cuenta
-
-↓
-
-Eliminarla siguiendo el procedimiento establecido
-
-↓
-
-Documentar la actuación
-```
-
-Este proceso evita accesos no autorizados y mantiene actualizado el sistema de usuarios.
-
----
-
-### Resumen
-
-La auditoría de usuarios y permisos permite supervisar las cuentas del sistema, revisar los accesos asignados y analizar la actividad realizada por cada usuario.
-
-Realizar auditorías periódicas contribuye a mejorar la seguridad, detectar configuraciones incorrectas y garantizar que los permisos concedidos sean adecuados para las funciones desempeñadas por cada usuario.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Buenas prácticas de seguridad
-
-### Introducción
-
-La gestión de usuarios y permisos constituye uno de los pilares fundamentales de la seguridad informática.
-
-Una configuración incorrecta puede provocar accesos no autorizados, pérdida de información o comprometer completamente una infraestructura.
-
-Aplicar buenas prácticas permite reducir riesgos, facilitar la administración y proteger los recursos de la organización frente a amenazas internas y externas.
-
----
 
 # Aplicar el principio de mínimo privilegio
 

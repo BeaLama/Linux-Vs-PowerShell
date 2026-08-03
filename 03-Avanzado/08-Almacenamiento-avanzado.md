@@ -307,38 +307,6 @@ No existe una única solución válida para todos los escenarios.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor de virtualización puede utilizar:
-
-```text
-Sistema operativo
-
-↓
-
-SSD NVMe
-```
-
-```text
-Máquinas virtuales
-
-↓
-
-RAID de SSD
-```
-
-```text
-Copias de seguridad
-
-↓
-
-NAS
-```
-
-Cada tecnología se emplea según el uso previsto.
-
----
-
 ### Comparativa
 
 | Tipo | Uso habitual |
@@ -671,36 +639,6 @@ No protege frente a:
 - Incendios o robos.
 
 Siempre debe existir una estrategia de backup independiente.
-
----
-
-### Ejemplo práctico
-
-Servidor con cuatro discos SSD.
-
-Configuración:
-
-```text
-4 SSD
-
-↓
-
-RAID 10
-
-↓
-
-Sistema operativo
-
-↓
-
-Máquinas virtuales
-```
-
-**Ventajas:**
-
-- Excelente rendimiento.
-- Alta disponibilidad.
-- Recuperación rápida en caso de fallo.
 
 ---
 
@@ -1134,50 +1072,6 @@ Su filosofía es muy similar a la utilizada por LVM.
 
 ---
 
-### Ejemplo práctico
-
-Servidor con tres discos.
-
-Configuración:
-
-```text
-3 discos
-
-↓
-
-VG_DATOS
-
-↓
-
-LV_Sistema
-
-↓
-
-LV_BasesDatos
-
-↓
-
-LV_Backups
-```
-
-Si posteriormente se añade un cuarto disco:
-
-```text
-Nuevo disco
-
-↓
-
-Añadir al VG
-
-↓
-
-Ampliar LV_BasesDatos
-```
-
-No será necesario reinstalar el sistema operativo ni mover manualmente los datos.
-
----
-
 ### Buenas prácticas
 
 - Utiliza LVM en servidores cuyo almacenamiento pueda crecer con el tiempo.
@@ -1524,58 +1418,6 @@ La elección depende del escenario.
 | Grandes servidores Windows | ReFS |
 
 No existe un sistema de archivos perfecto para todas las situaciones.
-
----
-
-### Ejemplo práctico
-
-Servidor de virtualización.
-
-```text
-SSD RAID
-
-↓
-
-XFS
-
-↓
-
-Máquinas virtuales
-```
-
-Servidor NAS.
-
-```text
-Discos
-
-↓
-
-ZFS
-
-↓
-
-Snapshots
-
-↓
-
-Compartición de archivos
-```
-
-Servidor Windows.
-
-```text
-Storage Spaces
-
-↓
-
-ReFS
-
-↓
-
-Servidor de copias
-```
-
-Cada tecnología se adapta mejor a un tipo concreto de carga de trabajo.
 
 ---
 
@@ -2330,34 +2172,6 @@ Por ejemplo:
 
 ---
 
-### Ejemplo práctico
-
-Servidor de archivos corporativo.
-
-Configuración:
-
-```text
-Usuarios
-
-↓
-
-Soft Limit
-
-100 GB
-
-↓
-
-Hard Limit
-
-120 GB
-```
-
-Cuando un usuario supera los **100 GB**, recibe un aviso.
-
-Si alcanza los **120 GB**, el sistema impide seguir almacenando información hasta liberar espacio.
-
----
-
 ### Comparativa
 
 | Tipo | Característica |
@@ -2668,36 +2482,6 @@ Especialmente en:
 - Servidores críticos.
 
 Esperar al fallo completo aumenta el riesgo de pérdida de datos.
-
----
-
-### Ejemplo práctico
-
-Servidor de archivos.
-
-La monitorización detecta:
-
-```text
-SMART
-
-↓
-
-Sectores reasignados
-
-↓
-
-Alerta
-
-↓
-
-Sustitución del disco
-
-↓
-
-Reconstrucción del RAID
-```
-
-Gracias a la detección temprana no se produce pérdida de información.
 
 ---
 
@@ -3033,52 +2817,6 @@ Toda organización debería disponer de un procedimiento documentado que incluya
 - Verificación posterior.
 
 Este plan facilita una respuesta rápida y coordinada ante cualquier incidente.
-
----
-
-### Ejemplo práctico
-
-Servidor con RAID 5.
-
-Uno de los discos falla.
-
-```text
-Fallo del disco
-
-↓
-
-RAID degradado
-
-↓
-
-Sustitución del disco
-
-↓
-
-Reconstrucción
-
-↓
-
-Comprobación del sistema
-
-↓
-
-Servicio operativo
-```
-
-Si además se hubiera producido pérdida de información:
-
-```text
-Backup
-
-↓
-
-Restauración
-
-↓
-
-Validación
-```
 
 ---
 

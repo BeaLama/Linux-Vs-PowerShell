@@ -660,50 +660,6 @@ Inconvenientes:
 
 ---
 
-### Ejemplo práctico
-
-Una empresa puede utilizar varios tipos de monitorización al mismo tiempo:
-
-```text
-Servidor Web
-
-↓
-
-CPU, RAM y Disco
-
-↓
-
-Monitorización de infraestructura
-
-↓
-
-HTTP
-
-↓
-
-Monitorización de disponibilidad
-
-↓
-
-Logs
-
-↓
-
-Monitorización de seguridad
-
-↓
-
-Tiempo de respuesta
-
-↓
-
-Monitorización de aplicaciones
-```
-
-De esta forma se obtiene una visión completa del estado del sistema.
-
----
-
 ### Buenas prácticas
 
 - Combina distintos tipos de monitorización para cubrir toda la infraestructura.
@@ -1020,38 +976,6 @@ Una tendencia creciente puede indicar la necesidad de ampliar recursos o investi
 | Servicios | Estado y tiempo de respuesta |
 | Hardware | Temperatura, ventiladores, alimentación |
 | Disponibilidad | Uptime y accesibilidad |
-
----
-
-### Ejemplo práctico
-
-Un servidor presenta las siguientes métricas:
-
-```text
-CPU
-
-92 %
-```
-
-```text
-RAM
-
-58 %
-```
-
-```text
-Disco
-
-22 %
-```
-
-```text
-Red
-
-18 %
-```
-
-En este caso, la CPU es el recurso que requiere atención, mientras que el resto de métricas se mantienen dentro de valores normales.
 
 ---
 
@@ -1425,44 +1349,6 @@ También es habitual utilizar:
 | `iostat` | Rendimiento del disco |
 | `ss` | Conexiones de red |
 | `smartctl` | Estado SMART de discos |
-
----
-
-### Ejemplo práctico
-
-Diagnóstico de un servidor con problemas de rendimiento:
-
-1. Comprobar procesos:
-
-```bash
-htop
-```
-
-2. Revisar memoria:
-
-```bash
-free -h
-```
-
-3. Analizar actividad del disco:
-
-```bash
-iostat -x 2
-```
-
-4. Consultar registros:
-
-```bash
-journalctl -p err
-```
-
-5. Revisar servicios:
-
-```bash
-systemctl --failed
-```
-
-Con estas comprobaciones suele ser posible identificar rápidamente el origen de la mayoría de incidencias.
 
 ---
 
@@ -1922,44 +1808,6 @@ Estos scripts pueden ejecutarse mediante:
 
 ---
 
-### Ejemplo práctico
-
-Diagnóstico de un servidor Windows:
-
-1. Revisar procesos:
-
-```text
-Ctrl + Shift + Esc
-```
-
-2. Analizar recursos:
-
-```text
-resmon
-```
-
-3. Consultar errores recientes:
-
-```text
-eventvwr.msc
-```
-
-4. Comprobar servicios:
-
-```powershell
-Get-Service
-```
-
-5. Obtener métricas del sistema:
-
-```powershell
-Get-Counter '\Processor(_Total)\% Processor Time'
-```
-
-Este procedimiento permite identificar rápidamente la mayoría de problemas relacionados con el rendimiento.
-
----
-
 ### Buenas prácticas
 
 - Utiliza el Administrador de tareas para un análisis rápido y PerfMon para una supervisión más completa.
@@ -2261,37 +2109,6 @@ La elección depende del entorno.
 | Configuración sencilla | PRTG |
 
 No existe una solución única para todos los escenarios.
-
----
-
-### Ejemplo práctico
-
-Supongamos una empresa con:
-
-- 50 servidores Linux.
-- 20 servidores Windows.
-- 40 switches.
-- 10 firewalls.
-
-Una posible arquitectura sería:
-
-```text
-Servidores Linux
-        │
-        ├────────────┐
-        │            │
-Windows Exporter  Node Exporter
-        │            │
-        └──────┬─────┘
-               │
-          Prometheus
-               │
-           Grafana
-               │
-      Dashboards y alertas
-```
-
-En otros entornos podría optarse por una única plataforma como Zabbix para centralizar toda la infraestructura.
 
 ---
 
@@ -2615,40 +2432,6 @@ Una alerta debe cumplir varias condiciones:
 - Evitar duplicados.
 
 Una alerta mal diseñada genera más problemas que beneficios.
-
----
-
-### Ejemplo práctico
-
-Supongamos que un servidor alcanza un uso elevado de CPU.
-
-Configuración:
-
-```text
-CPU > 90 %
-
-↓
-
-Durante 5 minutos
-
-↓
-
-Nivel crítico
-
-↓
-
-Enviar correo
-
-↓
-
-Crear ticket
-
-↓
-
-Enviar mensaje a Teams
-```
-
-Si el uso vuelve a la normalidad antes de los cinco minutos, no se genera ninguna alerta.
 
 ---
 

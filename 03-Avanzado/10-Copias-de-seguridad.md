@@ -266,44 +266,6 @@ Una buena documentación facilita enormemente la recuperación ante incidentes.
 
 ---
 
-### Ejemplo práctico
-
-Empresa con un servidor de archivos.
-
-Proceso:
-
-```text
-Servidor
-
-↓
-
-Copia diaria
-
-↓
-
-NAS
-
-↓
-
-Copia semanal
-
-↓
-
-Disco externo
-
-↓
-
-Copia mensual
-
-↓
-
-Nube
-```
-
-Gracias a esta estrategia existen varias ubicaciones desde las que recuperar la información.
-
----
-
 ### Comparativa
 
 | Concepto | Finalidad |
@@ -646,58 +608,6 @@ Muchas organizaciones utilizan ambos tipos simultáneamente.
 
 ---
 
-### Ejemplo práctico
-
-Servidor de archivos.
-
-```text
-Domingo
-
-↓
-
-Backup completo
-```
-
-```text
-Lunes
-
-↓
-
-Incremental
-```
-
-```text
-Martes
-
-↓
-
-Incremental
-```
-
-```text
-Miércoles
-
-↓
-
-Incremental
-```
-
-Si el servidor falla el jueves:
-
-```text
-Full domingo
-
-+
-
-Incrementales
-
-↓
-
-Restauración completa
-```
-
----
-
 ### Comparativa
 
 | Tipo | Espacio | Tiempo de copia | Tiempo de restauración |
@@ -1024,43 +934,6 @@ Conviene incluir:
 - Responsables.
 
 La documentación facilita la actuación durante una incidencia.
-
----
-
-### Ejemplo práctico
-
-Empresa con varios servidores.
-
-```text
-Cada noche
-
-↓
-
-Backup incremental
-```
-
-```text
-Cada domingo
-
-↓
-
-Backup completo
-```
-
-```text
-Cada mes
-
-↓
-
-Copia externa
-```
-
-Además:
-
-- RPO: 24 horas.
-- RTO: 4 horas.
-
-Esta planificación permite recuperar los servicios con un impacto controlado.
 
 ---
 
@@ -1453,46 +1326,6 @@ Muchos programas de backup aplican compresión automáticamente.
 
 ---
 
-### Ejemplo práctico
-
-Infraestructura empresarial.
-
-```text
-Servidores
-
-↓
-
-Servidor Backup
-
-↓
-
-NAS RAID
-```
-
-```text
-↓
-
-Replicación
-
-↓
-
-Cloud
-```
-
-```text
-↓
-
-Copia mensual
-
-↓
-
-Cinta offline
-```
-
-Esta estrategia combina rapidez de restauración y protección frente a desastres.
-
----
-
 ### Comparativa
 
 | Almacenamiento | Ventajas | Inconvenientes |
@@ -1853,52 +1686,6 @@ Informe
 ```
 
 Esto permite validar periódicamente que las copias siguen siendo utilizables.
-
----
-
-### Ejemplo práctico
-
-Empresa con 50 servidores.
-
-Proceso:
-
-```text
-23:00
-
-↓
-
-Veeam
-
-↓
-
-Backup incremental
-
-↓
-
-NAS
-```
-
-```text
-↓
-
-Replicación
-
-↓
-
-Cloud
-```
-
-```text
-↓
-
-Correo automático
-
-↓
-
-Administrador
-```
-
-Cada mañana el administrador recibe un informe con el estado de todas las copias.
 
 ---
 
@@ -2266,35 +2053,6 @@ Elegir el entorno adecuado depende del tipo de incidencia.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor de archivos deja de funcionar debido a un fallo del almacenamiento.
-
-Proceso:
-
-```text
-Servidor averiado
-
-↓
-
-Servidor nuevo
-
-↓
-
-Restauración Bare Metal
-
-↓
-
-Datos recuperados
-
-↓
-
-Usuarios operativos
-```
-
-Gracias a las copias de seguridad el servicio vuelve a estar disponible en pocas horas.
-
----
 
 ### Comparativa
 
@@ -2585,50 +2343,6 @@ Conviene revisar regularmente:
 - Correcto funcionamiento del cifrado.
 
 La supervisión continua reduce el riesgo de fallos inesperados.
-
----
-
-### Ejemplo práctico
-
-Empresa con infraestructura híbrida.
-
-```text
-Servidores
-
-↓
-
-Backup diario
-
-↓
-
-NAS
-```
-
-```text
-↓
-
-Copia inmutable
-
-↓
-
-Cloud
-```
-
-```text
-↓
-
-Copia mensual
-
-↓
-
-Disco offline
-```
-
-Además:
-
-- Cifrado AES-256.
-- MFA para administradores.
-- Restauraciones de prueba mensuales.
 
 ---
 

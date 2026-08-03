@@ -257,44 +257,6 @@ Las ACL amplían el modelo tradicional permitiendo un control mucho más granula
 
 ---
 
-### Ejemplo práctico
-
-Supongamos el siguiente escenario:
-
-- El propietario del archivo es **admin**.
-- El grupo propietario es **ventas**.
-- El usuario **juan** necesita modificar el archivo.
-- El resto de usuarios no debe tener acceso.
-
-Asignar permisos:
-
-```bash
-chmod 640 informe.txt
-```
-
-Añadir ACL:
-
-```bash
-setfacl -m u:juan:rw informe.txt
-```
-
-Comprobar:
-
-```bash
-getfacl informe.txt
-```
-
-Resultado:
-
-```text
-admin       → lectura y escritura
-ventas      → lectura
-juan        → lectura y escritura
-otros       → sin acceso
-```
-
----
-
 ### Buenas prácticas
 
 - Utiliza ACL únicamente cuando los permisos tradicionales no sean suficientes.
@@ -385,26 +347,6 @@ o
 ```bash
 chmod 0755 archivo
 ```
-
----
-
-### Ejemplo práctico
-
-El programa:
-
-```text
-/usr/bin/passwd
-```
-
-permite que cualquier usuario cambie su contraseña.
-
-Aunque el usuario normal no tiene permisos para modificar:
-
-```text
-/etc/shadow
-```
-
-el programa se ejecuta temporalmente con permisos del propietario (**root**), permitiendo realizar la operación de forma segura.
 
 ---
 
@@ -557,43 +499,7 @@ chmod 1777 compartido
 chmod -t directorio
 ```
 
----
-
-### Ejemplo práctico
-
-El directorio:
-
-```text
-/tmp
-```
-
-utiliza Sticky Bit.
-
-Comprobar:
-
-```bash
-ls -ld /tmp
-```
-
-Salida:
-
-```text
-drwxrwxrwt
-```
-
-Todos los usuarios pueden crear archivos en:
-
-```text
-/tmp
-```
-
-pero únicamente pueden eliminar:
-
-- Sus propios archivos.
-- Los creados por root (si son root).
-- Los eliminados por el propietario del directorio.
-
----
+---<>
 
 ### Valores numéricos
 
@@ -938,37 +844,6 @@ BUILTIN\Administrators
 
 ---
 
-### Ejemplo práctico
-
-Supongamos una carpeta compartida:
-
-```text
-C:\Proyectos
-```
-
-Se desea que:
-
-- Administradores tengan control total.
-- El grupo **Soporte** pueda modificar archivos.
-- El grupo **Ventas** únicamente pueda leer.
-- El resto de usuarios no tenga acceso.
-
-Configuración:
-
-```text
-Administradores → Full Control
-Soporte         → Modify
-Ventas          → Read
-```
-
-Comprobación:
-
-```powershell
-Get-Acl C:\Proyectos
-```
-
----
-
 ### Buenas prácticas
 
 - Asigna permisos a grupos en lugar de a usuarios individuales siempre que sea posible.
@@ -1255,62 +1130,6 @@ Los permisos explícitos suelen tener prioridad sobre los heredados cuando exist
 
 ---
 
-### Ejemplo práctico
-
-Supongamos la siguiente estructura:
-
-```text
-Empresa
-│
-├── Informática
-│   ├── Servidores
-│   └── Redes
-│
-└── Ventas
-    ├── Clientes
-    └── Facturas
-```
-
-Permisos asignados en:
-
-```text
-Empresa
-```
-
-```text
-Administradores → Control total
-
-Usuarios → Lectura
-```
-
-Gracias a la herencia:
-
-```text
-Informática
-
-Servidores
-
-Redes
-
-Ventas
-
-Clientes
-
-Facturas
-```
-
-recibirán automáticamente esos permisos.
-
-Si únicamente la carpeta:
-
-```text
-Servidores
-```
-
-necesita permisos especiales, puede romperse la herencia únicamente en esa carpeta sin afectar al resto de la estructura.
-
----
-
 ### Buenas prácticas
 
 - Mantén activada la herencia siempre que sea posible.
@@ -1413,49 +1232,6 @@ other::---
 ```
 
 En este caso, aunque **juan** no sea el propietario, tendrá permisos de lectura, escritura y ejecución gracias a la ACL.
-
----
-
-### Ejemplo práctico
-
-Supongamos:
-
-Archivo:
-
-```text
-informe.txt
-```
-
-Permisos:
-
-```text
--rw-r-----
-```
-
-Grupo propietario:
-
-```text
-ventas
-```
-
-Usuario:
-
-```text
-juan
-```
-
-Grupos:
-
-```text
-ventas
-informatica
-```
-
-Resultado:
-
-```text
-Juan podrá leer el archivo porque pertenece al grupo "ventas".
-```
 
 ---
 
@@ -1607,59 +1383,6 @@ Windows evalúa principalmente:
 | Herencia | Solo mediante ACL | Integrada |
 | Permisos de denegación | No existen como tal | Sí (`Deny`) |
 | Cálculo automático | Manual | Herramienta de "Acceso efectivo" |
-
----
-
-### Ejemplo práctico
-
-Supongamos el siguiente escenario:
-
-Usuario:
-
-```text
-usuario
-```
-
-Grupos:
-
-```text
-Soporte
-
-Administradores
-```
-
-Carpeta:
-
-```text
-C:\Compartido
-```
-
-Permisos:
-
-```text
-Soporte → Lectura
-
-Administradores → Control total
-```
-
-Resultado:
-
-```text
-usuario tendrá Control total.
-```
-
-Si además existiera:
-
-```text
-usuario → Denegar eliminación
-```
-
-El permiso efectivo sería:
-
-- Leer → Sí.
-- Escribir → Sí.
-- Modificar → Sí.
-- Eliminar → No.
 
 ---
 
@@ -1960,58 +1683,6 @@ Siempre que el usuario disponga de los permisos delegados correspondientes.
 | Permisos elevados | `sudo` | Grupos administrativos / UAC |
 | Delegación parcial | `sudoers`, ACL, Capabilities | ACL, GPO, Active Directory |
 | Administración centralizada | Limitada | Active Directory |
-
----
-
-### Ejemplo práctico
-
-### Linux
-
-Se desea que el usuario **juan** pueda reiniciar el servicio Apache, pero nada más.
-
-Editar:
-
-```bash
-sudo visudo
-```
-
-Añadir:
-
-```text
-juan ALL=(ALL) /usr/bin/systemctl restart apache2
-```
-
-Ahora podrá ejecutar:
-
-```bash
-sudo systemctl restart apache2
-```
-
-Pero no otros comandos administrativos.
-
----
-
-### Windows
-
-Se desea que el grupo **Soporte** pueda modificar el contenido de una carpeta compartida sin tener control total sobre ella.
-
-Permisos:
-
-```text
-Administradores → Control total
-
-Soporte → Modificar
-
-Usuarios → Lectura
-```
-
-Los miembros del grupo **Soporte** podrán:
-
-- Crear archivos.
-- Modificar archivos.
-- Eliminar archivos.
-
-Pero no podrán cambiar los permisos ni tomar posesión de la carpeta.
 
 ---
 
@@ -2324,40 +1995,6 @@ Una auditoría periódica debería comprobar:
 | Auditoría integrada | `auditd` | Auditoría NTFS |
 | Consultar eventos | `/var/log` | Visor de eventos |
 | Buscar permisos especiales | `find` | PowerShell |
-
----
-
-### Ejemplo práctico
-
-### Linux
-
-Buscar todos los archivos con SUID:
-
-```bash
-find / -perm -4000 2>/dev/null
-```
-
-Revisar ACL de un recurso compartido:
-
-```bash
-getfacl /datos
-```
-
----
-
-### Windows
-
-Consultar permisos de una carpeta:
-
-```powershell
-Get-Acl C:\Compartido
-```
-
-Consultar eventos recientes de seguridad:
-
-```powershell
-Get-WinEvent -LogName Security -MaxEvents 25
-```
 
 ---
 

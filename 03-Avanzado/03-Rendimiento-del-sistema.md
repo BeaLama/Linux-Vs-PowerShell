@@ -510,42 +510,6 @@ No siempre es recomendable finalizar un proceso de inmediato, ya que puede trata
 
 ---
 
-### Ejemplo práctico
-
-### Linux
-
-Mostrar los procesos que más CPU consumen:
-
-```bash
-ps aux --sort=-%cpu | head
-```
-
-Visualizar el sistema en tiempo real:
-
-```bash
-htop
-```
-
----
-
-### Windows
-
-Mostrar los procesos con mayor consumo de CPU:
-
-```powershell
-Get-Process |
-Sort-Object CPU -Descending |
-Select-Object -First 10
-```
-
-Consultar las características del procesador:
-
-```powershell
-Get-CimInstance Win32_Processor
-```
-
----
-
 ### Buenas prácticas
 
 - Supervisa la CPU de forma periódica, especialmente en servidores.
@@ -816,44 +780,6 @@ Una aplicación con una fuga de memoria suele mostrar un crecimiento continuo de
 | `htop` | PerfMon |
 | `vmstat` | PowerShell |
 | `ps aux --sort=-%mem` | `Get-Process` |
-
----
-
-### Ejemplo práctico
-
-### Linux
-
-Mostrar memoria disponible:
-
-```bash
-free -h
-```
-
-Procesos que más memoria consumen:
-
-```bash
-ps aux --sort=-%mem | head
-```
-
----
-
-### Windows
-
-Procesos con mayor consumo de memoria:
-
-```powershell
-Get-Process |
-Sort-Object WorkingSet -Descending |
-Select-Object -First 10 Name, WorkingSet
-```
-
-Consultar memoria física disponible:
-
-```powershell
-Get-CimInstance Win32_OperatingSystem |
-Select-Object TotalVisibleMemorySize,
-              FreePhysicalMemory
-```
 
 ---
 
@@ -1137,49 +1063,6 @@ En discos SSD no es recomendable realizar desfragmentaciones tradicionales, ya q
 | `iotop` | Monitor de recursos |
 | `lsblk` | `Get-PhysicalDisk` |
 | `df -h` | `Get-Volume` |
-
----
-
-### Ejemplo práctico
-
-### Linux
-
-Consultar espacio disponible:
-
-```bash
-df -h
-```
-
-Ver actividad del disco:
-
-```bash
-iostat -x 2
-```
-
-Consultar los procesos que más acceden al disco:
-
-```bash
-sudo iotop
-```
-
----
-
-### Windows
-
-Consultar los discos físicos:
-
-```powershell
-Get-PhysicalDisk
-```
-
-Consultar el espacio libre:
-
-```powershell
-Get-Volume |
-Select-Object DriveLetter,
-              SizeRemaining,
-              Size
-```
 
 ---
 
@@ -1509,64 +1392,6 @@ Algunas herramientas muy utilizadas para analizar el rendimiento de red son:
 | `iftop` | Monitor de recursos |
 | `nload` | Administrador de tareas |
 | `ping` | `Test-Connection` |
-
----
-
-### Ejemplo práctico
-
-### Linux
-
-Consultar la configuración IP:
-
-```bash
-ip addr
-```
-
-Comprobar la conectividad:
-
-```bash
-ping 8.8.8.8
-```
-
-Mostrar conexiones activas:
-
-```bash
-ss -tuln
-```
-
-Visualizar el tráfico:
-
-```bash
-sudo iftop
-```
-
----
-
-### Windows
-
-Consultar los adaptadores:
-
-```powershell
-Get-NetAdapter
-```
-
-Comprobar la conectividad:
-
-```powershell
-Test-Connection google.com
-```
-
-Mostrar estadísticas del adaptador:
-
-```powershell
-Get-NetAdapterStatistics
-```
-
-Consultar conexiones TCP:
-
-```powershell
-Get-NetTCPConnection
-```
 
 ---
 
@@ -1922,44 +1747,6 @@ Estas herramientas permiten:
 | `pidstat` | Rendimiento por proceso. |
 | `dstat` | Resumen de múltiples recursos. |
 | `ss` | Conexiones de red. |
-
----
-
-### Ejemplo práctico
-
-Diagnóstico de un servidor lento:
-
-1. Comprobar la carga general:
-
-```bash
-top
-```
-
-2. Revisar la memoria:
-
-```bash
-free -h
-```
-
-3. Analizar el disco:
-
-```bash
-iostat -x 2
-```
-
-4. Identificar procesos con mayor actividad de disco:
-
-```bash
-sudo iotop
-```
-
-5. Revisar conexiones de red:
-
-```bash
-ss -tuln
-```
-
-Este procedimiento permite localizar rápidamente el recurso que está actuando como cuello de botella.
 
 ---
 
@@ -2348,47 +2135,6 @@ Aunque no mide directamente el rendimiento, resulta muy útil para identificar e
 
 ---
 
-### Ejemplo práctico
-
-Diagnóstico de un equipo lento:
-
-1. Abrir el Administrador de tareas.
-
-```text
-Ctrl + Shift + Esc
-```
-
-2. Revisar:
-
-- CPU.
-- Memoria.
-- Disco.
-- Red.
-
-3. Si el problema continúa:
-
-```text
-resmon
-```
-
-Analizar el proceso responsable.
-
-4. Comprobar errores recientes:
-
-```text
-eventvwr.msc
-```
-
-5. Revisar el historial del sistema:
-
-```text
-perfmon /rel
-```
-
-Este procedimiento permite localizar rápidamente la causa de la mayoría de los problemas de rendimiento.
-
----
-
 ### Buenas prácticas
 
 - Utiliza el Administrador de tareas para un diagnóstico rápido.
@@ -2656,32 +2402,6 @@ La ampliación de hardware debe realizarse después de analizar el sistema y con
 | Disco | Liberar espacio, sustituir HDD por SSD, revisar I/O |
 | Red | Comprobar cableado, latencia y consumo de ancho de banda |
 | Sistema | Actualizar software, automatizar mantenimiento |
-
----
-
-### Ejemplo práctico
-
-Supongamos un servidor con los siguientes datos:
-
-```text
-CPU      → 25 %
-
-RAM      → 55 %
-
-Disco    → 98 %
-
-Red      → 12 %
-```
-
-En este escenario:
-
-1. Revisar la actividad del disco.
-2. Identificar el proceso responsable.
-3. Comprobar el espacio disponible.
-4. Limpiar archivos innecesarios.
-5. Valorar el uso de una unidad SSD si el problema persiste.
-
-No tendría sentido ampliar la memoria RAM o sustituir el procesador, ya que no son el recurso limitante.
 
 ---
 

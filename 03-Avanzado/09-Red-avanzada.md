@@ -453,44 +453,6 @@ Esta organización facilita el crecimiento y la administración de la red.
 
 ---
 
-### Ejemplo práctico
-
-Empresa con dos plantas.
-
-```text
-Internet
-
-↓
-
-Firewall
-
-↓
-
-Switch principal
-
-↓
-
-Switch planta 1
-
-↓
-
-PCs
-```
-
-```text
-↓
-
-Switch planta 2
-
-↓
-
-PCs
-```
-
-Todos los equipos comparten servicios comunes mediante la infraestructura de red.
-
----
-
 ### Comparativa
 
 | Modelo | Uso |
@@ -1295,54 +1257,6 @@ Estas medidas reducen considerablemente la superficie de ataque.
 
 ---
 
-### Ejemplo práctico
-
-Empresa con tres departamentos.
-
-```text
-Switch
-
-↓
-
-VLAN 10
-
-Administración
-```
-
-```text
-↓
-
-VLAN 20
-
-Ventas
-```
-
-```text
-↓
-
-VLAN 30
-
-Invitados
-```
-
-Todas las VLAN utilizan el mismo switch, pero permanecen aisladas.
-
-Si Administración necesita acceder a Ventas:
-
-```text
-VLAN 10
-
-↓
-
-Switch capa 3
-
-↓
-
-VLAN 20
-```
-
----
-
 ### Comparativa
 
 | Elemento | Función |
@@ -1798,36 +1712,6 @@ route print
 
 ---
 
-### Ejemplo práctico
-
-Empresa con dos sedes.
-
-```text
-Sede A
-
-↓
-
-Router
-
-↓
-
-VPN
-
-↓
-
-Router
-
-↓
-
-Sede B
-```
-
-Cada router intercambia automáticamente las rutas mediante OSPF.
-
-Si uno de los enlaces deja de funcionar, el protocolo recalcula el mejor camino disponible.
-
----
-
 ### Comparativa
 
 | Tipo | Característica |
@@ -2218,38 +2102,6 @@ Ejemplos:
 | 99,999 % | ~5 minutos |
 
 Cuantos más "nueves" tenga la disponibilidad, menor será el tiempo permitido de inactividad.
-
----
-
-### Ejemplo práctico
-
-Infraestructura empresarial.
-
-```text
-Internet
-
-↓
-
-2 Firewalls
-
-↓
-
-2 Routers
-
-↓
-
-2 Switches Core
-
-↓
-
-Cluster de servidores
-
-↓
-
-Cabina SAN redundante
-```
-
-Si cualquiera de los elementos principales falla, otro componente asume automáticamente su función.
 
 ---
 
@@ -2678,52 +2530,6 @@ Esto reduce el impacto de:
 - Ataques internos.
 
 Es uno de los principios fundamentales de la ciberseguridad.
-
----
-
-### Ejemplo práctico
-
-Empresa con varias redes.
-
-```text
-Internet
-
-↓
-
-Firewall
-
-↓
-
-DMZ
-
-↓
-
-Servidor Web
-```
-
-```text
-↓
-
-Firewall
-
-↓
-
-VLAN Administración
-```
-
-```text
-↓
-
-VLAN Usuarios
-```
-
-```text
-↓
-
-VLAN Invitados
-```
-
-Los usuarios invitados únicamente tienen acceso a Internet, mientras que los departamentos internos permanecen aislados.
 
 ---
 
@@ -3169,40 +2975,6 @@ Las alertas pueden enviarse mediante:
 - SMS.
 - Aplicaciones de mensajería.
 - Integración con plataformas ITSM.
-
----
-
-### Ejemplo práctico
-
-Una oficina informa de que no puede acceder a Internet.
-
-Proceso de diagnóstico:
-
-```text
-Ping al gateway
-
-↓
-
-Correcto
-```
-
-```text
-Ping a Internet
-
-↓
-
-Incorrecto
-```
-
-```text
-Traceroute
-
-↓
-
-Se detiene en el router del ISP
-```
-
-El problema se encuentra fuera de la red local.
 
 ---
 

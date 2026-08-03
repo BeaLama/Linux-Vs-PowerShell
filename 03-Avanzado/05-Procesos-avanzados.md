@@ -391,44 +391,6 @@ Durante este ciclo el sistema operativo administra todos sus recursos.
 
 ---
 
-### Ejemplo práctico
-
-Supongamos que un usuario abre Google Chrome.
-
-El sistema operativo realiza las siguientes acciones:
-
-```text
-chrome.exe
-
-↓
-
-Se crea un PID
-
-↓
-
-Se reserva memoria
-
-↓
-
-Se crean varios hilos
-
-↓
-
-Se abren archivos
-
-↓
-
-Se establecen conexiones de red
-
-↓
-
-El proceso comienza a ejecutarse
-```
-
-Todo este proceso ocurre en apenas unos milisegundos.
-
----
-
 ### Buenas prácticas
 
 - Comprende la diferencia entre programa y proceso antes de diagnosticar incidencias.
@@ -752,50 +714,6 @@ Estas transiciones ocurren miles de veces por segundo en un sistema con múltipl
 | Espera | Espera un evento externo. |
 | Suspendido | Ha sido pausado temporalmente. |
 | Finalizado | Ha terminado su ejecución. |
-
----
-
-### Ejemplo práctico
-
-Supongamos que un usuario abre un editor de texto.
-
-```text
-Crear proceso
-
-↓
-
-Ready
-
-↓
-
-Running
-
-↓
-
-El usuario abre un archivo
-
-↓
-
-Waiting (esperando al disco)
-
-↓
-
-Ready
-
-↓
-
-Running
-
-↓
-
-El usuario cierra la aplicación
-
-↓
-
-Terminated
-```
-
-Durante toda su ejecución el proceso habrá cambiado varias veces de estado.
 
 ---
 
@@ -1138,26 +1056,6 @@ En estos casos el objetivo principal no es el rendimiento, sino garantizar tiemp
 
 ---
 
-### Ejemplo práctico
-
-Supongamos dos procesos:
-
-```text
-Proceso A
-
-Nice = 10
-```
-
-```text
-Proceso B
-
-Nice = -10
-```
-
-Cuando ambos compitan por la CPU, el sistema tenderá a ejecutar antes el **Proceso B**, ya que tiene una prioridad superior.
-
----
-
 ### Buenas prácticas
 
 - Mantén la prioridad por defecto salvo que exista una necesidad justificada.
@@ -1422,40 +1320,6 @@ La afinidad puede configurarse sobre los procesadores lógicos visibles para el 
 | `ps -o psr` | Establecer afinidad |
 | Máscara de CPU | Máscara de CPU |
 | Configuración por proceso | Configuración por proceso |
-
----
-
-### Ejemplo práctico
-
-Supongamos un servidor con ocho núcleos.
-
-Una aplicación de cálculo intensivo debe ejecutarse únicamente sobre los núcleos 4 y 5.
-
-Linux:
-
-```bash
-taskset -c 4,5 aplicacion
-```
-
-Windows:
-
-```text
-Administrador de tareas
-
-↓
-
-Detalles
-
-↓
-
-Establecer afinidad
-
-↓
-
-Seleccionar CPU 4 y CPU 5
-```
-
-De este modo el resto de procesos podrán utilizar libremente los demás núcleos.
 
 ---
 
@@ -1916,50 +1780,6 @@ ps aux --sort=-%mem
 
 ---
 
-### Ejemplo práctico
-
-Un servidor presenta un uso elevado de CPU.
-
-Procedimiento:
-
-1. Identificar el proceso:
-
-```bash
-top
-```
-
-2. Obtener el PID:
-
-```bash
-pgrep nginx
-```
-
-3. Consultar prioridad:
-
-```bash
-ps -el
-```
-
-4. Revisar archivos abiertos:
-
-```bash
-lsof -p PID
-```
-
-5. Si es necesario, finalizar el proceso:
-
-```bash
-kill PID
-```
-
-o, como último recurso:
-
-```bash
-kill -9 PID
-```
-
----
-
 ### Buenas prácticas
 
 - Utiliza `top` o `htop` para una primera evaluación del estado del sistema.
@@ -2326,34 +2146,6 @@ Si una aplicación deja de responder, puede seguirse este procedimiento:
 | PowerShell | Automatización |
 | Process Explorer | Gestión avanzada de procesos |
 | Process Monitor | Monitorización del sistema en tiempo real |
-
----
-
-### Ejemplo práctico
-
-Una aplicación consume toda la CPU.
-
-Procedimiento:
-
-1. Abrir:
-
-```text
-Ctrl + Shift + Esc
-```
-
-2. Ordenar por CPU.
-
-3. Identificar el proceso.
-
-4. Obtener el PID.
-
-5. Analizar con Process Explorer.
-
-6. Si continúa bloqueado:
-
-```powershell
-Stop-Process -Id PID
-```
 
 ---
 
@@ -2733,50 +2525,6 @@ Finalizarlos puede provocar la inestabilidad del sistema o incluso un reinicio.
 
 ---
 
-### Ejemplo práctico
-
-Un proceso deja de responder en Linux.
-
-Procedimiento:
-
-1. Obtener el PID.
-
-```bash
-pgrep firefox
-```
-
-2. Intentar finalizar correctamente.
-
-```bash
-kill PID
-```
-
-3. Esperar unos segundos.
-
-4. Si continúa activo:
-
-```bash
-kill -9 PID
-```
-
-En Windows:
-
-1. Identificar el PID.
-
-2. Ejecutar:
-
-```powershell
-Stop-Process -Id PID
-```
-
-3. Si es necesario:
-
-```powershell
-Stop-Process -Id PID -Force
-```
-
----
-
 ### Buenas prácticas
 
 - Finaliza siempre los procesos de forma ordenada antes de recurrir a métodos forzados.
@@ -3067,22 +2815,6 @@ Seguir un orden sistemático facilita localizar el origen de la incidencia.
 | Process Explorer | Windows | Análisis avanzado |
 | Process Monitor | Windows | Actividad del sistema |
 | PerfMon | Windows | Contadores de rendimiento |
-
----
-
-### Ejemplo práctico
-
-Un proceso consume mucha CPU y deja de responder.
-
-Procedimiento:
-
-1. Identificar el proceso mediante `top` o el Administrador de tareas.
-2. Comprobar el consumo de memoria.
-3. Revisar los archivos abiertos con `lsof` (Linux) o Process Explorer (Windows).
-4. Consultar los registros del sistema.
-5. Si el problema continúa, utilizar `strace` o Process Monitor para identificar la operación que provoca el bloqueo.
-
-Este enfoque permite localizar la causa antes de reiniciar o finalizar el proceso.
 
 ---
 

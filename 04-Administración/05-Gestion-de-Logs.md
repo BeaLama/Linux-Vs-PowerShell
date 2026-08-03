@@ -184,47 +184,9 @@ Sin registros, sería mucho más difícil localizar el origen de un fallo.
 
 ---
 
-### Ejemplo práctico
-
-Un usuario informa de que no puede acceder a una aplicación.
-
-Procedimiento:
-
-```text
-Consultar los registros
-
-↓
-
-Buscar errores de autenticación
-
-↓
-
-Identificar el evento
-
-↓
-
-Analizar la causa
-
-↓
-
-Aplicar la solución
-```
-
-Gracias al análisis de los logs, el administrador puede localizar rápidamente el origen del problema.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Importancia de los logs
-
-## Introducción
-
-Los logs constituyeron una de las principales fuentes de información para la administración de sistemas. Gracias a ellos es posible conocer el estado del sistema, analizar incidencias, supervisar el funcionamiento de aplicaciones y servicios, así como investigar posibles problemas de seguridad.
-
-En entornos empresariales, donde los sistemas generan miles de eventos cada día, la correcta gestión de los registros resulta imprescindible para garantizar la disponibilidad, la seguridad y el mantenimiento de la infraestructura.
-
----
 
 ### Diagnóstico de incidencias
 
@@ -398,36 +360,6 @@ Para aprovechar correctamente los registros se recomienda:
 - Documentar las incidencias detectadas.
 
 Estas medidas mejoran la capacidad de respuesta ante problemas y aumentan la seguridad del sistema.
-
----
-
-### Ejemplo práctico
-
-Un servidor comienza a reiniciarse de forma inesperada.
-
-Procedimiento:
-
-```text
-Consultar los registros
-
-↓
-
-Localizar el momento del reinicio
-
-↓
-
-Identificar el error registrado
-
-↓
-
-Analizar la causa
-
-↓
-
-Aplicar la solución
-```
-
-Sin los logs sería mucho más complicado determinar el origen del problema.
 
 ---
 
@@ -634,36 +566,6 @@ Para trabajar correctamente con distintos tipos de logs se recomienda:
 - Conservar únicamente los registros necesarios según las políticas de la organización.
 
 Estas prácticas facilitan el diagnóstico y la administración del sistema.
-
----
-
-### Ejemplo práctico
-
-Un usuario informa de que no puede iniciar sesión en el equipo.
-
-Procedimiento:
-
-```text
-Consultar logs de seguridad
-
-↓
-
-Buscar intentos de autenticación
-
-↓
-
-Identificar el error
-
-↓
-
-Comprobar permisos del usuario
-
-↓
-
-Resolver la incidencia
-```
-
-Elegir el tipo de log adecuado permite localizar la causa del problema mucho más rápidamente.
 
 ---
 
@@ -896,36 +798,6 @@ Seguir este orden facilita el diagnóstico y evita interpretaciones incorrectas.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor presenta un fallo durante el arranque.
-
-Procedimiento:
-
-```text
-Consultar el log
-
-↓
-
-Buscar la hora del fallo
-
-↓
-
-Identificar el servicio afectado
-
-↓
-
-Leer la descripción
-
-↓
-
-Analizar el evento
-```
-
-Gracias a la estructura del registro, el administrador puede localizar rápidamente la causa del problema.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Visor de eventos en Windows
@@ -1135,40 +1007,6 @@ Estas prácticas facilitan el diagnóstico y la resolución de incidencias.
 
 ---
 
-### Ejemplo práctico
-
-Un usuario informa de que una aplicación se cierra inesperadamente.
-
-Procedimiento:
-
-```text
-Abrir Visor de eventos
-
-↓
-
-Registro de Aplicación
-
-↓
-
-Filtrar por Error
-
-↓
-
-Localizar el evento
-
-↓
-
-Consultar Event ID y descripción
-
-↓
-
-Analizar la causa
-```
-
-Con esta información el administrador puede identificar rápidamente el origen del problema.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Administración mediante PowerShell
@@ -1354,36 +1192,6 @@ Durante la administración de logs mediante PowerShell se recomienda:
 - Ejecutar PowerShell con permisos adecuados cuando sea necesario.
 
 Estas medidas mejoran el rendimiento y facilitan el análisis de los registros.
-
----
-
-### Ejemplo práctico
-
-Un administrador desea localizar todos los errores registrados durante las últimas 24 horas.
-
-Procedimiento:
-
-```text
-Consultar registro System
-
-↓
-
-Filtrar eventos del último día
-
-↓
-
-Mostrar únicamente errores
-
-↓
-
-Exportar resultados
-
-↓
-
-Analizar incidencias
-```
-
-Mediante PowerShell esta consulta puede realizarse de forma rápida y automatizarse para futuras revisiones.
 
 ---
 
@@ -1593,36 +1401,6 @@ Estas medidas facilitan la administración y el diagnóstico de problemas.
 
 ---
 
-### Ejemplo práctico
-
-Un usuario no puede acceder por SSH a un servidor Linux.
-
-Procedimiento:
-
-```text
-Consultar auth.log
-
-↓
-
-Buscar intentos fallidos
-
-↓
-
-Identificar usuario
-
-↓
-
-Analizar el motivo del error
-
-↓
-
-Resolver la incidencia
-```
-
-Gracias a los registros de autenticación, el administrador puede localizar rápidamente la causa del problema.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Journalctl y systemd Journal
@@ -1815,36 +1593,6 @@ Durante el uso de `journalctl` se recomienda:
 - Conservar los registros durante el tiempo necesario según las políticas de la organización.
 
 Estas medidas facilitan el análisis y mejoran la eficiencia durante la resolución de incidencias.
-
----
-
-### Ejemplo práctico
-
-Un servidor web deja de responder.
-
-Procedimiento:
-
-```text
-Consultar registros del servicio
-
-↓
-
-Filtrar errores
-
-↓
-
-Identificar el evento
-
-↓
-
-Analizar la causa
-
-↓
-
-Aplicar la solución
-```
-
-Mediante `journalctl`, el administrador puede localizar rápidamente el origen del problema y verificar el funcionamiento del servicio tras aplicar la corrección.
 
 ---
 
@@ -2050,36 +1798,6 @@ Estas medidas garantizan un equilibrio entre disponibilidad de información y us
 
 ---
 
-### Ejemplo práctico
-
-Un servidor genera varios gigabytes de registros cada semana.
-
-Procedimiento:
-
-```text
-Configurar logrotate
-
-↓
-
-Rotación semanal
-
-↓
-
-Conservar ocho semanas
-
-↓
-
-Comprimir registros antiguos
-
-↓
-
-Eliminar los más antiguos
-```
-
-Con esta configuración se evita el crecimiento descontrolado de los archivos y se mantiene un histórico suficiente para auditorías e investigaciones.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Monitorización y análisis de logs
@@ -2278,40 +1996,6 @@ Estas medidas mejoran la capacidad de respuesta y reducen el tiempo de resoluci�
 
 ---
 
-### Ejemplo práctico
-
-Un servidor web comienza a responder lentamente.
-
-Procedimiento:
-
-```text
-Revisar registros
-
-↓
-
-Detectar errores repetitivos
-
-↓
-
-Identificar el servicio afectado
-
-↓
-
-Analizar la causa
-
-↓
-
-Corregir el problema
-
-↓
-
-Supervisar el funcionamiento
-```
-
-El análisis de los logs permite localizar el origen de la degradación del servicio y comprobar posteriormente que la incidencia ha quedado resuelta.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Herramientas de gestión centralizada
@@ -2491,40 +2175,6 @@ Durante la implantación de una solución centralizada se recomienda:
 - Definir políticas de conservación de registros.
 
 Estas medidas mejoran tanto el rendimiento como la seguridad del sistema.
-
----
-
-### Ejemplo práctico
-
-Una empresa dispone de 150 equipos y varios servidores.
-
-Procedimiento:
-
-```text
-Equipos Windows
-
-↓
-
-Servidores Linux
-
-↓
-
-Firewall
-
-↓
-
-Servidor Syslog / SIEM
-
-↓
-
-Panel central
-
-↓
-
-Alertas automáticas
-```
-
-El administrador puede consultar toda la información desde una única plataforma y detectar incidencias de forma mucho más rápida.
 
 ---
 
@@ -2721,40 +2371,6 @@ Conservar o eliminar según la política establecida
 ```
 
 Este procedimiento facilita una administración organizada y eficiente.
-
----
-
-### Ejemplo práctico
-
-Una empresa supervisa diariamente los registros de todos sus servidores.
-
-Proceso aplicado:
-
-```text
-Recopilación automática
-
-↓
-
-Análisis mediante SIEM
-
-↓
-
-Generación de alertas
-
-↓
-
-Revisión por el administrador
-
-↓
-
-Resolución de incidencias
-
-↓
-
-Archivado de registros
-```
-
-Gracias a este procedimiento se detectan rápidamente problemas y se mantiene un historial completo de la actividad del sistema.
 
 ---
 

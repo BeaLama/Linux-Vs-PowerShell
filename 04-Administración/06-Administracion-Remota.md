@@ -194,40 +194,6 @@ Estas medidas reducen considerablemente los riesgos de seguridad.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita reiniciar un servicio de un servidor ubicado en otra ciudad.
-
-Procedimiento:
-
-```text
-Conectarse al servidor
-
-↓
-
-Autenticarse
-
-↓
-
-Administrar el sistema
-
-↓
-
-Reiniciar el servicio
-
-↓
-
-Comprobar el funcionamiento
-
-↓
-
-Cerrar la conexión
-```
-
-Todo el proceso puede realizarse sin necesidad de desplazarse físicamente al servidor.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Ventajas e inconvenientes
@@ -421,36 +387,6 @@ Para minimizar los inconvenientes se recomienda:
 - Supervisar los accesos mediante registros de auditoría.
 
 Estas medidas permiten aprovechar las ventajas de la administración remota reduciendo los riesgos asociados.
-
----
-
-### Ejemplo práctico
-
-Una empresa gestiona equipos distribuidos en varias oficinas.
-
-Procedimiento:
-
-```text
-Administrador
-
-↓
-
-Acceso remoto seguro
-
-↓
-
-Resolución de incidencias
-
-↓
-
-Actualización de equipos
-
-↓
-
-Supervisión centralizada
-```
-
-Gracias a la administración remota, el personal técnico puede mantener toda la infraestructura sin necesidad de desplazarse constantemente.
 
 ---
 
@@ -653,40 +589,6 @@ Estas medidas reducen considerablemente los riesgos de seguridad.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita gestionar distintos sistemas.
-
-Procedimiento:
-
-```text
-Servidor Windows
-
-↓
-
-RDP o WinRM
-
-↓
-
-Servidor Linux
-
-↓
-
-SSH
-
-↓
-
-Transferencia de archivos
-
-↓
-
-SCP o SFTP
-```
-
-Cada protocolo se utiliza según el tipo de tarea que se desea realizar.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Escritorio remoto en Windows (RDP)
@@ -869,44 +771,6 @@ Al utilizar Escritorio remoto se recomienda:
 - Revisar periódicamente los registros de acceso.
 
 Estas medidas ayudan a proteger el servicio frente a accesos no autorizados.
-
----
-
-### Ejemplo práctico
-
-Un administrador necesita instalar una aplicación en un servidor ubicado en otra oficina.
-
-Procedimiento:
-
-```text
-Abrir mstsc
-
-↓
-
-Introducir IP del servidor
-
-↓
-
-Autenticarse
-
-↓
-
-Acceder al escritorio remoto
-
-↓
-
-Instalar la aplicación
-
-↓
-
-Comprobar el funcionamiento
-
-↓
-
-Cerrar la sesión
-```
-
-La tarea puede completarse sin necesidad de desplazarse físicamente al servidor.
 
 ---
 
@@ -1111,36 +975,6 @@ Estas medidas aumentan la seguridad de la administración remota.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita reiniciar el servicio de impresión en un servidor remoto.
-
-Procedimiento:
-
-```text
-Abrir PowerShell
-
-↓
-
-Conectar mediante WinRM
-
-↓
-
-Ejecutar Restart-Service spooler
-
-↓
-
-Comprobar el estado del servicio
-
-↓
-
-Finalizar la sesión
-```
-
-Todo el proceso puede realizarse sin acceder al escritorio remoto del servidor.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## SSH en Linux
@@ -1320,36 +1154,6 @@ Estas medidas aumentan considerablemente la seguridad del servicio.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita reiniciar un servicio en un servidor Linux.
-
-Procedimiento:
-
-```text
-Conectarse mediante SSH
-
-↓
-
-Autenticarse
-
-↓
-
-Ejecutar el comando
-
-↓
-
-Verificar el resultado
-
-↓
-
-Cerrar la sesión
-```
-
-Todo el proceso se realiza desde la consola del equipo del administrador sin necesidad de acceder físicamente al servidor.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Transferencia remota de archivos (SCP y SFTP)
@@ -1515,36 +1319,6 @@ Durante la transferencia remota de archivos se recomienda:
 - Comprobar que la transferencia se ha realizado correctamente.
 
 Estas medidas mejoran tanto la seguridad como la fiabilidad de las transferencias.
-
----
-
-### Ejemplo práctico
-
-Un administrador necesita copiar un script de mantenimiento a un servidor Linux.
-
-Procedimiento:
-
-```text
-Conectarse mediante SCP
-
-↓
-
-Autenticarse
-
-↓
-
-Transferir el archivo
-
-↓
-
-Verificar que se ha copiado correctamente
-
-↓
-
-Ejecutar el script en el servidor
-```
-
-La transferencia se realiza de forma segura utilizando el canal cifrado de SSH.
 
 ---
 
@@ -1726,42 +1500,6 @@ Estas medidas ayudan a proteger los sistemas frente a accesos no autorizados.
 
 ---
 
-### Ejemplo práctico
-
-Un técnico necesita dar soporte a un usuario que trabaja desde casa.
-
-Procedimiento:
-
-```text
-Seleccionar la herramienta
-
-↓
-
-Establecer la conexión
-
-↓
-
-Autenticarse
-
-↓
-
-Resolver la incidencia
-
-↓
-
-Comprobar el funcionamiento
-
-↓
-
-Finalizar la sesión
-```
-
-La asistencia puede realizarse completamente a distancia, reduciendo el tiempo de resolución y evitando desplazamientos.
-
----
-
-[⬆️ Volver al índice](#índice)
-
 ## Administración remota en entornos empresariales
 
 Introducción
@@ -1941,40 +1679,6 @@ En entornos empresariales se recomienda:
 - Mantener actualizadas las herramientas de administración.
 
 Estas medidas ayudan a proteger la infraestructura frente a accesos no autorizados.
-
----
-
-### Ejemplo práctico
-
-Una empresa dispone de tres oficinas y un centro de datos.
-
-Procedimiento:
-
-```text
-Administrador
-
-↓
-
-VPN corporativa
-
-↓
-
-Servidor central
-
-↓
-
-Equipos del dominio
-
-↓
-
-Administración remota
-
-↓
-
-Supervisión y mantenimiento
-```
-
-Desde una única ubicación, el departamento de IT puede gestionar toda la infraestructura de la organización.
 
 ---
 
@@ -2164,40 +1868,6 @@ Durante la administración remota se recomienda:
 - Deshabilitar servicios remotos cuando no sean necesarios.
 
 Estas medidas aumentan significativamente la seguridad de la infraestructura.
-
----
-
-### Ejemplo práctico
-
-Una empresa permite la administración remota de sus servidores.
-
-Medidas implantadas:
-
-```text
-VPN
-
-↓
-
-Autenticación multifactor
-
-↓
-
-Firewall
-
-↓
-
-RDP / SSH
-
-↓
-
-Registro de accesos
-
-↓
-
-Monitorización continua
-```
-
-Gracias a esta configuración, el acceso remoto queda protegido frente a la mayoría de amenazas habituales.
 
 ---
 
@@ -2417,44 +2087,6 @@ Estas medidas ayudan a reducir el tiempo de resolución y evitan generar nuevas 
 
 ---
 
-### Ejemplo práctico
-
-Un administrador no consigue conectarse mediante SSH a un servidor Linux.
-
-Procedimiento:
-
-```text
-Comprobar conectividad
-
-↓
-
-Verificar que SSH está iniciado
-
-↓
-
-Revisar Firewall
-
-↓
-
-Comprobar usuario y contraseña
-
-↓
-
-Consultar journalctl
-
-↓
-
-Resolver la incidencia
-
-↓
-
-Verificar la conexión
-```
-
-Gracias a este procedimiento es posible localizar rápidamente el origen del problema y restablecer el acceso remoto.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Buenas prácticas
@@ -2654,44 +2286,6 @@ Cerrar la sesión
 ```
 
 Seguir siempre el mismo procedimiento ayuda a reducir errores y mejora la trazabilidad.
-
----
-
-### Ejemplo práctico
-
-Un administrador necesita actualizar un servidor Linux desde su domicilio.
-
-Proceso recomendado:
-
-```text
-Conexión VPN
-
-↓
-
-Autenticación multifactor
-
-↓
-
-Acceso mediante SSH
-
-↓
-
-Actualización del servidor
-
-↓
-
-Verificación del servicio
-
-↓
-
-Registro de la intervención
-
-↓
-
-Cerrar sesión
-```
-
-Este procedimiento permite realizar la administración remota manteniendo un alto nivel de seguridad.
 
 ---
 

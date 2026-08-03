@@ -143,7 +143,7 @@ Mediante la ruta completa:
 
 ---
 
-## PowerShell
+### PowerShell
 
 Los scripts de PowerShell utilizan normalmente la extensión:
 
@@ -325,7 +325,7 @@ Aunque Bash y PowerShell utilizan variables, su funcionamiento interno es difere
 
 ---
 
-# Linux (Bash)
+### Linux (Bash)
 
 En Bash, las variables se crean asignando directamente un valor a un nombre.
 
@@ -355,7 +355,7 @@ usuario
 
 ---
 
-## Reglas para crear variables en Bash
+### Reglas para crear variables en Bash
 
 Las variables deben cumplir ciertas normas:
 
@@ -377,7 +377,7 @@ mi usuario="admin"
 
 ---
 
-## Variables del sistema en Bash
+### Variables del sistema en Bash
 
 Linux dispone de variables de entorno ya definidas por el sistema.
 

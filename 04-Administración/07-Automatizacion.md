@@ -207,36 +207,6 @@ Estas medidas reducen el riesgo de errores y facilitan el mantenimiento de los p
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita eliminar semanalmente archivos temporales de todos los servidores.
-
-Procedimiento:
-
-```text
-Crear el script
-
-↓
-
-Probar su funcionamiento
-
-↓
-
-Programar la ejecución semanal
-
-↓
-
-Eliminar archivos automáticamente
-
-↓
-
-Registrar el resultado
-```
-
-Gracias a la automatización, la tarea se realiza sin intervención manual y siempre de la misma forma.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Ventajas e inconvenientes
@@ -415,36 +385,6 @@ Para minimizar los inconvenientes se recomienda:
 - Revisar periódicamente el funcionamiento de los scripts.
 
 Estas medidas ayudan a garantizar una automatización segura y fiable.
-
----
-
-### Ejemplo práctico
-
-Una empresa automatiza la instalación de una aplicación en cien equipos.
-
-Procedimiento:
-
-```text
-Desarrollar el script
-
-↓
-
-Probar en un equipo
-
-↓
-
-Corregir posibles errores
-
-↓
-
-Desplegar en todos los equipos
-
-↓
-
-Verificar la instalación
-```
-
-Al seguir este procedimiento se reducen los riesgos asociados a la automatización.
 
 ---
 
@@ -646,36 +586,6 @@ Estas prácticas facilitan el mantenimiento y la reutilización del código.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita comprobar diariamente el espacio libre de varios servidores.
-
-Procedimiento:
-
-```text
-Crear el script
-
-↓
-
-Obtener espacio libre
-
-↓
-
-Guardar el resultado
-
-↓
-
-Generar informe
-
-↓
-
-Finalizar la ejecución
-```
-
-El proceso se realiza automáticamente sin intervención manual.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## PowerShell como herramienta de automatización
@@ -866,36 +776,6 @@ Estas prácticas facilitan el mantenimiento y reducen el riesgo de errores.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador necesita obtener diariamente el estado de los servicios de varios servidores.
-
-Procedimiento:
-
-```text
-Crear el script PowerShell
-
-↓
-
-Obtener la lista de servidores
-
-↓
-
-Ejecutar Get-Service
-
-↓
-
-Guardar los resultados
-
-↓
-
-Programar la ejecución diaria
-```
-
-El informe se genera automáticamente sin intervención del administrador.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Scripts Bash en Linux
@@ -1061,36 +941,6 @@ Al desarrollar scripts Bash se recomienda:
 - Probar siempre el script antes de utilizarlo en producción.
 
 Estas medidas facilitan el mantenimiento y mejoran la fiabilidad de los scripts.
-
----
-
-### Ejemplo práctico
-
-Un administrador necesita generar diariamente un listado de los directorios con mayor tamaño.
-
-Procedimiento:
-
-```text
-Crear el script Bash
-
-↓
-
-Obtener la información del sistema
-
-↓
-
-Guardar el resultado
-
-↓
-
-Programar la ejecución automática
-
-↓
-
-Revisar el informe generado
-```
-
-De esta forma el proceso se realiza automáticamente cada día sin intervención manual.
 
 ---
 
@@ -1278,36 +1128,6 @@ Al programar tareas automáticas se recomienda:
 - Documentar el propósito de cada tarea programada.
 
 Estas medidas ayudan a mantener un entorno estable y organizado.
-
----
-
-### Ejemplo práctico
-
-Una empresa necesita realizar una copia de seguridad diaria.
-
-Procedimiento:
-
-```text
-Crear el script
-
-↓
-
-Programar la tarea
-
-↓
-
-Ejecutar automáticamente cada noche
-
-↓
-
-Guardar el registro
-
-↓
-
-Comprobar el resultado
-```
-
-El proceso se realiza sin intervención del administrador y garantiza la realización periódica de las copias de seguridad.
 
 ---
 
@@ -1510,40 +1330,6 @@ Estas medidas aumentan la fiabilidad de los sistemas automatizados.
 
 ---
 
-### Ejemplo práctico
-
-Una empresa incorpora veinte nuevos empleados.
-
-Procedimiento automatizado:
-
-```text
-Crear usuarios
-
-↓
-
-Asignar grupos
-
-↓
-
-Crear buzones
-
-↓
-
-Instalar aplicaciones
-
-↓
-
-Aplicar configuraciones
-
-↓
-
-Generar informe final
-```
-
-En pocos minutos todos los usuarios disponen de un entorno de trabajo completamente configurado.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Herramientas de automatización
@@ -1722,40 +1508,6 @@ Al utilizar herramientas de automatización se recomienda:
 - Restringir el acceso a usuarios autorizados.
 
 Estas medidas aumentan la fiabilidad y seguridad de los procesos automáticos.
-
----
-
-### Ejemplo práctico
-
-Una empresa necesita instalar automáticamente un agente de monitorización en cincuenta servidores.
-
-Procedimiento:
-
-```text
-Crear la configuración
-
-↓
-
-Seleccionar los servidores
-
-↓
-
-Ejecutar la automatización
-
-↓
-
-Instalar el agente
-
-↓
-
-Verificar la instalación
-
-↓
-
-Generar informe
-```
-
-Gracias a una herramienta de automatización, el despliegue puede completarse en pocos minutos.
 
 ---
 
@@ -1955,40 +1707,6 @@ Estas medidas aumentan la seguridad y fiabilidad de la automatización.
 
 ---
 
-### Ejemplo práctico
-
-Una empresa automatiza la creación de usuarios mediante un script.
-
-Procedimiento seguro:
-
-```text
-Validar los datos
-
-↓
-
-Obtener credenciales de forma segura
-
-↓
-
-Crear el usuario
-
-↓
-
-Registrar la operación
-
-↓
-
-Verificar el resultado
-
-↓
-
-Finalizar la ejecución
-```
-
-Gracias a estas medidas se minimizan los errores y se protege la información sensible utilizada durante el proceso.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Resolución de problemas habituales
@@ -2182,44 +1900,6 @@ Durante el diagnóstico se recomienda:
 - Documentar los problemas repetitivos para futuras intervenciones.
 
 Estas prácticas reducen el tiempo de resolución y mejoran el mantenimiento de los procesos automatizados.
-
----
-
-### Ejemplo práctico
-
-Una copia de seguridad automática deja de ejecutarse.
-
-Procedimiento:
-
-```text
-Ejecutar el script manualmente
-
-↓
-
-Comprobar permisos de acceso
-
-↓
-
-Verificar la ruta de destino
-
-↓
-
-Consultar los registros
-
-↓
-
-Corregir el error
-
-↓
-
-Programar nuevamente la tarea
-
-↓
-
-Verificar la ejecución automática
-```
-
-Gracias a este procedimiento es posible localizar rápidamente la incidencia y restaurar el funcionamiento del proceso automatizado.
 
 ---
 
@@ -2430,41 +2110,319 @@ Las principales recomendaciones son:
 
 ---
 
-### Ejemplo práctico
+[⬆️ Volver al índice](#índice)
 
-Una empresa desarrolla un script para crear usuarios automáticamente.
+## Casos prácticos
 
-Procedimiento recomendado:
+Introducción
+
+La automatización forma parte del trabajo diario de cualquier administrador de sistemas. Desde la creación de usuarios hasta la realización de copias de seguridad o el despliegue de aplicaciones, muchas tareas pueden ejecutarse de forma automática mediante scripts y herramientas especializadas. A continuación se presentan varios casos prácticos que muestran situaciones habituales en entornos Windows y Linux.
+
+---
+
+### Caso práctico 1: Copia de seguridad automática
+
+**Situación**
+
+La empresa necesita realizar diariamente una copia de seguridad de una carpeta compartida.
+
+**Solución**
+
+Se desarrolla un script que copia la información al servidor de copias y se programa su ejecución automática.
+
+**Procedimiento**
 
 ```text
-Diseñar el proceso
+Crear el script
 
 ↓
 
-Desarrollar el script
+Comprobar el destino
 
 ↓
 
-Documentarlo
+Copiar los archivos
 
 ↓
 
-Probar en laboratorio
+Registrar el resultado
 
 ↓
 
-Registrar los resultados
-
-↓
-
-Desplegar en producción
-
-↓
-
-Revisar periódicamente
+Programar la ejecución diaria
 ```
 
-Gracias a estas prácticas, el proceso resulta seguro, fácil de mantener y sencillo de ampliar en el futuro.
+**Resultado**
+
+La copia de seguridad se realiza automáticamente todos los días sin intervención del administrador.
+
+---
+
+### Caso práctico 2: Limpieza automática de archivos temporales
+
+**Situación**
+
+Los equipos acumulan archivos temporales que ocupan espacio en disco.
+
+**Solución**
+
+Se crea un script para eliminar automáticamente estos archivos.
+
+**Procedimiento**
+
+```text
+Buscar archivos temporales
+
+↓
+
+Eliminar los archivos
+
+↓
+
+Liberar espacio
+
+↓
+
+Registrar la operación
+```
+
+**Resultado**
+
+Los equipos mantienen un mayor espacio libre sin necesidad de realizar limpiezas manuales.
+
+---
+
+### Caso práctico 3: Reinicio automático de un servicio
+
+**Situación**
+
+Un servicio crítico deja de responder ocasionalmente.
+
+**Solución**
+
+Se desarrolla un script que comprueba el estado del servicio y lo reinicia si es necesario.
+
+**Procedimiento**
+
+```text
+Comprobar el servicio
+
+↓
+
+Detectar fallo
+
+↓
+
+Reiniciar el servicio
+
+↓
+
+Registrar el resultado
+```
+
+**Resultado**
+
+El servicio vuelve a estar disponible automáticamente, reduciendo el tiempo de inactividad.
+
+---
+
+### Caso práctico 4: Creación masiva de usuarios
+
+**Situación**
+
+La empresa incorpora un nuevo grupo de empleados.
+
+**Solución**
+
+Se automatiza la creación de las cuentas mediante un script.
+
+**Procedimiento**
+
+```text
+Leer los datos de usuarios
+
+↓
+
+Crear las cuentas
+
+↓
+
+Asignar grupos
+
+↓
+
+Configurar permisos
+
+↓
+
+Generar informe
+```
+
+**Resultado**
+
+Todas las cuentas se crean en pocos minutos y con una configuración homogénea.
+
+---
+
+### Caso práctico 5: Instalación automática de software
+
+**Situación**
+
+Es necesario instalar una aplicación corporativa en todos los equipos de la organización.
+
+**Solución**
+
+Se utiliza una herramienta de automatización para distribuir la instalación.
+
+**Procedimiento**
+
+```text
+Preparar el paquete
+
+↓
+
+Seleccionar los equipos
+
+↓
+
+Distribuir la aplicación
+
+↓
+
+Instalar automáticamente
+
+↓
+
+Verificar la instalación
+```
+
+**Resultado**
+
+La aplicación queda instalada en todos los equipos sin intervención manual.
+
+---
+
+### Caso práctico 6: Supervisión automática del espacio en disco
+
+**Situación**
+
+Se desea conocer qué servidores tienen poco espacio disponible.
+
+**Solución**
+
+Un script recopila diariamente la información y genera un informe.
+
+**Procedimiento**
+
+```text
+Consultar el espacio libre
+
+↓
+
+Guardar los datos
+
+↓
+
+Generar el informe
+
+↓
+
+Enviar al administrador
+```
+
+**Resultado**
+
+El departamento de IT recibe diariamente el estado del almacenamiento de todos los servidores.
+
+---
+
+### Caso práctico 7: Actualización automática del sistema
+
+**Situación**
+
+Los servidores deben mantenerse actualizados para corregir vulnerabilidades.
+
+**Solución**
+
+Se programa la instalación automática de actualizaciones durante la madrugada.
+
+**Procedimiento**
+
+```text
+Buscar actualizaciones
+
+↓
+
+Descargar paquetes
+
+↓
+
+Instalar
+
+↓
+
+Reiniciar si es necesario
+
+↓
+
+Registrar el resultado
+```
+
+**Resultado**
+
+Los servidores permanecen actualizados con una mínima intervención del administrador.
+
+---
+
+### Caso práctico 8: Automatización de informes
+
+**Situación**
+
+Cada semana debe elaborarse un informe con el estado de varios servidores.
+
+**Solución**
+
+Se desarrolla un script que recopila la información y genera automáticamente el documento.
+
+**Procedimiento**
+
+```text
+Recopilar información
+
+↓
+
+Procesar los datos
+
+↓
+
+Generar el informe
+
+↓
+
+Guardar el archivo
+
+↓
+
+Enviar por correo electrónico
+```
+
+**Resultado**
+
+El informe semanal queda disponible automáticamente sin necesidad de realizar el proceso manualmente.
+
+---
+
+### Buenas prácticas aplicadas
+
+En todos los casos anteriores se recomienda:
+
+- Probar los scripts antes de utilizarlos en producción.
+- Documentar cada proceso automatizado.
+- Registrar los resultados de cada ejecución.
+- Utilizar cuentas con los permisos mínimos necesarios.
+- Revisar periódicamente el funcionamiento de las automatizaciones.
+
+Estas medidas ayudan a mantener procesos seguros, fiables y fáciles de mantener.
 
 ---
 

@@ -24,15 +24,7 @@ Tanto Windows como Linux incorporan herramientas para programar tareas de forma 
 
 ---
 
-## COncepto de planificación de tareas
-
-## Introducción
-
-La planificación de tareas es una funcionalidad presente en la mayoría de los sistemas operativos que permite ejecutar programas, scripts o acciones de forma automática según una programación o un evento determinado. Gracias a ella es posible automatizar tareas repetitivas, reducir la intervención manual y garantizar que determinadas operaciones se realicen siempre en el momento previsto.
-
-Esta capacidad es especialmente importante en la administración de sistemas, donde numerosas tareas de mantenimiento deben ejecturarse de forma periódica sin depender de la intervención de un usuario.
-
----
+## Concepto de planificación de tareas
 
 ### ¿Qué es la planificación de tareas?
 
@@ -162,43 +154,9 @@ Por ello, la planifición de taeas es una herramienta imprescindible en cualquie
 
 ---
 
-### Ejemplo práctico
-
-Un adiminstrador necesita generar un informe del estado de los discos todos los días a las 08:00.
-
-Procedimiento:
-
-```text
-Crear script
-
-↓
-
-Programar ejecución diaria
-
-↓
-
-Guardar tarea
-
-↓
-
-El sistema ejecuta automáticamente el script cada día
-```
-
-De esta forma el informe se genera sin intervención manual.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Ventajas de automatizar tareas.
-
-## Introducción
-
-La automatización de tareas es una de las prácticas más importantes en la administración de sistemas. Permite que numerosas operaciones se ejecuten de forma automática sin necesidad de intervención humana, lo que mejora la eficiencia, reduce errores y garantiza que determinadas tareas se realicen siempre en el momento adecuado.
-
-En entornos empresariales, donde es habitual administrar cientos o miles de equipos, la automatización resulta imprescindible para optimizar el trabajo de los administradores.
-
----
 
 ### Ahorro de tiempo
 
@@ -342,53 +300,9 @@ Una automatización mal configurada puede provocar problemas si no se supervisa 
 
 ---
 
-### Ejemplo práctico
-
-Un administrador debe realizar diariamente una copia de seguridad de una carpeta compartida.
-
-Sin automatización:
-
-```text
-Todos los días
-
-↓
-
-Ejecutar copia manualmente
-```
-
-Con automatización:
-
-```text
-Programar tarea
-
-↓
-
-02:00
-
-↓
-
-Copia automática
-
-↓
-
-Registro de ejecución
-```
-
-El proceso se realiza cada día sin intervención del administrador.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Tipos de desencadenadores (Triggers)
-
-## Introducción
-
-Un desencadenador es la condición que detemina cuándo debe ejecutarse una tarea programada. Sin un desencadenador, la tarea permanecerá almacenada en el sistema, pero nunca llegará a ejecutarse.
-
-Los sistemas operativos permiten configurar diferentes tipos de desencadenadores para adaptarse a distintas necesidades, desde la ejecución en una fecha concreta hasta la respuesta automática ante determinados eventos del sistema.
-
----
 
 ### ¿Qué es un desencadenador? 
 
@@ -552,47 +466,9 @@ Una planificación adecuada mejora el rendimiento y evita conflictos entre tarea
 
 ---
 
-### Ejemplo práctico
-
-Una empresa necesita ejecutar un script de limpieza todos los viernes a las 20:00.
-
-Configuración:
-
-```text
-Desencadenador
-
-↓
-
-Semanal
-
-↓
-
-Viernes
-
-↓
-
-20:00
-
-↓
-
-Ejecutar script de limpieza
-```
-
-Cada viernes, el sistema iniciará automáticamente la tarea sin intervención del administrador.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Acciones programadas
-
-## Introducción
-
-Una vez que un desencadenador activa una tarea programada, el sistema debe saber qué operación realizar. Esa operación recibe el nombre de **acción** y representa el trabajo que ejecutará automáticamente el sistema cuando se cumplan las condiciones establecidas.
-
-Las acciones pueden ir desde abrir una aplicación hasta ejecutar un script de administración o lanzar una copia de seguridad.
-
----
 
 ### ¿Qué es una acción?
 
@@ -824,47 +700,9 @@ Estas medidas facilitan el mantenimiento y la resolución de incidencias.
 
 ---
 
-### Ejemplo práctico
-
-Una empresa desea limpiar diariamente una carpeta temporal.
-
-Procedimiento:
-
-```text
-Desencadenador
-
-↓
-
-Todos los días a las 23:00
-
-↓
-
-Ejecutar script de limpieza
-
-↓
-
-Eliminar archivos temporales
-
-↓
-
-Registrar resultado
-```
-
-De esta forma la limpieza se realiza automáticamente sin intervención del administrador.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Condiciones y configuración de las tareas
-
-## Introducción
-
-Además del desencadenador y la acción, las tareas programadas disponen de una serie de condiciones y opciones de configuración que permiten controlar con mayor precisión cuándo y cómo deben ejecutarse. Estas opciones ayudan a evitar ejecuciones innecesarias, optimizar el consumo de recursos y adoptar el comportamiento de la tarea a diferentes situaciones.
-
-Configurar correctamente estos parámetros es esencial para garantizar un funcionamiento fiable y eficiente en las tareas programadas.
-
----
 
 ### ¿Qué son las condiciones?
 
@@ -1021,36 +859,6 @@ Para configurar correctamente una tarea se recomienda:
 - Probar la tarea antes de utilizarla en producción.
 
 Una configuración adecuada mejora la estabilidad y facilita la administración.
-
----
-
-### Ejemplo práctico
-
-Una empresa programa una copia de seguridad diaria.
-
-Configuración:
-
-```text
-Desencadenador
-
-↓
-
-Todos los días a las 23:00
-
-↓
-
-Solo si el equipo está conectado a la corriente
-
-↓
-
-Solo si existe conexión de red
-
-↓
-
-Tiempo máximo: 2 horas
-```
-
-Con estas condiciones se garantiza que la copia solo se realizará cuando sea posible completarla correctamente.
 
 ---
 
@@ -1273,40 +1081,6 @@ Estas prácticas facilitan el mantenimiento y la administración del sistema.
 
 ---
 
-### Ejemplo práctico
-
-Una empresa desea ejecutar diariamente un script que genere un informe de inventario.
-
-Procedimiento:
-
-```text
-Abrir Programador de tareas
-
-↓
-
-Crear tarea
-
-↓
-
-Desencadenador: Diario (08:00)
-
-↓
-
-Acción: Ejecutar script PowerShell
-
-↓
-
-Guardar tarea
-
-↓
-
-Comprobar ejecución en el historial
-```
-
-A partir de ese momento, el informe se generará automáticamente todos los días.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Administración mediante PowerShell
@@ -1485,47 +1259,9 @@ Estas medidas ayudan a evitar errores y facilitan el mantenimiento.
 
 ---
 
-### Ejemplo práctico
-
-Una empresa necesita ejecutar diariamente un script de inventario.
-
-Procedimiento:
-
-```text
-Crear acción
-
-↓
-
-Crear desencadenador
-
-↓
-
-Registrar tarea
-
-↓
-
-Comprobar creación
-
-↓
-
-Ejecutar prueba
-```
-
-Mediante PowerShell, todo este proceso puede automatizarse y reutilizarse en cualquier equipo de la organización.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Administración mediante shtasks
-
-## Introducción
-
-Ademas del Programador de tareas y PowerShell, Windows dispone del comando **schtasks**, una herramienta de línea de comandos que permite crear, consultar, modificar y eliminar tareas programadas. Es especialmente útil para automatizar la administración mediante scripts o para gestionar tareas edsde consolas remotas.
-
-Aunque ofrece menos flexibilidad que PowerShell en algunos aspectos, **schtasks** sigue siendo una herramienta muy utilizada por administradores de sistemas debido a su sencillez y compatibilidad con versiones antiguas de Windows.
-
----
 
 ### ¿Qué es schtasks?
 
@@ -1688,34 +1424,6 @@ Durante la administración mediante `schtasks` se recomienda:
 - Verificar periódicamente su correcta ejecución.
 
 Estas medidas facilitan el mantenimiento del sistema.
-
----
-
-### Ejemplo práctico
-
-Un administrador necesita ejecutar diariamente un script de limpieza.
-
-Procedimiento:
-
-Crear la tarea:
-
-```cmd
-schtasks /create /tn "Limpieza" /tr "C:\Scripts\limpieza.bat" /sc daily /st 22:00
-```
-
-Comprobar que existe:
-
-```cmd
-schtasks /query
-```
-
-Ejecutarla manualmente para verificar su funcionamiento:
-
-```cmd
-schtasks /run /tn "Limpieza"
-```
-
-Con estos pasos, el script quedará programado para ejecutarse automáticamente todos los días.
 
 ---
 
@@ -1979,38 +1687,6 @@ Estas medidas facilitan la administración y la resolución de incidencias.
 
 ---
 
-### Ejemplo práctico
-
-Una empresa necesita realizar una copia de seguridad diariamente a las 02:00.
-
-Entrada en el crontab:
-
-```bash
-0 2 * * * /opt/scripts/backup.sh
-```
-
-Funcionamiento:
-
-```text
-02:00
-
-↓
-
-Cron detecta la programación
-
-↓
-
-Ejecuta backup.sh
-
-↓
-
-Finaliza la tarea
-```
-
-La copia se realizará automáticamente todos los días sin intervención del administrador.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Systemd Timers
@@ -2219,36 +1895,6 @@ Al utilizar Systemd Timers se recomienda:
 - Documentar la finalidad de cada timer.
 
 Estas prácticas facilitan la administración y el mantenimiento del sistema.
-
----
-
-### Ejemplo práctico
-
-Una empresa desea ejecutar diariamente un script de copia de seguridad.
-
-Procedimiento:
-
-```text
-Crear backup.service
-
-↓
-
-Crear backup.timer
-
-↓
-
-Habilitar timer
-
-↓
-
-Iniciar timer
-
-↓
-
-Comprobar ejecución mediante list-timers
-```
-
-A partir de ese momento, el servicio se ejecutará automáticamente todos los días según la programación establecida.
 
 ---
 
@@ -2467,40 +2113,6 @@ Estas medidas ayudan a mantener un entorno estable y fácil de administrar.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador detecta que una copia de seguridad no se ha ejecutado durante la noche.
-
-Procedimiento:
-
-```text
-Comprobar la programación
-
-↓
-
-Revisar el historial
-
-↓
-
-Consultar los registros
-
-↓
-
-Ejecutar manualmente el script
-
-↓
-
-Corregir el error
-
-↓
-
-Verificar la siguiente ejecución
-```
-
-De esta forma puede localizar la causa del problema y restaurar el funcionamiento normal de la tarea.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Buenas prácticas en la planificación de tareas
@@ -2700,40 +2312,6 @@ Revisar periódicamente
 ```
 
 Este procedimiento reduce la aparición de errores y facilita el mantenimiento.
-
----
-
-### Ejemplo práctico
-
-Una empresa automatiza diariamente una copia de seguridad.
-
-Buenas prácticas aplicadas:
-
-```text
-Nombre descriptivo
-
-↓
-
-Script probado previamente
-
-↓
-
-Ejecución fuera del horario laboral
-
-↓
-
-Registro de ejecución
-
-↓
-
-Revisión semanal de resultados
-
-↓
-
-Documentación actualizada
-```
-
-Gracias a estas medidas, la tarea funciona de forma estable y puede mantenerse fácilmente.
 
 ---
 

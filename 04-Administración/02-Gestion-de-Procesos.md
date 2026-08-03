@@ -32,30 +32,6 @@ Una correcta administración de los procesos permite mejorar el rendimiento del 
 
 ## Concepto de proceso
 
-### Introducción
-
-Un **proceso** es una instancia de un programa que se encuentra en ejecución.
-
-Cuando un usuario abre una aplicación o el sistema operativo ejecuta una tarea, el programa almacenado en el disco se carga en memoria y comienza a ejecutarse. En ese momento deja de ser simplemente un archivo y pasa a convertirse en un proceso.
-
-Un mismo programa puede generar varios procesos independientes, cada uno con su propio estado y recursos asignados.
-
-Ejemplo:
-
-```text
-Programa (almacenado en disco)
-
-↓
-
-Se ejecuta
-
-↓
-
-Proceso (en memoria)
-```
-
----
-
 # Programa vs. proceso
 
 Aunque suelen confundirse, un programa y un proceso no son lo mismo.
@@ -298,16 +274,6 @@ Todos estos procesos comparten los recursos del sistema y son administrados por 
 [⬆️ Volver al índice](#índice)
 
 ## Estados de un proceso
-
-### Introducción
-
-Desde que un proceso es creado hasta que finaliza, no permanece siempre ejecutándose. A lo largo de su ciclo de vida puede pasar por diferentes **estados**, dependiendo de si está utilizando la CPU, esperando un recurso o ha terminado su ejecución.
-
-El sistema operativo controla continuamente estos cambios mediante el **planificador de procesos (Scheduler)**, que decide qué proceso debe ejecutarse en cada momento.
-
-Comprender los estados de un proceso es fundamental para interpretar el funcionamiento del sistema y diagnosticar problemas de rendimiento o bloqueos.
-
----
 
 # Ciclo de vida de un proceso
 
@@ -688,16 +654,6 @@ Durante toda su ejecución, el proceso cambia de estado continuamente según los
 
 ## Proceso e hilos (Threads)
 
-### Introducción
-
-Un proceso no siempre ejecuta una única tarea. Muchas aplicaciones modernas realizan varias operaciones al mismo tiempo, como mostrar la interfaz, descargar información de Internet o guardar datos en segundo plano.
-
-Para conseguirlo, los sistemas operativos utilizan los **hilos de ejecución** o **Threads**, que permiten dividir el trabajo de un proceso en varias tareas que pueden ejecutarse de forma simultánea.
-
-Comprender la diferencia entre procesos e hilos es fundamental para entender cómo funcionan las aplicaciones actuales y cómo aprovechan los procesadores multinúcleo.
-
----
-
 # ¿Qué es un hilo?
 
 Un **hilo (Thread)** es la unidad básica de ejecución dentro de un proceso.
@@ -927,16 +883,6 @@ Cada una de estas tareas puede ejecutarse mediante distintos hilos, permitiendo 
 [⬆️ Volver al índice](#índice)
 
 ## Planificación de procesos
-
-### Introducción
-
-En un sistema operativo moderno pueden existir cientos o incluso miles de procesos ejecutándose al mismo tiempo. Sin embargo, el número de procesos que pueden utilizar siultáneamente la CPU es limitado y depende del número de núcleos del procesador.
-
-PAra gestionar esta situación, el sistema operativo utiliza un componente determinado **planificador de procesos**, encargado de decidir qué proceso debe ejecutarse en cada momento y durante cunánto tiempo.
-
-Una buena planificación permite optimizar el rendimiento del sistema, mejorar la capacidad de respuesta y garantizar un reparto equilibrado de los recursos.
-
----
 
 ### ¿Qué es el planificador de procesos?
 

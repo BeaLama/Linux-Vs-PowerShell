@@ -345,38 +345,6 @@ Es el componente central de administración de servicios en Windows.
 
 ---
 
-### Ejemplo práctico
-
-Supongamos un servidor web.
-
-```text
-Arranque del sistema
-
-↓
-
-systemd / SCM
-
-↓
-
-Inicia el servicio
-
-↓
-
-Carga configuración
-
-↓
-
-Abre el puerto 80
-
-↓
-
-Comienza a aceptar conexiones
-```
-
-Mientras permanezca iniciado, el servicio continuará funcionando aunque ningún usuario haya iniciado sesión.
-
----
-
 ### Buenas prácticas
 
 - Ejecuta cada servicio con la cuenta que disponga únicamente de los permisos necesarios.
@@ -476,29 +444,6 @@ Servicio C
 ```
 
 Si el servicio C falla, A tampoco podrá funcionar correctamente.
-
----
-
-### Ejemplo práctico
-
-Supongamos un servidor de bases de datos.
-
-```text
-Aplicación Web
-
-↓
-
-Base de datos
-
-↓
-
-Sistema de almacenamiento
-```
-
-Si el almacenamiento no está disponible:
-
-- La base de datos no iniciará correctamente.
-- La aplicación web tampoco podrá funcionar.
 
 ---
 
@@ -743,35 +688,6 @@ Esto facilita el mantenimiento y reduce el riesgo de fallos en cascada.
 | `After=` | Orden de inicio |
 | `Before=` | Orden previo |
 | `systemctl list-dependencies` | `Get-Service` / `services.msc` |
-
----
-
-### Ejemplo práctico
-
-Un servicio web depende de una base de datos.
-
-```text
-Servidor
-
-↓
-
-systemd
-
-↓
-
-mysql.service
-
-↓
-
-apache2.service
-```
-
-Si `mysql.service` no consigue iniciarse:
-
-- Apache puede arrancar.
-- La aplicación web mostrará errores al no poder conectarse a la base de datos.
-
-Por ello es importante definir correctamente las dependencias y comprobar el estado de todos los servicios relacionados.
 
 ---
 
@@ -1102,32 +1018,6 @@ No siempre un servicio detenido implica una incidencia; puede estar configurado 
 
 ---
 
-### Ejemplo práctico
-
-Un servidor web deja de estar disponible.
-
-Comprobación:
-
-```text
-Estado
-
-↓
-
-Stopped
-```
-
-Tipo de inicio:
-
-```text
-Manual
-```
-
-En este caso el problema no es un fallo del servicio, sino una configuración incorrecta del tipo de inicio.
-
-Tras configurarlo como automático y arrancarlo, el servicio volverá a estar disponible.
-
----
-
 ### Buenas prácticas
 
 - Configura como automáticos únicamente los servicios necesarios.
@@ -1317,32 +1207,6 @@ Si un servicio crítico deja de funcionar:
 5. Confirmar que vuelve a su estado operativo.
 
 En algunos casos puede ser necesario reiniciar el sistema para restaurar determinados servicios.
-
----
-
-### Ejemplo práctico
-
-Un administrador deshabilita el servicio de resolución DNS pensando que no se utiliza.
-
-Consecuencias:
-
-```text
-Servicio DNS detenido
-
-↓
-
-No se resuelven nombres
-
-↓
-
-Las aplicaciones no encuentran los servidores
-
-↓
-
-Errores de conexión
-```
-
-Aunque la red siga funcionando, muchas aplicaciones dejarán de comunicarse correctamente.
 
 ---
 
@@ -1642,40 +1506,6 @@ La recuperación automática debe complementar el diagnóstico, no sustituirlo.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor web falla debido a un error temporal.
-
-Configuración:
-
-```ini
-Restart=on-failure
-
-RestartSec=5
-```
-
-Resultado:
-
-```text
-Fallo
-
-↓
-
-Espera 5 segundos
-
-↓
-
-Reinicio
-
-↓
-
-Servicio operativo
-```
-
-El usuario apenas percibe una breve interrupción.
-
----
-
 ### Comparativa
 
 | Linux | Windows |
@@ -1927,44 +1757,6 @@ Entre las causas más frecuentes de fallo se encuentran:
 - Errores tras una actualización.
 
 No todos los fallos tienen el mismo origen, por lo que es importante analizar la información disponible antes de aplicar una solución.
-
----
-
-### Ejemplo práctico
-
-Un servicio web deja de responder.
-
-Procedimiento:
-
-```text
-Comprobar estado
-
-↓
-
-Revisar registros
-
-↓
-
-Verificar dependencias
-
-↓
-
-Analizar CPU y memoria
-
-↓
-
-Comprobar configuración
-
-↓
-
-Aplicar la solución
-
-↓
-
-Supervisar el servicio
-```
-
-Este enfoque sistemático permite localizar el problema de forma más rápida y reducir el riesgo de aplicar cambios innecesarios.
 
 ---
 
@@ -2255,30 +2047,6 @@ Algunas configuraciones inseguras son:
 
 ---
 
-### Ejemplo práctico
-
-Un servidor web utiliza una cuenta con privilegios de administrador.
-
-Un atacante consigue explotar una vulnerabilidad del servicio.
-
-Resultado:
-
-```text
-Compromiso del servicio
-
-↓
-
-Acceso con privilegios elevados
-
-↓
-
-Control del sistema
-```
-
-Si el servicio se hubiera ejecutado con una cuenta de permisos limitados, el impacto habría sido mucho menor.
-
----
-
 ### Comparativa
 
 | Medida | Beneficio |
@@ -2539,44 +2307,6 @@ Algunos fallos frecuentes son:
 - Automatizar procesos sin haberlos probado previamente.
 
 Una automatización mal diseñada puede generar más incidencias que las que pretende resolver.
-
----
-
-### Ejemplo práctico
-
-Cada cinco minutos se comprueba el estado de un servidor web.
-
-```text
-Servicio iniciado
-
-↓
-
-Sí
-
-↓
-
-No hacer nada
-```
-
-Si el servicio está detenido:
-
-```text
-Servicio detenido
-
-↓
-
-Reinicio automático
-
-↓
-
-Registro del evento
-
-↓
-
-Notificación al administrador
-```
-
-De este modo el tiempo de indisponibilidad se reduce al mínimo.
 
 ---
 

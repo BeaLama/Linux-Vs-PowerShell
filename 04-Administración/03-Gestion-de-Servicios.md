@@ -353,40 +353,6 @@ Estas herramientas permiten iniciar, detener, reiniciar o configurar los servici
 
 ---
 
-### Ejemplo práctico
-
-Un usuario abre Microsoft Word.
-
-```text
-Usuario
-
-↓
-
-WINWORD.EXE
-
-↓
-
-Proceso
-```
-
-Mientras tanto, el servicio de impresión permanece funcionando en segundo plano.
-
-```text
-Sistema operativo
-
-↓
-
-Print Spooler
-
-↓
-
-Servicio
-```
-
-Cuando el usuario imprime un documento, ambos trabajan conjuntamente para completar la tarea.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Tipos de servicios
@@ -833,36 +799,6 @@ Es una de las primeras comprobaciones que debe realizar un administrador ante un
 
 ---
 
-### Ejemplo práctico
-
-Un usuario informa de que no puede imprimir documentos.
-
-Procedimiento:
-
-```text
-Comprobar Print Spooler
-
-↓
-
-Estado: Detenido
-
-↓
-
-Iniciar servicio
-
-↓
-
-Estado: En ejecución
-
-↓
-
-Realizar prueba de impresión
-```
-
-En muchos casos, simplemente comprobar el estado del servicio permite localizar rápidamente la causa del problema.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Dependencias entre servicios
@@ -1057,30 +993,6 @@ Para evitar problemas relacionados con las dependencias se recomienda:
 - Verificar el funcionamiento del sistema tras cualquier cambio.
 
 Estas medidas reducen el riesgo de interrupciones inesperadas.
-
----
-
-### Ejemplo práctico
-
-Un administrador detiene accidentalmente el servicio **Remote Procedure Call (RPC)**.
-
-Como consecuencia:
-
-```text
-RPC detenido
-
-↓
-
-Print Spooler no puede funcionar
-
-↓
-
-No es posible imprimir documentos
-```
-
-Tras volver a iniciar el servicio RPC, el servicio de impresión recupera su funcionamiento normal.
-
-Este ejemplo demuestra la importancia de comprender las dependencias antes de realizar cambios en los servicios del sistema.
 
 ---
 
@@ -1355,36 +1267,6 @@ Estas prácticas ayudan a mantener la estabilidad y seguridad del sistema.
 
 ---
 
-### Ejemplo práctico
-
-Un usuario informa de que no puede imprimir documentos.
-
-Procedimiento:
-
-```text
-Abrir services.msc
-
-↓
-
-Buscar Print Spooler
-
-↓
-
-Comprobar estado
-
-↓
-
-Reiniciar servicio
-
-↓
-
-Realizar prueba de impresión
-```
-
-Si el problema persiste, será necesario revisar las dependencias y los registros del Visor de eventos.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Gestión de servicios en Linux
@@ -1627,48 +1509,6 @@ Estas medidas ayudan a mantener un sistema estable y seguro.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor web deja de responder.
-
-Procedimiento:
-
-```text
-Comprobar estado del servicio
-
-↓
-
-Revisar registros
-
-↓
-
-Reiniciar servicio
-
-↓
-
-Verificar funcionamiento
-
-↓
-
-Comprobar dependencias si el problema persiste
-```
-
-En este caso podrían utilizarse los siguientes comandos:
-
-```bash
-systemctl status apache2
-```
-
-```bash
-journalctl -u apache2
-```
-
-```bash
-sudo systemctl restart apache2
-```
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Inicio automático y tipos de inicio
@@ -1844,36 +1684,6 @@ Para configurar correctamente los servicios se recomienda:
 - Revisar las dependencias antes de modificar el tipo de inicio.
 
 Estas prácticas ayudan a optimizar el rendimiento y mantener la estabilidad del sistema.
-
----
-
-### Ejemplo práctico
-
-Un administrador detecta que un servicio de sincronización se ejecuta automáticamente aunque solo se utiliza una vez al mes.
-
-Procedimiento:
-
-```text
-Comprobar función del servicio
-
-↓
-
-Verificar dependencias
-
-↓
-
-Cambiar tipo de inicio a Manual
-
-↓
-
-Guardar configuración
-
-↓
-
-Comprobar funcionamiento
-```
-
-De esta forma el servicio solo consumirá recursos cuando realmente sea necesario.
 
 ---
 
@@ -2077,26 +1887,6 @@ Durante la administración mediante PowerShell se recomienda:
 
 ---
 
-### Ejemplo práctico
-
-El servicio de impresión deja de funcionar en varios equipos de la empresa.
-
-En lugar de reiniciarlo manualmente en cada uno de ellos, el administrador utiliza PowerShell:
-
-```powershell
-Restart-Service spooler
-```
-
-Posteriormente verifica su estado:
-
-```powershell
-Get-Service spooler
-```
-
-De esta forma puede resolver la incidencia de forma rápida y automatizable.
-
----
-
 [⬆️ Volver al índice](#índice)
 
 ## Administración mediante CMD
@@ -2294,34 +2084,6 @@ Durante la administración mediante CMD se recomienda:
 - Revisar las dependencias antes de detener un servicio.
 - Utilizar `sc` para tareas avanzadas y `net` para operaciones básicas.
 - Documentar cualquier cambio realizado en servicios críticos.
-
----
-
-### Ejemplo práctico
-
-Un administrador necesita reiniciar el servicio de impresión desde una consola remota.
-
-Procedimiento:
-
-Detener el servicio:
-
-```cmd
-net stop spooler
-```
-
-Iniciarlo nuevamente:
-
-```cmd
-net start spooler
-```
-
-Verificar su estado:
-
-```cmd
-sc query spooler
-```
-
-Con estos comandos puede resolver la incidencia sin necesidad de acceder a la interfaz gráfica.
 
 ---
 
@@ -2529,40 +2291,6 @@ Durante la administración mediante `systemctl` se recomienda:
 - Revisar los registros cuando se produzca un error.
 - Habilitar únicamente los servicios necesarios durante el arranque.
 - Documentar cualquier modificación realizada en servicios críticos.
-
----
-
-### Ejemplo práctico
-
-Un servidor web deja de responder.
-
-Procedimiento:
-
-Consultar el estado:
-
-```bash
-systemctl status apache2
-```
-
-Consultar los registros:
-
-```bash
-journalctl -u apache2
-```
-
-Reiniciar el servicio:
-
-```bash
-sudo systemctl restart apache2
-```
-
-Verificar nuevamente su estado:
-
-```bash
-systemctl status apache2
-```
-
-Este procedimiento permite solucionar gran parte de las incidencias relacionadas con servicios en Linux.
 
 ---
 
@@ -2780,42 +2508,6 @@ Una supervisión adecuada reduce el tiempo de inactividad y mejora la disponibil
 
 ---
 
-### Ejemplo práctico
-
-Un usuario informa de que la página web corporativa no responde.
-
-Procedimiento:
-
-```text
-Comprobar estado del servicio web
-
-↓
-
-Revisar registros
-
-↓
-
-Verificar dependencias
-
-↓
-
-Reiniciar servicio
-
-↓
-
-Comprobar acceso desde el navegador
-
-↓
-
-Confirmar resolución de la incidencia
-```
-
-Este procedimiento permite localizar rápidamente el origen del problema y restaurar el servicio.
-
----
-
-[⬆️ Volver al índice](#índice)
-
 ## Buenas prácticas en la gestión de servicios
 
 Introducción
@@ -2970,40 +2662,6 @@ Es aconsejable documentar:
 - Resultado obtenido.
 
 Una buena documentación facilita futuras intervenciones y auditorías.
-
----
-
-### Ejemplo práctico
-
-Un administrador detecta que varios servicios innecesarios se inician automáticamente durante el arranque.
-
-Procedimiento:
-
-```text
-Revisar lista de servicios
-
-↓
-
-Comprobar su función
-
-↓
-
-Verificar dependencias
-
-↓
-
-Cambiar inicio a Manual
-
-↓
-
-Reiniciar el sistema
-
-↓
-
-Comprobar funcionamiento
-```
-
-Este procedimiento mejora el rendimiento sin afectar al funcionamiento del equipo.
 
 ---
 

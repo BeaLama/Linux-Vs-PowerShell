@@ -215,36 +215,6 @@ Por ello conviene registrar únicamente la información realmente necesaria.
 
 ---
 
-### Ejemplo práctico
-
-Un administrador detecta que un archivo importante ha sido eliminado.
-
-Gracias a la auditoría puede consultar:
-
-```text
-Usuario
-
-↓
-
-Fecha
-
-↓
-
-Hora
-
-↓
-
-Archivo afectado
-
-↓
-
-Acción realizada
-```
-
-Esta información permite reconstruir lo ocurrido y determinar el origen del incidente.
-
----
-
 ### Beneficios
 
 Una auditoría correctamente configurada permite:
@@ -536,22 +506,6 @@ Analizar la secuencia completa facilita comprender lo sucedido.
 
 ---
 
-### Ejemplo práctico
-
-Se detectan numerosos intentos fallidos de inicio de sesión.
-
-Procedimiento:
-
-1. Revisar el registro de Seguridad.
-2. Identificar la cuenta afectada.
-3. Comprobar la dirección IP de origen (si está disponible).
-4. Verificar si posteriormente se produjo un acceso correcto.
-5. Aplicar las medidas correspondientes.
-
-Gracias a los registros puede determinarse si se trata de un error del usuario o de un posible intento de ataque.
-
----
-
 ### Comparativa
 
 | Linux | Windows |
@@ -826,40 +780,6 @@ Por ello es importante revisar periódicamente la configuración de acceso.
 
 ---
 
-### Ejemplo práctico
-
-Una carpeta contiene documentación confidencial.
-
-Configuración adecuada:
-
-```text
-Administradores
-
-↓
-
-Control total
-```
-
-```text
-Departamento
-
-↓
-
-Lectura
-```
-
-```text
-Resto de usuarios
-
-↓
-
-Sin acceso
-```
-
-De este modo solo el personal autorizado podrá consultar la información.
-
----
-
 ### Comparativa
 
 | Linux | Windows |
@@ -1042,30 +962,6 @@ Permisos asignados
 ```
 
 La autorización nunca debería producirse sin una autenticación previa.
-
----
-
-### Ejemplo práctico
-
-Supongamos dos usuarios.
-
-```text
-Administrador
-
-↓
-
-Acceso total
-```
-
-```text
-Empleado
-
-↓
-
-Solo lectura
-```
-
-Ambos se autentican correctamente, pero reciben permisos distintos según su rol.
 
 ---
 
@@ -1422,30 +1318,6 @@ Las políticas deben ser conocidas y comprendidas por todo el personal.
 
 ---
 
-### Ejemplo práctico
-
-Una organización establece la siguiente política de contraseñas:
-
-```text
-Longitud mínima
-
-↓
-
-12 caracteres
-
-↓
-
-Autenticación multifactor obligatoria
-
-↓
-
-Bloqueo tras 5 intentos fallidos
-```
-
-Estas medidas reducen significativamente el riesgo de accesos no autorizados mediante credenciales comprometidas.
-
----
-
 ### Comparativa
 
 | Política | Finalidad |
@@ -1674,42 +1546,6 @@ Ejemplos:
 - Copias de seguridad configuradas.
 
 Las checklists ayudan a mantener una configuración homogénea.
-
----
-
-### Ejemplo práctico
-
-Antes de poner en producción un servidor se realizan las siguientes acciones:
-
-```text
-Actualizar sistema
-
-↓
-
-Eliminar software innecesario
-
-↓
-
-Configurar firewall
-
-↓
-
-Aplicar políticas de contraseñas
-
-↓
-
-Habilitar auditoría
-
-↓
-
-Comprobar permisos
-
-↓
-
-Servidor listo para producción
-```
-
-Este procedimiento reduce significativamente el riesgo de exposición.
 
 ---
 
@@ -1972,32 +1808,6 @@ No debe limitarse únicamente a revisar los registros cuando ocurre un problema.
 
 ---
 
-### Ejemplo práctico
-
-Un servidor recibe cientos de intentos fallidos de inicio de sesión en pocos minutos.
-
-La plataforma de monitorización detecta:
-
-```text
-Intentos repetitivos
-
-↓
-
-Superación del umbral
-
-↓
-
-Generación de alerta
-
-↓
-
-Notificación al administrador
-```
-
-Gracias a esta detección temprana es posible bloquear la dirección IP o investigar el origen del ataque.
-
----
-
 ### Comparativa
 
 | Auditoría | Monitorización |
@@ -2253,44 +2063,6 @@ La documentación suele incluir:
 - Medidas preventivas adoptadas.
 
 Esta información resulta muy útil para futuras investigaciones y auditorías.
-
----
-
-### Ejemplo práctico
-
-Se detecta un intento de acceso mediante una cuenta comprometida.
-
-Procedimiento:
-
-```text
-Detección
-
-↓
-
-Bloqueo de la cuenta
-
-↓
-
-Análisis de registros
-
-↓
-
-Cambio de credenciales
-
-↓
-
-Revisión de permisos
-
-↓
-
-Restablecimiento del servicio
-
-↓
-
-Documentación del incidente
-```
-
-Gracias a este procedimiento el incidente puede resolverse de forma ordenada y con un impacto mínimo.
 
 ---
 
