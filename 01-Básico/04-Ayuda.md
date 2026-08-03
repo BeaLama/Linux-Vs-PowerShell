@@ -22,101 +22,12 @@ Tanto Linux como PowerShell incorporan herramientas que permiten acceder a infor
 
 ## Mostrar la ayuda de un comando
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `man <comando>` | `Get-Help <cmdlet>` |
+| **Ejemplo** | `man cp` | `Get-Help Copy-Item` |
 
-```bash
-man <comando>
-```
-
-También puede utilizarse:
-
-```bash
-<comando> --help
-```
-
-**Descripción**
-
-Muestra la documentación de un comando, incluyendo su descripción, sintaxis, parámetros y opciones disponibles.
-
----
-
-### PowerShell
-
-```powershell
-Get-Help <cmdlet>
-```
-
-**Descripción**
-
-Muestra la ayuda integrada de un cmdlet, incluyendo su descripción, sintaxis, parámetros y ejemplos disponibles.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Mostrar la ayuda de un comando | `man` / `--help` | `Get-Help` |
-
----
-
-### Ejemplos
-
-**Consultar la ayuda del comando `ls`**
-
-Linux
-
-```bash
-man ls
-```
-
-PowerShell
-
-```powershell
-Get-Help Get-ChildItem
-```
-
----
-
-**Consultar la ayuda del comando `cp`**
-
-Linux
-
-```bash
-man cp
-```
-
-PowerShell
-
-```powershell
-Get-Help Copy-Item
-```
-
----
-
-**Mostrar una ayuda rápida**
-
-Linux
-
-```bash
-ls --help
-```
-
-PowerShell
-
-```powershell
-Get-Help Get-ChildItem
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `man` abre el manual completo del comando. | `Get-Help` muestra la ayuda integrada del cmdlet. |
-| Muchos comandos también disponen del parámetro `--help` para mostrar una versión resumida. | La ayuda puede ampliarse mediante parámetros como `-Examples`, `-Detailed` o `-Full`. |
-| Los manuales suelen instalarse junto con el sistema operativo. | La ayuda puede actualizarse independientemente del sistema mediante `Update-Help`. |
+> 💡 **Diferencia clave** — 🐧 `man` abre el manual completo del comando. · 🪟 `Get-Help` muestra la ayuda integrada del cmdlet.
 
 ---
 
@@ -140,101 +51,19 @@ Get-Help Get-ChildItem
 
 ## Buscar comandos disponibles
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `compgen -c` | `Get-Command` |
 
-```bash
-compgen -c
-```
-
-También puede utilizarse:
-
-```bash
-apropos .
-```
-
-**Descripción**
-
-Muestra todos los comandos disponibles en el sistema o aquellos que disponen de una página del manual.
-
----
-
-### PowerShell
-
-```powershell
-Get-Command
-```
-
-**Descripción**
-
-Muestra todos los cmdlets, funciones, alias y aplicaciones disponibles en la sesión actual de PowerShell.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Mostrar los comandos disponibles | `compgen -c` / `apropos .` | `Get-Command` |
-
----
-
-### Ejemplos
-
-**Mostrar todos los comandos disponibles**
-
-Linux
-
-```bash
-compgen -c
-```
-
-PowerShell
-
-```powershell
-Get-Command
-```
-
----
-
-**Buscar comandos cuyo nombre empiece por "Get"**
-
-Linux
-
+**Ejemplo**
 ```bash
 compgen -c | grep "^get"
 ```
-
-PowerShell
-
 ```powershell
 Get-Command Get*
 ```
 
----
-
-**Buscar comandos relacionados con "copy"**
-
-Linux
-
-```bash
-apropos copy
-```
-
-PowerShell
-
-```powershell
-Get-Command *Copy*
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `compgen -c` lista todos los comandos disponibles en el shell. | `Get-Command` muestra cmdlets, funciones, alias y aplicaciones. |
-| `apropos` busca comandos basándose en la descripción de sus páginas del manual. | `Get-Command` permite buscar utilizando comodines en el nombre del comando. |
-| Es habitual combinar `compgen` con `grep` para filtrar resultados. | El filtrado puede realizarse directamente mediante comodines (`*`). |
+> 💡 **Diferencia clave** — 🐧 `compgen -c` lista todos los comandos disponibles en el shell. · 🪟 `Get-Command` muestra cmdlets, funciones, alias y aplicaciones.
 
 ---
 
@@ -258,101 +87,12 @@ Get-Command *Copy*
 
 ## Buscar comandos relacionados con una acción
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `apropos "<acción>"` | `Get-Command -Verb <verbo>` |
+| **Ejemplo** | `apropos process` | `Get-Command *Process*` |
 
-```bash
-apropos "<acción>"
-```
-
-**Descripción**
-
-Busca comandos cuya descripción esté relacionada con la acción indicada utilizando la base de datos de las páginas del manual.
-
----
-
-### PowerShell
-
-```powershell
-Get-Command -Verb <verbo>
-```
-
-También puede utilizarse:
-
-```powershell
-Get-Command *<acción>*
-```
-
-**Descripción**
-
-Busca cmdlets relacionados con una acción concreta mediante el verbo o utilizando comodines.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Buscar comandos relacionados con una acción | `apropos` | `Get-Command -Verb` / `Get-Command *texto*` |
-
----
-
-### Ejemplos
-
-**Buscar comandos relacionados con la copia de archivos**
-
-Linux
-
-```bash
-apropos copy
-```
-
-PowerShell
-
-```powershell
-Get-Command -Verb Copy
-```
-
----
-
-**Buscar comandos relacionados con procesos**
-
-Linux
-
-```bash
-apropos process
-```
-
-PowerShell
-
-```powershell
-Get-Command *Process*
-```
-
----
-
-**Buscar comandos relacionados con servicios**
-
-Linux
-
-```bash
-apropos service
-```
-
-PowerShell
-
-```powershell
-Get-Command *Service*
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `apropos` busca palabras dentro de la descripción de las páginas del manual. | `Get-Command -Verb` busca cmdlets utilizando los verbos estándar de PowerShell. |
-| Los resultados dependen de la documentación instalada en el sistema. | Los resultados incluyen cmdlets, funciones, alias y aplicaciones. |
-| Puede buscar cualquier palabra clave. | Puede buscar por verbo (`Get`, `Set`, `Start`, `Stop`, `New`, etc.) o mediante comodines. |
+> 💡 **Diferencia clave** — 🐧 `apropos` busca palabras dentro de la descripción de las páginas del manual. · 🪟 `Get-Command -Verb` busca cmdlets utilizando los verbos estándar de PowerShell.
 
 ---
 
@@ -376,102 +116,13 @@ Get-Command *Service*
 
 ## Mostrar ejemplos de uso
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `man <comando>` | `Get-Help <cmdlet> -Examples` |
+| **Ejemplo** | `man ls` | `Get-Help Get-ChildItem -Examples` |
 
-```bash
-man <comando>
-```
-
-También puede utilizarse:
-
-```bash
-<comando> --help
-```
-
-**Descripción**
-
-Permite consultar ejemplos de uso y la sintaxis de un comando. Algunos comandos incluyen ejemplos directamente en la ayuda, mientras que otros únicamente muestran la descripción de sus parámetros.
-
----
-
-### PowerShell
-
-```powershell
-Get-Help <cmdlet> -Examples
-```
-
-**Descripción**
-
-Muestra únicamente los ejemplos de uso disponibles para un cmdlet.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Mostrar ejemplos de uso | `man` / `--help` | `Get-Help -Examples` |
-
----
-
-### Ejemplos
-
-**Mostrar ejemplos del comando de copia**
-
-Linux
-
-```bash
-man cp
-```
-
-PowerShell
-
-```powershell
-Get-Help Copy-Item -Examples
-```
-
----
-
-**Mostrar ejemplos del comando para listar archivos**
-
-Linux
-
-```bash
-man ls
-```
-
-PowerShell
-
-```powershell
-Get-Help Get-ChildItem -Examples
-```
-
----
-
-**Mostrar ejemplos del comando para eliminar archivos**
-
-Linux
-
-```bash
-man rm
-```
-
-PowerShell
-
-```powershell
-Get-Help Remove-Item -Examples
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| Los ejemplos aparecen integrados en la página del manual si el desarrollador los ha incluido. | `-Examples` muestra únicamente la sección de ejemplos del cmdlet. |
-| Algunos comandos solo ofrecen información sobre los parámetros. | La mayoría de cmdlets incluyen ejemplos prácticos y comentados. |
-| `--help` suele mostrar una ayuda resumida. | `Get-Help -Examples` está orientado exclusivamente al aprendizaje mediante ejemplos. |
-
+> 💡 **Diferencia clave** — 🐧 Los ejemplos aparecen integrados en la página del manual si el desarrollador los ha incluido. · 🪟 `-Examples` muestra únicamente la sección de ejemplos del cmdlet.
+> 
 ---
 
 ### Buenas prácticas
@@ -494,101 +145,12 @@ Get-Help Remove-Item -Examples
 
 ## Consultar los parámetros de un comando
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `man <comando>` | `Get-Help <cmdlet> -Full` |
+| **Ejemplo** | `man mv` | `Get-Help Move-Item -Full` |
 
-```bash
-man <comando>
-```
-
-También puede utilizarse:
-
-```bash
-<comando> --help
-```
-
-**Descripción**
-
-Permite consultar todos los parámetros y opciones disponibles de un comando, junto con una explicación de su funcionamiento.
-
----
-
-### PowerShell
-
-```powershell
-Get-Help <cmdlet> -Full
-```
-
-**Descripción**
-
-Muestra la documentación completa de un cmdlet, incluyendo su descripción, sintaxis, parámetros, ejemplos y notas adicionales.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Consultar los parámetros de un comando | `man` / `--help` | `Get-Help -Full` |
-
----
-
-### Ejemplos
-
-**Consultar los parámetros del comando para copiar archivos**
-
-Linux
-
-```bash
-man cp
-```
-
-PowerShell
-
-```powershell
-Get-Help Copy-Item -Full
-```
-
----
-
-**Consultar los parámetros del comando para mover archivos**
-
-Linux
-
-```bash
-man mv
-```
-
-PowerShell
-
-```powershell
-Get-Help Move-Item -Full
-```
-
----
-
-**Consultar los parámetros del comando para eliminar archivos**
-
-Linux
-
-```bash
-man rm
-```
-
-PowerShell
-
-```powershell
-Get-Help Remove-Item -Full
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `man` muestra toda la documentación disponible del comando. | `Get-Help -Full` muestra la documentación completa del cmdlet. |
-| `--help` suele ofrecer una versión resumida con los parámetros más utilizados. | Incluye sintaxis, parámetros, ejemplos y notas adicionales en una única salida. |
-| La documentación depende del comando instalado en el sistema. | La documentación puede actualizarse mediante `Update-Help`. |
+> 💡 **Diferencia clave** — 🐧 `man` muestra toda la documentación disponible del comando. · 🪟 `Get-Help -Full` muestra la documentación completa del cmdlet.
 
 ---
 
@@ -612,95 +174,12 @@ Get-Help Remove-Item -Full
 
 ## Actualizar la ayuda (PowerShell)
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `sudo mandb` | `Update-Help` |
+| **Ejemplo** | `sudo mandb` | `Update-Help -Module Microsoft.PowerShell.Management` |
 
-```bash
-sudo mandb
-```
-
-**Descripción**
-
-Actualiza la base de datos utilizada por `man` y `apropos`. Este comando es útil cuando se instalan nuevas páginas del manual o se actualiza la documentación del sistema.
-
----
-
-### PowerShell
-
-```powershell
-Update-Help
-```
-
-**Descripción**
-
-Descarga e instala la versión más reciente de la ayuda de los módulos de PowerShell desde Internet.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Actualizar la documentación del sistema | `mandb` | `Update-Help` |
-
----
-
-### Ejemplos
-
-**Actualizar la base de datos del manual**
-
-Linux
-
-```bash
-sudo mandb
-```
-
-PowerShell
-
-```powershell
-Update-Help
-```
-
----
-
-**Actualizar la ayuda de un módulo específico**
-
-Linux
-
-```bash
-sudo mandb
-```
-
-PowerShell
-
-```powershell
-Update-Help -Module Microsoft.PowerShell.Management
-```
-
----
-
-**Actualizar la ayuda utilizando credenciales de administrador**
-
-Linux
-
-```bash
-sudo mandb
-```
-
-PowerShell
-
-```powershell
-Update-Help -Force
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `mandb` reconstruye la base de datos de las páginas del manual instaladas en el sistema. | `Update-Help` descarga la documentación más reciente desde Internet. |
-| No descarga documentación nueva; únicamente indexa la existente. | Requiere conexión a Internet para descargar la ayuda más reciente. |
-| Suele ejecutarse automáticamente al instalar nuevos paquetes. | Es recomendable ejecutarlo tras instalar nuevos módulos o versiones de PowerShell. |
+> 💡 **Diferencia clave** — 🐧 `mandb` reconstruye la base de datos de las páginas del manual instaladas en el sistema. · 🪟 `Update-Help` descarga la documentación más reciente desde Internet.
 
 ---
 

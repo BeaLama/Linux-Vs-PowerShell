@@ -2,7 +2,6 @@
 
 ## Índice
 
-
 - [Crear un archivo](#crear-un-archivo)
 - [Copiar archivos](#copiar-archivos)
 - [Mover archivos](#mover-archivos)
@@ -20,77 +19,12 @@
 
 ## Crear un archivo
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `touch <nombre_archivo>` | `New-Item -Path <nombre_archivo> -ItemType File` |
+| **Ejemplo** | `touch /home/usuario/notas.txt` | `New-Item -Path C:\Users\usuario\notas.txt -ItemType File` |
 
-```bash
-touch <nombre_archivo>
-```
-
-**Descripción**
-
-Crea un archivo vacío. Si el archivo ya existe, actualiza su fecha y hora de modificación.
-
----
-
-### PowerShell
-
-```powershell
-New-Item -Path <nombre_archivo> -ItemType File
-```
-
-**Descripción**
-
-Crea un nuevo archivo vacío en la ubicación especificada.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Crear un archivo | `touch` | `New-Item -ItemType File` |
-
----
-
-### Ejemplos
-
-**Crear un archivo en el directorio actual**
-
-Linux
-
-```bash
-touch notas.txt
-```
-
-PowerShell
-
-```powershell
-New-Item -Path notas.txt -ItemType File
-```
-
----
-
-**Crear un archivo utilizando una ruta absoluta**
-
-Linux
-
-```bash
-touch /home/usuario/notas.txt
-```
-
-PowerShell
-
-```powershell
-New-Item -Path C:\Users\usuario\notas.txt -ItemType File
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `touch` también actualiza la fecha de modificación si el archivo ya existe. | `New-Item` devuelve un error si el archivo ya existe, salvo que se utilice el parámetro `-Force`. |
+> 💡 **Diferencia clave** — 🐧 `touch` también actualiza la fecha de modificación si el archivo ya existe. · 🪟 `New-Item` devuelve un error si el archivo ya existe, salvo que se utilice el parámetro `-Force`.
 
 ---
 
@@ -114,94 +48,12 @@ New-Item -Path C:\Users\usuario\notas.txt -ItemType File
 
 ## Copiar archivos
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `cp <origen> <destino>` | `Copy-Item -Path <origen> -Destination <destino>` |
+| **Ejemplo** | `cp notas.txt /home/usuario/Documentos` | `Copy-Item -Path notas.txt -Destination C:\Users\usuario\Documents` |
 
-```bash
-cp <origen> <destino>
-```
-
-**Descripción**
-
-Copia uno o varios archivos desde una ubicación a otra.
-
----
-
-### PowerShell
-
-```powershell
-Copy-Item -Path <origen> -Destination <destino>
-```
-
-**Descripción**
-
-Copia uno o varios archivos desde una ubicación a otra.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Copiar archivos | `cp` | `Copy-Item` |
-
----
-
-### Ejemplos
-
-**Copiar un archivo en el mismo directorio**
-
-Linux
-
-```bash
-cp notas.txt copia_notas.txt
-```
-
-PowerShell
-
-```powershell
-Copy-Item -Path notas.txt -Destination copia_notas.txt
-```
-
----
-
-**Copiar un archivo a otro directorio**
-
-Linux
-
-```bash
-cp notas.txt /home/usuario/Documentos
-```
-
-PowerShell
-
-```powershell
-Copy-Item -Path notas.txt -Destination C:\Users\usuario\Documents
-```
-
----
-
-**Sobrescribir un archivo existente**
-
-Linux
-
-```bash
-cp -f notas.txt copia_notas.txt
-```
-
-PowerShell
-
-```powershell
-Copy-Item -Path notas.txt -Destination copia_notas.txt -Force
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| Utiliza `cp` para copiar archivos y directorios. | Utiliza el cmdlet `Copy-Item`. |
-| La sobrescritura puede forzarse con `-f`. | La sobrescritura puede realizarse con `-Force`. |
+> 💡 **Diferencia clave** — 🐧 Utiliza `cp` para copiar archivos y directorios. · 🪟 Utiliza el cmdlet `Copy-Item`.
 
 ---
 
@@ -225,94 +77,12 @@ Copy-Item -Path notas.txt -Destination copia_notas.txt -Force
 
 ## Mover archivos
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `mv <origen> <destino>` | `Move-Item -Path <origen> -Destination <destino>` |
+| **Ejemplo** | `mv notas.txt informe.txt` | `Move-Item -Path notas.txt -Destination informe.txt` |
 
-```bash
-mv <origen> <destino>
-```
-
-**Descripción**
-
-Mueve un archivo de una ubicación a otra. También puede utilizarse para renombrar archivos.
-
----
-
-### PowerShell
-
-```powershell
-Move-Item -Path <origen> -Destination <destino>
-```
-
-**Descripción**
-
-Mueve uno o varios archivos entre directorios. También permite cambiar el nombre de un archivo.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Mover archivos | `mv` | `Move-Item` |
-
----
-
-### Ejemplos
-
-**Mover un archivo a otro directorio**
-
-Linux
-
-```bash
-mv notas.txt /home/usuario/Documentos
-```
-
-PowerShell
-
-```powershell
-Move-Item -Path notas.txt -Destination C:\Users\usuario\Documents
-```
-
----
-
-**Mover y renombrar un archivo**
-
-Linux
-
-```bash
-mv notas.txt informe.txt
-```
-
-PowerShell
-
-```powershell
-Move-Item -Path notas.txt -Destination informe.txt
-```
-
----
-
-**Mover un archivo utilizando una ruta absoluta**
-
-Linux
-
-```bash
-mv /home/usuario/notas.txt /home/usuario/Documentos
-```
-
-PowerShell
-
-```powershell
-Move-Item -Path C:\Users\usuario\notas.txt -Destination C:\Users\usuario\Documents
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `mv` mueve y renombra archivos con el mismo comando. | `Move-Item` también permite mover y renombrar archivos utilizando el parámetro `-Destination`. |
-| Si el destino existe, el comportamiento depende del sistema y los permisos. | Puede utilizarse `-Force` para sobrescribir cuando sea necesario. |
+> 💡 **Diferencia clave** — 🐧 `mv` mueve y renombra archivos con el mismo comando. · 🪟 `Move-Item` también permite mover y renombrar archivos utilizando el parámetro `-Destination`.
 
 ---
 
@@ -336,78 +106,19 @@ Move-Item -Path C:\Users\usuario\notas.txt -Destination C:\Users\usuario\Documen
 
 ## Renombrar archivos
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `mv <nombre_actual> <nuevo_nombre>` | `Rename-Item -Path <nombre_actual> -NewName <nuevo_nombre>` |
 
-```bash
-mv <nombre_actual> <nuevo_nombre>
-```
-
-**Descripción**
-
-Cambia el nombre de un archivo sin modificar su contenido.
-
----
-
-### PowerShell
-
-```powershell
-Rename-Item -Path <nombre_actual> -NewName <nuevo_nombre>
-```
-
-**Descripción**
-
-Cambia el nombre de un archivo manteniéndolo en la misma ubicación.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Renombrar archivos | `mv` | `Rename-Item` |
-
----
-
-### Ejemplos
-
-**Renombrar un archivo**
-
-Linux
-
-```bash
-mv notas.txt informe.txt
-```
-
-PowerShell
-
-```powershell
-Rename-Item -Path notas.txt -NewName informe.txt
-```
-
----
-
-**Renombrar un archivo utilizando una ruta absoluta**
-
-Linux
-
+**Ejemplo**
 ```bash
 mv /home/usuario/Documentos/notas.txt /home/usuario/Documentos/informe.txt
 ```
-
-PowerShell
-
 ```powershell
 Rename-Item -Path C:\Users\usuario\Documents\notas.txt -NewName informe.txt
 ```
 
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| Se utiliza `mv`, ya que renombrar es equivalente a mover el archivo con otro nombre dentro del mismo directorio. | Existe un cmdlet específico (`Rename-Item`) cuya única función es cambiar el nombre del archivo. |
-| Puede utilizarse también para mover archivos entre directorios. | Solo cambia el nombre; no mueve el archivo de ubicación. |
+> 💡 **Diferencia clave** — 🐧 Se utiliza `mv`, ya que renombrar es equivalente a mover el archivo con otro nombre dentro del mismo directorio. · 🪟 Existe un cmdlet específico (`Rename-Item`) cuya única función es cambiar el nombre del archivo.
 
 ---
 
@@ -431,94 +142,12 @@ Rename-Item -Path C:\Users\usuario\Documents\notas.txt -NewName informe.txt
 
 ## Eliminar archivos
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `rm <archivo>` | `Remove-Item -Path <archivo>` |
+| **Ejemplo** | `rm notas.txt informe.txt copia_notas.txt` | `Remove-Item notas.txt, informe.txt, copia_notas.txt` |
 
-```bash
-rm <archivo>
-```
-
-**Descripción**
-
-Elimina uno o varios archivos del sistema de archivos.
-
----
-
-### PowerShell
-
-```powershell
-Remove-Item -Path <archivo>
-```
-
-**Descripción**
-
-Elimina uno o varios archivos de la ubicación especificada.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Eliminar archivos | `rm` | `Remove-Item` |
-
----
-
-### Ejemplos
-
-**Eliminar un archivo**
-
-Linux
-
-```bash
-rm notas.txt
-```
-
-PowerShell
-
-```powershell
-Remove-Item -Path notas.txt
-```
-
----
-
-**Eliminar varios archivos**
-
-Linux
-
-```bash
-rm notas.txt informe.txt copia_notas.txt
-```
-
-PowerShell
-
-```powershell
-Remove-Item notas.txt, informe.txt, copia_notas.txt
-```
-
----
-
-**Eliminar un archivo utilizando una ruta absoluta**
-
-Linux
-
-```bash
-rm /home/usuario/Documentos/notas.txt
-```
-
-PowerShell
-
-```powershell
-Remove-Item -Path C:\Users\usuario\Documents\notas.txt
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `rm` elimina archivos de forma permanente. | `Remove-Item` elimina archivos y otros elementos del sistema de archivos. |
-| Puede solicitar confirmación según la configuración o los parámetros utilizados. | Puede utilizarse `-Confirm` para solicitar confirmación antes de eliminar. |
+> 💡 **Diferencia clave** — 🐧 `rm` elimina archivos de forma permanente. · 🪟 `Remove-Item` elimina archivos y otros elementos del sistema de archivos.
 
 ---
 
@@ -543,94 +172,12 @@ Remove-Item -Path C:\Users\usuario\Documents\notas.txt
 
 ## Eliminar directorios con contenido
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `rm -r <directorio>` | `Remove-Item -Path <directorio> -Recurse` |
+| **Ejemplo** | `rm -rf Proyecto` | `Remove-Item -Path Proyecto -Recurse -Force` |
 
-```bash
-rm -r <directorio>
-```
-
-**Descripción**
-
-Elimina un directorio y todo su contenido, incluidos los archivos y subdirectorios.
-
----
-
-### PowerShell
-
-```powershell
-Remove-Item -Path <directorio> -Recurse
-```
-
-**Descripción**
-
-Elimina un directorio junto con todos los archivos y subdirectorios que contiene.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Eliminar un directorio con contenido | `rm -r` | `Remove-Item -Recurse` |
-
----
-
-### Ejemplos
-
-**Eliminar un directorio con todo su contenido**
-
-Linux
-
-```bash
-rm -r Proyecto
-```
-
-PowerShell
-
-```powershell
-Remove-Item -Path Proyecto -Recurse
-```
-
----
-
-**Forzar la eliminación sin confirmación**
-
-Linux
-
-```bash
-rm -rf Proyecto
-```
-
-PowerShell
-
-```powershell
-Remove-Item -Path Proyecto -Recurse -Force
-```
-
----
-
-**Eliminar un directorio utilizando una ruta absoluta**
-
-Linux
-
-```bash
-rm -r /home/usuario/Proyecto
-```
-
-PowerShell
-
-```powershell
-Remove-Item -Path C:\Users\usuario\Proyecto -Recurse
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `-r` elimina el directorio y todo su contenido. | `-Recurse` elimina el directorio y todos sus elementos. |
-| `-f` fuerza la eliminación sin solicitar confirmación. | `-Force` permite eliminar elementos ocultos o de solo lectura cuando sea posible. |
+> 💡 **Diferencia clave** — 🐧 `-r` elimina el directorio y todo su contenido. · 🪟 `-Recurse` elimina el directorio y todos sus elementos.
 
 ---
 
@@ -655,94 +202,12 @@ Remove-Item -Path C:\Users\usuario\Proyecto -Recurse
 
 ## Ver el contenido de un archivo
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `cat <archivo>` | `Get-Content -Path <archivo>` |
+| **Ejemplo** | `cat /home/usuario/Documentos/notas.txt` | `Get-Content -Path C:\Users\usuario\Documents\notas.txt` |
 
-```bash
-cat <archivo>
-```
-
-**Descripción**
-
-Muestra el contenido completo de un archivo en la terminal.
-
----
-
-### PowerShell
-
-```powershell
-Get-Content -Path <archivo>
-```
-
-**Descripción**
-
-Muestra el contenido completo de un archivo en la consola.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ver el contenido de un archivo | `cat` | `Get-Content` |
-
----
-
-### Ejemplos
-
-**Mostrar el contenido de un archivo**
-
-Linux
-
-```bash
-cat notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path notas.txt
-```
-
----
-
-**Mostrar el contenido de un archivo utilizando una ruta absoluta**
-
-Linux
-
-```bash
-cat /home/usuario/Documentos/notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path C:\Users\usuario\Documents\notas.txt
-```
-
----
-
-**Mostrar el contenido de varios archivos**
-
-Linux
-
-```bash
-cat notas.txt informe.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content notas.txt, informe.txt
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `cat` muestra el contenido como texto plano. | `Get-Content` devuelve cada línea como un objeto de tipo `String`. |
-| También puede utilizarse para concatenar archivos. | Está orientado principalmente a la lectura del contenido de archivos. |
+> 💡 **Diferencia clave** — 🐧 `cat` muestra el contenido como texto plano. · 🪟 `Get-Content` devuelve cada línea como un objeto de tipo `String`.
 
 ---
 
@@ -766,94 +231,12 @@ Get-Content notas.txt, informe.txt
 
 ## Ver el principio de un archivo
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `head <archivo>` | `Get-Content -Path <archivo> -TotalCount 10` |
+| **Ejemplo** | `head -n 5 notas.txt` | `Get-Content -Path notas.txt -TotalCount 5` |
 
-```bash
-head <archivo>
-```
-
-**Descripción**
-
-Muestra las primeras líneas de un archivo. Por defecto, muestra las primeras **10 líneas**.
-
----
-
-### PowerShell
-
-```powershell
-Get-Content -Path <archivo> -TotalCount 10
-```
-
-**Descripción**
-
-Muestra las primeras líneas de un archivo. El número de líneas puede modificarse mediante el parámetro `-TotalCount`.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ver el principio de un archivo | `head` | `Get-Content -TotalCount` |
-
----
-
-### Ejemplos
-
-**Mostrar las primeras 10 líneas**
-
-Linux
-
-```bash
-head notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path notas.txt -TotalCount 10
-```
-
----
-
-**Mostrar las primeras 5 líneas**
-
-Linux
-
-```bash
-head -n 5 notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path notas.txt -TotalCount 5
-```
-
----
-
-**Mostrar las primeras líneas utilizando una ruta absoluta**
-
-Linux
-
-```bash
-head /home/usuario/Documentos/notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path C:\Users\usuario\Documents\notas.txt -TotalCount 10
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `head` muestra las primeras líneas de un archivo. | `Get-Content` utiliza el parámetro `-TotalCount` para limitar el número de líneas mostradas. |
-| El número de líneas se modifica con `-n`. | El número de líneas se modifica con `-TotalCount`. |
+> 💡 **Diferencia clave** — 🐧 `head` muestra las primeras líneas de un archivo. · 🪟 `Get-Content` utiliza el parámetro `-TotalCount` para limitar el número de líneas mostradas.
 
 ---
 
@@ -876,94 +259,12 @@ Get-Content -Path C:\Users\usuario\Documents\notas.txt -TotalCount 10
 
 ## Ver el final de un archivo
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `tail <archivo>` | `Get-Content -Path <archivo> -Tail 10` |
+| **Ejemplo** | `tail -n 5 notas.txt` | `Get-Content -Path notas.txt -Tail 5` |
 
-```bash
-tail <archivo>
-```
-
-**Descripción**
-
-Muestra las últimas líneas de un archivo. Por defecto, muestra las últimas **10 líneas**.
-
----
-
-### PowerShell
-
-```powershell
-Get-Content -Path <archivo> -Tail 10
-```
-
-**Descripción**
-
-Muestra las últimas líneas de un archivo. El número de líneas puede modificarse mediante el parámetro `-Tail`.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ver el final de un archivo | `tail` | `Get-Content -Tail` |
-
----
-
-### Ejemplos
-
-**Mostrar las últimas 10 líneas**
-
-Linux
-
-```bash
-tail notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path notas.txt -Tail 10
-```
-
----
-
-**Mostrar las últimas 5 líneas**
-
-Linux
-
-```bash
-tail -n 5 notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path notas.txt -Tail 5
-```
-
----
-
-**Monitorizar un archivo en tiempo real**
-
-Linux
-
-```bash
-tail -f notas.txt
-```
-
-PowerShell
-
-```powershell
-Get-Content -Path notas.txt -Tail 10 -Wait
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `tail` muestra las últimas líneas de un archivo. | `Get-Content` utiliza el parámetro `-Tail` para mostrar las últimas líneas. |
-| `tail -f` permite seguir el crecimiento del archivo en tiempo real. | `Get-Content -Wait` actualiza la salida conforme el archivo recibe nuevas líneas. |
+> 💡 **Diferencia clave** — 🐧 `tail` muestra las últimas líneas de un archivo. · 🪟 `Get-Content` utiliza el parámetro `-Tail` para mostrar las últimas líneas.
 
 ---
 
@@ -986,67 +287,16 @@ Get-Content -Path notas.txt -Tail 10 -Wait
 
 ## Crear varios archivos
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `touch <archivo1> <archivo2> <archivo3>` | `New-Item -Path archivo1.txt, archivo2.txt, archivo3.txt -ItemType File` |
 
-```bash
-touch <archivo1> <archivo2> <archivo3>
-```
-
-**Descripción**
-
-Crea varios archivos vacíos mediante un único comando.
-
----
-
-### PowerShell
-
-```powershell
-New-Item -Path archivo1.txt, archivo2.txt, archivo3.txt -ItemType File```
-
-**Descripción**
-
-Crea varios archivos vacíos en una sola ejecución del comando.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Crear varios archivos | `touch archivo1 archivo2 archivo3` | `New-Item archivo1, archivo2, archivo3 -ItemType File` |
-
----
-
-### Ejemplos
-
-**Crear varios archivos en el directorio actual**
-
-Linux
-
-```bash
-touch notas.txt informe.txt copia_notas.txt
-```
-
-PowerShell
-
-```powershell
-New-Item notas.txt, informe.txt, copia_notas.txt -ItemType File
-```
-
----
-
-**Crear varios archivos utilizando una ruta absoluta**
-
-Linux
-
+**Ejemplo**
 ```bash
 touch /home/usuario/Documentos/notas.txt \
       /home/usuario/Documentos/informe.txt \
       /home/usuario/Documentos/copia_notas.txt
 ```
-
-PowerShell
-
 ```powershell
 New-Item -Path `
 "C:\Users\usuario\Documents\notas.txt",
@@ -1055,14 +305,7 @@ New-Item -Path `
 -ItemType File
 ```
 
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `touch` permite crear múltiples archivos separando sus nombres por espacios. | `New-Item` acepta varios archivos separados por comas. |
-| Si el archivo ya existe, `touch` actualiza su fecha de modificación. | `New-Item` genera un error si el archivo ya existe, salvo que se utilice `-Force`. |
+> 💡 **Diferencia clave** — 🐧 `touch` permite crear múltiples archivos separando sus nombres por espacios. · 🪟 `New-Item` acepta varios archivos separados por comas.
 
 ---
 
@@ -1086,94 +329,12 @@ New-Item -Path `
 
 ## Copiar directorios
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `cp -r <origen> <destino>` | `Copy-Item -Path <origen> -Destination <destino> -Recurse` |
+| **Ejemplo** | `cp -r Proyecto /home/usuario/Backups` | `Copy-Item -Path Proyecto -Destination C:\Backups -Recurse` |
 
-```bash
-cp -r <origen> <destino>
-```
-
-**Descripción**
-
-Copia un directorio junto con todos los archivos y subdirectorios que contiene.
-
----
-
-### PowerShell
-
-```powershell
-Copy-Item -Path <origen> -Destination <destino> -Recurse
-```
-
-**Descripción**
-
-Copia un directorio completo junto con todo su contenido.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Copiar un directorio | `cp -r` | `Copy-Item -Recurse` |
-
----
-
-### Ejemplos
-
-**Copiar un directorio en la misma ubicación**
-
-Linux
-
-```bash
-cp -r Proyecto Proyecto_Backup
-```
-
-PowerShell
-
-```powershell
-Copy-Item -Path Proyecto -Destination Proyecto_Backup -Recurse
-```
-
----
-
-**Copiar un directorio a otra ubicación**
-
-Linux
-
-```bash
-cp -r Proyecto /home/usuario/Backups
-```
-
-PowerShell
-
-```powershell
-Copy-Item -Path Proyecto -Destination C:\Backups -Recurse
-```
-
----
-
-**Copiar un directorio utilizando una ruta absoluta**
-
-Linux
-
-```bash
-cp -r /home/usuario/Proyecto /home/usuario/Backups
-```
-
-PowerShell
-
-```powershell
-Copy-Item -Path C:\Users\usuario\Proyecto -Destination C:\Backups -Recurse
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| Es necesario utilizar `-r` (o `-R`) para copiar directorios. | Es necesario utilizar el parámetro `-Recurse` para copiar todo el contenido del directorio. |
-| Sin `-r`, `cp` solo copia archivos. | Sin `-Recurse`, `Copy-Item` no copiará correctamente el contenido del directorio. |
+> 💡 **Diferencia clave** — 🐧 Es necesario utilizar `-r` (o `-R`) para copiar directorios. · 🪟 Es necesario utilizar el parámetro `-Recurse` para copiar todo el contenido del directorio.
 
 ---
 
@@ -1197,94 +358,12 @@ Copy-Item -Path C:\Users\usuario\Proyecto -Destination C:\Backups -Recurse
 
 ## Mover directorios
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `mv <origen> <destino>` | `Move-Item -Path <origen> -Destination <destino>` |
+| **Ejemplo** | `mv /home/usuario/Proyecto /home/usuario/Backups` | `Move-Item -Path C:\Users\usuario\Proyecto -Destination C:\Backups` |
 
-```bash
-mv <origen> <destino>
-```
-
-**Descripción**
-
-Mueve un directorio completo, incluyendo todos los archivos y subdirectorios que contiene.
-
----
-
-### PowerShell
-
-```powershell
-Move-Item -Path <origen> -Destination <destino>
-```
-
-**Descripción**
-
-Mueve un directorio completo junto con todo su contenido a otra ubicación.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Mover un directorio | `mv` | `Move-Item` |
-
----
-
-### Ejemplos
-
-**Mover un directorio a otra ubicación**
-
-Linux
-
-```bash
-mv Proyecto /home/usuario/Backups
-```
-
-PowerShell
-
-```powershell
-Move-Item -Path Proyecto -Destination C:\Backups
-```
-
----
-
-**Mover un directorio utilizando una ruta absoluta**
-
-Linux
-
-```bash
-mv /home/usuario/Proyecto /home/usuario/Backups
-```
-
-PowerShell
-
-```powershell
-Move-Item -Path C:\Users\usuario\Proyecto -Destination C:\Backups
-```
-
----
-
-**Mover un directorio y cambiar su nombre**
-
-Linux
-
-```bash
-mv Proyecto Proyecto_Backup
-```
-
-PowerShell
-
-```powershell
-Move-Item -Path Proyecto -Destination Proyecto_Backup
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `mv` mueve y renombra directorios con el mismo comando. | `Move-Item` también permite mover y renombrar directorios utilizando `-Destination`. |
-| No requiere parámetros adicionales para mover directorios. | El comportamiento es equivalente y tampoco requiere parámetros adicionales. |
+> 💡 **Diferencia clave** — 🐧 `mv` mueve y renombra directorios con el mismo comando. · 🪟 `Move-Item` también permite mover y renombrar directorios utilizando `-Destination`.
 
 ---
 
@@ -1308,78 +387,12 @@ Move-Item -Path Proyecto -Destination Proyecto_Backup
 
 ## Renombrar directorios
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `mv <nombre_actual> <nuevo_nombre>` | `Rename-Item -Path <nombre_actual> -NewName <nuevo_nombre>` |
+| **Ejemplo** | `mv /home/usuario/Proyecto /home/usuario/Proyecto_Backup` | `Rename-Item -Path C:\Users\usuario\Proyecto -NewName Proyecto_Backup` |
 
-```bash
-mv <nombre_actual> <nuevo_nombre>
-```
-
-**Descripción**
-
-Cambia el nombre de un directorio sin modificar su ubicación ni su contenido.
-
----
-
-### PowerShell
-
-```powershell
-Rename-Item -Path <nombre_actual> -NewName <nuevo_nombre>
-```
-
-**Descripción**
-
-Cambia el nombre de un directorio manteniéndolo en la misma ubicación.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Renombrar directorios | `mv` | `Rename-Item` |
-
----
-
-### Ejemplos
-
-**Renombrar un directorio**
-
-Linux
-
-```bash
-mv Proyecto Proyecto_Backup
-```
-
-PowerShell
-
-```powershell
-Rename-Item -Path Proyecto -NewName Proyecto_Backup
-```
-
----
-
-**Renombrar un directorio utilizando una ruta absoluta**
-
-Linux
-
-```bash
-mv /home/usuario/Proyecto /home/usuario/Proyecto_Backup
-```
-
-PowerShell
-
-```powershell
-Rename-Item -Path C:\Users\usuario\Proyecto -NewName Proyecto_Backup
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `mv` utiliza el mismo comando para mover y renombrar directorios. | `Rename-Item` está diseñado específicamente para cambiar el nombre de un elemento. |
-| Puede mover el directorio a otra ubicación al mismo tiempo. | Solo cambia el nombre; para mover un directorio debe utilizarse `Move-Item`. |
+> 💡 **Diferencia clave** — 🐧 `mv` utiliza el mismo comando para mover y renombrar directorios. · 🪟 `Rename-Item` está diseñado específicamente para cambiar el nombre de un elemento.
 
 ---
 

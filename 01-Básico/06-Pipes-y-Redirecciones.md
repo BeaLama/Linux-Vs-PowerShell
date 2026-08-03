@@ -26,101 +26,12 @@ Aprender a utilizar correctamente estas herramientas permite automatizar tareas,
 
 ## Redirigir la salida a un archivo
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `<comando> > <archivo>` | `<comando> > <archivo>` |
+| **Ejemplo** | `ps aux > procesos.txt` | `Get-Process > procesos.txt` |
 
-```bash
-<comando> > <archivo>
-```
-
-**Descripción**
-
-Redirige la salida estándar de un comando a un archivo. Si el archivo ya existe, su contenido será reemplazado.
-
----
-
-### PowerShell
-
-```powershell
-<comando> > <archivo>
-```
-
-También puede utilizarse:
-
-```powershell
-<comando> | Out-File <archivo>
-```
-
-**Descripción**
-
-Redirige la salida de un comando a un archivo. Si el archivo ya existe, será sobrescrito.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Redirigir la salida a un archivo | `>` | `>` / `Out-File` |
-
----
-
-### Ejemplos
-
-**Guardar el listado de archivos de un directorio**
-
-Linux
-
-```bash
-ls > archivos.txt
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem > archivos.txt
-```
-
----
-
-**Guardar la lista de procesos**
-
-Linux
-
-```bash
-ps aux > procesos.txt
-```
-
-PowerShell
-
-```powershell
-Get-Process > procesos.txt
-```
-
----
-
-**Guardar la configuración de red**
-
-Linux
-
-```bash
-ip addr > red.txt
-```
-
-PowerShell
-
-```powershell
-Get-NetIPAddress > red.txt
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `>` redirige la salida estándar a un archivo. | `>` también redirige la salida, aunque internamente utiliza el pipeline de PowerShell. |
-| Si el archivo existe, se sobrescribe. | Si el archivo existe, también se sobrescribe. |
-| Es habitual combinar `>` con otros comandos mediante tuberías. | También puede utilizarse `Out-File`, que ofrece opciones adicionales como codificación o ancho de línea. |
+> 💡 **Diferencia clave** — 🐧 `>` redirige la salida estándar a un archivo. · 🪟 `>` también redirige la salida, aunque internamente utiliza el pipeline de PowerShell.
 
 ---
 
@@ -145,101 +56,12 @@ Get-NetIPAddress > red.txt
 
 ## Añadir información a un archivo
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `<comando> > <archivo>` | `<comando> > <archivo>` |
+| **Ejemplo** | `ps aux > procesos.txt` | `Get-Process > procesos.txt` |
 
-```bash
-<comando> >> <archivo>
-```
-
-**Descripción**
-
-Añade la salida de un comando al final de un archivo. Si el archivo no existe, se crea automáticamente.
-
----
-
-### PowerShell
-
-```powershell
-<comando> >> <archivo>
-```
-
-También puede utilizarse:
-
-```powershell
-<comando> | Add-Content <archivo>
-```
-
-**Descripción**
-
-Añade la salida de un comando al final de un archivo sin eliminar el contenido existente.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Añadir información a un archivo | `>>` | `>>` / `Add-Content` |
-
----
-
-### Ejemplos
-
-**Añadir el listado de archivos a un informe**
-
-Linux
-
-```bash
-ls >> informe.txt
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem >> informe.txt
-```
-
----
-
-**Añadir la lista de procesos**
-
-Linux
-
-```bash
-ps aux >> informe.txt
-```
-
-PowerShell
-
-```powershell
-Get-Process >> informe.txt
-```
-
----
-
-**Añadir la configuración de red**
-
-Linux
-
-```bash
-ip addr >> informe.txt
-```
-
-PowerShell
-
-```powershell
-Get-NetIPAddress >> informe.txt
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `>>` añade la salida al final del archivo. | `>>` también añade la salida sin sobrescribir el contenido existente. |
-| Si el archivo no existe, se crea automáticamente. | También crea el archivo si no existe. |
-| Es habitual utilizar `>>` para generar informes de forma progresiva. | Puede utilizarse `Add-Content` cuando se desee añadir contenido de forma explícita. |
+> 💡 **Diferencia clave** — 🐧 `>` redirige la salida estándar a un archivo. · 🪟 `>` también redirige la salida, aunque internamente utiliza el pipeline de PowerShell.
 
 ---
 
@@ -263,95 +85,12 @@ Get-NetIPAddress >> informe.txt
 
 ## Redirigir errores
 
-### Linux
+| | 🐧 Linux | 🪟 PowerShell |
+|---|---|---|
+| **Sintaxis** | `<comando> 2> <archivo>` | `<comando> 2> <archivo>` |
+| **Ejemplo** | `rm archivo.txt 2> errores.txt` | `Remove-Item archivo.txt 2> errores.txt` |
 
-```bash
-<comando> 2> <archivo>
-```
-
-**Descripción**
-
-Redirige la salida de error estándar (**stderr**) a un archivo. Los mensajes de error no se mostrarán por pantalla.
-
----
-
-### PowerShell
-
-```powershell
-<comando> 2> <archivo>
-```
-
-**Descripción**
-
-Redirige la salida de error de un cmdlet o comando a un archivo.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Redirigir errores | `2>` | `2>` |
-
----
-
-### Ejemplos
-
-**Guardar los errores al listar un directorio inexistente**
-
-Linux
-
-```bash
-ls /directorio_inexistente 2> errores.txt
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem C:\DirectorioInexistente 2> errores.txt
-```
-
----
-
-**Guardar los errores al eliminar un archivo inexistente**
-
-Linux
-
-```bash
-rm archivo.txt 2> errores.txt
-```
-
-PowerShell
-
-```powershell
-Remove-Item archivo.txt 2> errores.txt
-```
-
----
-
-**Guardar únicamente los errores de un comando de red**
-
-Linux
-
-```bash
-ping servidor_inexistente 2> errores.txt
-```
-
-PowerShell
-
-```powershell
-Test-Connection servidor_inexistente 2> errores.txt
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `2>` redirige únicamente la salida de error estándar (`stderr`). | `2>` redirige el flujo de errores al archivo indicado. |
-| La salida correcta continúa mostrándose por pantalla. | La salida correcta también continúa mostrándose por pantalla. |
-| Puede combinarse con `>` para separar la salida correcta de los errores. | También puede combinarse con `>` para almacenar ambos flujos por separado. |
+> 💡 **Diferencia clave** — 🐧 `2>` redirige únicamente la salida de error estándar (`stderr`). · 🪟 `2>` redirige el flujo de errores al archivo indicado.
 
 ---
 
@@ -376,95 +115,15 @@ Test-Connection servidor_inexistente 2> errores.txt
 
 ## Utilizar tuberías (Pipes)
 
-### Linux
-
+**Sintaxis**
 ```bash
 <comando1> | <comando2>
 ```
-
-**Descripción**
-
-Envía la salida de un comando como entrada del siguiente. En Linux, las tuberías transmiten **texto** entre comandos.
-
----
-
-### PowerShell
-
 ```powershell
 <cmdlet1> | <cmdlet2>
 ```
 
-**Descripción**
-
-Envía la salida de un cmdlet como entrada del siguiente. En PowerShell, las tuberías transmiten **objetos**, permitiendo acceder a sus propiedades y métodos.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Utilizar tuberías | `|` | `|` |
-
----
-
-### Ejemplos
-
-**Buscar un proceso**
-
-Linux
-
-```bash
-ps aux | grep ssh
-```
-
-PowerShell
-
-```powershell
-Get-Process | Where-Object {$_.ProcessName -like "*ssh*"}
-```
-
----
-
-**Buscar archivos de texto**
-
-Linux
-
-```bash
-ls | grep ".txt"
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem | Where-Object {$_.Extension -eq ".txt"}
-```
-
----
-
-**Mostrar únicamente los servicios en ejecución**
-
-Linux
-
-```bash
-systemctl list-units | grep running
-```
-
-PowerShell
-
-```powershell
-Get-Service | Where-Object {$_.Status -eq "Running"}
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| Las tuberías transmiten texto entre comandos. | Las tuberías transmiten objetos completos entre cmdlets. |
-| Es habitual combinar comandos como `grep`, `sort` o `wc`. | Es habitual combinar cmdlets como `Where-Object`, `Sort-Object` o `Measure-Object`. |
-| Cada comando interpreta el texto recibido. | Cada cmdlet trabaja directamente con las propiedades del objeto recibido. |
+> 💡 **Diferencia clave** — 🐧 Las tuberías transmiten texto entre comandos. · 🪟 Las tuberías transmiten objetos completos entre cmdlets.
 
 ---
 
@@ -489,101 +148,15 @@ Get-Service | Where-Object {$_.Status -eq "Running"}
 
 ## Filtrar resultados
 
-### Linux
-
+**Sintaxis**
 ```bash
 <comando> | grep "<texto>"
 ```
-
-**Descripción**
-
-Filtra la salida de un comando mostrando únicamente las líneas que contienen el texto especificado.
-
----
-
-### PowerShell
-
 ```powershell
 <cmdlet> | Where-Object {<condición>}
 ```
 
-También puede utilizarse:
-
-```powershell
-<cmdlet> | Select-String "<texto>"
-```
-
-**Descripción**
-
-Filtra los resultados de un cmdlet utilizando una condición o buscando una cadena de texto.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Filtrar resultados | `grep` | `Where-Object` / `Select-String` |
-
----
-
-### Ejemplos
-
-**Mostrar únicamente los procesos relacionados con SSH**
-
-Linux
-
-```bash
-ps aux | grep ssh
-```
-
-PowerShell
-
-```powershell
-Get-Process | Where-Object {$_.ProcessName -like "*ssh*"}
-```
-
----
-
-**Mostrar únicamente los archivos PDF**
-
-Linux
-
-```bash
-ls | grep ".pdf"
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem | Where-Object {$_.Extension -eq ".pdf"}
-```
-
----
-
-**Mostrar únicamente los servicios en ejecución**
-
-Linux
-
-```bash
-systemctl list-units | grep running
-```
-
-PowerShell
-
-```powershell
-Get-Service | Where-Object {$_.Status -eq "Running"}
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `grep` filtra texto plano. | `Where-Object` filtra objetos utilizando sus propiedades. |
-| El criterio de búsqueda suele ser una cadena de texto o una expresión regular. | El criterio puede ser cualquier condición lógica (`-eq`, `-gt`, `-like`, etc.). |
-| La salida continúa siendo texto. | La salida sigue siendo una colección de objetos. |
+> 💡 **Diferencia clave** — 🐧 `grep` filtra texto plano. · 🪟 `Where-Object` filtra objetos utilizando sus propiedades.
 
 ---
 
@@ -608,95 +181,15 @@ Get-Service | Where-Object {$_.Status -eq "Running"}
 
 ## Ordenar resultados
 
-### Linux
-
+**Sintaxis**
 ```bash
 <comando> | sort
 ```
-
-**Descripción**
-
-Ordena alfabéticamente la salida de un comando.
-
----
-
-### PowerShell
-
 ```powershell
 <cmdlet> | Sort-Object
 ```
 
-**Descripción**
-
-Ordena los resultados de un cmdlet. Permite ordenar tanto por el valor completo como por una propiedad específica del objeto.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Ordenar resultados | `sort` | `Sort-Object` |
-
----
-
-### Ejemplos
-
-**Ordenar un listado de archivos**
-
-Linux
-
-```bash
-ls | sort
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem | Sort-Object Name
-```
-
----
-
-**Ordenar usuarios alfabéticamente**
-
-Linux
-
-```bash
-cat usuarios.txt | sort
-```
-
-PowerShell
-
-```powershell
-Get-Content usuarios.txt | Sort-Object
-```
-
----
-
-**Ordenar procesos por consumo de memoria**
-
-Linux
-
-```bash
-ps aux | sort -k4 -n
-```
-
-PowerShell
-
-```powershell
-Get-Process | Sort-Object WorkingSet -Descending
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `sort` ordena texto plano. | `Sort-Object` ordena objetos completos. |
-| El orden se realiza sobre líneas de texto. | Puede ordenarse por cualquier propiedad del objeto (`Name`, `CPU`, `WorkingSet`, etc.). |
-| Para ordenaciones complejas es necesario indicar la columna correspondiente. | Basta con indicar el nombre de la propiedad que se desea ordenar. |
+> 💡 **Diferencia clave** — 🐧 `sort` ordena texto plano. · 🪟 `Sort-Object` ordena objetos completos.
 
 ---
 
@@ -721,103 +214,15 @@ Get-Process | Sort-Object WorkingSet -Descending
 
 ## Contar resultados
 
-### Linux
-
+**Sintaxis**
 ```bash
 <comando> | wc -l
 ```
-
-**Descripción**
-
-Cuenta el número de líneas generadas por un comando. Es muy utilizado para conocer la cantidad de archivos, procesos, usuarios o cualquier otro elemento devuelto por una tubería.
-
----
-
-### PowerShell
-
 ```powershell
 <cmdlet> | Measure-Object
 ```
 
-También puede utilizarse:
-
-```powershell
-(<cmdlet>).Count
-```
-
-**Descripción**
-
-Cuenta el número de objetos devueltos por un cmdlet.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Contar resultados | `wc -l` | `Measure-Object` / `.Count` |
-
----
-
-### Ejemplos
-
-**Contar el número de archivos de un directorio**
-
-Linux
-
-```bash
-ls | wc -l
-```
-
-PowerShell
-
-```powershell
-Get-ChildItem | Measure-Object
-```
-
----
-
-**Contar los procesos en ejecución**
-
-Linux
-
-```bash
-ps aux | wc -l
-```
-
-PowerShell
-
-```powershell
-Get-Process | Measure-Object
-```
-
----
-
-**Contar los servicios en ejecución**
-
-Linux
-
-```bash
-systemctl list-units --type=service --state=running | wc -l
-```
-
-PowerShell
-
-```powershell
-Get-Service |
-Where-Object {$_.Status -eq "Running"} |
-Measure-Object
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| `wc -l` cuenta líneas de texto. | `Measure-Object` cuenta objetos. |
-| El resultado depende del número de líneas recibidas por la tubería. | El resultado depende del número de objetos recibidos. |
-| Devuelve directamente un número. | Devuelve un objeto con varias propiedades, siendo `Count` la más utilizada. |
+> 💡 **Diferencia clave** — 🐧 `wc -l` cuenta líneas de texto. · 🪟 `Measure-Object` cuenta objetos.
 
 ---
 
@@ -841,97 +246,15 @@ Measure-Object
 
 ## Guardar el resultado de una tubería
 
-### Linux
-
+**Sintaxis**
 ```bash
 variable=$(<comando1> | <comando2>)
 ```
-
-**Descripción**
-
-Guarda el resultado de una tubería dentro de una variable para reutilizarlo posteriormente en el mismo script o sesión.
-
----
-
-### PowerShell
-
 ```powershell
 $variable = <cmdlet1> | <cmdlet2>
 ```
 
-**Descripción**
-
-Guarda el resultado de una tubería en una variable. En PowerShell, la variable almacena los objetos generados por la tubería.
-
----
-
-### Equivalencia
-
-| Acción | Linux | PowerShell |
-|---------|--------|------------|
-| Guardar el resultado de una tubería | `variable=$(...)` | `$variable = ...` |
-
----
-
-### Ejemplos
-
-**Guardar el número de archivos de un directorio**
-
-Linux
-
-```bash
-total=$(ls | wc -l)
-```
-
-PowerShell
-
-```powershell
-$total = Get-ChildItem | Measure-Object
-```
-
----
-
-**Guardar los procesos relacionados con PowerShell**
-
-Linux
-
-```bash
-procesos=$(ps aux | grep powershell)
-```
-
-PowerShell
-
-```powershell
-$procesos = Get-Process |
-Where-Object {$_.ProcessName -like "*powershell*"}
-```
-
----
-
-**Guardar los servicios en ejecución**
-
-Linux
-
-```bash
-servicios=$(systemctl list-units --type=service --state=running)
-```
-
-PowerShell
-
-```powershell
-$servicios = Get-Service |
-Where-Object {$_.Status -eq "Running"}
-```
-
----
-
-### Diferencias
-
-| Linux | PowerShell |
-|--------|------------|
-| La variable almacena el texto generado por la tubería. | La variable almacena los objetos generados por la tubería. |
-| Se utiliza la sustitución de comandos `$( )`. | Basta con asignar la salida de la tubería a una variable. |
-| El contenido suele procesarse posteriormente como texto. | Posteriormente pueden utilizarse directamente las propiedades y métodos de los objetos almacenados. |
+> 💡 **Diferencia clave** — 🐧 La variable almacena el texto generado por la tubería. · 🪟 La variable almacena los objetos generados por la tubería.
 
 ---
 
