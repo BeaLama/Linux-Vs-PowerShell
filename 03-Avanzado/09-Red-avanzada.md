@@ -12,7 +12,7 @@ Las redes son uno de los pilares fundamentales de cualquier infraestructura info
 - [Routing y enrutamiento avanzado](#routing-y-enrutamiento-avanzado)
 - [Alta disponibilidad y redundancia](#alta-disponibilidad-y-redundancia)
 - [Seguridad en redes](#seguridad-en-redes)
-- [Monitorización y diagnóstico](#monitorizacion-y-diagnostico)
+- [Monitorización y diagnóstico](#monitorización-y-diagnostico)
 
 ---
 

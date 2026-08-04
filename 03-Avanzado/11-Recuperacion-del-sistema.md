@@ -6,14 +6,14 @@ La recuperación del sistema comprende el conjunto de procedimientos y herramien
 
 ## Índice
 
-- [Fundamentos de la recuperación del sistema](#fundamentos-de-la-recuperacion-del-sistema)
-- [Recuperación del arranque](#recuperacion-del-arranque)
-- [Herramientas de recuperación en Windows](#herramientas-de-recuperacion-en-windows)
-- [Herramientas de recuperación en Linux](#herramientas-de-recuperacion-en-linux)
-- [Recuperación de servicios y aplicaciones](#recuperacion-de-servicios-y-aplicaciones)
-- [Recuperación desde copias de seguridad](#recuperacion-desde-copias-de-seguridad)
-- [Recuperación ante desastres (Disaster Recovery)](#recuperacion-ante-desastres-disaster-recovery)
-- [Pruebas y validación de la recuperación](#pruebas-y-validacion-de-la-recuperacion)
+- [Fundamentos de la recuperación del sistema](#fundamentos-de-la-recuperación-del-sistema)
+- [Recuperación del arranque](#recuperación-del-arranque)
+- [Herramientas de recuperación en Windows](#herramientas-de-recuperación-en-windows)
+- [Herramientas de recuperación en Linux](#herramientas-de-recuperación-en-linux)
+- [Recuperación de servicios y aplicaciones](#recuperación-de-servicios-y-aplicaciones)
+- [Recuperación desde copias de seguridad](#recuperación-desde-copias-de-seguridad)
+- [Recuperación ante desastres (Disaster Recovery)](#recuperación-ante-desastres-disaster-recovery)
+- [Pruebas y validación de la recuperación](#pruebas-y-validación-de-la-recuperación)
 
 ---
 

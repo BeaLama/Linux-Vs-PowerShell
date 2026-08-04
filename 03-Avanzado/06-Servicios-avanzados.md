@@ -9,11 +9,11 @@ Los servicios son procesos especiales que se ejecutan en segundo plano para prop
 - [Arquitectura de un servicio](#arquitectura-de-un-servicio)
 - [Dependencias entre servicios](#dependencias-entre-servicios)
 - [Tipos de inicio y estados](#tipos-de-inicio-y-estados)
-- [Servicios críticos del sistema](#servicios-criticos-del-sistema)
-- [Recuperación automática de servicios](#recuperacion-automatica-de-servicios)
-- [Monitorización y diagnóstico](#monitorizacion-y-diagnostico)
+- [Servicios críticos del sistema](#servicios-críticos-del-sistema)
+- [Recuperación automática de servicios](#recuperación-automatica-de-servicios)
+- [Monitorización y diagnóstico](#monitorización-y-diagnostico)
 - [Seguridad de los servicios](#seguridad-de-los-servicios)
-- [Automatización](#automatizacion)
+- [Automatización](#automatización)
 
 ---
 

@@ -6,17 +6,17 @@ La administración remota permite gestionar equipos, servidores y dispositivos s
 
 ## Índice
 
-- [Concepto de administración remota](#concepto-de-administracion-remota)
+- [Concepto de administración remota](#concepto-de-administración-remota)
 - [Ventajas e inconvenientes](#ventajas-e-inconvenientes)
-- [Protocolos de administración remota](#protocolos-de-administracion-remota)
+- [Protocolos de administración remota](#protocolos-de-administración-remota)
 - [Escritorio remoto en Windows (RDP)](#escritorio-remoto-en-windows-rdp)
 - [PowerShell Remoting (WinRM)](#powershell-remoting-winrm)
 - [SSH en Linux](#ssh-en-linux)
 - [Transferencia remota de archivos (SCP y SFTP)](#transferencia-remota-de-archivos-scp-y-sftp)
-- [Herramientas de administración remota](#herramientas-de-administracion-remota)
-- [Administración remota en entornos empresariales](#administracion-remota-en-entornos-empresariales)
-- [Seguridad en la administración remota](#seguridad-en-la-administracion-remota)
-- [Resolución de problemas habituales](#resolucion-de-problemas-habituales)
+- [Herramientas de administración remota](#herramientas-de-administración-remota)
+- [Administración remota en entornos empresariales](#administración-remota-en-entornos-empresariales)
+- [Seguridad en la administración remota](#seguridad-en-la-administración-remota)
+- [Resolución de problemas habituales](#resolución-de-problemas-habituales)
 
 ---
 

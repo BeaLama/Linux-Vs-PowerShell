@@ -11,13 +11,13 @@ Los servicios son programas especializados que se ejecutan en segundo plano para
 - [Tipos de servicios](#tipos-de-servicios)
 - [Estados de un servicio](#estados-de-un-servicio)
 - [Dependencias entre servicios](#dependencias-entre-servicios)
-- [Gestión de servicios en Windows](#gestion-de-servicios-en-windows)
-- [Gestión de servicios en Linux](#gestion-de-servicios-en-linux)
-- [Inicio automático y tipos de inicio](#inicio-automatico-y-tipos-de-inicio)
-- [Administración mediante PowerShell](#administracion-mediante-powershell)
-- [Administración mediante CMD](#administracion-mediante-cmd)
-- [Administración mediante systemctl](#administracion-mediante-systemctl)
-- [Monitorización y resolución de problemas](#monitorizacion-y-resolucion-de-problemas)
+- [Gestión de servicios en Windows](#gestión-de-servicios-en-windows)
+- [Gestión de servicios en Linux](#gestión-de-servicios-en-linux)
+- [Inicio automático y tipos de inicio](#inicio-automático-y-tipos-de-inicio)
+- [Administración mediante PowerShell](#administración-mediante-powershell)
+- [Administración mediante CMD](#administración-mediante-cmd)
+- [Administración mediante systemctl](#administración-mediante-systemctl)
+- [Monitorización y resolución de problemas](#monitorización-y-resolución-de-problemas)
 
 ---
 

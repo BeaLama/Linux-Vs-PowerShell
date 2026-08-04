@@ -6,13 +6,13 @@ La auditoría y la seguridad son elementos fundamentales en la administración d
 
 ## Índice
 
-- [Auditoría de sistemas](#auditoria-de-sistemas)
+- [Auditoría de sistemas](#auditoría-de-sistemas)
 - [Registros de seguridad](#registros-de-seguridad)
 - [Control de acceso](#control-de-acceso)
-- [Autenticación y autorización](#autenticacion-y-autorizacion)
-- [Políticas de seguridad](#politicas-de-seguridad)
+- [Autenticación y autorización](#autenticación-y-autorización)
+- [Políticas de seguridad](#políticas-de-seguridad)
 - [Hardening del sistema](#hardening-del-sistema)
-- [Monitorización de seguridad](#monitorizacion-de-seguridad)
+- [Monitorización de seguridad](#monitorización-de-seguridad)
 - [Respuesta ante incidentes](#respuesta-ante-incidentes)
 
 ---

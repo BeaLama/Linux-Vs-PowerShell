@@ -11,12 +11,12 @@ Los logs o registros del sistema son archivos que almacenan información sobre e
 - [Tipos de logs](#tipos-de-logs)
 - [Formato y estructura de un log](#formato-y-estructura-de-un-log)
 - [Visor de eventos en Windows](#visor-de-eventos-en-windows)
-- [Administración mediante PowerShell](#administracion-mediante-powershell)
+- [Administración mediante PowerShell](#administración-mediante-powershell)
 - [Logs en Linux](#logs-en-linux)
 - [Journalctl y systemd Journal](#journalctl-y-systemd-journal)
-- [Rotación y conservación de logs](#rotacion-y-conservacion-de-logs)
-- [Monitorización y análisis de logs](#monitorizacion-y-analisis-de-logs)
-- [Herramientas de gestión centralizada](#herramientas-de-gestion-centralizada)
+- [Rotación y conservación de logs](#rotación-y-conservación-de-logs)
+- [Monitorización y análisis de logs](#monitorización-y-análisis-de-logs)
+- [Herramientas de gestión centralizada](#herramientas-de-gestión-centralizada)
 
 ---
 

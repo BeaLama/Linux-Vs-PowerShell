@@ -6,17 +6,17 @@ La planificación de tareas permite automatizar la ejecución de programas, scri
 
 ## Índice
 
-- [Concepto de planificación de tareas](#concepto-de-planificacion-de-tareas)
+- [Concepto de planificación de tareas](#concepto-de-planificación-de-tareas)
 - [Ventajas de automatizar tareas.](#ventajas-de-automatizar-tareas)
 - [Tipos de desencadenadores (Triggers)](#tipos-de-desencadenadores-triggers)
 - [Acciones programadas](#acciones-programadas)
-- [Condiciones y configuración de las tareas](#condiciones-y-configuracion-de-las-tareas)
+- [Condiciones y configuración de las tareas](#condiciones-y-configuración-de-las-tareas)
 - [Programador de tareas en Windows](#programador-de-tareas-en-windows)
-- [Administración mediante PowerShell](#administracion-mediante-powershell)
-- [Administración mediante shtasks](#administracion-mediante-shtasks)
+- [Administración mediante PowerShell](#administración-mediante-powershell)
+- [Administración mediante shtasks](#administración-mediante-shtasks)
 - [Cron en Linux](#cron-en-linux)
 - [Systemd Timers](#systemd-timers)
-- [Monitorización y resolución de problemas](#monitorizacion-y-resolucion-de-problemas)
+- [Monitorización y resolución de problemas](#monitorización-y-resolución-de-problemas)
 
 ---
 

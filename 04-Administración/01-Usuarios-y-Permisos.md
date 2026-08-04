@@ -11,7 +11,7 @@ La gestión de usuarios y permisos es una de las tareas más importantes dentro 
 - [Usuario administrador](#usuario-administrador)
 - [Usuario root](#usuario-root)
 - [Cuenta de servicio](#cuenta-de-servicio)
-- [Comparación de tipos de usuarios](#comparacion-de-tipos-de-usuarios)
+- [Comparación de tipos de usuarios](#comparación-de-tipos-de-usuarios)
 - [Grupos de usuarios](#grupos-de-usuarios)
 - [Grupos integrados del sistema](#grupos-integrados-del-sistema)
 - [Componentes del SID](#componentes-del-sid)
@@ -19,7 +19,7 @@ La gestión de usuarios y permisos es una de las tareas más importantes dentro 
 - [/etc/passwd](#etcpasswd)
 - [/etc/group](#etcgroup)
 - [/etc/shadow](#etcshadow)
-- [Autenticación y autorización](#autenticacion-y-autorizacion)
+- [Autenticación y autorización](#autenticación-y-autorización)
 - [Llaves SSH](#llaves-ssh)
 - [Mostrar usuarios](#mostrar-usuarios)
 - [Obtener información de un usuario](#obtener-informacion-de-un-usuario)
@@ -55,8 +55,8 @@ La gestión de usuarios y permisos es una de las tareas más importantes dentro 
 - [Opciones al romper la herencia](#opciones-al-romper-la-herencia)
 - [Roles y privilegios administrativos](#roles-y-privilegios-administrativos)
 - [Operador o técnico de soporte](#operador-o-tecnico-de-soporte)
-- [Gestión del ciclo de vida de usuarios](#gestion-del-ciclo-de-vida-de-usuarios)
-- [Auditoría de usuarios y permisos](#auditoria-de-usuarios-y-permisos)
+- [Gestión del ciclo de vida de usuarios](#gestión-del-ciclo-de-vida-de-usuarios)
+- [Auditoría de usuarios y permisos](#auditoría-de-usuarios-y-permisos)
 
 ---
 

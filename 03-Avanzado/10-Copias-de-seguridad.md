@@ -8,10 +8,10 @@ Las copias de seguridad constituyen uno de los pilares fundamentales de la admin
 
 - [Fundamentos de las copias de seguridad](#fundamentos-de-las-copias-de-seguridad)
 - [Tipos de copias de seguridad](#tipos-de-copias-de-seguridad)
-- [Estrategias y planificación](#estrategias-y-planificacion)
+- [Estrategias y planificación](#estrategias-y-planificación)
 - [Almacenamiento de las copias](#almacenamiento-de-las-copias)
-- [Automatización y herramientas](#automatizacion-y-herramientas)
-- [Restauración y recuperación](#restauracion-y-recuperacion)
+- [Automatización y herramientas](#automatización-y-herramientas)
+- [Restauración y recuperación](#restauración-y-recuperación)
 - [Seguridad de las copias](#seguridad-de-las-copias)
 
 ---

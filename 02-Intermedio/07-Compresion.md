@@ -102,7 +102,7 @@ Expand-Archive `
 
 [⬆️ Volver al índice](#índice)
 
-## Exrtaer un archivo TAR
+## Extraer un archivo TAR
 
 | | 🐧 Linux | 🪟 PowerShell |
 |---|---|---|

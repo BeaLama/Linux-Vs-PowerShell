@@ -6,16 +6,16 @@ La automatización consiste en utilizar scripts, herramientas y procesos program
 
 ## Índice
 
-- [Concepto de automatización](#concepto-de-automatizacion)
+- [Concepto de automatización](#concepto-de-automatización)
 - [Ventajas e inconvenientes](#ventajas-e-inconvenientes)
-- [Scripts de automatización](#scripts-de-automatizacion)
-- [PowerShell como herramienta de automatización](#powershell-como-herramienta-de-automatizacion)
+- [Scripts de automatización](#scripts-de-automatización)
+- [PowerShell como herramienta de automatización](#powershell-como-herramienta-de-automatización)
 - [Scripts Bash en Linux](#scripts-bash-en-linux)
-- [Automatización mediante tareas programadas](#automatizacion-mediante-tareas-programadas)
-- [Automatización en entornos empresariales](#automatizacion-en-entornos-empresariales)
-- [Herramientas de automatización](#herramientas-de-automatizacion)
-- [Seguridad en la automatización](#seguridad-en-la-automatizacion)
-- [Resolución de problemas habituales](#resolucion-de-problemas-habituales)
+- [Automatización mediante tareas programadas](#automatización-mediante-tareas-programadas)
+- [Automatización en entornos empresariales](#automatización-en-entornos-empresariales)
+- [Herramientas de automatización](#herramientas-de-automatización)
+- [Seguridad en la automatización](#seguridad-en-la-automatización)
+- [Resolución de problemas habituales](#resolución-de-problemas-habituales)
 
 ---
 

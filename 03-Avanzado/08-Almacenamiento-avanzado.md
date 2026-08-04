@@ -12,8 +12,8 @@ El almacenamiento es uno de los componentes más importantes de cualquier sistem
 - [Sistemas de archivos avanzados](#sistemas-de-archivos-avanzados)
 - [Almacenamiento en red](#almacenamiento-en-red)
 - [Cuotas de disco](#cuotas-de-disco)
-- [Monitorización y mantenimiento](#monitorizacion-y-mantenimiento)
-- [Recuperación de almacenamiento](#recuperacion-de-almacenamiento)
+- [Monitorización y mantenimiento](#monitorización-y-mantenimiento)
+- [Recuperación de almacenamiento](#recuperación-de-almacenamiento)
 
 ---
 

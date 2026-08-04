@@ -6,26 +6,26 @@ La virtualización es una tecnología que permite crear representaciones virtual
 
 ## Índice
 
-- [Fundamentos de la virtualización](#fundamentos-de-la-virtualizacion)
-- [Tipos de virtualización](#tipos-de-virtualizacion)
+- [Fundamentos de la virtualización](#fundamentos-de-la-virtualización)
+- [Tipos de virtualización](#tipos-de-virtualización)
 - [Hipervisores](#hipervisores)
 - [Hipervisores de tipo 1 (Bare Metal)](#hipervisores-de-tipo-1-bare-metal)
 - [Hipervisores de tipo 2 (Hosted)](#hipervisores-de-tipo-2-hosted)
-- [Máquinas virtuales](#maquinas-virtuales)
-- [Gestión de recursos virtuales](#gestion-de-recursos-virtuales)
-- [Gestión de CPU](#gestion-de-cpu)
+- [Máquinas virtuales](#máquinas-virtuales)
+- [Gestión de recursos virtuales](#gestión-de-recursos-virtuales)
+- [Gestión de CPU](#gestión-de-cpu)
 - [Redes virtuales](#redes-virtuales)
 - [Componentes de una red virtual](#componentes-de-una-red-virtual)
 - [Almacenamiento en entornos virtualizados](#almacenamiento-en-entornos-virtualizados)
 - [Discos virtuales](#discos-virtuales)
 - [Datastore](#datastore)
-- [Alta disponibilidad y migración](#alta-disponibilidad-y-migracion)
-- [Seguridad en virtualización](#seguridad-en-virtualizacion)
+- [Alta disponibilidad y migración](#alta-disponibilidad-y-migración)
+- [Seguridad en virtualización](#seguridad-en-virtualización)
 - [Seguridad del hipervisor](#seguridad-del-hipervisor)
-- [Copias de seguridad y recuperación en entornos virtuales](#copias-de-seguridad-y-recuperacion-en-entornos-virtuales)
+- [Copias de seguridad y recuperación en entornos virtuales](#copias-de-seguridad-y-recuperación-en-entornos-virtuales)
 - [Tipos de copias de seguridad de máquinas virtuales](#tipos-de-copias-de-seguridad-de-maquinas-virtuales)
-- [Monitorización y administración](#monitorizacion-y-administracion)
-- [Monitorización del host físico](#monitorizacion-del-host-fisico)
+- [Monitorización y administración](#monitorización-y-administración)
+- [Monitorización del host físico](#monitorización-del-host-fisico)
 
 ---
 
