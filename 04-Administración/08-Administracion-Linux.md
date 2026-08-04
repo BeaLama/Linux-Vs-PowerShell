@@ -6,16 +6,16 @@ Linux es uno de los sistemas operativos más utilizados en servidores, centros d
 
 ## Índice
 
-- [Arquitectura básica de Linux](#arquitectura-basica-de-linux)
+- [Arquitectura básica de Linux](#arquitectura-básica-de-linux)
 - [Sistema de archivos en Linux](#sistema-de-archivos-en-linux)
-- [Gestión de usuarios y grupos](#gestion-de-usuarios-y-grupos)
-- [Gestión de permisos](#gestion-de-permisos)
-- [Administración de procesos](#administracion-de-procesos)
-- [Gestión de servicios con systemd](#gestion-de-servicios-con-systemd)
-- [Administración del almacenamiento](#administracion-del-almacenamiento)
-- [Administración de red](#administracion-de-red)
-- [Gestión de paquetes](#gestion-de-paquetes)
-- [Administración remota mediante SSH](#administracion-remota-mediante-ssh)
+- [Gestión de usuarios y grupos](#gestión-de-usuarios-y-grupos)
+- [Gestión de permisos](#gestión-de-permisos)
+- [Administración de procesos](#administración-de-procesos)
+- [Gestión de servicios con systemd](#gestión-de-servicios-con-systemd)
+- [Administración del almacenamiento](#administración-del-almacenamiento)
+- [Administración de red](#administración-de-red)
+- [Gestión de paquetes](#gestión-de-paquetes)
+- [Administración remota mediante SSH](#administración-remota-mediante-ssh)
 
 ---
 

@@ -4,16 +4,16 @@ Microsoft Windows es uno de los sistemas operativos más utilizados en entornos 
 
 ## Índice
 
-- [Arquitectura básica de Windows](#arquitectura-basica-de-windows)
+- [Arquitectura básica de Windows](#arquitectura-básica-de-windows)
 - [Sistema de archivos en Windows](#sistema-de-archivos-en-windows)
-- [Gestión de usuarios y grupos](#gestion-de-usuarios-y-grupos)
-- [Gestión de permisos NTFS](#gestion-de-permisos-ntfs)
-- [Administración de procesos](#administracion-de-procesos)
-- [Administración de servicios](#administracion-de-servicios)
-- [Administración del almacenamiento](#administracion-del-almacenamiento)
-- [Administración de red](#administracion-de-red)
+- [Gestión de usuarios y grupos](#gestión-de-usuarios-y-grupos)
+- [Gestión de permisos NTFS](#gestión-de-permisos-ntfs)
+- [Administración de procesos](#administración-de-procesos)
+- [Administración de servicios](#administración-de-servicios)
+- [Administración del almacenamiento](#administración-del-almacenamiento)
+- [Administración de red](#administración-de-red)
 - [Registro de Windows](#registro-de-windows)
-- [Administración remota](#administracion-remota)
+- [Administración remota](#administración-remota)
 
 ---
 
