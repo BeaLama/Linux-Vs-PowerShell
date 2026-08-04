@@ -1,11 +1,11 @@
 ## 01 - Básico
 
-### - [01. Navegación](01-Basico/01-Navegacion.md)
-### - [02. Archivos y carpetas](01-Basico/02-Archivos-y-Carpetas.md)
-### - [03. Búsqueda](01-Basico/03-Busqueda.md)
-### - [04. Ayuda](01-Basico/04-Ayuda.md)
-### - [05. Variables](01-Basico/05-Variables.md)
-### - [06.  Pipes y redirecciones](01-Basico/06-Pipes-y-Redirecciones.md)
+### - [01. Navegación](01-Básico/01-Navegacion.md)
+### - [02. Archivos y carpetas](01-Básico/02-Archivos-y-Carpetas.md)
+### - [03. Búsqueda](01-Básico/03-Busqueda.md)
+### - [04. Ayuda](01-Básico/04-Ayuda.md)
+### - [05. Variables](01-Básico/05-Variables.md)
+### - [06.  Pipes y redirecciones](01-Básico/06-Pipes-y-Redirecciones.md)
 
 ## 02 - Intermedio
 
@@ -35,14 +35,14 @@
 ### - [11. Recuperación del sistema](03-Avanzado/11-Recuperacion-del-Sistema.md)
 ### - [12. Virtualización](03-Avanzado/12-Virtualizacion.md)
 
-## 04 - Administración
+## 04 - Administación
 
-### - [01. Usuarios y permisos](04-Administracion/01-Usuarios-y-Permisos.md)
-### - [02. Gestión de procesos](04-Administracion/02-Gestion-de-Procesos.md)
-### - [03. Gestión de servicios](04-Administracion/03-Gestion-de-Servicios.md)
-### - [04. Planificación de tareas](04-Administracion/04-Planificacion-de-Tareas.md)
-### - [05. Gestión de logs](04-Administracion/05-Gestion-de-Logs.md)
-### - [06. Administración remota](04-Administracion/06-Administracion-Remota.md)
-### - [07. Automatización](04-Administracion/07-Automatizacion.md)
-### - [08. Administración Linux](04-Administracion/08-Administracion-Linux.md)
-### - [09. Administración Windows](04-Administracion/09-Administracion-Windows.md)
+### - [01. Usuarios y permisos](04-Administración/01-Usuarios-y-Permisos.md)
+### - [02. Gestión de procesos](04-Administración/02-Gestion-de-Procesos.md)
+### - [03. Gestión de servicios](04-Administración/03-Gestion-de-Servicios.md)
+### - [04. Planificación de tareas](04-Administración/04-Planificacion-de-Tareas.md)
+### - [05. Gestión de logs](04-Administración/05-Gestion-de-Logs.md)
+### - [06. Administración remota](04-Administración/06-Administracion-Remota.md)
+### - [07. Automatización](04-Administración/07-Automatizacion.md)
+### - [08. Administración Linux](04-Administración/08-Administracion-Linux.md)
+### - [09. Administración Windows](04-Administración/09-Administracion-Windows.md)
