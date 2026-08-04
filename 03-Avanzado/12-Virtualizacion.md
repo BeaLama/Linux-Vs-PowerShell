@@ -1,4 +1,6 @@
-# 12 - Virtualización — Linux vs PowerShell
+# 12 - Virtualización
+
+## Introducción
 
 La virtualización es una tecnología que permite crear representaciones virtuales de recursos físicos como servidores, sistemas operativos, redes o almacenamiento.
 

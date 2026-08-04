@@ -1,398 +1,86 @@
-# Usuarios y permisos
+# Usuarios y permisos 
 
 ## Introducción
 
 La gestión de usuarios y permisos es una de las tareas más importantes dentro de la administración de sistemas.
 
-Los sistemas operativos necesitan mecanismos que permitan identificar a los usuarios, controlar sus accesos y limitar las acciones que pueden realizar sobre los recursos disponibles.
-
-Cada usuario dentro de un sistema posee una identidad asociada, la cual determina cómo será reconocido por el sistema y qué permisos tendrá asignados. Estos permisos permiten controlar el acceso a archivos, carpetas, aplicaciones, servicios y otros recursos.
-
-En entornos empresariales, la correcta administración de usuarios es fundamental para mantener la seguridad de la infraestructura. La creación de cuentas, asignación de permisos, pertenencia a grupos y gestión de privilegios deben realizarse siguiendo criterios de organización y seguridad.
-
----
-
 ## Índice
 
 - [Concepto de identidad digital](#concepto-de-identidad-digital)
 - [Usuarios en sistemas operativos](#usuarios-en-sistemas-operativos)
-- [Tipos de usuarios](#tipos-de-usuarios)
+- [Usuario administrador](#usuario-administrador)
+- [Usuario root](#usuario-root)
+- [Cuenta de servicio](#cuenta-de-servicio)
+- [Comparación de tipos de usuarios](#comparacion-de-tipos-de-usuarios)
 - [Grupos de usuarios](#grupos-de-usuarios)
-- [Identificadores de usuario](#identificadores-de-usuario)
-- [Autenticación y autorización](#autenticación-y-autorización)
-- [Gestión de usuarios en Windows](#gestión-de-usuarios-en-windows)
-- [Gestión de usuarios en Linux](#gestión-de-usuarios-en-linux)
-- [Active Directory y usuarios empresariales](#active-directory-y-usuarios-empresariales)
-- [Permisos de archivos y recursos](#permisos-de-archivos-y-recursos)
-- [Listas de control de acceso (ACL)](#listas-de-control-de-acceso-acl)
-- [Herencia de permisos](#herencia-de-permisos)
+- [Grupos integrados del sistema](#grupos-integrados-del-sistema)
+- [Componentes del SID](#componentes-del-sid)
+- [Consultar UID](#consultar-uid)
+- [/etc/passwd](#etcpasswd)
+- [/etc/group](#etcgroup)
+- [/etc/shadow](#etcshadow)
+- [Autenticación y autorización](#autenticacion-y-autorizacion)
+- [Llaves SSH](#llaves-ssh)
+- [Mostrar usuarios](#mostrar-usuarios)
+- [Obtener información de un usuario](#obtener-informacion-de-un-usuario)
+- [Crear un usuario](#crear-un-usuario)
+- [Eliminar un usuario](#eliminar-un-usuario)
+- [Deshabilitar una cuenta](#deshabilitar-una-cuenta)
+- [Habilitar una cuenta](#habilitar-una-cuenta)
+- [Mostrar grupos](#mostrar-grupos)
+- [Añadir usuario a un grupo](#anadir-usuario-a-un-grupo)
+- [Eliminar usuario de un grupo](#eliminar-usuario-de-un-grupo)
+- [/etc/passwd](#etcpasswd)
+- [/etc/shadow](#etcshadow)
+- [/etc/group](#etcgroup)
+- [Crear usuario con directorio personal](#crear-usuario-con-directorio-personal)
+- [Crear usuario con shell específica](#crear-usuario-con-shell-especifica)
+- [Cambiar nombre](#cambiar-nombre)
+- [Cambiar directorio personal](#cambiar-directorio-personal)
+- [Cambiar shell](#cambiar-shell)
+- [Eliminar usuario y directorio personal](#eliminar-usuario-y-directorio-personal)
+- [Bloquear contraseña](#bloquear-contrasena)
+- [Desbloquear cuenta](#desbloquear-cuenta)
+- [Crear grupo](#crear-grupo)
+- [Eliminar grupo](#eliminar-grupo)
+- [Añadir usuario a un grupo](#anadir-usuario-a-un-grupo)
+- [Consultar grupos de un usuario](#consultar-grupos-de-un-usuario)
+- [Permisos básicos](#permisos-basicos)
+- [Ejecución (Execute)](#ejecucion-execute)
+- [Entradas de la ACL](#entradas-de-la-acl)
+- [Permitir y denegar](#permitir-y-denegar)
+- [Consultar ACL](#consultar-acl)
+- [Asignar ACL](#asignar-acl)
+- [Eliminar una ACL](#eliminar-una-acl)
+- [Opciones al romper la herencia](#opciones-al-romper-la-herencia)
 - [Roles y privilegios administrativos](#roles-y-privilegios-administrativos)
-- [Cuentas de servicio](#cuentas-de-servicio)
-- [Gestión del ciclo de vida de usuarios](#gestión-del-ciclo-de-vida-de-usuarios) <!-- NO EXISTE. AGREGAR-->
-- [Auditoría de usuarios y permisos](#auditoría-de-usuarios-y-permisos) <!-- NO EXISTE. AGREGAR-->
+- [Operador o técnico de soporte](#operador-o-tecnico-de-soporte)
+- [Gestión del ciclo de vida de usuarios](#gestion-del-ciclo-de-vida-de-usuarios)
+- [Auditoría de usuarios y permisos](#auditoria-de-usuarios-y-permisos)
 
---- 
+---
 
 ## Concepto de identidad digital
 
-### ¿Qué es una identidad digital?
-
-Una identidad digital es la representación de una persona, aplicación o sistema dentro de un entorno informático.
-
-Los sistemas operativos necesitan una forma de identificar quién está intentando acceder a un recurso para poder decidir si ese acceso está permitido o no.
-
-Una identidad digital está formada por diferentes elementos que permiten reconocer y gestionar una entidad dentro del sistema.
-
-Ejemplo:
-
-```text
-Persona física
-
-↓
-
-Cuenta de usuario
-
-↓
-
-Identificador único
-
-↓
-
-Permisos asignados
-
-↓
-
-Acceso a recursos
-```
-
----
-
-### Diferencia entre persona, cuenta e identidad
-
-Aunque están relacionadas, una persona y una cuenta de usuario no son exactamente lo mismo.
-
-Una misma persona puede tener varias identidades digitales dependiendo del entorno donde trabaje.
-
-Ejemplo:
-
-```text
-usuario (persona)
-
-├── Cuenta corporativa
-│
-├── Cuenta administrativa
-│
-└── Cuenta personal
-```
-
-Cada cuenta puede tener diferentes permisos y funciones.
-
----
-
-### Elementos que forman una identidad digital
-
-Una identidad digital dentro de un sistema suele estar formada por:
-
-#### Nombre de usuario
-
-Es el identificador utilizado normalmente por el usuario para iniciar sesión.
-
-Ejemplo:
-
-```text
-usuario:
-
-usuario.apellido
-```
-
----
-
-#### Identificador único
-
-Los sistemas no utilizan únicamente el nombre visible del usuario.
-
-También asignan un identificador interno único.
-
-Ejemplos:
-
-Windows:
-
-```text
-SID
-```
-
-Linux:
-
-```text
-UID
-```
-
-Esto permite diferenciar usuarios aunque tengan nombres similares.
-
----
-
-#### Credenciales de autenticación
-
-Son los elementos utilizados para demostrar la identidad.
-
-Ejemplos:
-
-- Contraseña.
-- Llave de seguridad.
-- Certificado digital.
-- Token.
-- Autenticación multifactor (MFA).
-
-Ejemplo:
-
-```text
-Usuario introduce contraseña
-
-↓
-
-Sistema valida credenciales
-
-↓
-
-Identidad confirmada
-```
-
----
-
-#### Grupos asociados
-
-Las identidades pueden pertenecer a grupos que determinan sus permisos.
-
-Ejemplo:
-
-```text
-Usuario:
-
-juan
-
-
-Grupo:
-
-Contabilidad
-
-
-Permisos:
-
-Acceso carpeta Finanzas
-```
-
----
-
-#### Permisos asignados
-
-Los permisos indican qué acciones puede realizar una identidad sobre un recurso.
-
-Ejemplo:
-
-```text
-Usuario:
-
-empleado
-
-
-Recurso:
-
-Servidor archivos
-
-
-Permiso:
-
-Lectura
-```
-
----
-
-### Identidad digital en entornos empresariales
-
-En una empresa, las identidades digitales permiten administrar el acceso de empleados, equipos y servicios.
-
-Ejemplo:
-
-```text
-Empleado nuevo
-
-↓
-
-Creación de cuenta
-
-↓
-
-Asignación a departamento
-
-↓
-
-Asignación de permisos
-
-↓
-
-Acceso a recursos necesarios
-```
-
-Normalmente esta gestión se realiza mediante sistemas centralizados como:
-
-- Active Directory.
-- LDAP.
-- Microsoft Entra ID.
-- Sistemas IAM.
-
----
-
-### Identidades de usuarios, equipos y servicios
-
-Una identidad no pertenece únicamente a personas.
-
-Los sistemas también utilizan identidades para:
-
-#### Usuarios
-
-Representan personas.
-
-Ejemplo:
-
-```text
-maria.garcia
-```
-
----
-
-#### Equipos
-
-Representan dispositivos dentro de una red.
-
-Ejemplo:
-
-```text
-PC-VENTAS-01
-```
-
----
-
-#### Servicios
-
-Representan aplicaciones o procesos que necesitan autenticarse.
-
-Ejemplo:
-
-```text
-svc_backup
-
-↓
-
-Servicio de copias de seguridad
-```
-
----
-
-### Importancia de la identidad digital
-
-La gestión correcta de identidades permite:
-
-- Controlar quién accede a los sistemas.
-- Aplicar permisos adecuados.
-- Detectar accesos no autorizados.
-- Realizar auditorías.
-- Mantener la seguridad de la infraestructura.
-
-Sin una correcta gestión de identidades, un sistema no puede determinar quién tiene acceso a sus recursos ni qué acciones puede realizar.
-
----
-
-[⬆️ Volver al índice](#índice)
+**Conceptos clave:**
+
+- **¿Qué es una identidad digital?:** Una identidad digital es la representación de una persona, aplicación o sistema dentro de un entorno informático.
+- **Diferencia entre persona, cuenta e identidad:** Aunque están relacionadas, una persona y una cuenta de usuario no son exactamente lo mismo.
+- **Elementos que forman una identidad digital:** Una identidad digital dentro de un sistema suele estar formada por.
+- **Identidad digital en entornos empresariales:** En una empresa, las identidades digitales permiten administrar el acceso de empleados, equipos y servicios.
+- **Identidades de usuarios, equipos y servicios:** Una identidad no pertenece únicamente a personas.
+- **Importancia de la identidad digital:** La gestión correcta de identidades permite: Controlar quién accede a los sistemas.
 
 ## Usuarios en sistemas operativos
 
-### ¿Qué es un usuario dentro de un sistema operativo?
+**Conceptos clave:**
 
-Un usuario es una cuenta creada dentro de un sistema operativo que permite identificar a una persona, aplicación o servicio y controlar el acceso a los recursos del equipo.
-
-Cuando un usuario inicia sesión, el sistema comprueba su identidad y carga la configuración asociada a esa cuenta.
-
-Ejemplo:
-
-```text
-Usuario inicia sesión
-
-↓
-
-Sistema valida identidad
-
-↓
-
-Carga perfil del usuario
-
-↓
-
-Aplica permisos asignados
-```
-
-Un usuario no es simplemente un nombre y una contraseña, sino un conjunto de información que el sistema utiliza para gestionar accesos y privilegios.
-
----
-
-### Información asociada a un usuario
-
-Cada cuenta de usuario contiene diferentes datos dependiendo del sistema operativo.
-
-Entre la información más habitual se encuentra:
-
-- Nombre de usuario.
-- Identificador único.
-- Contraseña o método de autenticación.
-- Grupo o grupos asociados.
-- Permisos.
-- Directorio personal.
-- Configuración del perfil.
-- Registro de actividad.
-
-Ejemplo:
-
-```text
-Usuario:
-
-juan.perez
-
-
-Información:
-
-Nombre:
-juan.perez
-
-Grupo:
-Ventas
-
-Directorio:
-C:\Users\juan.perez
-
-Permisos:
-Lectura / Escritura
-```
-
----
+- **¿Qué es un usuario dentro de un sistema operativo?:** Un usuario es una cuenta creada dentro de un sistema operativo que permite identificar a una persona, aplicación o servicio y controlar el acceso a los recursos del equipo.
+- **Información asociada a un usuario:** Cada cuenta de usuario contiene diferentes datos dependiendo del sistema operativo.
 
 ### Perfil de usuario
 
-El perfil de usuario contiene la configuración personal asociada a una cuenta.
-
-Incluye elementos como:
-
-- Escritorio.
-- Documentos.
-- Preferencias del sistema.
-- Configuración de aplicaciones.
-- Archivos personales.
-
-Ejemplo en Windows:
-
-```text
-C:\Users\usuario
-```
-
-Ejemplo en Linux:
+*El perfil de usuario contiene la configuración personal asociada a una cuenta.*
 
 ```bash
 /home/usuario
@@ -400,211 +88,18 @@ Ejemplo en Linux:
 
 ---
 
-### Usuarios locales
-
-Un usuario local es una cuenta almacenada directamente en el propio equipo.
-
-La información del usuario existe únicamente en ese sistema.
-
-Ejemplo:
-
-```text
-Ordenador local
-
-↓
-
-Usuario administrador
-
-↓
-
-Cuenta almacenada en el equipo
-```
-
-Características:
-
-- Solo existe en ese dispositivo.
-- Puede iniciar sesión únicamente en ese equipo.
-- Se administra localmente.
-
-Ejemplo:
-
-Windows:
-
-```text
-PC01
-
-↓
-
-Usuario:
-Administrador
-```
-
-Linux:
-
-```text
-Servidor01
-
-↓
-
-Usuario:
-root
-```
-
----
-
-### Usuarios de dominio
-
-En entornos empresariales, los usuarios suelen gestionarse mediante un sistema centralizado.
-
-Un usuario de dominio es una cuenta almacenada en un servidor de identidad, como Active Directory.
-
-Ejemplo:
-
-```text
-Dominio:
-
-empresa.local
-
-
-Usuario:
-
-juan.perez
-
-
-↓
-
-Puede iniciar sesión en diferentes equipos
-```
-
-Ventajas:
-
-- Administración centralizada.
-- Aplicación de políticas.
-- Gestión sencilla de permisos.
-- Control de accesos.
-
----
-
-### Usuarios del sistema
-
-Los sistemas operativos crean usuarios internos para ejecutar servicios y procesos.
-
-Estos usuarios normalmente no pertenecen a personas.
-
-Ejemplo:
-
-```text
-Servicio
-
-↓
-
-Usuario del sistema
-
-↓
-
-Ejecuta proceso
-```
-
-Se utilizan para:
-
-- Ejecutar servicios.
-- Separar privilegios.
-- Mejorar seguridad.
-
-Ejemplos en Linux:
-
-```text
-www-data
-
-↓
-
-Servidor web Apache
-
-
-mysql
-
-↓
-
-Servicio base de datos
-```
-
-Ejemplos en Windows:
-
-```text
-SYSTEM
-
-LOCAL SERVICE
-
-NETWORK SERVICE
-```
-
----
-
-### Usuarios interactivos y no interactivos
-
-Los usuarios pueden clasificarse según su forma de uso.
-
----
-
-### Usuarios interactivos
-
-Son usuarios utilizados por personas.
-
-Permiten:
-
-- Inicio de sesión.
-- Uso de aplicaciones.
-- Acceso a recursos.
-
-Ejemplo:
-
-```text
-Empleado
-
-↓
-
-Cuenta corporativa
-
-↓
-
-Equipo de trabajo
-```
-
----
-
-### Usuarios no interactivos
-
-Son utilizados por servicios o procesos automáticos.
-
-No están pensados para que una persona inicie sesión.
-
-Ejemplo:
-
-```text
-svc_backup
-
-↓
-
-Ejecuta copias de seguridad automáticamente
-```
-
----
+**Conceptos clave:**
+
+- **Usuarios locales:** Un usuario local es una cuenta almacenada directamente en el propio equipo.
+- **Usuarios de dominio:** En entornos empresariales, los usuarios suelen gestionarse mediante un sistema centralizado.
+- **Usuarios del sistema:** Los sistemas operativos crean usuarios internos para ejecutar servicios y procesos.
+- **Usuarios interactivos y no interactivos:** Los usuarios pueden clasificarse según su forma de uso.
+- **Usuarios interactivos:** Son usuarios utilizados por personas.
+- **Usuarios no interactivos:** Son utilizados por servicios o procesos automáticos.
 
 ### Creación de usuarios
 
-Los administradores pueden crear usuarios mediante herramientas gráficas o comandos.
-
-Ejemplo Windows:
-
-```text
-Usuarios y grupos locales
-
-↓
-
-Nuevo usuario
-```
-
-Ejemplo Linux:
+*Los administradores pueden crear usuarios mediante herramientas gráficas o comandos.*
 
 ```bash
 useradd usuario
@@ -612,433 +107,55 @@ useradd usuario
 
 ---
 
-### Eliminación y deshabilitación de usuarios
+**Conceptos clave:**
 
-Cuando una cuenta deja de ser necesaria, debe gestionarse correctamente.
-
-Existen dos opciones:
-
----
-
-### Eliminación
-
-La cuenta se elimina completamente.
-
-Ejemplo:
-
-```text
-Usuario eliminado
-
-↓
-
-Ya no existe en el sistema
-```
-
----
-
-### Deshabilitación
-
-La cuenta permanece almacenada pero no puede utilizarse.
-
-Ejemplo:
-
-```text
-Empleado abandona empresa
-
-↓
-
-Cuenta bloqueada
-
-↓
-
-Información conservada
-```
-
-En entornos empresariales suele ser preferible deshabilitar primero antes de eliminar.
-
----
-
-### Usuarios y seguridad
-
-Las cuentas de usuario son uno de los elementos principales de seguridad de un sistema.
-
-Una mala gestión puede provocar:
-
-- Accesos indebidos.
-- Robo de información.
-- Escaladas de privilegios.
-- Uso de cuentas abandonadas.
-
-Ejemplo:
-
-```text
-Cuenta antigua activa
-
-↓
-
-Contraseña comprometida
-
-↓
-
-Acceso no autorizado
-```
-
-Por ello es importante revisar periódicamente las cuentas existentes y sus permisos asociados.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Tipos de usuarios
-
-## Usuario estándar
-
-Un usuario estándar es una cuenta destinada al uso habitual por parte de una persona.
-
-Normalmente tiene permisos limitados y puede utilizar aplicaciones y acceder a los recursos autorizados, pero no modificar configuraciones críticas del sistema.
-
-Ejemplos:
-
-- Empleados.
-- Usuarios finales.
-- Personal administrativo.
-
-Características:
-
-- Puede ejecutar aplicaciones.
-- Puede modificar su propia configuración.
-- No puede realizar cambios importantes del sistema.
-- Tiene acceso limitado a recursos.
-
-Ejemplo:
-
-```text
-Usuario:
-
-maria.garcia
-
-
-Permisos:
-
-✔ Abrir documentos
-
-✔ Usar aplicaciones
-
-✘ Instalar drivers
-
-✘ Modificar sistema
-```
-
----
+- **Eliminación y deshabilitación de usuarios:** Cuando una cuenta deja de ser necesaria, debe gestionarse correctamente.
+- **Eliminación:** La cuenta se elimina completamente.
+- **Deshabilitación:** La cuenta permanece almacenada pero no puede utilizarse.
+- **Usuarios y seguridad:** Las cuentas de usuario son uno de los elementos principales de seguridad de un sistema.
+- **Usuario estándar:** Un usuario estándar es una cuenta destinada al uso habitual por parte de una persona.
 
 ## Usuario administrador
 
-Un usuario administrador es una cuenta con permisos elevados para realizar tareas de configuración y mantenimiento del sistema.
+*Un usuario administrador es una cuenta con permisos elevados para realizar tareas de configuración y mantenimiento del sistema.*
 
-Puede modificar elementos críticos como:
+**Conceptos clave:**
 
-- Usuarios.
-- Servicios.
-- Configuración del sistema.
-- Software instalado.
-- Permisos.
-
-Ejemplos:
-
-Windows:
-
-```text
-Administrador local
-```
-
-Linux:
-
-```text
-Usuario con permisos sudo
-```
-
----
-
-### Riesgos de los usuarios administradores
-
-Las cuentas administrativas deben estar protegidas porque una cuenta comprometida puede permitir el control completo del sistema.
-
-Ejemplo:
-
-```text
-Cuenta administrador comprometida
-
-↓
-
-Atacante obtiene privilegios elevados
-
-↓
-
-Control del equipo
-```
-
-Por este motivo se recomienda:
-
-- No utilizar cuentas administrativas para tareas diarias.
-- Activar MFA cuando sea posible.
-- Auditar su uso.
-- Proteger sus credenciales.
-
----
+- **Riesgos de los usuarios administradores:** Las cuentas administrativas deben estar protegidas porque una cuenta comprometida puede permitir el control completo del sistema.
 
 ## Usuario root
 
-En sistemas Linux existe una cuenta especial llamada **root**.
-
-Es el usuario con máximo nivel de privilegios dentro del sistema.
-
-Puede:
-
-- Modificar cualquier archivo.
-- Gestionar usuarios.
-- Instalar software.
-- Cambiar configuraciones críticas.
-- Controlar servicios.
-
-Ejemplo:
-
-```bash
-root@servidor
-```
-
----
+*En sistemas Linux existe una cuenta especial llamada root.*
 
 ### Riesgos de utilizar root
 
-El uso directo de root puede ser peligroso.
-
-Un error ejecutando un comando puede afectar completamente al sistema.
-
-Ejemplo:
+*El uso directo de root puede ser peligroso.*
 
 ```bash
 rm -rf /
 ```
-
-Podría eliminar archivos esenciales.
-
-Por ello, en entornos profesionales se suele utilizar:
-
 ```bash
 sudo
 ```
 
-para ejecutar acciones administrativas de forma controlada.
-
-Ejemplo:
-
-```bash
-sudo apt update
-```
-
 ---
 
-## Usuario invitado
+**Conceptos clave:**
 
-Un usuario invitado es una cuenta creada para proporcionar acceso temporal y limitado.
-
-Características:
-
-- Permisos reducidos.
-- Acceso restringido.
-- Sin capacidad administrativa.
-
-Ejemplo:
-
-```text
-Ordenador compartido
-
-↓
-
-Usuario invitado
-
-↓
-
-Acceso limitado
-```
-
-Actualmente muchas organizaciones deshabilitan estas cuentas por motivos de seguridad.
-
----
-
-## Usuario temporal
-
-Un usuario temporal es una cuenta creada durante un periodo concreto.
-
-Se utiliza para situaciones como:
-
-- Personal externo.
-- Técnicos.
-- Pruebas.
-- Proyectos temporales.
-
-Ejemplo:
-
-```text
-Proveedor externo
-
-↓
-
-Cuenta temporal
-
-↓
-
-Trabajo realizado
-
-↓
-
-Cuenta eliminada
-```
-
----
+- **Usuario invitado:** Un usuario invitado es una cuenta creada para proporcionar acceso temporal y limitado.
+- **Usuario temporal:** Un usuario temporal es una cuenta creada durante un periodo concreto.
 
 ## Cuenta de servicio
 
-Una cuenta de servicio es una cuenta utilizada por aplicaciones o servicios para ejecutarse en un sistema.
+*Una cuenta de servicio es una cuenta utilizada por aplicaciones o servicios para ejecutarse en un sistema.*
 
-No pertenece normalmente a una persona.
+**Conceptos clave:**
 
-Ejemplos:
-
-```text
-svc_backup
-
-↓
-
-Servicio de copias
-
-
-svc_sql
-
-↓
-
-Base de datos SQL
-```
-
----
-
-### Características de las cuentas de servicio
-
-Normalmente:
-
-- No tienen inicio de sesión interactivo.
-- Tienen permisos específicos.
-- Ejecutan procesos automáticos.
-- Deben estar protegidas.
-
----
-
-### Riesgos de las cuentas de servicio
-
-Una cuenta de servicio con demasiados permisos puede convertirse en un riesgo.
-
-Ejemplo:
-
-```text
-Servicio backup
-
-↓
-
-Cuenta con permisos administrador
-
-↓
-
-Compromiso del servicio
-
-↓
-
-Control del sistema
-```
-
----
-
-## Usuario de sistema
-
-Los sistemas operativos utilizan usuarios internos para ejecutar componentes propios.
-
-Estos usuarios permiten separar procesos y reducir privilegios.
-
-Ejemplos Windows:
-
-```text
-SYSTEM
-
-LOCAL SERVICE
-
-NETWORK SERVICE
-```
-
-Ejemplos Linux:
-
-```text
-www-data
-
-mysql
-
-sshd
-```
-
----
-
-## Usuario privilegiado
-
-Un usuario privilegiado es cualquier cuenta con permisos superiores a los usuarios normales.
-
-Incluye:
-
-- Administradores.
-- Root.
-- Cuentas de servicio privilegiadas.
-- Usuarios con permisos especiales.
-
-Estas cuentas requieren controles adicionales.
-
-Ejemplo:
-
-```text
-Usuario privilegiado
-
-↓
-
-Mayor capacidad
-
-↓
-
-Mayor riesgo
-```
-
----
-
-## Cuentas compartidas
-
-Una cuenta compartida es utilizada por varias personas.
-
-Ejemplo:
-
-```text
-usuario:
-
-almacen
-
-contraseña:
-
-compartida por empleados
-```
-
-Aunque pueden parecer cómodas, presentan problemas:
-
-- No permiten saber quién realizó una acción.
-- Dificultan auditorías.
-- Aumentan riesgos de seguridad.
-
-En entornos empresariales deben evitarse siempre que sea posible.
-
----
+- **Características de las cuentas de servicio:** Normalmente: No tienen inicio de sesión interactivo.
+- **Riesgos de las cuentas de servicio:** Una cuenta de servicio con demasiados permisos puede convertirse en un riesgo.
+- **Usuario de sistema:** Los sistemas operativos utilizan usuarios internos para ejecutar componentes propios.
+- **Usuario privilegiado:** Un usuario privilegiado es cualquier cuenta con permisos superiores a los usuarios normales.
+- **Cuentas compartidas:** Una cuenta compartida es utilizada por varias personas.
 
 ## Comparación de tipos de usuarios
 
@@ -1054,627 +171,47 @@ En entornos empresariales deben evitarse siempre que sea posible.
 
 ---
 
-## Ejemplo práctico
+**Conceptos clave:**
 
-Una empresa tiene diferentes usuarios:
-
-```text
-Empleado administración
-
-↓
-
-Usuario estándar
-
-
-Administrador IT
-
-↓
-
-Usuario administrador
-
-
-Servidor SQL
-
-↓
-
-Cuenta de servicio
-
-
-Sistema operativo
-
-↓
-
-Usuario interno
-```
-
-Cada identidad tiene únicamente los permisos necesarios para cumplir su función.
-
----
-
-[⬆️ Volver al índice](#índice)
+- **Ejemplo práctico:** Una empresa tiene diferentes usuarios.
 
 ## Grupos de usuarios
 
-### ¿Por qué utilizar grupos?
+**Conceptos clave:**
 
-La utilización de grupos proporciona varias ventajas:
-
-- Simplifica la asignación de permisos.
-- Reduce errores administrativos.
-- Facilita la incorporación de nuevos usuarios.
-- Permite aplicar políticas comunes.
-- Mejora la organización.
-
-Ejemplo:
-
-Sin grupos:
-
-```text
-Usuario 1 → Permiso carpeta Finanzas
-
-Usuario 2 → Permiso carpeta Finanzas
-
-Usuario 3 → Permiso carpeta Finanzas
-```
-
-Con grupos:
-
-```text
-Grupo Contabilidad
-
-↓
-
-Permiso carpeta Finanzas
-
-↓
-
-Usuarios incluidos
-```
-
----
-
-# Tipos de grupos
-
-Los grupos pueden clasificarse según dónde se gestionen y su finalidad.
-
----
-
-## Grupos locales
-
-Un grupo local existe únicamente dentro de un equipo concreto.
-
-Los permisos asignados al grupo solo afectan a ese sistema.
-
-Ejemplo:
-
-```text
-Equipo:
-
-PC-VENTAS-01
-
-
-Grupo local:
-
-Administradores
-
-
-Usuarios:
-
-Administrador
-```
-
-Características:
-
-- Se almacenan en el propio equipo.
-- No se sincronizan con otros equipos.
-- Habituales en equipos independientes.
-
----
-
-## Grupos de dominio
-
-Los grupos de dominio son gestionados desde un sistema centralizado como Active Directory.
-
-Permiten administrar usuarios y permisos en toda una organización.
-
-Ejemplo:
-
-```text
-Dominio:
-
-empresa.local
-
-
-Grupo:
-
-Usuarios_Ventas
-
-
-Usuarios:
-
-├── Carlos
-
-├── Laura
-
-└── Pedro
-```
-
-Ventajas:
-
-- Administración centralizada.
-- Aplicación de políticas.
-- Gestión de grandes entornos.
-
----
+- **¿Por qué utilizar grupos?:** La utilización de grupos proporciona varias ventajas: Simplifica la asignación de permisos.
+- **Grupos locales:** Un grupo local existe únicamente dentro de un equipo concreto.
+- **Grupos de dominio:** Los grupos de dominio son gestionados desde un sistema centralizado como Active Directory.
 
 ## Grupos integrados del sistema
 
-Los sistemas operativos incluyen grupos creados por defecto.
-
-Estos grupos tienen funciones específicas.
-
----
-
-### Windows
-
-Ejemplos:
-
-#### Administradores
-
-Usuarios con permisos administrativos completos.
-
-```text
-Administrators
-```
-
----
-
-#### Usuarios estándar
-
-Usuarios con permisos limitados.
-
-```text
-Users
-```
-
----
-
-#### Usuarios de escritorio remoto
-
-Permite acceso mediante RDP.
-
-```text
-Remote Desktop Users
-```
-
----
-
-### Linux
-
-Linux utiliza principalmente grupos para gestionar permisos.
-
-Ejemplos:
-
-```text
-sudo
-
-↓
-
-Usuarios con permisos administrativos
-```
-
-```text
-www-data
-
-↓
-
-Servidor web
-```
-
----
-
-# Gestión de pertenencia a grupos
-
-Un usuario puede pertenecer a uno o varios grupos.
-
-Ejemplo:
-
-```text
-Usuario:
-
-juan
-
-
-Grupos:
-
-├── Usuarios
-
-├── Contabilidad
-
-└── VPN
-```
-
-Cada grupo puede aportar diferentes permisos.
-
----
-
-## Usuario perteneciente a varios grupos
-
-Cuando un usuario pertenece a varios grupos, puede acumular permisos.
-
-Ejemplo:
-
-```text
-Grupo Ventas
-
-↓
-
-Acceso documentos comerciales
-
-
-Grupo Administración
-
-↓
-
-Acceso herramientas internas
-
-
-Usuario:
-
-Ana
-
-↓
-
-Pertenece a ambos grupos
-```
-
----
-
-# Grupos y asignación de permisos
-
-La forma recomendada de administrar permisos es asignarlos a grupos en lugar de usuarios individuales.
-
-Ejemplo:
-
-Incorrecto:
-
-```text
-Usuario Juan
-
-↓
-
-Permiso carpeta Finanzas
-```
-
-Usuario María
-
-↓
-
-Permiso carpeta Finanzas
-
-
-Usuario Pedro
-
-↓
-
-Permiso carpeta Finanzas
-```
-
-Correcto:
-
-```text
-Grupo Finanzas
-
-↓
-
-Permiso carpeta Finanzas
-
-↓
-
-Usuarios del grupo
-```
-
----
-
-# Grupos en Active Directory
-
-Active Directory utiliza grupos para organizar usuarios y recursos dentro de un dominio.
-
-Los grupos permiten:
-
-- Gestionar departamentos.
-- Asignar permisos.
-- Aplicar políticas.
-- Delegar administración.
-
-Ejemplo:
-
-```text
-Empresa.local
-
-
-Usuarios
-
-↓
-
-Grupos
-
-↓
-
-Permisos
-
-↓
-
-Recursos
-```
-
----
-
-# Tipos de grupos en Active Directory
-
-Active Directory utiliza dos clasificaciones principales:
-
----
-
-## Grupos de seguridad
-
-Se utilizan para asignar permisos.
-
-Ejemplo:
-
-```text
-Grupo:
-
-RRHH
-
-
-Permiso:
-
-Acceso carpeta empleados
-```
-
----
-
-## Grupos de distribución
-
-Se utilizan principalmente para listas de correo.
-
-Ejemplo:
-
-```text
-Grupo:
-
-todos@empresa.com
-
-
-Uso:
-
-Enviar comunicaciones internas
-```
-
----
-
-# Ámbitos de grupo en Active Directory
-
-Los grupos de seguridad tienen diferentes ámbitos.
-
----
-
-## Dominio local
-
-Se utilizan principalmente para asignar permisos sobre recursos del dominio.
-
-Ejemplo:
-
-```text
-Grupo:
-
-DL_Finanzas_RW
-
-↓
-
-Permiso carpeta financiera
-```
-
----
-
-## Global
-
-Contienen usuarios del mismo dominio con una función común.
-
-Ejemplo:
-
-```text
-GG_Contabilidad
-
-↓
-
-Usuarios departamento contable
-```
-
----
-
-## Universal
-
-Permiten agrupar usuarios y grupos de diferentes dominios.
-
-Se utilizan principalmente en estructuras grandes.
-
----
-
-# Grupos anidados
-
-Un grupo puede contener otros grupos.
-
-Ejemplo:
-
-```text
-Grupo:
-
-Empleados_España
-
-
-Incluye:
-
-├── Ventas
-
-├── Marketing
-
-└── Administración
-```
-
-Esto permite crear estructuras organizativas más complejas.
-
----
-
-# Problemas habituales con grupos
-
-Una mala gestión de grupos puede provocar:
-
-- Usuarios con demasiados permisos.
-- Accesos innecesarios.
-- Dificultad para auditar permisos.
-- Confusión administrativa.
-
-Ejemplo:
-
-```text
-Usuario cambia de departamento
-
-↓
-
-Sigue en grupos antiguos
-
-↓
-
-Mantiene accesos incorrectos
-```
-
----
-
-# Ejemplo práctico
-
-Una empresa tiene una carpeta compartida:
-
-```text
-\\servidor\finanzas
-```
-
-Configuración:
-
-```text
-Grupo:
-
-GG_Finanzas
-
-
-Permiso:
-
-Modificar
-
-
-Usuarios:
-
-Ana
-
-Juan
-
-Marta
-```
-
-Si entra un nuevo empleado:
-
-```text
-Nuevo usuario
-
-↓
-
-Añadir al grupo Finanzas
-
-↓
-
-Obtiene permisos automáticamente
-```
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Identificadores de usuario
-
-# Identificadores en Windows
-
-Windows utiliza principalmente los **SID (Security Identifier)** para identificar usuarios y grupos.
-
----
-
-## SID (Security Identifier)
-
-El SID es un identificador único asignado a cada usuario, grupo o equipo dentro de Windows.
-
-Tiene una estructura similar a:
-
-```text
-S-1-5-21-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxxx-1001
-```
-
-Cada parte del SID tiene un significado concreto.
-
-Ejemplo:
-
-```text
-S-1-5-21-123456789-987654321-456789123-1001
-```
-
----
+*Los sistemas operativos incluyen grupos creados por defecto.*
+
+**Conceptos clave:**
+
+- **Windows:** Ejemplos.
+- **Linux:** Linux utiliza principalmente grupos para gestionar permisos.
+- **Usuario perteneciente a varios grupos:** Cuando un usuario pertenece a varios grupos, puede acumular permisos.
+- **Grupos de seguridad:** Se utilizan para asignar permisos.
+- **Grupos de distribución:** Se utilizan principalmente para listas de correo.
+- **Dominio local:** Se utilizan principalmente para asignar permisos sobre recursos del dominio.
+- **Global:** Contienen usuarios del mismo dominio con una función común.
+- **Universal:** Permiten agrupar usuarios y grupos de diferentes dominios.
+- **Identificadores de usuario:** Windows utiliza principalmente los SID (Security Identifier) para identificar usuarios y grupos.
+- **SID (Security Identifier):** El SID es un identificador único asignado a cada usuario, grupo o equipo dentro de Windows.
 
 ## Componentes del SID
 
-Un SID está formado por:
+*Un SID está formado por.*
 
-### Autoridad de seguridad
+**Conceptos clave:**
 
-Indica qué entidad creó el identificador.
-
-Ejemplo:
-
-```text
-S-1-5
-```
-
----
-
-### Identificador del dominio o equipo
-
-Permite diferenciar sistemas distintos.
-
-Ejemplo:
-
-```text
-S-1-5-21-xxxxxxxxxx
-```
-
----
+- **Autoridad de seguridad:** Indica qué entidad creó el identificador.
+- **Identificador del dominio o equipo:** Permite diferenciar sistemas distintos.
 
 ### RID (Relative Identifier)
 
-Es la parte final del SID y diferencia usuarios dentro del mismo dominio o equipo.
-
-Ejemplo:
-
-```text
-S-1-5-21-xxxxx-xxxxx-xxxxx-1001
-                                  ↑
-                                  RID
-```
-
----
-
-# RID (Relative Identifier)
-
-El RID identifica una cuenta concreta dentro de un sistema.
-
-Algunos valores conocidos:
+*Es la parte final del SID y diferencia usuarios dentro del mismo dominio o equipo.*
 
 | RID | Cuenta |
 |-|-|
@@ -1683,339 +220,50 @@ Algunos valores conocidos:
 | 502 | Krbtgt |
 | 1000+ | Usuarios creados posteriormente |
 
-Ejemplo:
-
-```text
-Usuario:
-
-Administrador
-
-
-SID:
-
-S-1-5-21-xxxxx-500
-```
-
----
-
-# Importancia del SID en Windows
-
-El SID permite que Windows gestione permisos correctamente.
-
-Los permisos de archivos y recursos no se asignan realmente al nombre del usuario, sino a su SID.
-
-Ejemplo:
-
-```text
-Archivo:
-
-Informe.pdf
-
-
-Permiso:
-
-SID del usuario
-
-
-Windows consulta:
-
-¿A qué usuario pertenece este SID?
-
-↓
-
-Aplica permisos
-```
-
----
-
-# Cambio de nombre de usuario en Windows
-
-Modificar el nombre visible de una cuenta no cambia su SID.
-
-Ejemplo:
-
-Antes:
-
-```text
-Usuario:
-
-juan
-```
-
-Después:
-
-```text
-Usuario:
-
-juan.perez
-```
-
-El SID permanece igual:
-
-```text
-S-1-5-21-xxxxx-1005
-```
-
-Esto permite mantener permisos existentes.
-
----
-
-# Identificadores en Linux
-
-Linux utiliza principalmente dos identificadores:
-
-- UID.
-- GID.
-
----
-
-# UID (User Identifier)
-
-El UID es un número único asignado a cada usuario del sistema.
-
-Ejemplo:
-
-```text
-Usuario:
-
-juan
-
-
-UID:
-
-1001
-```
-
-El sistema utiliza este número internamente para identificar al propietario de archivos y procesos.
-
 ---
 
 ## Consultar UID
 
-Comando:
+*Comando.*
 
 ```bash
 id usuario
 ```
-
-Ejemplo:
-
 ```bash
 id juan
 ```
 
-Resultado:
-
-```text
-uid=1001(juan)
-gid=1001(juan)
-```
-
 ---
 
-# Tipos de UID en Linux
-
-Linux utiliza diferentes rangos de UID.
-
----
-
-## Usuario root
-
-El usuario root siempre tiene:
-
-```text
-UID:
-
-0
-```
-
-Ejemplo:
-
-```text
-root:x:0:0
-```
-
----
-
-## Usuarios del sistema
-
-Normalmente utilizan UID bajos.
-
-Ejemplo:
-
-```text
-www-data
-
-UID:
-
-33
-```
-
-Son utilizados por servicios.
-
----
-
-## Usuarios normales
-
-Habitualmente comienzan desde:
-
-```text
-1000
-```
-
-Ejemplo:
-
-```text
-juan
-
-UID:
-
-1001
-```
-
----
-
-# GID (Group Identifier)
-
-El GID identifica un grupo dentro del sistema.
-
-Cada usuario tiene asociado un grupo principal.
-
-Ejemplo:
-
-```text
-Usuario:
-
-juan
-
-
-UID:
-
-1001
-
-
-Grupo:
-
-ventas
-
-
-GID:
-
-1005
-```
-
----
-
-# Relación entre UID, GID y permisos
-
-Linux utiliza UID y GID para decidir quién puede acceder a un archivo.
-
-Ejemplo:
-
-```text
-Archivo:
-
-documento.txt
-
-
-Propietario:
-
-UID 1001
-
-
-Grupo:
-
-GID 1005
-
-
-Permisos:
-
-rw-r-----
-```
-
-Interpretación:
-
-```text
-Propietario:
-
-Lectura + escritura
-
-
-Grupo:
-
-Lectura
-
-
-Otros:
-
-Sin acceso
-```
-
----
-
-# Archivos donde se almacenan identificadores Linux
-
-Linux guarda información de usuarios y grupos en diferentes archivos.
-
----
+**Conceptos clave:**
+
+- **Usuario root:** El usuario root siempre tiene.
+- **Usuarios del sistema:** Normalmente utilizan UID bajos.
+- **Usuarios normales:** Habitualmente comienzan desde.
 
 ## /etc/passwd
 
-Contiene información básica de usuarios.
-
-Ejemplo:
+*Contiene información básica de usuarios.*
 
 ```bash
 cat /etc/passwd
-```
-
-Formato:
-
-```text
-usuario:x:UID:GID:comentario:home:shell
-```
-
-Ejemplo:
-
-```text
-juan:x:1001:1001:Juan:/home/juan:/bin/bash
 ```
 
 ---
 
 ## /etc/group
 
-Contiene información sobre grupos.
-
-Ejemplo:
+*Contiene información sobre grupos.*
 
 ```bash
 cat /etc/group
-```
-
-Formato:
-
-```text
-grupo:x:GID:usuarios
 ```
 
 ---
 
 ## /etc/shadow
 
-Contiene información relacionada con contraseñas cifradas.
-
-Ejemplo:
-
-```bash
-cat /etc/shadow
-```
-
-Normalmente solo accesible por root.
-
----
-
-# Comparación Windows y Linux
+*Contiene información relacionada con contraseñas cifradas.*
 
 | Windows | Linux |
 |-|-|
@@ -2025,327 +273,30 @@ Normalmente solo accesible por root.
 | Active Directory | /etc/passwd, LDAP |
 | ACL basadas en SID | Permisos basados en UID/GID |
 
----
-
-# Importancia de los identificadores
-
-Los identificadores permiten:
-
-- Diferenciar usuarios con nombres similares.
-- Mantener permisos correctamente.
-- Realizar auditorías.
-- Gestionar accesos.
-- Evitar conflictos de identidad.
-
-Ejemplo:
-
-```text
-Usuario eliminado
-
-↓
-
-Nuevo usuario con mismo nombre
-
-↓
-
-Nuevo SID / UID
-
-↓
-
-No hereda permisos anteriores
+```bash
+cat /etc/shadow
 ```
 
 ---
-
-# Ejemplo práctico
-
-Un administrador elimina una cuenta:
-
-```text
-usuario:
-
-carlos
-```
-
-Posteriormente crea otra:
-
-```text
-usuario:
-
-carlos
-```
-
-Aunque el nombre sea igual:
-
-```text
-Cuenta antigua:
-
-SID:
-S-1-5-21-xxx-1005
-
-
-Cuenta nueva:
-
-SID:
-S-1-5-21-xxx-1012
-```
-
-El sistema las considera identidades diferentes.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Autenticación y autorización
 
-# Autenticación
-
-### ¿Qué es la autenticación?
-
-La autenticación es el proceso mediante el cual un sistema verifica la identidad de un usuario, dispositivo o servicio.
-
-Su objetivo es responder a la pregunta:
-
-```text
-¿Quién eres?
-```
-
-Para ello se utilizan diferentes métodos de identificación.
-
----
-
-# Factores de autenticación
-
-Los métodos de autenticación se clasifican en diferentes factores.
-
----
-
-## Algo que sabes
-
-Es información que únicamente debería conocer el usuario.
-
-Ejemplos:
-
-- Contraseña.
-- PIN.
-- Preguntas de seguridad.
-
-Ejemplo:
-
-```text
-Usuario:
-
-beatriz
-
-
-Contraseña:
-
-********
-```
-
----
-
-## Algo que tienes
-
-Es un elemento físico que posee el usuario.
-
-Ejemplos:
-
-- Token.
-- Tarjeta inteligente.
-- Llave de seguridad.
-- Teléfono móvil.
-
-Ejemplo:
-
-```text
-Usuario introduce contraseña
-
-↓
-
-Recibe código en móvil
-
-↓
-
-Acceso permitido
-```
-
----
-
-## Algo que eres
-
-Utiliza características biométricas del usuario.
-
-Ejemplos:
-
-- Huella dactilar.
-- Reconocimiento facial.
-- Iris.
-
-Ejemplo:
-
-```text
-Sensor biométrico
-
-↓
-
-Comparación
-
-↓
-
-Identidad confirmada
-```
-
----
-
-# Autenticación multifactor (MFA)
-
-La autenticación multifactor combina dos o más factores diferentes para aumentar la seguridad.
-
-Ejemplo:
-
-```text
-Contraseña
-
-+
-
-Código móvil
-
-↓
-
-Acceso permitido
-```
-
-La ventaja principal es que si un atacante obtiene una contraseña, todavía necesita el segundo factor.
-
----
-
-# Métodos habituales de autenticación
-
-## Usuario y contraseña
-
-Es el método más común.
-
-Funcionamiento:
-
-```text
-Usuario introduce credenciales
-
-↓
-
-Sistema comprueba información almacenada
-
-↓
-
-Permite o rechaza acceso
-```
-
----
-
-## Certificados digitales
-
-Utilizan certificados criptográficos para verificar identidades.
-
-Ejemplo:
-
-- Acceso VPN.
-- Servicios empresariales.
-- Firmas digitales.
-
----
+**Conceptos clave:**
+
+- **¿Qué es la autenticación?:** La autenticación es el proceso mediante el cual un sistema verifica la identidad de un usuario, dispositivo o servicio.
+- **Algo que sabes:** Es información que únicamente debería conocer el usuario.
+- **Algo que tienes:** Es un elemento físico que posee el usuario.
+- **Algo que eres:** Utiliza características biométricas del usuario.
+- **Usuario y contraseña:** Es el método más común.
+- **Certificados digitales:** Utilizan certificados criptográficos para verificar identidades.
 
 ## Llaves SSH
 
-En Linux, SSH permite autenticarse mediante pares de claves.
-
-Funcionamiento:
-
-```text
-Clave privada
-
-↓
-
-Usuario
-
-
-Clave pública
-
-↓
-
-Servidor
-```
-
-Ventajas:
-
-- Mayor seguridad.
-- Evita contraseñas.
-- Permite automatización segura.
-
----
-
-# Autorización
+*En Linux, SSH permite autenticarse mediante pares de claves.*
 
 ### ¿Qué es la autorización?
 
-La autorización es el proceso mediante el cual el sistema determina qué recursos puede utilizar un usuario y qué acciones puede realizar.
-
-Responde a la pregunta:
-
-```text
-¿Qué puedes hacer?
-```
-
-Ejemplo:
-
-```text
-Usuario autenticado:
-
-juan
-
-
-Sistema comprueba:
-
-Grupo Ventas
-
-
-Resultado:
-
-Puede leer documentos comerciales
-```
-
----
-
-# Elementos utilizados en la autorización
-
-La autorización depende principalmente de:
-
-- Usuarios.
-- Grupos.
-- Roles.
-- Permisos.
-- Políticas de seguridad.
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Grupo
-
-↓
-
-Permisos
-
-↓
-
-Recurso
-```
-
----
-
-# Diferencia entre autenticación y autorización
+*La autorización es el proceso mediante el cual el sistema determina qué recursos puede utilizar un usuario y qué acciones puede realizar.*
 
 | Autenticación | Autorización |
 |-|-|
@@ -2354,491 +305,27 @@ Recurso
 | Ocurre primero | Ocurre después |
 | Usa credenciales | Usa permisos y roles |
 
-Ejemplo:
-
-```text
-1. Usuario introduce contraseña
-
-↓
-
-Autenticación correcta
-
-
-2. Sistema revisa permisos
-
-↓
-
-Autorización
-
-
-3. Acceso al recurso
-```
-
 ---
 
-# Modelos de autorización
-
-Los sistemas utilizan diferentes modelos para gestionar permisos.
-
----
-
-## DAC (Discretionary Access Control)
-
-Control de acceso basado en el propietario del recurso.
-
-El propietario decide quién tiene acceso.
-
-Ejemplo:
-
-```text
-Usuario crea carpeta
-
-↓
-
-Decide quién puede acceder
-```
-
-Utilizado habitualmente en sistemas Windows y Linux.
-
----
-
-## MAC (Mandatory Access Control)
-
-Control de acceso obligatorio basado en políticas de seguridad.
-
-Los usuarios no pueden modificar libremente los permisos.
-
-Ejemplo:
-
-- Sistemas militares.
-- Entornos de alta seguridad.
-
----
-
-## RBAC (Role Based Access Control)
-
-Control basado en roles.
-
-Los permisos se asignan a roles y los usuarios reciben esos roles.
-
-Ejemplo:
-
-```text
-Rol:
-
-Contabilidad
-
-
-Permisos:
-
-Acceso financiero
-
-
-Usuario:
-
-Ana
-```
-
-Muy utilizado en empresas.
-
----
-
-## ABAC (Attribute Based Access Control)
-
-Control basado en atributos.
-
-Las decisiones dependen de características del usuario, recurso o contexto.
-
-Ejemplo:
-
-```text
-Usuario:
-
-Administrador
-
-
-Ubicación:
-
-Oficina
-
-
-Horario:
-
-Laboral
-
-
-↓
-
-Acceso permitido
-```
-
----
-
-# Proceso completo de acceso
-
-Cuando un usuario intenta acceder a un recurso ocurre lo siguiente:
-
-```text
-Usuario solicita acceso
-
-↓
-
-Sistema identifica usuario
-
-↓
-
-Autenticación
-
-↓
-
-Consulta grupos y roles
-
-↓
-
-Comprueba permisos
-
-↓
-
-Autorización
-
-↓
-
-Acceso permitido o denegado
-```
-
----
-
-# Ejemplo práctico
-
-Un empleado intenta acceder a una carpeta compartida:
-
-```text
-Usuario:
-
-maria
-
-
-Paso 1:
-
-Introduce contraseña
-
-
-Paso 2:
-
-Sistema valida identidad
-
-
-Paso 3:
-
-Comprueba grupo:
-
-RRHH
-
-
-Paso 4:
-
-Revisa permisos carpeta
-
-
-Resultado:
-
-Acceso permitido
-```
-
----
-
-# Fallos habituales
-
-Una mala configuración de autenticación o autorización puede provocar problemas de seguridad.
-
----
-
-## Contraseñas débiles
-
-Ejemplo:
-
-```text
-Usuario:
-
-admin
-
-Contraseña:
-
-123456
-```
-
-Riesgo:
-
-- Acceso no autorizado.
-- Robo de cuentas.
-
----
-
-## Exceso de permisos
-
-Ejemplo:
-
-```text
-Usuario estándar
-
-↓
-
-Permisos administrador
-```
-
-Riesgo:
-
-- Escalada de privilegios.
-- Daños accidentales.
-
----
-
-## Cuentas compartidas
-
-Ejemplo:
-
-```text
-Usuario:
-
-administrador
-
-Usado por varias personas
-```
-
-Problemas:
-
-- No existe trazabilidad.
-- Dificulta auditorías.
-
----
-
-# Importancia en administración de sistemas
-
-Una correcta gestión de autenticación y autorización permite:
-
-- Proteger recursos.
-- Controlar accesos.
-- Detectar actividades sospechosas.
-- Cumplir requisitos de seguridad.
-- Aplicar mínimo privilegio.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Gestión de usuarios en Windows
-
-# Usuarios locales y usuarios de dominio
-
-Windows permite trabajar con dos tipos principales de cuentas.
-
----
-
-## Usuarios locales
-
-Las cuentas locales existen únicamente en un equipo.
-
-Toda la información se almacena en el propio sistema operativo.
-
-Ejemplo:
-
-```text
-Equipo:
-
-PC-VENTAS-01
-
-↓
-
-Usuario:
-
-beatriz
-```
-
-Características:
-
-- Solo pueden iniciar sesión en ese equipo.
-- No dependen de un servidor.
-- Son habituales en ordenadores personales o pequeños entornos.
-
----
-
-## Usuarios de dominio
-
-Las cuentas de dominio son administradas desde un servidor, normalmente mediante Active Directory.
-
-Ejemplo:
-
-```text
-Dominio:
-
-empresa.local
-
-↓
-
-Usuario:
-
-beatriz.lama
-
-↓
-
-Puede iniciar sesión en varios equipos
-```
-
-Ventajas:
-
-- Administración centralizada.
-- Políticas comunes.
-- Gestión simplificada.
-- Mayor control de seguridad.
-
----
-
-# Herramientas gráficas
-
-Windows incorpora varias herramientas para administrar usuarios.
-
----
-
-## Configuración
-
-Ruta:
-
-```text
-Configuración
-
-↓
-
-Cuentas
-```
-
-Permite:
-
-- Cambiar contraseña.
-- Modificar información del usuario.
-- Administrar cuentas de Microsoft.
-- Gestionar opciones de inicio de sesión.
-
----
-
-## Usuarios y grupos locales
-
-Herramienta:
-
-```text
-lusrmgr.msc
-```
-
-Permite administrar:
-
-- Usuarios.
-- Grupos.
-- Contraseñas.
-- Deshabilitación de cuentas.
-- Pertenencia a grupos.
-
-> **Nota:** Disponible únicamente en las ediciones Professional, Enterprise y Server de Windows.
-
----
-
-## Administración de equipos
-
-Herramienta:
-
-```text
-compmgmt.msc
-```
-
-Ruta:
-
-```text
-Administración de equipos
-
-↓
-
-Usuarios y grupos locales
-```
-
-Desde aquí también es posible gestionar usuarios locales.
-
----
-
-# Administración mediante CMD
-
-Windows permite gestionar usuarios desde el Símbolo del sistema.
-
----
-
-## Mostrar usuarios
-
-Comando:
-
-```cmd
-net user
-```
-
-Ejemplo:
-
-```cmd
-C:\> net user
-```
-
-Muestra todas las cuentas locales existentes.
-
----
-
-## Crear un usuario
-
-Sintaxis:
-
-```cmd
-net user nombre contraseña /add
-```
-
-Ejemplo:
-
-```cmd
-net user prueba Password123 /add
-```
-
----
-
-## Eliminar un usuario
-
-Sintaxis:
-
-```cmd
-net user nombre /delete
-```
-
-Ejemplo:
-
-```cmd
-net user prueba /delete
-```
-
----
-
-## Cambiar contraseña
-
-Sintaxis:
-
-```cmd
-net user nombre nueva_contraseña
-```
-
-Ejemplo:
-
-```cmd
-net user beatriz NuevaPassword123
-```
-
----
-
-# Administración mediante PowerShell
-
-PowerShell proporciona cmdlets específicos para gestionar usuarios locales.
-
----
+**Conceptos clave:**
+
+- **DAC (Discretionary Access Control):** Control de acceso basado en el propietario del recurso.
+- **MAC (Mandatory Access Control):** Control de acceso obligatorio basado en políticas de seguridad.
+- **RBAC (Role Based Access Control):** Control basado en roles.
+- **ABAC (Attribute Based Access Control):** Control basado en atributos.
+- **Contraseñas débiles:** Ejemplo.
+- **Exceso de permisos:** Ejemplo.
+- **Cuentas compartidas:** Ejemplo.
+- **Gestión de usuarios en Windows:** Windows permite trabajar con dos tipos principales de cuentas.
+- **Usuarios locales:** Las cuentas locales existen únicamente en un equipo.
+- **Usuarios de dominio:** Las cuentas de dominio son administradas desde un servidor, normalmente mediante Active Directory.
+- **Configuración:** Ruta.
+- **Usuarios y grupos locales:** Herramienta.
+- **Administración de equipos:** Herramienta.
+- **Mostrar usuarios:** Comando.
+- **Crear un usuario:** Sintaxis.
+- **Eliminar un usuario:** Sintaxis.
+- **Cambiar contraseña:** Sintaxis.
 
 ## Mostrar usuarios
 
@@ -2861,9 +348,6 @@ Get-LocalUser -Name "beatriz"
 ```powershell
 New-LocalUser
 ```
-
-Ejemplo:
-
 ```powershell
 $password = Read-Host "Contraseña" -AsSecureString
 
@@ -2899,21 +383,9 @@ Enable-LocalUser -Name "beatriz"
 
 ---
 
-# Administración de grupos
-
-Los usuarios pueden añadirse o eliminarse de grupos locales.
-
----
-
 ## Mostrar grupos
 
-CMD:
-
-```cmd
-net localgroup
-```
-
-PowerShell:
+*CMD.*
 
 ```powershell
 Get-LocalGroup
@@ -2923,13 +395,7 @@ Get-LocalGroup
 
 ## Añadir usuario a un grupo
 
-CMD:
-
-```cmd
-net localgroup Administradores beatriz /add
-```
-
-PowerShell:
+*CMD.*
 
 ```powershell
 Add-LocalGroupMember `
@@ -2941,267 +407,53 @@ Add-LocalGroupMember `
 
 ## Eliminar usuario de un grupo
 
-CMD:
-
-```cmd
-net localgroup Administradores beatriz /delete
-```
-
-PowerShell:
+*CMD.*
 
 ```powershell
 Remove-LocalGroupMember `
 -Group "Administradores" `
 -Member "beatriz"
 ```
-
----
-
-# Restablecimiento de contraseñas
-
-Un administrador puede cambiar la contraseña de otro usuario.
-
-Desde interfaz gráfica:
-
-```text
-lusrmgr.msc
-
-↓
-
-Usuario
-
-↓
-
-Establecer contraseña
-```
-
-Desde CMD:
-
-```cmd
-net user usuario NuevaPassword123
-```
-
-Desde PowerShell:
-
 ```powershell
 Set-LocalUser
 ```
 
 ---
 
-# Bloqueo y deshabilitación de cuentas
+**Conceptos clave:**
 
-No siempre es recomendable eliminar una cuenta.
-
-En muchas ocasiones es preferible deshabilitarla.
-
-Ejemplo:
-
-```text
-Empleado deja la empresa
-
-↓
-
-Cuenta deshabilitada
-
-↓
-
-Información conservada
-```
-
-Ventajas:
-
-- Mantiene el historial.
-- Conserva permisos.
-- Permite reactivarla posteriormente.
-
----
-
-# Eliminación de cuentas
-
-Cuando una cuenta ya no es necesaria puede eliminarse.
-
-Antes de hacerlo es recomendable:
-
-- Revisar archivos personales.
-- Transferir información si es necesario.
-- Comprobar permisos asignados.
-- Verificar que no sea una cuenta de servicio.
-
----
-
-# Gestión de perfiles de usuario
-
-Cada usuario dispone de un perfil donde se almacena su configuración.
-
-Ubicación habitual:
-
-```text
-C:\Users\
-```
-
-Ejemplo:
-
-```text
-C:\Users\beatriz
-```
-
-Contiene:
-
-- Escritorio.
-- Documentos.
-- Descargas.
-- Configuración de aplicaciones.
-- Datos personales.
-
----
-
-# Auditoría de usuarios
-
-Windows registra eventos relacionados con las cuentas de usuario.
-
-Los registros pueden consultarse mediante:
-
-```text
-eventvwr.msc
-```
-
-Registros habituales:
-
-- Inicio de sesión.
-- Cierre de sesión.
-- Creación de usuarios.
-- Eliminación de cuentas.
-- Cambios de contraseña.
-- Modificación de grupos.
-
----
-
-# Ejemplo práctico
-
-Un nuevo empleado se incorpora al departamento de ventas.
-
-Proceso:
-
-```text
-Crear usuario
-
-↓
-
-Asignar contraseña
-
-↓
-
-Añadir al grupo Ventas
-
-↓
-
-Configurar perfil
-
-↓
-
-Verificar acceso
-
-↓
-
-Usuario listo para trabajar
-```
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Gestión de usuarios en Linux
-
-# Archivos relacionados con los usuarios
-
-Linux almacena la información de usuarios y grupos en varios archivos importantes.
-
----
+- **Gestión de usuarios en Linux:** Linux almacena la información de usuarios y grupos en varios archivos importantes.
 
 ## /etc/passwd
 
-Contiene la información básica de cada usuario.
-
-Consultar:
+*Contiene la información básica de cada usuario.*
 
 ```bash
 cat /etc/passwd
-```
-
-Formato:
-
-```text
-usuario:x:UID:GID:comentario:home:shell
-```
-
-Ejemplo:
-
-```text
-beatriz:x:1001:1001:Beatriz:/home/beatriz:/bin/bash
 ```
 
 ---
 
 ## /etc/shadow
 
-Almacena las contraseñas cifradas y la información relacionada con ellas.
-
-Consultar:
+*Almacena las contraseñas cifradas y la información relacionada con ellas.*
 
 ```bash
 sudo cat /etc/shadow
 ```
 
-Este archivo únicamente puede ser leído por usuarios con privilegios.
-
 ---
 
 ## /etc/group
 
-Contiene la información sobre los grupos existentes.
-
-Consultar:
+*Contiene la información sobre los grupos existentes.*
 
 ```bash
 cat /etc/group
 ```
-
-Formato:
-
-```text
-grupo:x:GID:usuarios
-```
-
-Ejemplo:
-
-```text
-ventas:x:1005:juan,ana,pedro
-```
-
----
-
-# Crear usuarios
-
-El comando más habitual es:
-
 ```bash
 useradd
 ```
-
-Sintaxis:
-
-```bash
-sudo useradd usuario
-```
-
-Ejemplo:
-
-```bash
-sudo useradd beatriz
-```
-
-Este comando crea la cuenta, aunque normalmente es necesario configurar una contraseña y el directorio personal.
 
 ---
 
@@ -3211,18 +463,6 @@ Este comando crea la cuenta, aunque normalmente es necesario configurar una cont
 sudo useradd -m beatriz
 ```
 
-La opción:
-
-```text
--m
-```
-
-crea automáticamente:
-
-```text
-/home/beatriz
-```
-
 ---
 
 ## Crear usuario con shell específica
@@ -3230,29 +470,8 @@ crea automáticamente:
 ```bash
 sudo useradd -m -s /bin/bash beatriz
 ```
-
----
-
-# Establecer contraseña
-
-Después de crear un usuario, normalmente se asigna una contraseña.
-
-Comando:
-
 ```bash
 sudo passwd beatriz
-```
-
-El sistema solicitará introducir la nueva contraseña dos veces.
-
----
-
-# Modificar usuarios
-
-Linux permite modificar diferentes propiedades de una cuenta mediante:
-
-```bash
-usermod
 ```
 
 ---
@@ -3262,9 +481,6 @@ usermod
 ```bash
 sudo usermod -l nuevo_nombre usuario
 ```
-
-Ejemplo:
-
 ```bash
 sudo usermod -l beatriz.lama beatriz
 ```
@@ -3284,21 +500,8 @@ sudo usermod -d /home/nuevo_usuario usuario
 ```bash
 sudo usermod -s /bin/zsh usuario
 ```
-
----
-
-# Eliminar usuarios
-
-Eliminar únicamente la cuenta:
-
 ```bash
 sudo userdel usuario
-```
-
-Ejemplo:
-
-```bash
-sudo userdel beatriz
 ```
 
 ---
@@ -3309,24 +512,6 @@ sudo userdel beatriz
 sudo userdel -r beatriz
 ```
 
-La opción:
-
-```text
--r
-```
-
-también elimina:
-
-```text
-/home/beatriz
-```
-
----
-
-# Bloquear y desbloquear cuentas
-
-En muchas ocasiones es preferible bloquear una cuenta antes que eliminarla.
-
 ---
 
 ## Bloquear contraseña
@@ -3334,9 +519,6 @@ En muchas ocasiones es preferible bloquear una cuenta antes que eliminarla.
 ```bash
 sudo passwd -l usuario
 ```
-
-Ejemplo:
-
 ```bash
 sudo passwd -l beatriz
 ```
@@ -3348,12 +530,6 @@ sudo passwd -l beatriz
 ```bash
 sudo passwd -u beatriz
 ```
-
----
-
-# Gestión de grupos
-
-Linux utiliza grupos para organizar permisos.
 
 ---
 
@@ -3379,17 +555,6 @@ sudo groupdel ventas
 sudo usermod -aG ventas beatriz
 ```
 
-La opción:
-
-```text
--aG
-```
-
-significa:
-
-- Añadir.
-- Mantener los grupos existentes.
-
 ---
 
 ## Consultar grupos de un usuario
@@ -3397,865 +562,37 @@ significa:
 ```bash
 groups beatriz
 ```
-
-O bien:
-
 ```bash
 id beatriz
 ```
 
-Ejemplo:
-
-```text
-uid=1001(beatriz)
-
-gid=1001(beatriz)
-
-groups=1001(beatriz),1005(ventas)
-```
-
 ---
 
-# Información sobre usuarios
-
-Consultar información de la cuenta actual:
-
-```bash
-whoami
-```
-
----
-
-Consultar el identificador:
-
-```bash
-id
-```
-
----
-
-Ver usuarios conectados:
-
-```bash
-who
-```
-
----
-
-Ver actividad reciente:
-
-```bash
-last
-```
-
----
-
-# Directorio personal
-
-Cada usuario posee normalmente un directorio personal.
-
-Ubicación habitual:
-
-```text
-/home/usuario
-```
-
-Ejemplo:
-
-```text
-/home/beatriz
-```
-
-Este directorio suele contener:
-
-- Documentos.
-- Descargas.
-- Configuración personal.
-- Archivos ocultos.
-- Configuración del shell.
-
----
-
-# Shell de usuario
-
-La shell es el programa que se ejecuta al iniciar sesión.
-
-Consultar la shell actual:
-
-```bash
-echo $SHELL
-```
-
-Shells habituales:
-
-```text
-/bin/bash
-
-/bin/zsh
-
-/bin/sh
-```
-
----
-
-# Uso de sudo
-
-En la mayoría de distribuciones Linux no se trabaja directamente como **root**.
-
-En su lugar se utiliza:
-
-```bash
-sudo
-```
-
-Ejemplo:
-
-```bash
-sudo apt update
-```
-
-Ventajas:
-
-- Mayor seguridad.
-- Registro de acciones.
-- Menor riesgo de errores.
-
----
-
-# Auditoría de usuarios
-
-Linux registra información relacionada con accesos y autenticación.
-
-Archivos habituales:
-
-```text
-/var/log/auth.log
-```
-
-o
-
-```text
-journalctl
-```
-
-Consultar accesos:
-
-```bash
-last
-```
-
-Consultar autenticaciones:
-
-```bash
-sudo journalctl -u ssh
-```
-
----
-
-# Ejemplo práctico
-
-Se incorpora un nuevo empleado al departamento de ventas.
-
-Proceso:
-
-```text
-Crear usuario
-
-↓
-
-Asignar contraseña
-
-↓
-
-Crear directorio personal
-
-↓
-
-Añadir al grupo Ventas
-
-↓
-
-Verificar acceso
-
-↓
-
-Usuario operativo
-```
-
-Comandos:
-
-```bash
-sudo useradd -m beatriz
-
-sudo passwd beatriz
-
-sudo usermod -aG ventas beatriz
-```
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Active Directory y usuarios empresariales
-
-# ¿Qué es Active Directory?
-
-Active Directory es un servicio de directorio que almacena información sobre los objetos de una red y permite administrarlos de forma centralizada.
-
-Entre los objetos más habituales se encuentran:
-
-- Usuarios.
-- Equipos.
-- Grupos.
-- Impresoras.
-- Carpetas compartidas.
-- Unidades Organizativas (OU).
-- Políticas de grupo (GPO).
-
----
-
-# Ventajas de Active Directory
-
-Implementar Active Directory aporta numerosas ventajas.
-
-Permite:
-
-- Centralizar la administración.
-- Gestionar usuarios desde un único servidor.
-- Aplicar políticas comunes.
-- Administrar permisos de forma sencilla.
-- Facilitar el inicio de sesión en cualquier equipo del dominio.
-- Mejorar la seguridad de la infraestructura.
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Inicia sesión
-
-↓
-
-Accede a cualquier equipo del dominio
-
-↓
-
-Obtiene su configuración automáticamente
-```
-
----
-
-# Componentes principales
-
-Un entorno de Active Directory está formado por varios elementos.
-
----
-
-## Dominio
-
-El dominio es la unidad principal de administración.
-
-Agrupa usuarios, equipos y recursos bajo una misma base de datos.
-
-Ejemplo:
-
-```text
-empresa.local
-```
-
-Todos los equipos unidos al dominio comparten la misma autenticación.
-
----
-
-## Controlador de dominio (Domain Controller)
-
-El controlador de dominio es el servidor que almacena la base de datos de Active Directory.
-
-Funciones principales:
-
-- Autenticar usuarios.
-- Autorizar accesos.
-- Gestionar políticas.
-- Administrar objetos del dominio.
-
-Ejemplo:
-
-```text
-Usuario inicia sesión
-
-↓
-
-Controlador de dominio
-
-↓
-
-Autenticación correcta
-```
-
----
-
-## Objetos
-
-Todo elemento administrado dentro de Active Directory recibe el nombre de objeto.
-
-Ejemplos:
-
-- Usuario.
-- Grupo.
-- Equipo.
-- Impresora.
-- Unidad Organizativa.
-
----
-
-# Usuarios del dominio
-
-Los usuarios del dominio pueden iniciar sesión en cualquier equipo unido al dominio, siempre que tengan permisos.
-
-Ejemplo:
-
-```text
-Dominio:
-
-empresa.local
-
-↓
-
-Usuario:
-
-beatriz.lama
-
-↓
-
-Acceso a PC01
-
-↓
-
-Acceso a PC02
-
-↓
-
-Acceso a SERVIDOR01
-```
-
----
-
-# Equipos del dominio
-
-Los equipos también son objetos dentro de Active Directory.
-
-Cada ordenador unido al dominio dispone de su propia cuenta.
-
-Ejemplo:
-
-```text
-PC-VENTAS-01
-
-↓
-
-Objeto en Active Directory
-```
-
-Esto permite aplicar políticas específicas a cada equipo.
-
----
-
-# Unidades Organizativas (OU)
-
-Las OU permiten organizar los objetos del dominio de forma lógica.
-
-Ejemplo:
-
-```text
-empresa.local
-
-│
-
-├── Dirección
-
-├── Administración
-
-├── Ventas
-
-└── Informática
-```
-
-Dentro de cada OU pueden almacenarse:
-
-- Usuarios.
-- Equipos.
-- Grupos.
-- Otras OU.
-
----
-
-# Grupos en Active Directory
-
-Los grupos facilitan la asignación de permisos.
-
-Ejemplo:
-
-```text
-Grupo:
-
-Ventas
-
-↓
-
-Usuarios:
-
-Ana
-
-Juan
-
-Pedro
-```
-
-En lugar de asignar permisos a cada usuario, se asignan al grupo.
-
----
-
-# Políticas de Grupo (GPO)
-
-Las **Group Policy Objects (GPO)** permiten aplicar configuraciones automáticamente a usuarios y equipos.
-
-Ejemplos de configuraciones:
-
-- Fondo de pantalla.
-- Restricciones del Panel de control.
-- Configuración del firewall.
-- Instalación automática de software.
-- Políticas de contraseña.
-
-Ejemplo:
-
-```text
-Administrador
-
-↓
-
-GPO
-
-↓
-
-Usuarios del dominio
-
-↓
-
-Configuración aplicada automáticamente
-```
-
----
-
-# Administración mediante Active Directory Users and Computers
-
-La herramienta principal para administrar usuarios es:
-
-```text
-Active Directory Users and Computers
-```
-
-Comando:
-
-```text
-dsa.msc
-```
-
-Permite:
-
-- Crear usuarios.
-- Eliminar cuentas.
-- Gestionar grupos.
-- Mover objetos.
-- Restablecer contraseñas.
-- Deshabilitar usuarios.
-
----
-
-# Ciclo de vida de un usuario
-
-En un entorno empresarial, las cuentas siguen normalmente un ciclo de vida.
-
-```text
-Alta
-
-↓
-
-Asignación de grupos
-
-↓
-
-Asignación de permisos
-
-↓
-
-Cambios de departamento
-
-↓
-
-Deshabilitación
-
-↓
-
-Eliminación
-```
-
-Una correcta gestión evita cuentas huérfanas y accesos innecesarios.
-
----
-
-# Delegación de administración
-
-No siempre es necesario que un único administrador gestione todo el dominio.
-
-Active Directory permite delegar tareas concretas.
-
-Ejemplos:
-
-- Restablecer contraseñas.
-- Crear usuarios.
-- Administrar una OU específica.
-
-Esto permite distribuir responsabilidades sin conceder privilegios de administrador del dominio.
-
----
-
-# Auditoría de usuarios
-
-Las acciones realizadas sobre los usuarios pueden registrarse para su posterior revisión.
-
-Ejemplos de eventos:
-
-- Inicio de sesión.
-- Cambio de contraseña.
-- Bloqueo de cuenta.
-- Creación de usuarios.
-- Eliminación de cuentas.
-- Cambios de pertenencia a grupos.
-
-Esta información es fundamental para auditorías y análisis de incidentes.
-
----
-
-# Ejemplo práctico
-
-Una nueva empleada se incorpora al departamento de ventas.
-
-Proceso:
-
-```text
-Crear usuario
-
-↓
-
-Añadir a la OU Ventas
-
-↓
-
-Agregar al grupo GG_Ventas
-
-↓
-
-Aplicar GPO del departamento
-
-↓
-
-Asignar permisos compartidos
-
-↓
-
-Usuario operativo
-```
-
-Gracias a Active Directory, toda la configuración se aplica automáticamente sin necesidad de configurar manualmente cada equipo.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Permisos de archivos y recursos
-
-# ¿Qué son los permisos?
-
-Un permiso es una autorización que permite realizar una acción concreta sobre un recurso.
-
-Los permisos determinan qué usuarios pueden:
-
-- Leer información.
-- Modificar archivos.
-- Ejecutar programas.
-- Eliminar contenido.
-- Cambiar permisos.
-- Tomar posesión de recursos.
-
-Ejemplo:
-
-```text
-Archivo
-
-↓
-
-Permisos
-
-↓
-
-Usuario autorizado
-```
-
----
-
-# Tipos de recursos
-
-Los permisos pueden aplicarse sobre diferentes tipos de recursos.
-
-Ejemplos:
-
-```text
-Archivo
-
-Carpeta
-
-Unidad compartida
-
-Impresora
-
-Servicio
-
-Base de datos
-
-Aplicación
-```
-
-Cada tipo de recurso puede disponer de un sistema de permisos específico.
-
----
-
-# Permisos en Windows (NTFS)
-
-Windows utiliza el sistema de archivos **NTFS**, que incorpora un modelo avanzado de permisos.
-
-Los permisos pueden asignarse a:
-
-- Usuarios.
-- Grupos.
-- Cuentas del sistema.
-
----
+**Conceptos clave:**
+
+- **Active Directory y usuarios empresariales:** Active Directory es un servicio de directorio que almacena información sobre los objetos de una red y permite administrarlos de forma centralizada.
+- **Dominio:** El dominio es la unidad principal de administración.
+- **Controlador de dominio (Domain Controller):** El controlador de dominio es el servidor que almacena la base de datos de Active Directory.
+- **Objetos:** Todo elemento administrado dentro de Active Directory recibe el nombre de objeto.
+- **Permisos de archivos y recursos:** Un permiso es una autorización que permite realizar una acción concreta sobre un recurso.
 
 ## Permisos básicos
 
-Los permisos básicos más habituales son:
+*Los permisos básicos más habituales son.*
 
-### Control total
+**Conceptos clave:**
 
-Permite realizar cualquier acción sobre el recurso.
-
-Incluye:
-
-- Leer.
-- Escribir.
-- Modificar.
-- Eliminar.
-- Cambiar permisos.
-- Tomar posesión.
-
----
-
-### Modificar
-
-Permite:
-
-- Leer.
-- Escribir.
-- Ejecutar.
-- Eliminar.
-
-No permite modificar permisos ni cambiar el propietario.
-
----
-
-### Lectura y ejecución
-
-Permite:
-
-- Abrir archivos.
-- Ejecutar programas.
-- Leer información.
-
----
-
-### Lectura
-
-Permite visualizar el contenido, pero no modificarlo.
-
----
-
-### Escritura
-
-Permite crear y modificar archivos sin eliminarlos.
-
----
-
-# Permisos avanzados de NTFS
-
-Además de los permisos básicos, NTFS dispone de permisos avanzados.
-
-Ejemplos:
-
-- Crear archivos.
-- Crear carpetas.
-- Eliminar subcarpetas.
-- Leer atributos.
-- Escribir atributos.
-- Cambiar permisos.
-- Tomar posesión.
-
-Estos permisos permiten un control mucho más preciso sobre los recursos.
-
----
-
-# Permisos compartidos
-
-Cuando una carpeta se comparte por red, Windows aplica dos niveles de permisos.
-
-```text
-Permisos compartidos
-
-+
-
-Permisos NTFS
-```
-
-El permiso efectivo será siempre el más restrictivo.
-
-Ejemplo:
-
-```text
-Compartido:
-
-Lectura
-
-NTFS:
-
-Control total
-
-↓
-
-Resultado:
-
-Lectura
-```
-
----
-
-# Permisos en Linux
-
-Linux utiliza un sistema de permisos mucho más simple basado en tres tipos de usuarios.
-
-```text
-Propietario
-
-Grupo
-
-Otros usuarios
-```
-
-Cada uno puede tener tres permisos básicos.
-
----
-
-## Lectura (Read)
-
-Representado por:
-
-```text
-r
-```
-
-Permite visualizar el contenido de un archivo.
-
-Valor:
-
-```text
-4
-```
-
----
-
-## Escritura (Write)
-
-Representado por:
-
-```text
-w
-```
-
-Permite modificar archivos.
-
-Valor:
-
-```text
-2
-```
-
----
+- **Control total:** Permite realizar cualquier acción sobre el recurso.
+- **Modificar:** Permite: Leer.
+- **Lectura y ejecución:** Permite: Abrir archivos.
+- **Lectura:** Permite visualizar el contenido, pero no modificarlo.
+- **Escritura:** Permite crear y modificar archivos sin eliminarlos.
+- **Lectura (Read):** Representado por.
+- **Escritura (Write):** Representado por.
 
 ## Ejecución (Execute)
 
-Representado por:
-
-```text
-x
-```
-
-Permite ejecutar programas o scripts.
-
-Valor:
-
-```text
-1
-```
-
----
-
-# Representación de permisos
-
-Ejemplo:
-
-```text
--rwxr-xr--
-```
-
-Interpretación:
-
-```text
--
-
-Archivo
-
-
-rwx
-
-Propietario
-
-
-r-x
-
-Grupo
-
-
-r--
-
-Otros
-```
-
----
-
-# Permisos numéricos
-
-Linux también permite representar permisos mediante números.
+*Representado por.*
 
 | Valor | Permisos |
 |--------|----------|
@@ -4268,377 +605,26 @@ Linux también permite representar permisos mediante números.
 | 1 | --x |
 | 0 | --- |
 
-Ejemplo:
-
 ```bash
 chmod 755 archivo.sh
 ```
-
-Equivale a:
-
-```text
-rwx
-
-r-x
-
-r-x
-```
-
----
-
-# Modificación de permisos
-
-Linux utiliza el comando:
-
 ```bash
 chmod
 ```
 
-Ejemplo:
-
-```bash
-chmod 644 documento.txt
-```
-
-Otro ejemplo:
-
-```bash
-chmod +x script.sh
-```
-
 ---
 
-# Cambio de propietario
-
-El propietario puede modificarse mediante:
-
-```bash
-chown
-```
-
-Ejemplo:
-
-```bash
-sudo chown beatriz documento.txt
-```
-
-Cambiar propietario y grupo:
-
-```bash
-sudo chown beatriz:ventas documento.txt
-```
-
----
-
-# Cambio de grupo
-
-Comando:
-
-```bash
-chgrp
-```
-
-Ejemplo:
-
-```bash
-sudo chgrp ventas informe.xlsx
-```
-
----
-
-# Permisos efectivos
-
-El permiso efectivo es el resultado final de combinar:
-
-- Identidad del usuario.
-- Grupo.
-- Permisos asignados.
-- Herencia.
-- ACL (si existen).
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Grupo
-
-↓
-
-Permisos
-
-↓
-
-Acceso final
-```
-
----
-
-# Principio del mínimo privilegio
-
-Uno de los principios fundamentales de seguridad consiste en conceder únicamente los permisos necesarios para realizar una tarea.
-
-Ejemplo correcto:
-
-```text
-Empleado
-
-↓
-
-Lectura carpeta RRHH
-```
-
-Ejemplo incorrecto:
-
-```text
-Empleado
-
-↓
-
-Control total servidor
-```
-
-Cuantos más permisos tenga una cuenta, mayor será el riesgo en caso de compromiso.
-
----
-
-# Problemas habituales
-
-Una mala gestión de permisos puede provocar:
-
-- Accesos no autorizados.
-- Modificación accidental de información.
-- Eliminación de archivos.
-- Robo de datos.
-- Escalada de privilegios.
-
-Ejemplo:
-
-```text
-Carpeta compartida
-
-↓
-
-Todos tienen Control total
-
-↓
-
-Borrado accidental
-```
-
----
-
-# Ejemplo práctico
-
-Una empresa dispone de una carpeta compartida para el departamento de Finanzas.
-
-Configuración:
-
-```text
-Grupo:
-
-GG_Finanzas
-
-↓
-
-Permiso NTFS:
-
-Modificar
-
-↓
-
-Usuarios:
-
-Ana
-
-Pedro
-
-Marta
-```
-
-Cuando un nuevo empleado se incorpora:
-
-```text
-Nuevo usuario
-
-↓
-
-Añadir al grupo GG_Finanzas
-
-↓
-
-Obtiene permisos automáticamente
-```
-
-No es necesario modificar los permisos de la carpeta.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Listas de Control de Acceso (ACL)
-
-# ¿Qué es una ACL?
-
-Una ACL es una lista formada por una o varias entradas que especifican los permisos de distintos usuarios o grupos sobre un recurso.
-
-Cada entrada recibe el nombre de **ACE (Access Control Entry)**.
-
-Ejemplo:
-
-```text
-Archivo
-
-↓
-
-ACL
-
-├── Ana → Lectura
-
-├── Pedro → Modificar
-
-└── Administradores → Control total
-```
-
----
-
-# Componentes de una ACL
-
-Una ACL está formada por diferentes elementos.
-
----
-
-## Recurso
-
-Es el objeto sobre el que se aplican los permisos.
-
-Ejemplos:
-
-- Archivo.
-- Carpeta.
-- Impresora.
-- Unidad compartida.
-
----
-
-## Identidad
-
-Indica quién recibirá los permisos.
-
-Puede ser:
-
-- Usuario.
-- Grupo.
-- Cuenta del sistema.
-
-Ejemplo:
-
-```text
-Usuario:
-
-beatriz
-```
-
----
-
-## Permiso
-
-Define qué acciones podrá realizar la identidad.
-
-Ejemplos:
-
-- Lectura.
-- Escritura.
-- Modificación.
-- Control total.
-
----
-
-## Tipo de acceso
-
-Cada entrada puede permitir o denegar permisos.
-
-Ejemplo:
-
-```text
-Permitir
-
-↓
-
-Lectura
-```
-
-o
-
-```text
-Denegar
-
-↓
-
-Eliminar archivos
-```
-
----
-
-# Funcionamiento de una ACL
-
-Cuando un usuario intenta acceder a un recurso, el sistema sigue un proceso similar al siguiente:
-
-```text
-Usuario solicita acceso
-
-↓
-
-Sistema identifica usuario
-
-↓
-
-Consulta la ACL
-
-↓
-
-Comprueba permisos
-
-↓
-
-Permite o deniega acceso
-```
-
----
-
-# ACL en Windows
-
-Windows utiliza ACL en el sistema de archivos **NTFS**.
-
-Cada archivo y carpeta dispone de una lista de permisos propia.
-
-Ejemplo:
-
-```text
-Carpeta
-
-↓
-
-Propiedades
-
-↓
-
-Seguridad
-
-↓
-
-Usuarios y permisos
-```
-
----
+**Conceptos clave:**
+
+- **Listas de Control de Acceso (ACL):** Una ACL es una lista formada por una o varias entradas que especifican los permisos de distintos usuarios o grupos sobre un recurso.
+- **Recurso:** Es el objeto sobre el que se aplican los permisos.
+- **Identidad:** Indica quién recibirá los permisos.
+- **Permiso:** Define qué acciones podrá realizar la identidad.
+- **Tipo de acceso:** Cada entrada puede permitir o denegar permisos.
 
 ## Entradas de la ACL
 
-Cada usuario o grupo tiene su propia entrada.
-
-Ejemplo:
+*Cada usuario o grupo tiene su propia entrada.*
 
 | Usuario o grupo | Permisos |
 |-----------------|----------|
@@ -4650,66 +636,20 @@ Ejemplo:
 
 ## Permitir y denegar
 
-Windows permite definir permisos de dos tipos.
+*Windows permite definir permisos de dos tipos.*
 
----
+**Conceptos clave:**
 
-### Permitir
-
-Autoriza una acción.
-
-Ejemplo:
-
-```text
-Usuario:
-
-Ana
-
-↓
-
-Permitir lectura
-```
-
----
-
-### Denegar
-
-Bloquea una acción incluso si otro permiso pudiera concederla.
-
-Ejemplo:
-
-```text
-Usuario:
-
-Pedro
-
-↓
-
-Denegar eliminación
-```
-
-Las entradas de denegación deben utilizarse con precaución, ya que pueden generar conflictos difíciles de administrar.
-
----
-
-# ACL en Linux
-
-Linux dispone de permisos tradicionales (propietario, grupo y otros), pero también puede utilizar ACL para asignar permisos más específicos.
-
-Esto permite conceder permisos individuales sin modificar los permisos generales del archivo.
-
----
+- **Permitir:** Autoriza una acción.
+- **Denegar:** Bloquea una acción incluso si otro permiso pudiera concederla.
 
 ## Consultar ACL
 
-Comando:
+*Comando.*
 
 ```bash
 getfacl archivo.txt
 ```
-
-Ejemplo:
-
 ```bash
 getfacl informe.pdf
 ```
@@ -4718,29 +658,20 @@ getfacl informe.pdf
 
 ## Asignar ACL
 
-Comando:
+*Comando.*
 
 ```bash
 setfacl
 ```
-
-Ejemplo:
-
 ```bash
 setfacl -m u:beatriz:rwx informe.pdf
 ```
-
-Significado:
-
-- **u** → Usuario.
-- **beatriz** → Usuario.
-- **rwx** → Permisos.
 
 ---
 
 ## Eliminar una ACL
 
-Ejemplo:
+*Ejemplo.*
 
 ```bash
 setfacl -x u:beatriz informe.pdf
@@ -4748,584 +679,39 @@ setfacl -x u:beatriz informe.pdf
 
 ---
 
-# Ventajas de utilizar ACL
-
-Las ACL ofrecen numerosas ventajas frente a los permisos tradicionales.
-
-Permiten:
-
-- Asignar permisos a usuarios concretos.
-- Evitar crear grupos innecesarios.
-- Gestionar permisos complejos.
-- Adaptarse mejor a entornos empresariales.
-
-Ejemplo:
-
-```text
-Archivo
-
-↓
-
-Permisos generales
-
-↓
-
-ACL específica
-
-↓
-
-Usuario adicional autorizado
-```
-
----
-
-# Desventajas de las ACL
-
-Una mala gestión puede provocar:
-
-- Configuraciones difíciles de entender.
-- Mayor complejidad administrativa.
-- Conflictos entre permisos.
-- Problemas durante auditorías.
-
-Por ello es recomendable documentar correctamente su uso.
-
----
-
-# ACL y herencia
-
-Las ACL pueden heredarse desde carpetas superiores.
-
-Ejemplo:
-
-```text
-Empresa
-
-↓
-
-Finanzas
-
-↓
-
-Facturas
-
-↓
-
-Archivo.xlsx
-```
-
-Si la carpeta **Finanzas** tiene permisos heredables, el archivo también los recibirá automáticamente.
-
-La herencia se estudiará con mayor detalle en el siguiente apartado.
-
----
-
-# ACL y permisos efectivos
-
-El permiso final de un usuario depende de varios factores:
-
-- Permisos directos.
-- Pertenencia a grupos.
-- ACL.
-- Herencia.
-- Entradas de denegación.
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Grupo
-
-↓
-
-ACL
-
-↓
-
-Permiso efectivo
-```
-
----
-
-# Buen uso de las ACL
-
-Las ACL deben utilizarse cuando los permisos tradicionales no sean suficientes.
-
-Ejemplos adecuados:
-
-- Permitir acceso a un único usuario.
-- Compartir un archivo entre departamentos.
-- Conceder permisos temporales.
-- Gestionar excepciones concretas.
-
-Si muchos usuarios necesitan los mismos permisos, suele ser preferible utilizar grupos.
-
----
-
-# Ejemplo práctico
-
-Una carpeta contiene información confidencial.
-
-Configuración inicial:
-
-```text
-Grupo RRHH
-
-↓
-
-Modificar
-```
-
-Posteriormente un auditor necesita acceso únicamente durante una semana.
-
-En lugar de modificar el grupo:
-
-```text
-Carpeta
-
-↓
-
-ACL
-
-↓
-
-Usuario auditor
-
-↓
-
-Lectura
-```
-
-Una vez finalizada la auditoría, la entrada de la ACL puede eliminarse sin afectar al resto de usuarios.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Herencia de permisos
-
-# ¿Cómo funciona la herencia?
-
-Cuando se crea un nuevo archivo o carpeta dentro de otra carpeta, el sistema puede copiar automáticamente los permisos del elemento padre.
-
-Ejemplo:
-
-```text
-Carpeta principal
-
-↓
-
-Permisos definidos
-
-↓
-
-Nueva carpeta creada
-
-↓
-
-Permisos heredados
-```
-
-Esto evita tener que configurar manualmente los permisos de cada nuevo recurso.
-
----
-
-# Elemento padre y elemento hijo
-
-En la herencia existen dos conceptos principales.
-
----
-
-## Elemento padre
-
-Es el recurso que contiene otros elementos y desde el que se heredan los permisos.
-
-Ejemplo:
-
-```text
-Empresa
-```
-
----
-
-## Elemento hijo
-
-Es el recurso que recibe automáticamente los permisos del elemento superior.
-
-Ejemplo:
-
-```text
-Empresa
-
-↓
-
-Finanzas
-
-↓
-
-Presupuestos.xlsx
-```
-
-En este caso:
-
-- **Empresa** es el elemento padre.
-- **Finanzas** y **Presupuestos.xlsx** son elementos hijos.
-
----
-
-# Herencia en Windows (NTFS)
-
-Windows utiliza la herencia de permisos de forma predeterminada en el sistema de archivos NTFS.
-
-Cuando una carpeta tiene habilitada la herencia, todos los archivos y subcarpetas creados dentro de ella reciben automáticamente los mismos permisos.
-
-Ejemplo:
-
-```text
-Carpeta Recursos Humanos
-
-↓
-
-Grupo RRHH
-
-↓
-
-Modificar
-
-↓
-
-Todos los documentos heredan ese permiso
-```
-
----
-
-## Visualizar la herencia
-
-Ruta:
-
-```text
-Propiedades
-
-↓
-
-Seguridad
-
-↓
-
-Opciones avanzadas
-```
-
-Desde esta ventana es posible comprobar:
-
-- Qué permisos son heredados.
-- Qué permisos son explícitos.
-- Desde qué carpeta proceden.
-
----
-
-# Permisos heredados y permisos explícitos
-
-Windows diferencia entre dos tipos de permisos.
-
----
-
-## Permisos heredados
-
-Proceden de una carpeta superior.
-
-Ejemplo:
-
-```text
-Empresa
-
-↓
-
-Ventas
-
-↓
-
-Clientes.xlsx
-
-↓
-
-Permisos heredados
-```
-
----
-
-## Permisos explícitos
-
-Son permisos configurados directamente sobre un recurso concreto.
-
-Ejemplo:
-
-```text
-Clientes.xlsx
-
-↓
-
-Usuario Director
-
-↓
-
-Control total
-```
-
-Este permiso solo afecta a ese archivo.
-
----
-
-# Deshabilitar la herencia
-
-En determinadas situaciones puede ser necesario impedir que un recurso continúe heredando permisos.
-
-Ejemplo:
-
-```text
-Carpeta General
-
-↓
-
-Carpeta Dirección
-
-↓
-
-Información confidencial
-```
-
-En este caso puede romperse la herencia para que únicamente determinados usuarios puedan acceder.
-
----
+**Conceptos clave:**
+
+- **Herencia de permisos:** Cuando se crea un nuevo archivo o carpeta dentro de otra carpeta, el sistema puede copiar automáticamente los permisos del elemento padre.
+- **Elemento padre:** Es el recurso que contiene otros elementos y desde el que se heredan los permisos.
+- **Elemento hijo:** Es el recurso que recibe automáticamente los permisos del elemento superior.
+- **Visualizar la herencia:** Ruta.
+- **Permisos heredados:** Proceden de una carpeta superior.
+- **Permisos explícitos:** Son permisos configurados directamente sobre un recurso concreto.
 
 ## Opciones al romper la herencia
 
-Windows ofrece dos posibilidades.
+*Windows ofrece dos posibilidades.*
 
-### Convertir permisos heredados en permisos explícitos
+**Conceptos clave:**
 
-Los permisos actuales se mantienen, pero dejan de depender del elemento padre.
-
-Ejemplo:
-
-```text
-Permisos heredados
-
-↓
-
-Convertir
-
-↓
-
-Permisos propios
-```
-
----
+- **Convertir permisos heredados en permisos explícitos:** Los permisos actuales se mantienen, pero dejan de depender del elemento padre.
 
 ### Eliminar permisos heredados
 
-El recurso deja de tener los permisos recibidos del elemento padre.
-
-Posteriormente deberán asignarse nuevos permisos manualmente.
-
----
-
-# Ventajas de la herencia
-
-La herencia facilita enormemente la administración.
-
-Permite:
-
-- Reducir trabajo administrativo.
-- Mantener configuraciones uniformes.
-- Evitar errores humanos.
-- Simplificar la creación de nuevos recursos.
-
-Ejemplo:
-
-```text
-Nueva carpeta
-
-↓
-
-Permisos heredados automáticamente
-
-↓
-
-Lista para utilizar
-```
-
----
-
-# Inconvenientes de la herencia
-
-Si la estructura no está correctamente diseñada pueden aparecer problemas.
-
-Ejemplos:
-
-- Accesos innecesarios.
-- Usuarios con permisos excesivos.
-- Dificultad para localizar permisos incorrectos.
-- Propagación de errores de configuración.
-
----
-
-# Herencia y Active Directory
-
-Aunque Active Directory administra objetos distintos a los archivos, también utiliza el concepto de herencia.
-
-Ejemplos:
-
-- Políticas de Grupo (GPO).
-- Delegación de permisos.
-- Configuración de Unidades Organizativas (OU).
-
-Ejemplo:
-
-```text
-Empresa
-
-↓
-
-OU Ventas
-
-↓
-
-Usuarios
-
-↓
-
-Aplicación automática de políticas
-```
-
----
-
-# Herencia en Linux
-
-Linux no utiliza un sistema de herencia tan completo como NTFS para los permisos tradicionales.
-
-Sin embargo, cuando se emplean **ACL**, es posible definir permisos por defecto que heredarán los nuevos archivos y carpetas.
-
-Ejemplo:
-
-Consultar ACL:
+*El recurso deja de tener los permisos recibidos del elemento padre.*
 
 ```bash
 getfacl carpeta
 ```
-
-Asignar ACL por defecto:
-
 ```bash
 setfacl -d -m u:beatriz:rwx carpeta
 ```
 
-Los nuevos archivos creados dentro de esa carpeta heredarán dicha configuración.
-
 ---
-
-# Ejemplo práctico
-
-Una empresa dispone de la siguiente estructura:
-
-```text
-Empresa
-
-├── Administración
-
-├── Finanzas
-
-└── RRHH
-```
-
-Cada carpeta tiene asignados permisos específicos para su departamento.
-
-Cuando se crea un nuevo archivo:
-
-```text
-Empresa
-
-↓
-
-Finanzas
-
-↓
-
-Balance2026.xlsx
-```
-
-El archivo recibe automáticamente los permisos de la carpeta **Finanzas**, sin necesidad de configurarlos manualmente.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Roles y privilegios administrativos
 
-# ¿Qué es un rol?
-
-Un rol es un conjunto de funciones y responsabilidades asignadas a un usuario o grupo de usuarios.
-
-En lugar de conceder permisos individuales a cada persona, se asigna un rol con los permisos necesarios para desempeñar una determinada función.
-
-Ejemplos de roles:
-
-- Administrador de sistemas.
-- Técnico de soporte.
-- Responsable de Recursos Humanos.
-- Administrador de bases de datos.
-- Usuario estándar.
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Rol
-
-↓
-
-Permisos asociados
-```
-
----
-
-# ¿Qué es un privilegio?
-
-Un privilegio es una autorización especial que permite realizar determinadas acciones administrativas sobre el sistema.
-
-Algunos ejemplos son:
-
-- Crear usuarios.
-- Instalar software.
-- Cambiar configuraciones del sistema.
-- Modificar permisos.
-- Gestionar servicios.
-- Reiniciar servidores.
-
-Ejemplo:
-
-```text
-Usuario administrador
-
-↓
-
-Privilegio
-
-↓
-
-Instalar software
-```
-
----
-
-# Diferencia entre permisos y privilegios
-
-Aunque suelen confundirse, no son lo mismo.
+*Un rol es un conjunto de funciones y responsabilidades asignadas a un usuario o grupo de usuarios.*
 
 | Permisos | Privilegios |
 |----------|-------------|
@@ -5335,1019 +721,105 @@ Aunque suelen confundirse, no son lo mismo.
 
 ---
 
-# Tipos de roles
+**Conceptos clave:**
 
-Dependiendo de la organización, pueden existir diferentes roles.
-
----
-
-## Usuario estándar
-
-Es el rol utilizado por la mayoría de empleados.
-
-Características:
-
-- Utiliza aplicaciones.
-- Accede a documentos.
-- No modifica configuraciones críticas.
-
----
-
-## Administrador local
-
-Tiene control completo sobre un único equipo.
-
-Puede:
-
-- Crear usuarios locales.
-- Instalar aplicaciones.
-- Configurar dispositivos.
-- Administrar servicios.
-
-No puede administrar otros equipos del dominio salvo que disponga de permisos adicionales.
-
----
-
-## Administrador del dominio
-
-Gestiona toda la infraestructura de Active Directory.
-
-Puede administrar:
-
-- Usuarios.
-- Equipos.
-- Grupos.
-- GPO.
-- Controladores de dominio.
-
-Es uno de los roles con mayor nivel de privilegios.
-
----
-
-## Administrador de servidores
-
-Gestiona uno o varios servidores concretos.
-
-Sus funciones pueden incluir:
-
-- Administración de servicios.
-- Actualizaciones.
-- Copias de seguridad.
-- Monitorización.
-- Gestión del almacenamiento.
-
----
-
-## Administrador de bases de datos
-
-Se encarga de administrar sistemas gestores de bases de datos.
-
-Ejemplos:
-
-- Microsoft SQL Server.
-- Oracle.
-- PostgreSQL.
-- MySQL.
-
----
+- **Usuario estándar:** Es el rol utilizado por la mayoría de empleados.
+- **Administrador local:** Tiene control completo sobre un único equipo.
+- **Administrador del dominio:** Gestiona toda la infraestructura de Active Directory.
+- **Administrador de servidores:** Gestiona uno o varios servidores concretos.
+- **Administrador de bases de datos:** Se encarga de administrar sistemas gestores de bases de datos.
 
 ## Operador o técnico de soporte
 
-Dispone de permisos limitados para realizar tareas de soporte.
-
-Ejemplos:
-
-- Restablecer contraseñas.
-- Desbloquear cuentas.
-- Unir equipos al dominio.
-- Configurar impresoras.
-
-Normalmente no dispone de privilegios administrativos completos.
-
----
-
-# Principio de mínimo privilegio
-
-Uno de los principios fundamentales de la seguridad informática consiste en conceder únicamente los privilegios necesarios para realizar una tarea.
-
-Ejemplo correcto:
-
-```text
-Empleado RRHH
-
-↓
-
-Acceso únicamente a recursos de RRHH
-```
-
-Ejemplo incorrecto:
-
-```text
-Empleado RRHH
-
-↓
-
-Administrador del dominio
-```
-
-Aplicar este principio reduce considerablemente el impacto de errores humanos y ataques informáticos.
-
----
-
-# Separación de funciones
-
-La separación de funciones consiste en dividir las responsabilidades administrativas entre diferentes personas o equipos.
-
-Ejemplo:
-
-```text
-Administrador de red
-
-↓
-
-Configura infraestructura
-
-
-Administrador de bases de datos
-
-↓
-
-Gestiona SQL Server
-
-
-Administrador de sistemas
-
-↓
-
-Gestiona servidores
-```
-
-Esto evita que una única cuenta tenga control absoluto sobre toda la infraestructura.
-
----
-
-# Elevación de privilegios
-
-En determinadas ocasiones un usuario necesita realizar una acción administrativa de forma puntual.
-
-En lugar de trabajar siempre con privilegios elevados, los sistemas permiten elevar temporalmente los permisos.
-
-Ejemplos:
-
-Windows:
-
-```text
-Ejecutar como administrador
-```
-
-Linux:
+*Dispone de permisos limitados para realizar tareas de soporte.*
 
 ```bash
 sudo
 ```
 
-Este mecanismo reduce el uso continuo de cuentas privilegiadas.
-
 ---
 
-# Riesgos de los privilegios elevados
-
-Las cuentas con privilegios administrativos son uno de los principales objetivos de los atacantes.
-
-Si una de estas cuentas se ve comprometida, el impacto puede ser muy elevado.
-
-Riesgos habituales:
-
-- Instalación de malware.
-- Robo de información.
-- Modificación de configuraciones.
-- Creación de nuevos usuarios.
-- Escalada de privilegios.
-
-Ejemplo:
-
-```text
-Cuenta administrativa comprometida
-
-↓
-
-Control completo del sistema
-```
-
----
-
-# Gestión de cuentas privilegiadas
-
-Las organizaciones suelen aplicar medidas específicas para proteger estas cuentas.
-
-Algunas de ellas son:
-
-- Contraseñas robustas.
-- Autenticación multifactor (MFA).
-- Auditoría de accesos.
-- Uso exclusivo para tareas administrativas.
-- Revisión periódica de privilegios.
-- Deshabilitación de cuentas que ya no sean necesarias.
-
----
-
-# Delegación de privilegios
-
-No siempre es necesario convertir a un usuario en administrador.
-
-En muchos casos es preferible delegar únicamente una tarea concreta.
-
-Ejemplos:
-
-- Restablecer contraseñas.
-- Crear usuarios.
-- Gestionar una Unidad Organizativa.
-- Administrar impresoras.
-
-La delegación permite distribuir responsabilidades sin conceder privilegios excesivos.
-
----
-
-# Ejemplo práctico
-
-Una empresa cuenta con los siguientes roles:
-
-```text
-Empleado
-
-↓
-
-Usuario estándar
-
-
-Técnico IT
-
-↓
-
-Administrador local
-
-
-Administrador de sistemas
-
-↓
-
-Administrador de servidores
-
-
-Administrador AD
-
-↓
-
-Administrador del dominio
-```
-
-Cada rol dispone únicamente de los privilegios necesarios para desempeñar sus funciones.
-
----
-
-[⬆️ Volver al índice](#índice)
-
-## Cuentas de servicio
-
-# ¿Qué es una cuenta de servicio?
-
-Una cuenta de servicio es una cuenta diseñada para ser utilizada por una aplicación, un servicio o un proceso automático.
-
-A diferencia de una cuenta de usuario, normalmente:
-
-- No pertenece a una persona.
-- No se utiliza para iniciar sesión de forma interactiva.
-- Tiene permisos limitados a la función que desempeña.
-
-Ejemplo:
-
-```text
-Servicio SQL Server
-
-↓
-
-Cuenta:
-
-svc_sql
-
-↓
-
-Acceso a la base de datos
-```
-
----
-
-# ¿Por qué utilizar cuentas de servicio?
-
-Asignar una cuenta específica a un servicio aporta varias ventajas:
-
-- Permite controlar sus permisos.
-- Facilita la auditoría.
-- Reduce riesgos de seguridad.
-- Evita utilizar cuentas personales.
-- Permite identificar qué servicio realiza una acción.
-
-Ejemplo:
-
-```text
-Aplicación ERP
-
-↓
-
-Cuenta propia
-
-↓
-
-Acceso únicamente a los recursos necesarios
-```
-
----
-
-# Tipos de cuentas de servicio en Windows
-
-Windows dispone de varios tipos de cuentas para ejecutar servicios.
-
----
-
-## Local System
-
-Es una cuenta integrada con privilegios muy elevados sobre el equipo local.
-
-Características:
-
-- Control total sobre el sistema.
-- Acceso completo a recursos locales.
-- No debe utilizarse salvo cuando sea estrictamente necesario.
-
-Ejemplo:
-
-```text
-Cuenta:
-
-Local System
-
-↓
-
-Control total del equipo
-```
-
----
-
-## Local Service
-
-Cuenta integrada con privilegios limitados.
-
-Características:
-
-- Acceso reducido al sistema.
-- Se utiliza para servicios que no requieren permisos elevados.
-- Mejora la seguridad frente a Local System.
-
----
-
-## Network Service
-
-Cuenta integrada utilizada por servicios que necesitan acceder a recursos de red.
-
-Características:
-
-- Permisos limitados en el equipo local.
-- Puede autenticarse frente a otros equipos utilizando la identidad del equipo.
-
----
-
-## Cuenta de usuario específica
-
-Es una cuenta creada exclusivamente para ejecutar un servicio.
-
-Ejemplo:
-
-```text
-svc_backup
-
-↓
-
-Servicio de copias
-
-↓
-
-Acceso NAS
-```
-
-Este es el método más habitual en entornos empresariales.
-
----
-
-# Managed Service Accounts (MSA)
-
-Microsoft introdujo las **Managed Service Accounts (MSA)** para facilitar la gestión de servicios.
-
-Ventajas:
-
-- Cambio automático de contraseña.
-- Gestión centralizada.
-- Mayor seguridad.
-- Reduce errores administrativos.
-
-Ejemplo:
-
-```text
-Servicio IIS
-
-↓
-
-MSA
-
-↓
-
-Contraseña administrada automáticamente
-```
-
----
-
-# Group Managed Service Accounts (gMSA)
-
-Las **Group Managed Service Accounts (gMSA)** amplían el concepto anterior.
-
-Permiten que una misma cuenta pueda ser utilizada por varios servidores.
-
-Se utilizan habitualmente en:
-
-- Balanceadores.
-- Granjas IIS.
-- Servicios distribuidos.
-- Clústeres.
-
-Ejemplo:
-
-```text
-Servidor WEB01
-
-↓
-
-gMSA
-
-↓
-
-Servidor WEB02
-```
-
-La contraseña continúa siendo administrada automáticamente por Active Directory.
-
----
-
-# Cuentas de servicio en Linux
-
-Linux también utiliza cuentas específicas para ejecutar servicios.
-
-Ejemplos:
-
-```text
-www-data
-
-↓
-
-Servidor Apache
-```
-
-```text
-mysql
-
-↓
-
-Base de datos MySQL
-```
-
-```text
-postgres
-
-↓
-
-PostgreSQL
-```
-
-Estas cuentas suelen:
-
-- No disponer de shell interactiva.
-- Tener UID propios.
-- Ejecutar únicamente su servicio.
-
----
-
-# Permisos de una cuenta de servicio
-
-Una cuenta de servicio debe disponer únicamente de los permisos necesarios para realizar su función.
-
-Ejemplo:
-
-```text
-Servicio de copias
-
-↓
-
-Lectura servidores
-
-↓
-
-Escritura NAS
-
-↓
-
-Sin permisos administrativos
-```
-
-Conceder privilegios innecesarios aumenta el riesgo de seguridad.
-
----
-
-# Riesgos de las cuentas de servicio
-
-Las cuentas de servicio son un objetivo frecuente para los atacantes.
-
-Algunos riesgos habituales son:
-
-- Contraseñas que nunca cambian.
-- Permisos excesivos.
-- Uso compartido entre varias aplicaciones.
-- Falta de supervisión.
-- Credenciales almacenadas en texto plano.
-
-Ejemplo:
-
-```text
-Cuenta svc_sql
-
-↓
-
-Administrador del dominio
-
-↓
-
-Aplicación comprometida
-
-↓
-
-Compromiso de toda la infraestructura
-```
-
----
-
-# Auditoría de cuentas de servicio
-
-Las organizaciones deben revisar periódicamente:
-
-- Servicios asociados.
-- Último inicio de sesión.
-- Permisos asignados.
-- Contraseñas.
-- Recursos utilizados.
-
-Esto permite detectar:
-
-- Cuentas abandonadas.
-- Permisos innecesarios.
-- Configuraciones inseguras.
-
----
-
-# Ejemplo práctico
-
-Una empresa dispone de un servidor de copias de seguridad.
-
-Configuración:
-
-```text
-Cuenta:
-
-svc_backup
-
-↓
-
-Servicio Veeam
-
-↓
-
-Acceso:
-
-Lectura servidores
-
-↓
-
-Escritura NAS
-
-↓
-
-Sin permisos administrativos
-```
-
-Gracias a esta configuración, aunque el servicio se vea comprometido, el atacante no obtiene privilegios elevados sobre el dominio.
-
----
+**Conceptos clave:**
+
+- **Cuentas de servicio:** Una cuenta de servicio es una cuenta diseñada para ser utilizada por una aplicación, un servicio o un proceso automático.
+- **Local System:** Es una cuenta integrada con privilegios muy elevados sobre el equipo local.
+- **Local Service:** Cuenta integrada con privilegios limitados.
+- **Network Service:** Cuenta integrada utilizada por servicios que necesitan acceder a recursos de red.
+- **Cuenta de usuario específica:** Es una cuenta creada exclusivamente para ejecutar un servicio.
 
 ## Gestión del ciclo de vida de usuarios
 
-### ¿Qué es el ciclo de vida de un usuario?
+**Conceptos clave:**
 
-El ciclo de vida de un usuario comprende todas las fases por las que pasa una cuenta dentro de un sistema.
-
-Generalmente incluye:
-
-- Alta del usuario.
-- Modificación de la cuenta.
-- Cambio de permisos.
-- Suspensión o desactivación.
-- Eliminación.
-
-Cada una de estas fases debe gestionarse de forma controlada y documentada.
-
----
-
-### Alta de usuarios
-
-La primera fase consiste en la creación de la cuenta.
-
-Durante este proceso se definen aspectos como:
-
-- Nombre de usuario.
-- Contraseña inicial.
-- Grupo o departamento.
-- Permisos necesarios.
-- Recursos a los que tendrá acceso.
-
-Ejemplo:
-
-```text
-Nuevo empleado
-
-↓
-
-Crear cuenta
-
-↓
-
-Asignar grupo
-
-↓
-
-Configurar permisos
-```
-
-Es recomendable que el usuario cambie la contraseña en el primer inicio de sesión.
-
----
-
-### Modificación de cuentas
-
-A lo largo del tiempo pueden producirse cambios que requieran modificar la configuración de la cuenta.
-
-Por ejemplo:
-
-- Cambio de departamento.
-- Cambio de puesto.
-- Modificación del nombre.
-- Asignación de nuevos permisos.
-- Eliminación de accesos innecesarios.
-
-Siempre que cambie la función del usuario deben revisarse también sus permisos para evitar accesos innecesarios.
-
----
-
-### Gestión de permisos
-
-Los permisos deben mantenerse actualizados durante toda la vida de la cuenta.
-
-Se recomienda aplicar el **principio de mínimo privilegio**, otorgando únicamente los accesos necesarios para desempeñar las funciones asignadas.
-
-Una revisión periódica de los permisos ayuda a evitar privilegios excesivos y reduce la superficie de ataque.
-
----
-
-### Suspensión o desactivación de cuentas
-
-Cuando un usuario deja de utilizar temporalmente una cuenta, suele ser preferible desactivarla en lugar de eliminarla.
-
-Algunos ejemplos son:
-
-- Baja temporal.
-- Excedencia.
-- Permiso prolongado.
-- Cambio de funciones.
-
-Ejemplo:
-
-```text
-Usuario
-
-↓
-
-Cuenta deshabilitada
-
-↓
-
-Sin acceso al sistema
-```
-
-La información permanece disponible y la cuenta puede reactivarse posteriormente.
-
----
-
-### Eliminación de cuentas
-
-Cuando una cuenta deja de ser necesaria debe eliminarse de forma controlada.
-
-Antes de hacerlo conviene:
-
-- Realizar una copia de la información necesaria.
-- Transferir archivos importantes a otro usuario.
-- Revocar todos los permisos.
-- Documentar la eliminación.
-
-Ejemplo:
-
-```text
-Empleado deja la empresa
-
-↓
-
-Desactivar cuenta
-
-↓
-
-Transferir información
-
-↓
-
-Eliminar cuenta
-```
-
----
-
-### Gestión del ciclo de vida en Windows
-
-En Windows y Active Directory las tareas más habituales son:
-
-- Crear usuarios.
-- Modificar propiedades.
-- Restablecer contraseñas.
-- Bloquear y desbloquear cuentas.
-- Deshabilitar usuarios.
-- Eliminar cuentas.
-
-Estas operaciones pueden realizarse mediante:
-
-- Usuarios y equipos de Active Directory.
-- Administración de equipos.
-- PowerShell.
-
----
+- **¿Qué es el ciclo de vida de un usuario?:** El ciclo de vida de un usuario comprende todas las fases por las que pasa una cuenta dentro de un sistema.
+- **Alta de usuarios:** La primera fase consiste en la creación de la cuenta.
+- **Modificación de cuentas:** A lo largo del tiempo pueden producirse cambios que requieran modificar la configuración de la cuenta.
+- **Gestión de permisos:** Los permisos deben mantenerse actualizados durante toda la vida de la cuenta.
+- **Suspensión o desactivación de cuentas:** Cuando un usuario deja de utilizar temporalmente una cuenta, suele ser preferible desactivarla en lugar de eliminarla.
+- **Eliminación de cuentas:** Cuando una cuenta deja de ser necesaria debe eliminarse de forma controlada.
+- **Gestión del ciclo de vida en Windows:** En Windows y Active Directory las tareas más habituales son: Crear usuarios.
 
 ### Gestión del ciclo de vida en Linux
 
-Linux dispone de distintos comandos para administrar las cuentas de usuario.
-
-Crear un usuario:
+*Linux dispone de distintos comandos para administrar las cuentas de usuario.*
 
 ```bash
 sudo useradd usuario
 ```
-
-Asignar contraseña:
-
 ```bash
 sudo passwd usuario
 ```
 
-Bloquear una cuenta:
-
-```bash
-sudo usermod -L usuario
-```
-
-Desbloquear una cuenta:
-
-```bash
-sudo usermod -U usuario
-```
-
-Eliminar una cuenta:
-
-```bash
-sudo userdel usuario
-```
-
-Eliminar también el directorio personal:
-
-```bash
-sudo userdel -r usuario
-```
-
 ---
 
-### Automatización del ciclo de vida
+**Conceptos clave:**
 
-En organizaciones con un gran número de usuarios es habitual automatizar estas tareas.
-
-Algunos ejemplos son:
-
-- Creación automática de cuentas.
-- Asignación de grupos.
-- Configuración inicial de permisos.
-- Desactivación automática de usuarios inactivos.
-- Eliminación de cuentas tras un periodo determinado.
-
-La automatización reduce errores y agiliza la administración.
-
----
-
-[⬆️ Volver al índice](#índice)
+- **Automatización del ciclo de vida:** En organizaciones con un gran número de usuarios es habitual automatizar estas tareas.
 
 ## Auditoría de usuarios y permisos
 
-### ¿Qué es una auditoría de usuarios?
+**Conceptos clave:**
 
-Una auditoría de usuarios es el proceso mediante el cual se revisan las cuentas existentes, sus permisos y la actividad realizada por cada una de ellas.
-
-Permite responder a preguntas como:
-
-- ¿Quién ha iniciado sesión?
-- ¿Qué recursos ha utilizado?
-- ¿Qué cambios ha realizado?
-- ¿Dispone de permisos adecuados?
-- ¿Existen cuentas inactivas o innecesarias?
-
----
-
-### Objetivos de la auditoría
-
-Las auditorías persiguen diversos objetivos:
-
-- Detectar accesos no autorizados.
-- Revisar los permisos asignados.
-- Identificar cuentas inactivas.
-- Garantizar el cumplimiento de las políticas de seguridad.
-- Obtener trazabilidad sobre las acciones realizadas.
-- Facilitar investigaciones forenses.
-
-Una auditoría periódica ayuda a reducir riesgos y mantener un entorno seguro.
-
----
-
-### Información que debe revisarse
-
-Durante una auditoría es recomendable comprobar:
-
-- Usuarios existentes.
-- Grupos a los que pertenece cada usuario.
-- Permisos asignados.
-- Último inicio de sesión.
-- Intentos fallidos de autenticación.
-- Cuentas bloqueadas o deshabilitadas.
-- Cambios recientes en permisos.
-
-Toda esta información permite detectar posibles anomalías.
-
----
-
-### Auditoría en Windows
-
-Windows incorpora diferentes herramientas para auditar usuarios y permisos.
-
-Las principales son:
-
-- Visor de eventos.
-- Usuarios y grupos locales.
-- Active Directory.
-- Directivas de seguridad.
-- PowerShell.
-
-El **Visor de eventos** permite consultar registros relacionados con:
-
-- Inicios de sesión.
-- Cierres de sesión.
-- Cambios de permisos.
-- Bloqueos de cuentas.
-- Modificaciones de usuarios.
-
-Puede abrirse mediante:
-
-```text
-eventvwr.msc
-```
-
----
+- **¿Qué es una auditoría de usuarios?:** Una auditoría de usuarios es el proceso mediante el cual se revisan las cuentas existentes, sus permisos y la actividad realizada por cada una de ellas.
+- **Objetivos de la auditoría:** Las auditorías persiguen diversos objetivos: Detectar accesos no autorizados.
+- **Información que debe revisarse:** Durante una auditoría es recomendable comprobar: Usuarios existentes.
+- **Auditoría en Windows:** Windows incorpora diferentes herramientas para auditar usuarios y permisos.
 
 ### Auditoría mediante PowerShell
 
-PowerShell facilita la obtención de información sobre usuarios y grupos.
-
-Mostrar usuarios locales:
+*PowerShell facilita la obtención de información sobre usuarios y grupos.*
 
 ```powershell
 Get-LocalUser
 ```
-
-Mostrar grupos locales:
-
 ```powershell
 Get-LocalGroup
 ```
 
-Mostrar los miembros de un grupo:
-
-```powershell
-Get-LocalGroupMember Administradores
-```
-
-En entornos con Active Directory también pueden utilizarse cmdlets específicos para consultar usuarios, grupos y permisos.
-
 ---
 
-### Auditoría en Linux
+**Conceptos clave:**
 
-Linux almacena información sobre autenticación y actividad de los usuarios en diferentes archivos de registro.
-
-Los más habituales son:
-
-```text
-/var/log/auth.log
-
-/var/log/secure
-
-/var/log/syslog
-```
-
-Estos registros permiten consultar:
-
-- Inicios de sesión.
-- Intentos fallidos de acceso.
-- Uso de privilegios administrativos.
-- Cambios en las cuentas de usuario.
-
----
+- **Auditoría en Linux:** Linux almacena información sobre autenticación y actividad de los usuarios en diferentes archivos de registro.
 
 ### Comandos útiles en Linux
 
-Mostrar usuarios conectados:
+*Mostrar usuarios conectados.*
 
 ```bash
 who
 ```
-
-Consultar el historial de inicios de sesión:
-
 ```bash
 last
 ```
 
-Ver los intentos fallidos de autenticación (según la distribución):
-
-```bash
-sudo cat /var/log/auth.log
-```
-
-Comprobar los grupos de un usuario:
-
-```bash
-groups usuario
-```
-
-Consultar el identificador del usuario:
-
-```bash
-id usuario
-```
-
 ---
 
-### Revisión de permisos
+**Conceptos clave:**
 
-Una auditoría también debe incluir la revisión de los permisos sobre archivos y carpetas.
-
-Es recomendable comprobar:
-
-- Permisos excesivos.
-- Recursos compartidos innecesariamente.
-- Archivos accesibles por todos los usuarios.
-- Herencias incorrectas.
-- Cambios recientes en los permisos.
-
-El objetivo es asegurar que únicamente las personas autorizadas puedan acceder a cada recurso.
-
----
-
-### Frecuencia de las auditorías
-
-La periodicidad dependerá del tamaño y las necesidades de la organización.
-
-Habitualmente se recomienda:
-
-- Revisiones mensuales de usuarios.
-- Auditorías trimestrales de permisos.
-- Auditorías extraordinarias tras incidentes de seguridad.
-- Revisión inmediata cuando un empleado abandona la organización.
-
-Una supervisión continua permite detectar problemas antes de que tengan impacto.
-
+- **Revisión de permisos:** Una auditoría también debe incluir la revisión de los permisos sobre archivos y carpetas.
+- **Frecuencia de las auditorías:** La periodicidad dependerá del tamaño y las necesidades de la organización.
+  
 ---
 
 [⬆️ Volver al índice](#índice)

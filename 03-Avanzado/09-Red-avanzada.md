@@ -1,4 +1,6 @@
-# 09 - Red avanzada — Linux vs PowerShell
+# Red avanzada
+
+## Introducción
 
 Las redes son uno de los pilares fundamentales de cualquier infraestructura informática.
 

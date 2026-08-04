@@ -1,350 +1,57 @@
-# Automatización
+# Automatización 
 
 ## Introducción
 
-La **automatización** consiste en utilizar scripts, herramientas y procesos programados para ejecutar tareas de forma automática, reduciendo la intervención manual del administrador. Gracias a ella es posible ahorrar tiempo, minimizar errores humanos y garantizar que determinadas operaciones se realicen siempre de forma consistente.
-
-En la administración de sistemas, la automatización resulta esencial para gestionar grandes infraestructuras, desplegar configuraciones, realizar copias de seguridad, supervisar equipos o instalar actualizaciones de manera eficiente.
+La automatización consiste en utilizar scripts, herramientas y procesos programados para ejecutar tareas de forma automática, reduciendo la intervención manual del administrador.
 
 ## Índice
 
-- [Concepto de automatización](#concepto-de-automatización)
+- [Concepto de automatización](#concepto-de-automatizacion)
 - [Ventajas e inconvenientes](#ventajas-e-inconvenientes)
-- [Scripts de automatización](#scripts-de-automatización)
-- [PowerShell como herramienta de automatización](#powershell-como-herramienta-de-automatización)
+- [Scripts de automatización](#scripts-de-automatizacion)
+- [PowerShell como herramienta de automatización](#powershell-como-herramienta-de-automatizacion)
 - [Scripts Bash en Linux](#scripts-bash-en-linux)
-- [Automatización mediante tareas programadas](#automatización-mediante-tareas-programadas)
-- [Automatización en entornos empresariales](#automatización-en-entornos-empresariales)
-- [Herramientas de automatización](#herramientas-de-automatización)
-- [Seguridad en la automatización](#seguridad-en-la-automatización)
-- [Resolución de problemas habituales](#resolución-de-problemas-habituales)
+- [Automatización mediante tareas programadas](#automatizacion-mediante-tareas-programadas)
+- [Automatización en entornos empresariales](#automatizacion-en-entornos-empresariales)
+- [Herramientas de automatización](#herramientas-de-automatizacion)
+- [Seguridad en la automatización](#seguridad-en-la-automatizacion)
+- [Resolución de problemas habituales](#resolucion-de-problemas-habituales)
 
 ---
 
 ## Concepto de automatización
 
-Introducción
+*La automatización consiste en utilizar programas, scripts o herramientas capaces de ejecutar tareas de forma automática, sin que sea necesaria la intervención constante del administrador.*
 
-La **automatización** consiste en utilizar programas, scripts o herramientas capaces de ejecutar tareas de forma automática, sin que sea necesaria la intervención constante del administrador. Gracias a ella es posible realizar operaciones repetitivas de forma más rápida, uniforme y con un menor riesgo de errores.
+**Conceptos clave:**
 
-En la administración de sistemas, la automatización es una práctica fundamental para gestionar infraestructuras de cualquier tamaño, mejorar la productividad y garantizar que determinadas tareas se ejecuten siempre siguiendo el mismo procedimiento.
-
----
-
-### ¿Qué es la automatización?
-
-La automatización consiste en sustituir procesos manuales por tareas ejecutadas automáticamente mediante software.
-
-Estas tareas pueden incluir:
-
-- Crear usuarios.
-- Instalar aplicaciones.
-- Actualizar equipos.
-- Reiniciar servicios.
-- Generar informes.
-- Realizar copias de seguridad.
-- Supervisar sistemas.
-
-Una vez configurado el proceso, las acciones se ejecutan sin intervención manual.
+- **¿Qué es la automatización?:** La automatización consiste en sustituir procesos manuales por tareas ejecutadas automáticamente mediante software.
+- **Objetivo de la automatización:** El objetivo principal es reducir el trabajo repetitivo del administrador.
+- **Funcionamiento:** El proceso de automatización puede representarse así.
+- **Tareas que pueden automatizarse:** En administración de sistemas es habitual automatizar procesos como: Creación de usuarios.
+- **Automatización mediante scripts:** Una de las formas más habituales de automatizar tareas consiste en utilizar scripts.
+- **Automatización programada:** Muchas tareas se ejecutan automáticamente en determinados momentos.
+- **Automatización basada en eventos:** También es posible ejecutar tareas únicamente cuando ocurre una determinada condición.
+- **Ámbitos de utilización:** La automatización se utiliza en numerosos escenarios.
+- **Ventajas generales:** La automatización aporta importantes beneficios.
 
 ---
-
-### Objetivo de la automatización
-
-El objetivo principal es reducir el trabajo repetitivo del administrador.
-
-La automatización permite:
-
-- Ahorrar tiempo.
-- Reducir errores humanos.
-- Mejorar la eficiencia.
-- Estandarizar procedimientos.
-- Facilitar la administración de grandes infraestructuras.
-
-Como resultado, los administradores pueden dedicar más tiempo a tareas de mayor valor.
-
----
-
-### Funcionamiento
-
-El proceso de automatización puede representarse así:
-
-```text
-Definir la tarea
-
-↓
-
-Crear el script o proceso
-
-↓
-
-Programar la ejecución
-
-↓
-
-Ejecución automática
-
-↓
-
-Obtención del resultado
-```
-
-Una vez configurado, el sistema ejecutará la tarea siempre que se cumplan las condiciones establecidas.
-
----
-
-### Tareas que pueden automatizarse
-
-En administración de sistemas es habitual automatizar procesos como:
-
-- Creación de usuarios.
-- Instalación de software.
-- Actualizaciones del sistema.
-- Limpieza de archivos temporales.
-- Copias de seguridad.
-- Monitorización.
-- Reinicio de servicios.
-- Generación de informes.
-
-La mayoría de tareas repetitivas son candidatas a ser automatizadas.
-
----
-
-### Automatización mediante scripts
-
-Una de las formas más habituales de automatizar tareas consiste en utilizar scripts.
-
-Algunos ejemplos son:
-
-- Scripts PowerShell.
-- Scripts Bash.
-- Scripts Python.
-
-Estos programas ejecutan de forma secuencial las instrucciones definidas por el administrador.
-
----
-
-### Automatización programada
-
-Muchas tareas se ejecutan automáticamente en determinados momentos.
-
-Por ejemplo:
-
-- Cada hora.
-- Diariamente.
-- Semanalmente.
-- Al iniciar el sistema.
-- Cuando ocurre un determinado evento.
-
-Esto permite mantener los sistemas sin necesidad de intervención manual.
-
----
-
-### Automatización basada en eventos
-
-También es posible ejecutar tareas únicamente cuando ocurre una determinada condición.
-
-Por ejemplo:
-
-- Un servicio se detiene.
-- Se conecta un dispositivo.
-- Se supera un uso elevado de CPU.
-- Se llena un disco.
-- Se inicia sesión.
-
-Este tipo de automatización permite responder rápidamente ante determinadas situaciones.
-
----
-
-### Ámbitos de utilización
-
-La automatización se utiliza en numerosos escenarios.
-
-Entre ellos:
-
-- Administración de servidores.
-- Gestión de usuarios.
-- Redes.
-- Virtualización.
-- Copias de seguridad.
-- Monitorización.
-- Ciberseguridad.
-- Computación en la nube.
-
-Prácticamente cualquier área de la administración de sistemas puede beneficiarse de la automatización.
-
----
-
-### Ventajas generales
-
-La automatización aporta importantes beneficios.
-
-Entre ellos:
-
-- Mayor rapidez.
-- Menor carga de trabajo.
-- Procesos homogéneos.
-- Reducción de errores.
-- Mejor utilización de los recursos.
-
-Estas ventajas hacen que actualmente sea una práctica imprescindible.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Ventajas e inconvenientes
 
-Introducción
+*La automatización aporta importantes beneficios a la administración de sistemas, ya que permite ejecutar tareas de forma rápida, uniforme y sin intervención constante del administrador.*
 
-La automatización aporta importantes beneficios a la administración de sistemas, ya que permite ejecutar tareas de forma rápida, uniforme y sin intervención constante del administrador. Sin embargo, también presenta algunos inconvenientes que deben tenerse en cuenta antes de implantar procesos automáticos en un entorno de producción.
+**Conceptos clave:**
 
-Conocer tanto sus ventajas como sus limitaciones ayuda a decidir qué tareas conviene automatizar y cuáles requieren supervisión manual.
-
----
-
-### Ventajas de la automatización
-
-La automatización mejora notablemente la gestión de los sistemas informáticos.
-
-Entre sus principales ventajas destacan:
-
-- Ahorro de tiempo.
-- Reducción de errores humanos.
-- Mayor productividad.
-- Estandarización de procesos.
-- Ejecución automática de tareas repetitivas.
-- Mejor aprovechamiento de los recursos.
-
-Estas ventajas permiten que los administradores dediquen más tiempo a tareas de mayor valor.
-
----
-
-### Ahorro de tiempo
-
-Muchas tareas administrativas deben realizarse de forma periódica.
-
-Por ejemplo:
-
-- Crear usuarios.
-- Realizar copias de seguridad.
-- Limpiar archivos temporales.
-- Generar informes.
-
-Automatizar estos procesos evita repetir las mismas acciones manualmente.
-
----
-
-### Reducción de errores
-
-Las tareas manuales pueden dar lugar a errores como:
-
-- Introducir datos incorrectos.
-- Olvidar algún paso.
-- Ejecutar comandos equivocados.
-- Aplicar configuraciones distintas entre equipos.
-
-La automatización ejecuta siempre el mismo procedimiento, reduciendo la probabilidad de errores.
-
----
-
-### Mayor productividad
-
-Un único script puede realizar el trabajo que anteriormente requería intervenir manualmente en decenas o cientos de equipos.
-
-Esto permite:
-
-- Gestionar más sistemas.
-- Reducir tiempos de administración.
-- Simplificar tareas repetitivas.
-
-Como consecuencia, aumenta la productividad del departamento de IT.
-
----
-
-### Estandarización
-
-Los procesos automatizados siguen siempre la misma secuencia de pasos.
-
-Esto garantiza que:
-
-- Todas las configuraciones sean iguales.
-- Se respeten los procedimientos definidos.
-- Los resultados sean consistentes.
-
-La estandarización facilita además el mantenimiento de la infraestructura.
-
----
-
-### Disponibilidad
-
-Las tareas automatizadas pueden ejecutarse:
-
-- De madrugada.
-- Durante fines de semana.
-- En horarios programados.
-- Cuando ocurre un evento determinado.
-
-Esto permite mantener los sistemas sin interrumpir el trabajo de los usuarios.
-
----
-
-### Inconvenientes
-
-Aunque la automatización ofrece numerosas ventajas, también presenta algunas limitaciones.
-
-Entre ellas destacan:
-
-- Tiempo inicial de desarrollo.
-- Necesidad de pruebas.
-- Posibles errores en los scripts.
-- Dependencia del software utilizado.
-- Riesgo de ejecutar acciones incorrectas de forma masiva.
-
-Por ello, es importante diseñar cuidadosamente los procesos automáticos.
-
----
-
-### Errores en los scripts
-
-Si un script contiene un error, este puede repetirse automáticamente en todos los equipos afectados.
-
-Por ejemplo:
-
-```text
-Script incorrecto
-
-↓
-
-Ejecución automática
-
-↓
-
-Error replicado
-
-↓
-
-Incidencia en múltiples equipos
-```
-
-Antes de utilizar un script en producción debe comprobarse su funcionamiento.
-
----
-
-### Mantenimiento
-
-Los procesos automatizados también requieren mantenimiento.
-
-Es necesario:
-
-- Actualizar scripts.
-- Adaptarlos a nuevas versiones del sistema.
-- Revisar cambios en la infraestructura.
-- Corregir posibles errores detectados.
-
-La automatización no elimina completamente el trabajo del administrador.
-
----
+- **Ventajas de la automatización:** La automatización mejora notablemente la gestión de los sistemas informáticos.
+- **Ahorro de tiempo:** Muchas tareas administrativas deben realizarse de forma periódica.
+- **Reducción de errores:** Las tareas manuales pueden dar lugar a errores como: Introducir datos incorrectos.
+- **Mayor productividad:** Un único script puede realizar el trabajo que anteriormente requería intervenir manualmente en decenas o cientos de equipos.
+- **Estandarización:** Los procesos automatizados siguen siempre la misma secuencia de pasos.
+- **Disponibilidad:** Las tareas automatizadas pueden ejecutarse: De madrugada.
+- **Inconvenientes:** Aunque la automatización ofrece numerosas ventajas, también presenta algunas limitaciones.
+- **Errores en los scripts:** Si un script contiene un error, este puede repetirse automáticamente en todos los equipos afectados.
+- **Mantenimiento:** Los procesos automatizados también requieren mantenimiento.
 
 ### Comparativa
 
@@ -358,290 +65,65 @@ La automatización no elimina completamente el trabajo del administrador.
 
 ---
 
-[⬆️ Volver al índice](#índice)
-
 ## Scripts de automatización
 
-Introducción
+*Los scripts de automatización son pequeños programas que contienen una secuencia de instrucciones destinadas a ejecutar tareas de forma automática.*
 
-Los **scripts de automatización** son pequeños programas que contienen una secuencia de instrucciones destinadas a ejecutar tareas de forma automática. Constituyen una de las herramientas más utilizadas por los administradores de sistemas, ya que permiten simplificar procesos repetitivos, reducir errores y ahorrar tiempo en la gestión diaria de equipos y servidores.
+**Conceptos clave:**
 
-Dependiendo del sistema operativo y del entorno de trabajo, los scripts pueden escribirse utilizando diferentes lenguajes como PowerShell, Bash o Python.
-
----
-
-### ¿Qué es un script?
-
-Un **script** es un archivo de texto que contiene una serie de comandos ejecutados de forma secuencial por un intérprete.
-
-A diferencia de un programa compilado, un script suele ejecutarse directamente sin necesidad de un proceso de compilación previo.
-
-Su principal objetivo es automatizar tareas repetitivas o complejas.
+- **¿Qué es un script?:** Un script es un archivo de texto que contiene una serie de comandos ejecutados de forma secuencial por un intérprete.
+- **Funcionamiento:** El funcionamiento de un script puede representarse así.
+- **Tareas habituales:** Los scripts permiten automatizar numerosas operaciones administrativas.
+- **Ventajas de utilizar scripts:** El uso de scripts ofrece numerosos beneficios.
+- **Estructura básica:** Aunque la sintaxis depende del lenguaje utilizado, la mayoría de scripts siguen una estructura similar.
+- **Variables:** Las variables permiten almacenar información durante la ejecución del script.
+- **Condiciones:** Los scripts pueden tomar decisiones mediante estructuras condicionales.
+- **Bucles:** Los bucles permiten repetir una misma acción varias veces sin escribir el mismo código repetidamente.
+- **Registro de resultados:** Es recomendable que los scripts registren la información sobre su ejecución.
 
 ---
-
-### Funcionamiento
-
-El funcionamiento de un script puede representarse así:
-
-```text
-Script
-
-↓
-
-Intérprete
-
-↓
-
-Ejecución de instrucciones
-
-↓
-
-Resultado
-```
-
-Cada instrucción se ejecuta siguiendo el orden definido por el administrador.
-
----
-
-### Tareas habituales
-
-Los scripts permiten automatizar numerosas operaciones administrativas.
-
-Algunos ejemplos son:
-
-- Crear usuarios.
-- Cambiar permisos.
-- Reiniciar servicios.
-- Realizar copias de seguridad.
-- Instalar software.
-- Actualizar equipos.
-- Eliminar archivos temporales.
-- Generar informes.
-
-Estas tareas pueden ejecutarse de forma automática tantas veces como sea necesario.
-
----
-
-### Ventajas de utilizar scripts
-
-El uso de scripts ofrece numerosos beneficios.
-
-Entre ellos:
-
-- Automatización de tareas repetitivas.
-- Reducción de errores humanos.
-- Ahorro de tiempo.
-- Mayor productividad.
-- Facilidad para reutilizar procesos.
-
-Un mismo script puede utilizarse en diferentes equipos y situaciones.
-
----
-
-### Estructura básica
-
-Aunque la sintaxis depende del lenguaje utilizado, la mayoría de scripts siguen una estructura similar.
-
-```text
-Inicio
-
-↓
-
-Variables
-
-↓
-
-Instrucciones
-
-↓
-
-Comprobaciones
-
-↓
-
-Resultado
-
-↓
-
-Fin
-```
-
-Organizar correctamente el código facilita su mantenimiento.
-
----
-
-### Variables
-
-Las variables permiten almacenar información durante la ejecución del script.
-
-Por ejemplo:
-
-- Nombre de un usuario.
-- Dirección IP.
-- Ruta de un archivo.
-- Resultado de un comando.
-
-Su utilización hace que los scripts sean más flexibles y reutilizables.
-
----
-
-### Condiciones
-
-Los scripts pueden tomar decisiones mediante estructuras condicionales.
-
-Por ejemplo:
-
-```text
-Si existe el archivo
-
-↓
-
-Realizar copia
-
-↓
-
-Si no existe
-
-↓
-
-Mostrar aviso
-```
-
-Esto permite adaptar el comportamiento del script a diferentes situaciones.
-
----
-
-### Bucles
-
-Los bucles permiten repetir una misma acción varias veces sin escribir el mismo código repetidamente.
-
-Por ejemplo:
-
-- Procesar varios archivos.
-- Revisar varios equipos.
-- Crear múltiples usuarios.
-- Ejecutar una tarea sobre todos los servidores.
-
-Gracias a ellos es posible automatizar procesos masivos de forma sencilla.
-
----
-
-### Registro de resultados
-
-Es recomendable que los scripts registren la información sobre su ejecución.
-
-Por ejemplo:
-
-- Fecha y hora.
-- Equipo procesado.
-- Resultado obtenido.
-- Errores detectados.
-
-Estos registros facilitan la supervisión y el diagnóstico de incidencias.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## PowerShell como herramienta de automatización
 
-Introducción
+*PowerShell es la consola de administración y lenguaje de scripting desarrollado por Microsoft para automatizar tareas en sistemas Windows.*
 
-**PowerShell** es la consola de administración y lenguaje de scripting desarrollado por Microsoft para automatizar tareas en sistemas Windows. Gracias a sus comandos, conocidos como **cmdlets**, y a su capacidad para crear scripts complejos, PowerShell se ha convertido en una de las herramientas más importantes para la administración y automatización de infraestructuras Microsoft.
+**Conceptos clave:**
 
-Actualmente también está disponible para Linux y macOS mediante **PowerShell 7**, lo que permite automatizar tareas en entornos multiplataforma.
-
----
-
-### ¿Qué es PowerShell?
-
-PowerShell es una consola de comandos basada en .NET que permite administrar sistemas mediante comandos y scripts.
-
-Sus principales características son:
-
-- Administración del sistema.
-- Automatización de tareas.
-- Gestión remota.
-- Acceso a servicios de Windows.
-- Integración con Active Directory y Microsoft 365.
-
-Su funcionamiento está orientado a la administración profesional.
-
----
+- **¿Qué es PowerShell?:** PowerShell es una consola de comandos basada en .NET que permite administrar sistemas mediante comandos y scripts.
 
 ### Cmdlets
 
-Los comandos de PowerShell reciben el nombre de **cmdlets**.
-
-Su estructura sigue el formato:
-
-```text
-Verbo-Sustantivo
-```
-
-Ejemplos:
+*Los comandos de PowerShell reciben el nombre de cmdlets.*
 
 ```powershell
 Get-Service
 ```
-
 ```powershell
 Restart-Service
 ```
 
-```powershell
-Get-Process
-```
-
-Esta nomenclatura facilita el aprendizaje y la organización de los comandos.
-
 ---
 
-### Automatización mediante scripts
+**Conceptos clave:**
 
-Los scripts de PowerShell utilizan la extensión:
-
-```text
-.ps1
-```
-
-Dentro de ellos pueden incluirse:
-
-- Variables.
-- Condiciones.
-- Bucles.
-- Funciones.
-- Cmdlets.
-- Llamadas a otros scripts.
-
-Esto permite automatizar procesos administrativos complejos.
-
----
+- **Automatización mediante scripts:** Los scripts de PowerShell utilizan la extensión.
 
 ### Variables
 
-Las variables se identifican mediante el símbolo:
+*Las variables se identifican mediante el símbolo.*
 
 ```powershell
 $
 ```
-
-Ejemplo:
-
 ```powershell
 $Servidor = "SRV-01"
 ```
-
-Las variables permiten almacenar datos que serán utilizados posteriormente durante la ejecución del script.
 
 ---
 
 ### Condiciones
 
-PowerShell permite ejecutar instrucciones únicamente cuando se cumple una determinada condición.
-
-Ejemplo:
+*PowerShell permite ejecutar instrucciones únicamente cuando se cumple una determinada condición.*
 
 ```powershell
 if ($true) {
@@ -649,15 +131,11 @@ if ($true) {
 }
 ```
 
-Las estructuras condicionales permiten adaptar el comportamiento del script según la situación.
-
 ---
 
 ### Bucles
 
-Los bucles permiten repetir una tarea varias veces.
-
-Por ejemplo:
+*Los bucles permiten repetir una tarea varias veces.*
 
 ```powershell
 foreach ($Equipo in $Equipos) {
@@ -665,15 +143,11 @@ foreach ($Equipo in $Equipos) {
 }
 ```
 
-Son especialmente útiles para administrar múltiples equipos o procesar grandes cantidades de información.
-
 ---
 
 ### Ejecución remota
 
-PowerShell permite ejecutar comandos en equipos remotos mediante **PowerShell Remoting**.
-
-Ejemplo:
+*PowerShell permite ejecutar comandos en equipos remotos mediante PowerShell Remoting.*
 
 ```powershell
 Invoke-Command -ComputerName SERVIDOR01 -ScriptBlock {
@@ -681,116 +155,50 @@ Get-Service
 }
 ```
 
-De esta forma es posible administrar varios servidores desde una única consola.
-
 ---
 
-### Programación de scripts
+**Conceptos clave:**
 
-Los scripts pueden ejecutarse automáticamente mediante el **Programador de tareas de Windows**.
-
-Es posible programarlos:
-
-- A una hora determinada.
-- Diariamente.
-- Semanalmente.
-- Al iniciar el sistema.
-- Al iniciar sesión un usuario.
-
-Esto permite automatizar completamente numerosas tareas administrativas.
+- **Programación de scripts:** Los scripts pueden ejecutarse automáticamente mediante el Programador de tareas de Windows.
+- **Ventajas:** PowerShell ofrece numerosas ventajas para la automatización.
 
 ---
-
-### Ventajas
-
-PowerShell ofrece numerosas ventajas para la automatización.
-
-Entre ellas:
-
-- Integración con Windows.
-- Gran cantidad de cmdlets.
-- Administración remota.
-- Automatización avanzada.
-- Compatibilidad con Active Directory y Microsoft 365.
-- Posibilidad de crear scripts complejos.
-
-Por ello es una herramienta imprescindible para administradores de sistemas Windows.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Scripts Bash en Linux
 
-Introducción
+*Bash (Bourne Again SHell) es el intérprete de comandos más utilizado en sistemas Linux y uno de los principales lenguajes de scripting para la automatización de tareas.*
 
-**Bash (Bourne Again SHell)** es el intérprete de comandos más utilizado en sistemas Linux y uno de los principales lenguajes de scripting para la automatización de tareas. Mediante scripts Bash es posible ejecutar secuencias de comandos de forma automática, administrar servidores, procesar archivos y simplificar tareas repetitivas del sistema.
+**Conceptos clave:**
 
-Su sencillez y su integración con el sistema operativo hacen que Bash sea una herramienta fundamental para cualquier administrador de sistemas Linux.
-
----
-
-### ¿Qué es Bash?
-
-Bash es un intérprete de comandos que permite interactuar con el sistema operativo mediante una consola de texto.
-
-Además de ejecutar comandos manualmente, también permite crear scripts que automatizan tareas administrativas.
-
-Estos scripts contienen una serie de instrucciones que se ejecutan de forma secuencial.
-
----
-
-### ¿Qué es un script Bash?
-
-Un script Bash es un archivo de texto que contiene comandos del sistema Linux escritos para ejecutarse automáticamente.
-
-Normalmente utilizan la extensión:
-
-```text
-.sh
-```
-
-Aunque la extensión no es obligatoria, facilita identificar este tipo de archivos.
-
----
+- **¿Qué es Bash?:** Bash es un intérprete de comandos que permite interactuar con el sistema operativo mediante una consola de texto.
+- **¿Qué es un script Bash?:** Un script Bash es un archivo de texto que contiene comandos del sistema Linux escritos para ejecutarse automáticamente.
 
 ### Estructura básica
 
-Todo script Bash suele comenzar indicando el intérprete que debe utilizarse.
+*Todo script Bash suele comenzar indicando el intérprete que debe utilizarse.*
 
 ```bash
 #!/bin/bash
 ```
 
-A continuación se añaden las instrucciones necesarias para realizar la tarea deseada.
-
 ---
 
 ### Variables
 
-Las variables permiten almacenar información durante la ejecución del script.
-
-Ejemplo:
+*Las variables permiten almacenar información durante la ejecución del script.*
 
 ```bash
 usuario="admin"
 ```
-
-Para mostrar su contenido:
-
 ```bash
 echo $usuario
 ```
-
-Las variables hacen que los scripts sean más flexibles y reutilizables.
 
 ---
 
 ### Condiciones
 
-Bash permite ejecutar acciones únicamente cuando se cumple una determinada condición.
-
-Ejemplo:
+*Bash permite ejecutar acciones únicamente cuando se cumple una determinada condición.*
 
 ```bash
 if [ -f archivo.txt ]
@@ -799,15 +207,11 @@ then
 fi
 ```
 
-Las estructuras condicionales permiten adaptar el comportamiento del script según cada situación.
-
 ---
 
 ### Bucles
 
-Los bucles permiten repetir automáticamente una serie de instrucciones.
-
-Ejemplo:
+*Los bucles permiten repetir automáticamente una serie de instrucciones.*
 
 ```bash
 for archivo in *.log
@@ -816,554 +220,90 @@ do
 done
 ```
 
-Son muy útiles para procesar múltiples archivos, usuarios o directorios.
-
 ---
 
 ### Permisos de ejecución
 
-Antes de ejecutar un script es necesario concederle permisos.
+*Antes de ejecutar un script es necesario concederle permisos.*
 
 ```bash
 chmod +x script.sh
 ```
-
-Posteriormente puede ejecutarse mediante:
-
 ```bash
 ./script.sh
 ```
 
-Sin permisos de ejecución el sistema impedirá iniciar el script.
-
 ---
 
-### Tareas habituales
+**Conceptos clave:**
 
-Los scripts Bash permiten automatizar numerosas operaciones.
-
-Por ejemplo:
-
-- Copias de seguridad.
-- Gestión de usuarios.
-- Reinicio de servicios.
-- Limpieza de archivos temporales.
-- Supervisión del sistema.
-- Generación de informes.
-- Actualizaciones automáticas.
-
-Estas tareas forman parte del trabajo habitual de un administrador Linux.
+- **Tareas habituales:** Los scripts Bash permiten automatizar numerosas operaciones.
+- **Ventajas:** Bash ofrece importantes ventajas.
 
 ---
-
-### Ventajas
-
-Bash ofrece importantes ventajas.
-
-Entre ellas:
-
-- Disponible en prácticamente todas las distribuciones Linux.
-- Bajo consumo de recursos.
-- Fácil integración con comandos del sistema.
-- Gran capacidad de automatización.
-- Facilidad para combinar múltiples herramientas.
-
-Estas características lo convierten en una herramienta muy potente para la administración de sistemas.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Automatización mediante tareas programadas
 
-Introducción
+*No todas las tareas automatizadas deben ejecutarse manualmente.*
 
-No todas las tareas automatizadas deben ejecutarse manualmente. En muchos casos es necesario que se inicien de forma automática en un momento determinado o cuando ocurre un evento específico. Para ello, tanto Windows como Linux incorporan herramientas que permiten programar la ejecución de scripts, aplicaciones y comandos sin intervención del administrador.
+**Conceptos clave:**
 
-La programación de tareas es una de las formas más utilizadas de automatización en la administración de sistemas.
-
----
-
-### ¿Qué son las tareas programadas?
-
-Las tareas programadas permiten ejecutar automáticamente una acción cuando se cumple una condición previamente definida.
-
-Por ejemplo:
-
-- A una hora concreta.
-- Todos los días.
-- Cada semana.
-- Al iniciar el sistema.
-- Al iniciar sesión un usuario.
-- Cuando ocurre un determinado evento.
-
-Gracias a ello, muchas tareas de mantenimiento pueden realizarse sin supervisión.
-
----
-
-### Funcionamiento
-
-El proceso puede representarse así:
-
-```text
-Definir la tarea
-
-↓
-
-Configurar el desencadenador
-
-↓
-
-Programar la ejecución
-
-↓
-
-Ejecución automática
-
-↓
-
-Registro del resultado
-```
-
-Una vez creada, la tarea se ejecutará siguiendo la planificación establecida.
-
----
-
-### Programador de tareas en Windows
-
-Windows incorpora el **Programador de tareas** (*Task Scheduler*), una herramienta que permite automatizar la ejecución de programas, scripts y comandos.
-
-Desde esta utilidad es posible:
-
-- Crear tareas.
-- Modificar tareas existentes.
-- Programar horarios.
-- Configurar condiciones de ejecución.
-- Consultar el historial de ejecuciones.
-
-Es la herramienta principal para automatizar procesos en sistemas Windows.
-
----
-
-### Elementos de una tarea programada
-
-Una tarea suele estar formada por varios componentes.
-
-Los más importantes son:
-
-- **Nombre** de la tarea.
-- **Desencadenador** (cuándo se ejecutará).
-- **Acción** (qué realizará).
-- **Condiciones** adicionales.
-- **Configuración** avanzada.
-
-Estos elementos determinan el comportamiento de la tarea automática.
-
----
-
-### Desencadenadores
-
-El desencadenador indica el momento en el que debe iniciarse la tarea.
-
-Algunos ejemplos son:
-
-- Diariamente.
-- Semanalmente.
-- Mensualmente.
-- Al iniciar el sistema.
-- Al iniciar sesión.
-- Cuando se produce un evento del sistema.
-
-Un mismo proceso puede disponer de varios desencadenadores distintos.
-
----
-
-### Acciones
-
-La acción define qué realizará la tarea.
-
-Entre las más habituales destacan:
-
-- Ejecutar un programa.
-- Ejecutar un script PowerShell.
-- Ejecutar un archivo Batch.
-- Iniciar una aplicación.
-- Enviar un comando.
-
-La acción constituye el objetivo principal de la automatización.
-
----
-
-### Cron en Linux
-
-En sistemas Linux la herramienta más utilizada para programar tareas es **cron**.
-
-Las tareas programadas se almacenan en el archivo:
-
-```text
-crontab
-```
-
-Cada entrada especifica:
-
-- Minuto.
-- Hora.
-- Día del mes.
-- Mes.
-- Día de la semana.
-- Comando que debe ejecutarse.
-
-Cron permite automatizar prácticamente cualquier tarea administrativa.
-
----
+- **¿Qué son las tareas programadas?:** Las tareas programadas permiten ejecutar automáticamente una acción cuando se cumple una condición previamente definida.
+- **Funcionamiento:** El proceso puede representarse así.
+- **Programador de tareas en Windows:** Windows incorpora el Programador de tareas (*Task Scheduler*), una herramienta que permite automatizar la ejecución de programas, scripts y comandos.
+- **Elementos de una tarea programada:** Una tarea suele estar formada por varios componentes.
+- **Desencadenadores:** El desencadenador indica el momento en el que debe iniciarse la tarea.
+- **Acciones:** La acción define qué realizará la tarea.
+- **Cron en Linux:** En sistemas Linux la herramienta más utilizada para programar tareas es cron.
 
 ### Ejemplo de programación en cron
 
-Un ejemplo sencillo sería:
+*Un ejemplo sencillo sería.*
 
 ```bash
 0 2 * * * /home/admin/backup.sh
 ```
 
-Este ejemplo ejecuta el script **backup.sh** todos los días a las **02:00** de la madrugada.
-
 ---
 
-### Ventajas
+**Conceptos clave:**
 
-La programación de tareas ofrece numerosas ventajas.
-
-Entre ellas:
-
-- Automatización completa.
-- Ejecución puntual.
-- Ahorro de tiempo.
-- Menor intervención del administrador.
-- Mayor regularidad en los procesos.
-
-Estas características la convierten en una herramienta muy utilizada en entornos empresariales.
+- **Ventajas:** La programación de tareas ofrece numerosas ventajas.
 
 ---
-
-[⬆️ Volver al índice](#índice)
 
 ## Automatización en entornos empresariales
 
-Introducción
+*En las organizaciones actuales, la automatización constituye uno de los pilares fundamentales de la administración de sistemas.*
 
-En las organizaciones actuales, la automatización constituye uno de los pilares fundamentales de la administración de sistemas. A medida que aumenta el número de equipos, servidores y servicios, la gestión manual deja de ser eficiente y resulta necesario implantar procesos automáticos que permitan administrar la infraestructura de forma rápida, homogénea y segura.
+**Conceptos clave:**
 
-La automatización facilita el trabajo del departamento de IT, mejora la disponibilidad de los servicios y reduce significativamente el tiempo dedicado a tareas repetitivas.
-
----
-
-### Administración de grandes infraestructuras
-
-En una empresa pueden existir:
-
-- Cientos de equipos.
-- Decenas de servidores.
-- Máquinas virtuales.
-- Servicios en la nube.
-- Dispositivos de red.
-
-Administrar manualmente todos estos recursos sería inviable.
-
-La automatización permite gestionar toda la infraestructura desde un único punto.
+- **Administración de grandes infraestructuras:** En una empresa pueden existir: Cientos de equipos.
+- **Automatización del despliegue de software:** Una de las tareas más habituales consiste en instalar aplicaciones automáticamente.
+- **Automatización de actualizaciones:** Las empresas suelen automatizar la instalación de actualizaciones del sistema operativo y de las aplicaciones.
+- **Gestión automática de usuarios:** Muchas organizaciones automatizan tareas relacionadas con las cuentas de usuario.
+- **Automatización de copias de seguridad:** Las copias de seguridad son uno de los procesos que con mayor frecuencia se automatizan.
+- **Monitorización automática:** Los sistemas de monitorización pueden ejecutar acciones automáticamente cuando detectan determinados eventos.
+- **Automatización en la nube:** Las plataformas cloud incorporan numerosas funciones de automatización.
+- **Beneficios para la empresa:** La automatización proporciona numerosas ventajas.
+- **Retos de la automatización:** La automatización también presenta algunos desafíos.
 
 ---
-
-### Automatización del despliegue de software
-
-Una de las tareas más habituales consiste en instalar aplicaciones automáticamente.
-
-El proceso suele ser:
-
-```text
-Seleccionar aplicación
-
-↓
-
-Crear el paquete
-
-↓
-
-Distribuir a los equipos
-
-↓
-
-Instalación automática
-
-↓
-
-Verificación
-```
-
-De esta forma todos los equipos reciben la misma versión del software.
-
----
-
-### Automatización de actualizaciones
-
-Las empresas suelen automatizar la instalación de actualizaciones del sistema operativo y de las aplicaciones.
-
-Esto permite:
-
-- Mantener los equipos protegidos.
-- Corregir vulnerabilidades.
-- Reducir errores.
-- Garantizar que todos los sistemas estén actualizados.
-
-La actualización automática disminuye considerablemente el trabajo administrativo.
-
----
-
-### Gestión automática de usuarios
-
-Muchas organizaciones automatizan tareas relacionadas con las cuentas de usuario.
-
-Por ejemplo:
-
-- Crear usuarios.
-- Asignar grupos.
-- Configurar permisos.
-- Deshabilitar cuentas.
-- Eliminar usuarios inactivos.
-
-Estas acciones suelen integrarse con servicios como Active Directory.
-
----
-
-### Automatización de copias de seguridad
-
-Las copias de seguridad son uno de los procesos que con mayor frecuencia se automatizan.
-
-Habitualmente el procedimiento es:
-
-```text
-Iniciar copia
-
-↓
-
-Comprimir información
-
-↓
-
-Guardar en el destino
-
-↓
-
-Verificar la copia
-
-↓
-
-Generar informe
-```
-
-Automatizar este proceso reduce el riesgo de olvidos y garantiza una mayor continuidad del servicio.
-
----
-
-### Monitorización automática
-
-Los sistemas de monitorización pueden ejecutar acciones automáticamente cuando detectan determinados eventos.
-
-Por ejemplo:
-
-- Reiniciar un servicio.
-- Enviar una alerta.
-- Ejecutar un script.
-- Generar un ticket de incidencia.
-- Notificar al administrador.
-
-Esto permite actuar rápidamente ante posibles problemas.
-
----
-
-### Automatización en la nube
-
-Las plataformas cloud incorporan numerosas funciones de automatización.
-
-Entre ellas:
-
-- Creación automática de máquinas virtuales.
-- Escalado de recursos.
-- Despliegue de aplicaciones.
-- Copias de seguridad.
-- Supervisión de servicios.
-
-Estas capacidades facilitan la administración de infraestructuras modernas.
-
----
-
-### Beneficios para la empresa
-
-La automatización proporciona numerosas ventajas.
-
-Entre ellas:
-
-- Mayor productividad.
-- Reducción de costes.
-- Menor número de errores.
-- Procesos homogéneos.
-- Respuesta más rápida ante incidencias.
-- Mejor utilización del personal técnico.
-
-Estas ventajas justifican su implantación en prácticamente cualquier organización.
-
----
-
-### Retos de la automatización
-
-La automatización también presenta algunos desafíos.
-
-Por ejemplo:
-
-- Diseño inicial de los procesos.
-- Mantenimiento de scripts.
-- Gestión de cambios.
-- Control de versiones.
-- Supervisión del funcionamiento.
-
-Una planificación adecuada ayuda a minimizar estos inconvenientes.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Herramientas de automatización
 
-Introducción
+*La automatización puede llevarse a cabo mediante una amplia variedad de herramientas, desde lenguajes de scripting hasta plataformas especializadas para la gestión de infraestructuras completas.*
 
-La automatización puede llevarse a cabo mediante una amplia variedad de herramientas, desde lenguajes de scripting hasta plataformas especializadas para la gestión de infraestructuras completas. La elección de una herramienta dependerá del sistema operativo, del tamaño de la infraestructura y del tipo de tareas que se deseen automatizar.
+**Conceptos clave:**
 
-Conocer las principales soluciones disponibles permite seleccionar la opción más adecuada para cada entorno de trabajo.
-
----
-
-### Tipos de herramientas
-
-Las herramientas de automatización pueden clasificarse en varios grupos.
-
-Los más habituales son:
-
-- Lenguajes de scripting.
-- Planificadores de tareas.
-- Herramientas de gestión de configuración.
-- Plataformas de automatización.
-- Servicios de automatización en la nube.
-
-Cada una está orientada a necesidades diferentes.
-
----
-
-### PowerShell
-
-PowerShell es la herramienta de automatización integrada en Windows.
-
-Permite:
-
-- Administrar equipos.
-- Ejecutar scripts.
-- Gestionar Active Directory.
-- Automatizar Microsoft 365.
-- Administrar servidores Windows.
-
-Es una de las herramientas más utilizadas en entornos Microsoft.
-
----
-
-### Bash
-
-Bash es el intérprete de comandos más empleado en sistemas Linux.
-
-Mediante scripts Bash es posible:
-
-- Automatizar tareas administrativas.
-- Gestionar servicios.
-- Procesar archivos.
-- Ejecutar copias de seguridad.
-- Supervisar servidores.
-
-Su integración con Linux facilita enormemente la automatización.
-
----
-
-### Python
-
-Python es uno de los lenguajes de programación más utilizados para automatizar tareas de administración.
-
-Entre sus aplicaciones destacan:
-
-- Automatización de procesos.
-- Gestión de archivos.
-- Administración de redes.
-- Integración con APIs.
-- Generación de informes.
-
-Su amplia disponibilidad de bibliotecas lo convierte en una herramienta muy versátil.
-
----
-
-### Ansible
-
-**Ansible** es una plataforma de automatización y gestión de configuración ampliamente utilizada en entornos empresariales.
-
-Permite:
-
-- Configurar servidores.
-- Instalar aplicaciones.
-- Desplegar configuraciones.
-- Ejecutar tareas simultáneamente en múltiples equipos.
-
-Una de sus principales ventajas es que no requiere instalar agentes en los equipos administrados.
-
----
-
-### Puppet
-
-**Puppet** es una herramienta de gestión de configuración orientada a grandes infraestructuras.
-
-Permite:
-
-- Definir configuraciones.
-- Mantener equipos sincronizados.
-- Automatizar cambios.
-- Gestionar miles de servidores.
-
-Es habitual en organizaciones con un gran número de sistemas.
-
----
-
-### Chef
-
-**Chef** automatiza la configuración y administración de infraestructuras mediante código.
-
-Entre sus funciones destacan:
-
-- Instalación de software.
-- Configuración de servidores.
-- Gestión de servicios.
-- Automatización del despliegue.
-
-Se utiliza principalmente en infraestructuras complejas.
-
----
-
-### Terraform
-
-**Terraform** permite automatizar el despliegue de infraestructuras mediante el enfoque **Infrastructure as Code (IaC)**.
-
-Con esta herramienta es posible crear y administrar recursos como:
-
-- Máquinas virtuales.
-- Redes.
-- Bases de datos.
-- Servicios en la nube.
-
-Su uso facilita la creación de infraestructuras reproducibles y consistentes.
-
----
+- **Tipos de herramientas:** Las herramientas de automatización pueden clasificarse en varios grupos.
+- **PowerShell:** PowerShell es la herramienta de automatización integrada en Windows.
+- **Bash:** Bash es el intérprete de comandos más empleado en sistemas Linux.
+- **Python:** Python es uno de los lenguajes de programación más utilizados para automatizar tareas de administración.
+- **Ansible:** Ansible es una plataforma de automatización y gestión de configuración ampliamente utilizada en entornos empresariales.
+- **Puppet:** Puppet es una herramienta de gestión de configuración orientada a grandes infraestructuras.
+- **Chef:** Chef automatiza la configuración y administración de infraestructuras mediante código.
+- **Terraform:** Terraform permite automatizar el despliegue de infraestructuras mediante el enfoque Infrastructure as Code (IaC).
 
 ### Comparativa
 
@@ -1377,383 +317,62 @@ Su uso facilita la creación de infraestructuras reproducibles y consistentes.
 | Chef | Automatización de infraestructuras | Multiplataforma |
 | Terraform | Infraestructura como código | Multiplataforma |
 
-Cada herramienta está orientada a escenarios diferentes.
-
 ---
 
-### Criterios de elección
+**Conceptos clave:**
 
-Antes de seleccionar una herramienta conviene valorar:
-
-- Sistema operativo.
-- Tamaño de la infraestructura.
-- Facilidad de aprendizaje.
-- Compatibilidad.
-- Escalabilidad.
-- Integración con otros servicios.
-
-La elección adecuada mejora la eficiencia de la automatización.
+- **Criterios de elección:** Antes de seleccionar una herramienta conviene valorar: Sistema operativo.
 
 ---
-
-[⬆️ Volver al índice](#índice)
 
 ## Seguridad en la automatización
 
-Introducción
+*La automatización permite ejecutar tareas de forma rápida y eficiente, pero también puede convertirse en un riesgo si los procesos no se diseñan adecuadamente.*
 
-La automatización permite ejecutar tareas de forma rápida y eficiente, pero también puede convertirse en un riesgo si los procesos no se diseñan adecuadamente. Un script mal desarrollado o una herramienta configurada de forma incorrecta pueden provocar errores masivos, comprometer la seguridad de los sistemas o exponer información sensible.
+**Conceptos clave:**
 
-Por este motivo, es fundamental aplicar medidas de seguridad durante el desarrollo, ejecución y mantenimiento de cualquier proceso automatizado.
-
----
-
-### Importancia de la seguridad
-
-Los procesos automatizados suelen ejecutarse con permisos elevados y pueden afectar a numerosos equipos simultáneamente.
-
-Un error o un uso indebido podría provocar:
-
-- Eliminación accidental de información.
-- Modificación incorrecta de configuraciones.
-- Interrupción de servicios.
-- Accesos no autorizados.
-- Compromiso de toda la infraestructura.
-
-Por ello, la seguridad debe estar presente en todas las fases de la automatización.
+- **Importancia de la seguridad:** Los procesos automatizados suelen ejecutarse con permisos elevados y pueden afectar a numerosos equipos simultáneamente.
+- **Principio de mínimo privilegio:** Los scripts y herramientas deben ejecutarse únicamente con los permisos estrictamente necesarios.
+- **Protección de credenciales:** Uno de los errores más habituales consiste en almacenar usuarios y contraseñas directamente en los scripts.
+- **Validación de datos:** Antes de ejecutar cualquier acción automática conviene comprobar que los datos recibidos son correctos.
+- **Control de errores:** Todo proceso automatizado debería contemplar posibles fallos.
+- **Registro de actividades:** Las tareas automatizadas deberían generar registros que permitan conocer qué acciones se han realizado.
+- **Pruebas antes de producción:** Antes de ejecutar un script sobre sistemas reales se recomienda probarlo en un entorno controlado.
+- **Control de versiones:** Los scripts deben mantenerse bajo un sistema de control de versiones.
+- **Supervisión de procesos automáticos:** No basta con automatizar una tarea; también es necesario comprobar que continúa funcionando correctamente.
 
 ---
-
-### Principio de mínimo privilegio
-
-Los scripts y herramientas deben ejecutarse únicamente con los permisos estrictamente necesarios.
-
-Se recomienda:
-
-- Evitar utilizar cuentas de administrador cuando no sea necesario.
-- Crear cuentas específicas para automatización.
-- Limitar los permisos asignados.
-- Revisar periódicamente las autorizaciones.
-
-De esta forma se reduce el impacto de posibles errores o vulnerabilidades.
-
----
-
-### Protección de credenciales
-
-Uno de los errores más habituales consiste en almacenar usuarios y contraseñas directamente en los scripts.
-
-Debe evitarse:
-
-```text
-Usuario
-
-↓
-
-Contraseña escrita en el script
-
-↓
-
-Ejecución
-```
-
-En su lugar se recomienda utilizar:
-
-- Gestores de credenciales.
-- Variables de entorno.
-- Almacenes seguros de secretos (*Secret Vaults*).
-- Certificados o claves criptográficas.
-
-Esto protege la información sensible frente a accesos no autorizados.
-
----
-
-### Validación de datos
-
-Antes de ejecutar cualquier acción automática conviene comprobar que los datos recibidos son correctos.
-
-Por ejemplo:
-
-- Existencia de archivos.
-- Formato de las rutas.
-- Valores numéricos.
-- Dirección IP válida.
-- Usuario existente.
-
-Validar la información evita errores durante la ejecución del proceso.
-
----
-
-### Control de errores
-
-Todo proceso automatizado debería contemplar posibles fallos.
-
-Es recomendable:
-
-- Detectar excepciones.
-- Mostrar mensajes descriptivos.
-- Registrar los errores.
-- Finalizar correctamente la ejecución cuando sea necesario.
-
-Una buena gestión de errores facilita el diagnóstico de incidencias.
-
----
-
-### Registro de actividades
-
-Las tareas automatizadas deberían generar registros que permitan conocer qué acciones se han realizado.
-
-Entre la información más útil se encuentra:
-
-- Fecha y hora.
-- Usuario que ejecutó el proceso.
-- Equipo afectado.
-- Resultado de la operación.
-- Errores detectados.
-
-Estos registros son fundamentales para auditorías y resolución de incidencias.
-
----
-
-### Pruebas antes de producción
-
-Antes de ejecutar un script sobre sistemas reales se recomienda probarlo en un entorno controlado.
-
-El procedimiento habitual es:
-
-```text
-Desarrollar el script
-
-↓
-
-Probar en laboratorio
-
-↓
-
-Corregir errores
-
-↓
-
-Validar el funcionamiento
-
-↓
-
-Desplegar en producción
-```
-
-Esto reduce considerablemente el riesgo de afectar a los sistemas en funcionamiento.
-
----
-
-### Control de versiones
-
-Los scripts deben mantenerse bajo un sistema de control de versiones.
-
-Esto permite:
-
-- Recuperar versiones anteriores.
-- Identificar cambios realizados.
-- Trabajar en equipo.
-- Mantener un historial de modificaciones.
-
-Herramientas como **Git** facilitan esta tarea.
-
----
-
-### Supervisión de procesos automáticos
-
-No basta con automatizar una tarea; también es necesario comprobar que continúa funcionando correctamente.
-
-Es recomendable revisar:
-
-- Ejecuciones fallidas.
-- Tiempo de ejecución.
-- Registros generados.
-- Alertas del sistema.
-
-La supervisión continua permite detectar problemas antes de que afecten al servicio.
-
----
-
-[⬆️ Volver al índice](#índice)
 
 ## Resolución de problemas habituales
 
-Introducción
+*Los procesos automatizados pueden fallar por múltiples motivos, como errores en los scripts, configuraciones incorrectas, problemas de permisos o fallos en los servicios del sistema.*
 
-Los procesos automatizados pueden fallar por múltiples motivos, como errores en los scripts, configuraciones incorrectas, problemas de permisos o fallos en los servicios del sistema. Cuando esto ocurre, es importante seguir un procedimiento de diagnóstico ordenado que permita identificar rápidamente la causa del problema y aplicar la solución adecuada.
+**Conceptos clave:**
 
-Una correcta resolución de incidencias garantiza que las tareas automáticas continúen ejecutándose de forma fiable.
-
----
-
-### Comprobar el script
-
-El primer paso consiste en verificar que el script no contiene errores de sintaxis o lógica.
-
-Es recomendable revisar:
-
-- Variables.
-- Rutas de archivos.
-- Comandos utilizados.
-- Condiciones.
-- Bucles.
-
-Muchos problemas se deben a pequeños errores en el propio código.
-
----
-
-### Ejecutar manualmente
-
-Antes de revisar otros elementos, conviene ejecutar el script manualmente.
-
-Esto permite comprobar:
-
-- Si se ejecuta correctamente.
-- Qué mensajes muestra.
-- En qué punto aparece el error.
-
-La ejecución manual facilita el diagnóstico de la incidencia.
-
----
-
-### Revisar los permisos
-
-Un problema frecuente consiste en que el script no dispone de permisos suficientes.
-
-Debe comprobarse:
-
-- Permisos del usuario.
-- Permisos del archivo.
-- Acceso a carpetas.
-- Acceso a recursos compartidos.
-
-Sin los permisos adecuados, determinadas acciones no podrán ejecutarse.
-
----
-
-### Comprobar las rutas
-
-Muchos errores aparecen porque el script intenta acceder a archivos o directorios inexistentes.
-
-Es recomendable verificar:
-
-- Existencia de la ruta.
-- Nombre correcto del archivo.
-- Permisos de acceso.
-- Disponibilidad del recurso.
-
-Una ruta incorrecta suele impedir la ejecución del proceso.
-
----
-
-### Revisar las tareas programadas
-
-Cuando el script se ejecuta automáticamente, es importante comprobar que la programación es correcta.
-
-Debe revisarse:
-
-- Hora de ejecución.
-- Usuario que ejecuta la tarea.
-- Desencadenador.
-- Acción configurada.
-- Historial de ejecuciones.
-
-Una configuración incorrecta puede impedir que la tarea llegue a iniciarse.
-
----
+- **Comprobar el script:** El primer paso consiste en verificar que el script no contiene errores de sintaxis o lógica.
+- **Ejecutar manualmente:** Antes de revisar otros elementos, conviene ejecutar el script manualmente.
+- **Revisar los permisos:** Un problema frecuente consiste en que el script no dispone de permisos suficientes.
+- **Comprobar las rutas:** Muchos errores aparecen porque el script intenta acceder a archivos o directorios inexistentes.
+- **Revisar las tareas programadas:** Cuando el script se ejecuta automáticamente, es importante comprobar que la programación es correcta.
 
 ### Analizar los registros
 
-Los registros permiten conocer qué ocurrió durante la ejecución.
-
-Dependiendo del sistema pueden consultarse:
-
-**Windows**
-
-- Historial del Programador de tareas.
-- Visor de eventos.
-- Registros generados por el propio script.
-
-**Linux**
+*Los registros permiten conocer qué ocurrió durante la ejecución.*
 
 ```bash
 journalctl
 ```
-
-o
-
 ```bash
 cat /var/log/syslog
 ```
 
-Estos registros ayudan a localizar la causa del problema.
-
 ---
 
-### Comprobar dependencias
+**Conceptos clave:**
 
-Algunos scripts dependen de programas o servicios adicionales.
-
-Conviene verificar que:
-
-- El servicio está iniciado.
-- El programa está instalado.
-- La versión es compatible.
-- Las dependencias funcionan correctamente.
-
-Una dependencia ausente puede impedir la ejecución del proceso.
-
----
-
-### Verificar la conectividad
-
-Cuando la automatización trabaja con equipos remotos, también debe comprobarse la comunicación de red.
-
-Es recomendable revisar:
-
-- Conectividad.
-- Resolución DNS.
-- Firewall.
-- Disponibilidad del servidor remoto.
-
-Sin comunicación con el destino, la automatización no podrá completarse.
-
----
-
-### Procedimiento de diagnóstico
-
-Un procedimiento ordenado puede representarse así:
-
-```text
-Ejecutar manualmente
-
-↓
-
-Revisar el script
-
-↓
-
-Comprobar permisos
-
-↓
-
-Verificar rutas
-
-↓
-
-Consultar registros
-
-↓
-
-Corregir el problema
-
-↓
-
-Probar nuevamente
-```
-
-Seguir siempre la misma metodología facilita la resolución de incidencias.
+- **Comprobar dependencias:** Algunos scripts dependen de programas o servicios adicionales.
+- **Verificar la conectividad:** Cuando la automatización trabaja con equipos remotos, también debe comprobarse la comunicación de red.
+- **Procedimiento de diagnóstico:** Un procedimiento ordenado puede representarse así.
 
 ---
 

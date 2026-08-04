@@ -1,4 +1,6 @@
-# 11 - Recuperación del sistema — Linux vs PowerShell
+# 11 - Recuperación del sistema 
+
+## Introducción
 
 La recuperación del sistema comprende el conjunto de procedimientos y herramientas destinados a restaurar el funcionamiento de un equipo o servidor tras un fallo grave.
 

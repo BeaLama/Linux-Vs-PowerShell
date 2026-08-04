@@ -1,4 +1,6 @@
-# 10 - Copias de seguridad — Linux vs PowerShell
+# Copias de seguridad 
+
+## Introducción
 
 Las copias de seguridad constituyen uno de los pilares fundamentales de la administración de sistemas.
 

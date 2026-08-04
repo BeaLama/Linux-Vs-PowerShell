@@ -1,4 +1,6 @@
-# 08 - Almacenamiento avanzado — Linux vs PowerShell
+# Almacenamiento avanzado
+
+## Introducción
 
 El almacenamiento es uno de los componentes más importantes de cualquier sistema informático.
 

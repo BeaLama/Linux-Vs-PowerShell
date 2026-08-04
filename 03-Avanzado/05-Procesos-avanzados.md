@@ -1,4 +1,4 @@
-# 05 - Procesos avanzados
+# Procesos avanzados
 
 ## Introducción
 

@@ -1,4 +1,6 @@
-# 06 - Servicios avanzados — Linux vs PowerShell
+# Servicios avanzados
+
+## Introducción
 
 Los servicios son procesos especiales que se ejecutan en segundo plano para proporcionar funciones esenciales al sistema operativo o a las aplicaciones.
 

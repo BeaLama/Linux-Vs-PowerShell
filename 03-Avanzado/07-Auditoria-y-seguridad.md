@@ -1,4 +1,6 @@
-# 07 - Auditoría y seguridad — Linux vs PowerShell
+# Auditoría y seguridad
+
+## Introducción
 
 La auditoría y la seguridad son elementos fundamentales en la administración de sistemas modernos.
 
